@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Basket | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header - Shopee Style -->
+<header class="header-wrapper">
+    <div class="header-with-search-wrapper">
+    <div class="logo-wrapper">
+        <a href="index.html" aria-label="Home">
+            <img src="logos/s2eh.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="search-wrapper">
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="search-button">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+
+    <div class="cart-account-wrapper">
+        <!-- Chat Icon -->
+        <a href="chat.html" class="chat-wrapper" aria-label="Chat">
+            <i class="bi bi-chat-dots cart-icon"></i>
+        </a>
+
+        <!-- Basket -->
+        <a href="cart.html" class="basket-wrapper" aria-label="Basket">
+            <i class="bi bi-basket cart-icon"></i>
+            <span class="basket-badge">3</span>
+        </a>
+
+        <!-- Account -->
+        <a href="account.html" class="account-wrapper" aria-label="Account">
+            <i class="bi bi-person-fill"></i>
+        </a>
+    </div>
+</div>
+
+</header>
+
+
+    <!-- Add spacing for fixed navbar -->
+    <div style="height: 72px;"></div>
+
+    <!-- Cart Header -->
+    <section class="bg-light py-4">
+        <div class="container">
+            <h1>Shopping Basket</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Shopping Basket</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Cart Items -->
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Basket Items (3)</h5>
+                            <button class="btn btn-sm btn-outline-danger">Clear Basket</button>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- Cart Item 1 -->
+                            <div class="cart-item mb-4 pb-3 border-bottom">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-4">
+                                        <img src="images/unknown.jpg" alt="Pili Nuts" class="img-fluid rounded">
+                                    </div>
+
+                                    <!-- product name -->
+                                    <div class="col-md-4 col-8">
+                                        <h5 class="mb-1">Pili Nuts (250g)</h5>
+                                        <p class="mb-1 text-muted small">By: Maria's Farm</p>
+                                        <span class="badge bg-success">LGU Validated</span>
+                                    </div>
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <p class="mb-0">₱180.00</p>
+                                    </div>
+
+                                    <!-- QUANTITY SELECTOR -->
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <div class="quantity-selector d-flex align-items-center">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-decrease">-</button>
+                                            <input type="number" class="text-center quantity-input" value="2" min="1"
+                                                max="10">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-increase">+</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- REMOVE BUTTON -->
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0 text-end">
+                                        <p class="mb-2 fw-bold">₱360.00</p>
+                                        <button class="btn btn-sm btn-outline-danger remove-item" data-product-id="1">
+                                            <i class="bi bi-trash"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cart Item 2 -->
+                            <div class="cart-item mb-4 pb-3 border-bottom">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-4">
+                                        <img src="images/unknown.jpg" alt="Organic Rice" class="img-fluid rounded">
+                                    </div>
+
+                                    <div class="col-md-4 col-8">
+                                        <h5 class="mb-1">Organic Rice (5kg)</h5>
+                                        <p class="mb-1 text-muted small">By: Santos Family Farm</p>
+                                        <span class="badge bg-success">LGU Validated</span>
+                                    </div>
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <p class="mb-0">₱320.00</p>
+                                    </div>
+
+
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <div class="quantity-selector d-flex align-items-center">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-decrease">-</button>
+                                            <input type="number" class="text-center quantity-input" value="2" min="1"
+                                                max="10">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-increase">+</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0 text-end">
+                                        <p class="mb-2 fw-bold">₱320.00</p>
+                                        <button class="btn btn-sm btn-outline-danger remove-item" data-product-id="3">
+                                            <i class="bi bi-trash"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cart Item 3 -->
+                            <div class="cart-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-4">
+                                        <img src="images/unknown.jpg" alt="Coconut Vinegar" class="img-fluid rounded">
+                                    </div>
+
+
+                                    <div class="col-md-4 col-8">
+                                        <h5 class="mb-1">Coconut Vinegar</h5>
+                                        <p class="mb-1 text-muted small">By: Bicol Essentials</p>
+                                    </div>
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <p class="mb-0">₱95.00</p>
+                                        <small class="text-muted text-decoration-line-through">₱120.00</small>
+                                    </div>
+
+
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0">
+                                        <div class="quantity-selector d-flex align-items-center">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-decrease">-</button>
+                                            <input type="number" class="text-center quantity-input" value="2" min="1"
+                                                max="10">
+                                            <button
+                                                class="btn btn-sm btn-outline-secondary quantity-increase">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-4 mt-3 mt-md-0 text-end">
+                                        <p class="mb-2 fw-bold">₱285.00</p>
+                                        <button class="btn btn-sm btn-outline-danger remove-item" data-product-id="4">
+                                            <i class="bi bi-trash"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue Shopping -->
+                    <div class="d-flex justify-content-between">
+                        <a href="products.html" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-left"></i> Continue Shopping
+                        </a>
+                        <button class="btn btn-outline-primary" id="update-cart">
+                            <i class="bi bi-arrow-clockwise"></i> Update Basket
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Order Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span>₱965.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping:</span>
+                                <span>₱120.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Discount:</span>
+                                <span class="text-danger">-₱75.00</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold">₱1,010.00</span>
+                            </div>
+
+                            <!-- Promo Code -->
+                            <div class="mb-3">
+                                <label for="promo-code" class="form-label">Promo Code</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="promo-code" placeholder="Enter code">
+                                    <button class="btn btn-outline-secondary" type="button">Apply</button>
+                                </div>
+                            </div>
+
+                            <!-- Checkout Button -->
+                            <a href="checkout.html" class="btn btn-primary w-100">
+                                Proceed to Checkout <i class="bi bi-arrow-right"></i>
+                            </a>
+
+                            <!-- Payment Methods -->
+                            <!-- <div class="mt-3 text-center">
+                                <p class="text-muted mb-2">Secure Payment Options</p>
+                                <div class="payment-methods">
+                                    <img src="https://aimg.kwcdn.com/upload_aimg/payment/7bacbe25-56f3-4b84-a82f-046777896662.png.slim.png?imageView2/2/w/120/q/70/format/webp" alt="GCash" height="50" class="me-2">
+                                    <img src="/images/cod.jpg" alt="Cash on Delivery" height="50">
+                                </div>
+                            </div> -->
+
+                            <div class="d-flex gap-4 mt-3 align-items-center">
+                                <!-- Cash on Delivery -->
+                                <label for="cod" class="d-flex align-items-center gap-2 mb-0">
+                                    <input type="radio" id="cod" name="payment_method" value="cod" class="me-1">
+                                    <i class="bi bi-cash-coin" style="font-size: 1.75rem; color: #28a745;"></i>
+                                    <span class="fs-12">Cash on Delivery</span>
+                                </label>
+                            
+                                <!-- GCash -->
+                                <label for="gcash" class="d-flex align-items-center gap-2 mb-0">
+                                    <input type="radio" id="gcash" name="payment_method" value="gcash" class="me-1">
+                                    <img src="https://aimg.kwcdn.com/upload_aimg/payment/7bacbe25-56f3-4b84-a82f-046777896662.png.slim.png?imageView2/2/w/120/q/70/format/webp"
+                                        alt="GCash" height="30">
+                                    <span class="fs-12">GCash</span>
+                                </label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- Shipping Info -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5 class="mb-0">Shipping Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><i class="bi bi-truck me-2"></i> Standard Delivery: 3-5 business days</p>
+                            <p class="mb-0"><i class="bi bi-info-circle me-2"></i> Free shipping for orders above ₱2,000
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- You May Also Like -->
+            <div class="mt-5">
+                <h3>You May Also Like</h3>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-3">
+                        <div class="card product-card h-100">
+                            <img src="images/unknown.jpg" class="card-img-top" alt="Abaca Bag">
+                            <div class="card-body">
+                                <h5 class="card-title">Abaca Bag</h5>
+                                <p class="seller-name">By: Bicol Crafts</p>
+                                <p class="price">₱450.00</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary btn-sm add-to-cart" data-product-id="5">Add to
+                                        Cart</button>
+                                    <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card product-card h-100">
+                            <img src="images/unknown.jpg" class="card-img-top" alt="Pili Oil">
+                            <div class="card-body">
+                                <h5 class="card-title">Pili Oil (100ml)</h5>
+                                <p class="seller-name">By: Bicol Naturals</p>
+                                <p class="price">₱280.00</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary btn-sm add-to-cart" data-product-id="6">Add to
+                                        Cart</button>
+                                    <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card product-card h-100">
+                            <img src="images/unknown.jpg" class="card-img-top" alt="Fresh Mangoes">
+                            <div class="card-body">
+                                <h5 class="card-title">Fresh Mangoes (1kg)</h5>
+                                <p class="seller-name">By: Fruit Haven Farm</p>
+                                <p class="price">₱150.00</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary btn-sm add-to-cart" data-product-id="7">Add to
+                                        Cart</button>
+                                    <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card product-card h-100">
+                            <img src="images/unknown.jpg" class="card-img-top" alt="Sili Ice Cream">
+                            <div class="card-body">
+                                <h5 class="card-title">Sili Ice Cream (500ml)</h5>
+                                <p class="seller-name">By: Bicol Delights</p>
+                                <p class="price">₱180.00</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary btn-sm add-to-cart" data-product-id="9">Add to
+                                        Cart</button>
+                                    <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-5 border-top">
+        <div class="container">
+            <div class="row">
+                <!-- Customer Service -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-headset me-2"></i>Customer Service</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-question-circle me-2"></i>Help Center
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-truck me-2"></i>Order Tracking
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-box-seam me-2"></i>Shipping Policy
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-arrow-return-left me-2"></i>Returns & Refunds
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-chat-dots me-2"></i>Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- About S2EH -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-info-circle me-2"></i>About S2EH</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-building me-2"></i>About Us
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-briefcase me-2"></i>LGU Partnership
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-people me-2"></i>Producer Stories
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-person-workspace me-2"></i>Careers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-muted d-flex align-items-center bg-light p-2 rounded">
+                                <i class="bi bi-shield-lock me-2"></i>Privacy Policy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="col-md-3 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-credit-card me-2"></i>Payment</h6>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="payment-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://spm.susercontent.com/api/v4/50092786/shopee_logo_bucket/static/images/bank_logo/Payment_Center_e_Wallet_GCash_logo.png"
+                                    alt="GCash" style="max-height: 30px; max-width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-truck-flatbed me-2"></i>Logistics</h6>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/ph-50009109-0c5dd5687ff2ede525c04fbde2f7b7fd"
+                                    alt="SPX" style="max-height: 30px; max-width: 100%;">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/631b5315df5e2e7a6360553c48c7b394"
+                                    alt="Flash Express" style="max-height: 30px; max-width: 100%;">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/f08425e0b60ba5040a7d490d6cf4a7c4"
+                                    alt="J&T Express" style="max-height: 30px; max-width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-globe me-2"></i>Follow Us</h6>
+                    <div class="social-links d-flex flex-wrap">
+                        <a href="#"
+                            class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
+                            <i class="bi bi-facebook text-primary fs-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- LGU Partners -->
+                    <div class="mt-3">
+                        <h6 class="text-uppercase fw-bold mb-2"><i class="bi bi-building-check me-2"></i>LGU Partners
+                        </h6>
+                        <div class="lgu-logo bg-light p-2 rounded d-inline-block d-flex align-items-center justify-content-center"
+                            style="height: 80px; width: 80px;">
+                            <img src="/images/lgu-sagnay.jpg" alt="LGU Sagnay"
+                                style="max-height: 70px; max-width: 100%;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App Download -->
+                <div class="col-md-3 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-phone me-2"></i>S2EH App Download</h6>
+                    <div class="d-flex mb-3">
+                        <div class="qr-code me-3 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="height: 100px; width: 100px;">
+                            <img src="/images/qr-code-ex.svg" alt="QR Code" style="max-height: 110px; max-width: 100%;">
+                        </div>
+                        <div class="app-buttons">
+                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center"
+                                style="height: 40px; width: 120px;">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    alt="App Store" style="max-height: 80x; max-width: 100%;">
+                            </div>
+                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center"
+                                style="height: 40px; width: 120px;">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                                    alt="Google Play" style="max-height: 80px; max-width: 110%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Logistics Partners -->
+            <div class="row">
+                <div class="col-md-3 mb-4">
+
+                </div>
+            </div>
+
+            <!-- Regions -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-geo-alt me-2"></i>Regions Served</h6>
+                    <div class="d-flex flex-wrap">
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Bicol Region
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Metro Manila
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Calabarzon
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Central Luzon
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Western Visayas
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Central Visayas
+                        </a>
+                        <a href="#" class="region-link text-muted me-3 mb-2 bg-light p-2 rounded">
+                            <i class="bi bi-geo me-1"></i>Davao Region
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-muted mb-0"><i class="bi bi-c-circle me-1"></i>2023 From Sagnay to Every Home. All rights
+                    reserved.</p>
+                <p class="text-muted small"><i class="bi bi-shop me-1"></i>An e-commerce platform connecting local
+                    producers in Sagnay, Camarines Sur with customers nationwide.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
