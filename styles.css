@@ -79,7 +79,7 @@ a {
     border: none;
     border-radius: 0 2px 2px 0;
     width: 3.75rem; /* 60px - exact Shopee width */
-    cursor: pointer;
+    /* cursor: pointer; */
     height: 100%;
     display: flex;
     align-items: center;
