@@ -324,7 +324,7 @@ function loadFeaturedProducts() {
                         <p class="price">₱${product.price.toFixed(2)}</p>
                         <div class="d-flex justify-content-between">
                             <a href="product-details.html?id=${product.id}" class="btn btn-sm btn-outline-primary">View Details</a>
-                            <button class="btn btn-sm btn-primary add-to-cart" data-product-id="${product.id}">Add to Cart</button>
+                            <button class="btn btn-sm btn-primary add-to-cart" data-product-id="${product.id}">Add to Basket</button>
                         </div>
                     </div>
                 </div>
