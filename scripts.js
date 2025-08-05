@@ -110,39 +110,40 @@ function addToBasket(productId, quantity) {
 
 function updateBasketCounter() {
     const basket = JSON.parse(localStorage.getItem('basket')) || [];
-    const basketBadges = document.querySelectorAll('.basket-badge');
-    
-    if (basketBadges.length > 0) {
-        const totalItems = basket.reduce((total, item) => total + item.quantity, 0);
-        
-        basketBadges.forEach(badge => {
-            // Update count while preserving styling
-            badge.textContent = totalItems;
-        
-            // Ensure styling is preserved
-            badge.style.backgroundColor = '#e44c31';
-            badge.style.color = 'white';
-            badge.style.position = 'absolute';
-            badge.style.top = '-10px';
-            badge.style.right = '-10px';
-            badge.style.borderRadius = '50%';
-            badge.style.minWidth = '20px';
-            badge.style.height = '20px';
-            badge.style.fontSize = '12px';
-            badge.style.display = 'flex';
-            badge.style.alignItems = 'center';
-            badge.style.justifyContent = 'center';
-            badge.style.padding = '2px';
-            
-            // Show/hide based on count
-        if (totalItems > 0) {
-                badge.style.display = 'flex';
-        } else {
-                badge.style.display = 'none';
-        }
-        });
+    const totalItems = basket.reduce((total, item) => total + item.quantity, 0);
+
+    const basketWrapper = document.querySelector('.basket-wrapper');
+    if (!basketWrapper) return;
+
+    //if badge exists
+    let badge = basketWrapper.querySelector('.basket-badge');
+
+    // if missing, create and appends
+    if (!badge) {
+        badge = document.createElement('span');
+        badge.classList.add('basket-badge');
+        basketWrapper.appendChild(badge);
     }
+
+    //update the badge
+    badge.textContent = totalItems;
+
+    // Apply consistent style
+    badge.style.backgroundColor = '#e44c31';
+    badge.style.color = 'white';
+    badge.style.position = 'absolute';
+    badge.style.top = '-10px';
+    badge.style.right = '-10px';
+    badge.style.borderRadius = '50%';
+    badge.style.minWidth = '20px';
+    badge.style.height = '20px';
+    badge.style.fontSize = '12px';
+    badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    badge.style.alignItems = 'center';
+    badge.style.justifyContent = 'center';
+    badge.style.padding = '2px';
 }
+
 
 // Quantity Selector Functionality
 function initializeQuantitySelectors() {
@@ -212,29 +213,31 @@ function updateCartItemQuantity(selector) {
     const productId = selector.getAttribute('data-product-id');
     const quantityInput = selector.querySelector('input');
     const newQuantity = parseInt(quantityInput.value);
-    
-    // Update cart in localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const productIndex = cart.findIndex(item => item.id === productId);
-    
+
+    // Update basket in localStorage
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    const productIndex = basket.findIndex(item => item.id == productId); // Match ID
+
     if (productIndex > -1) {
-        cart[productIndex].quantity = newQuantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
+        basket[productIndex].quantity = newQuantity;
+        localStorage.setItem('basket', JSON.stringify(basket)); // ✅ Corrected
+
         // Update subtotal display
-        const subtotalElement = selector.closest('.cart-item').querySelector('.subtotal');
+        const subtotalElement = selector.closest('.cart-item')?.querySelector('.subtotal');
         if (subtotalElement) {
             const price = parseFloat(selector.getAttribute('data-price'));
             subtotalElement.textContent = '₱' + (price * newQuantity).toFixed(2);
         }
-        
-        // Update cart total
+
+        // Update cart total and badge
         updateCartTotal();
+        updateBasketCounter(); // ✅ So badge is updated too
     }
 }
 
+
 function updateCartTotal() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('basket')) || [];
     const cartTotalElement = document.getElementById('cart-total');
     
     if (cartTotalElement) {
