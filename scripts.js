@@ -111,8 +111,8 @@ function addToBasket(productId, quantity) {
 function updateBasketCounter() {
     const basket = JSON.parse(localStorage.getItem('basket')) || [];
     const totalItems = basket.reduce((total, item) => total + item.quantity, 0);
-
     const basketWrapper = document.querySelector('.basket-wrapper');
+  
     if (!basketWrapper) return;
 
     //if badge exists

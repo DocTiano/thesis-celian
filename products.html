@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,43 +9,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Header - Shopee Style -->
-<header class="header-wrapper">
-    <div class="header-with-search-wrapper">
-    <div class="logo-wrapper">
-        <a href="index.html" aria-label="Home">
-            <img src="logos/s2eh.png" alt="Logo">
-        </a>
-    </div>
+    <header class="header-wrapper">
+        <div class="header-with-search-wrapper">
+            <div class="logo-wrapper">
+                <a href="index.html" aria-label="Home">
+                    <img src="logos/s2eh.png" alt="Logo">
+                </a>
+            </div>
 
-    <div class="search-wrapper">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">
-            <i class="bi bi-search"></i>
-        </button>
-    </div>
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
 
-    <div class="cart-account-wrapper">
-        <!-- Chat Icon -->
-        <a href="chat.html" class="chat-wrapper" aria-label="Chat">
-            <i class="bi bi-chat-dots cart-icon"></i>
-        </a>
+            <div class="cart-account-wrapper">
+                <!-- Chat Icon -->
+                <a href="chat.html" class="chat-wrapper" aria-label="Chat">
+                    <i class="bi bi-chat-dots cart-icon"></i>
+                </a>
 
-        <!-- Basket -->
-        <a href="cart.html" class="basket-wrapper" aria-label="Basket">
-            <i class="bi bi-basket cart-icon"></i>
-            <!-- <span class="basket-badge">3</span> -->
-        </a>
+                <!-- Basket -->
+                <a href="cart.html" class="basket-wrapper" aria-label="Basket">
+                    <i class="bi bi-basket cart-icon"></i>
+                    <span class="basket-badge"></span>
+                </a>
 
-        <!-- Account -->
-        <a href="account.html" class="account-wrapper" aria-label="Account">
-            <i class="bi bi-person-fill"></i>
-        </a>
-    </div>
-</div>
+                <!-- Account -->
+                <a href="account.html" class="account-wrapper" aria-label="Account">
+                    <i class="bi bi-person-fill"></i>
+                </a>
+            </div>
+        </div>
 
-</header>
+    </header>
 
     <!-- Add spacing for fixed navbar -->
     <div style="height: 72px;"></div>
@@ -104,9 +106,9 @@
                                     Local Delicacies
                                 </label>
                             </div>
-                            
+
                             <hr>
-                            
+
                             <h6>Price Range</h6>
                             <div class="mb-3">
                                 <label for="minPrice" class="form-label">Min Price (₱)</label>
@@ -116,9 +118,9 @@
                                 <label for="maxPrice" class="form-label">Max Price (₱)</label>
                                 <input type="number" class="form-control" id="maxPrice" min="0">
                             </div>
-                            
+
                             <hr>
-                            
+
                             <h6>LGU Validated</h6>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="lgu-validated" id="lguValidated">
@@ -126,13 +128,13 @@
                                     Show only LGU validated products
                                 </label>
                             </div>
-                            
+
                             <button class="btn btn-primary w-100 mt-3">Apply Filters</button>
                             <button class="btn btn-outline-danger w-100 mt-2">Clear Filters</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Products Grid -->
                 <div class="col-lg-9">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -148,7 +150,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="row g-4">
                         <!-- Product 1 -->
                         <div class="col-md-4">
@@ -160,8 +162,10 @@
                                     <p class="seller-name">By: Maria's Farm</p>
                                     <p class="price">₱180.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="1">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="1">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -169,7 +173,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 2 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -179,8 +183,10 @@
                                     <p class="seller-name">By: Sagnay Crafts</p>
                                     <p class="price">₱350.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="2">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="2">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -188,7 +194,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 3 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -198,8 +204,10 @@
                                     <p class="seller-name">By: Santos Family Farm</p>
                                     <p class="price">₱320.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="3">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="3">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -207,7 +215,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 4 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -216,15 +224,19 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Coconut Vinegar</h5>
                                     <p class="seller-name">By: Bicol Essentials</p>
-                                    <p class="price"><span class="text-decoration-line-through text-muted me-2">₱120.00</span> ₱95.00</p>
+                                    <p class="price"><span
+                                            class="text-decoration-line-through text-muted me-2">₱120.00</span> ₱95.00
+                                    </p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="4">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="4">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 5 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -234,8 +246,10 @@
                                     <p class="seller-name">By: Bicol Crafts</p>
                                     <p class="price">₱450.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="5">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="5">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -243,7 +257,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 6 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -253,13 +267,15 @@
                                     <p class="seller-name">By: Bicol Naturals</p>
                                     <p class="price">₱280.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="6">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="6">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- More products... -->
                         <!-- Product 7 -->
                         <div class="col-md-4">
@@ -270,8 +286,10 @@
                                     <p class="seller-name">By: Fruit Haven Farm</p>
                                     <p class="price">₱150.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="7">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="7">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -279,23 +297,25 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 8 -->
                         <div class="col-md-4">
-                            <div class="card product-card h-100">   
+                            <div class="card product-card h-100">
                                 <img src="images/unknown.jpg" class="card-img-top" alt="Product Name">
                                 <div class="card-body">
                                     <h5 class="card-title">Bamboo Furniture Set</h5>
                                     <p class="seller-name">By: Sagnay Bamboo Crafts</p>
                                     <p class="price">₱2,500.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="8">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="8">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Product 9 -->
                         <div class="col-md-4">
                             <div class="card product-card h-100">
@@ -306,8 +326,10 @@
                                     <p class="seller-name">By: Bicol Delights</p>
                                     <p class="price">₱180.00</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="9">Add to Cart</button>
-                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View Details</a>
+                                        <button class="btn btn-primary btn-sm add-to-cart" data-product-id="9">Add to
+                                            Cart</button>
+                                        <a href="product-details.html" class="btn btn-outline-secondary btn-sm">View
+                                            Details</a>
                                     </div>
                                     <div class="mt-2">
                                         <span class="badge bg-success lgu-validated">LGU Validated</span>
@@ -316,7 +338,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Pagination -->
                     <nav aria-label="Product pagination" class="mt-5">
                         <ul class="pagination justify-content-center">
@@ -409,27 +431,35 @@
                     <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-credit-card me-2"></i>Payment</h6>
                     <div class="row g-2">
                         <div class="col-6">
-                            <div class="payment-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center" style="height: 50px;">
-                                <img src="https://spm.susercontent.com/api/v4/50092786/shopee_logo_bucket/static/images/bank_logo/Payment_Center_e_Wallet_GCash_logo.png" alt="GCash" style="max-height: 30px; max-width: 100%;">
+                            <div class="payment-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://spm.susercontent.com/api/v4/50092786/shopee_logo_bucket/static/images/bank_logo/Payment_Center_e_Wallet_GCash_logo.png"
+                                    alt="GCash" style="max-height: 30px; max-width: 100%;">
                             </div>
                         </div>
                     </div>
-                    
+
                     <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-truck-flatbed me-2"></i>Logistics</h6>
                     <div class="row g-2">
                         <div class="col-4">
-                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center" style="height: 50px;">
-                                <img src="https://down-ph.img.susercontent.com/file/ph-50009109-0c5dd5687ff2ede525c04fbde2f7b7fd" alt="SPX" style="max-height: 30px; max-width: 100%;">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/ph-50009109-0c5dd5687ff2ede525c04fbde2f7b7fd"
+                                    alt="SPX" style="max-height: 30px; max-width: 100%;">
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center" style="height: 50px;">
-                                <img src="https://down-ph.img.susercontent.com/file/631b5315df5e2e7a6360553c48c7b394" alt="Flash Express" style="max-height: 30px; max-width: 100%;">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/631b5315df5e2e7a6360553c48c7b394"
+                                    alt="Flash Express" style="max-height: 30px; max-width: 100%;">
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center" style="height: 50px;">
-                                <img src="https://down-ph.img.susercontent.com/file/f08425e0b60ba5040a7d490d6cf4a7c4" alt="J&T Express" style="max-height: 30px; max-width: 100%;">
+                            <div class="logistics-logo bg-white p-2 rounded border d-flex align-items-center justify-content-center"
+                                style="height: 50px;">
+                                <img src="https://down-ph.img.susercontent.com/file/f08425e0b60ba5040a7d490d6cf4a7c4"
+                                    alt="J&T Express" style="max-height: 30px; max-width: 100%;">
                             </div>
                         </div>
                     </div>
@@ -439,25 +469,36 @@
                 <div class="col-md-2 mb-4">
                     <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-globe me-2"></i>Follow Us</h6>
                     <div class="social-links d-flex flex-wrap">
-                        <a href="#" class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <a href="#"
+                            class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-facebook text-primary fs-5"></i>
                         </a>
-                        <a href="#" class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <a href="#"
+                            class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-instagram text-danger fs-5"></i>
                         </a>
-                        <a href="#" class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <a href="#"
+                            class="social-icon me-2 mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-twitter text-info fs-5"></i>
                         </a>
-                        <a href="#" class="social-icon mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <a href="#"
+                            class="social-icon mb-2 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-linkedin text-primary fs-5"></i>
                         </a>
                     </div>
-                    
+
                     <!-- LGU Partners -->
                     <div class="mt-3">
-                        <h6 class="text-uppercase fw-bold mb-2"><i class="bi bi-building-check me-2"></i>LGU Partners</h6>
-                        <div class="lgu-logo bg-light p-2 rounded d-inline-block d-flex align-items-center justify-content-center" style="height: 80px; width: 80px;">
-                            <img src="images/lgu-sagnay.jpg" alt="LGU Sagnay" style="max-height: 70px; max-width: 100%;">
+                        <h6 class="text-uppercase fw-bold mb-2"><i class="bi bi-building-check me-2"></i>LGU Partners
+                        </h6>
+                        <div class="lgu-logo bg-light p-2 rounded d-inline-block d-flex align-items-center justify-content-center"
+                            style="height: 80px; width: 80px;">
+                            <img src="images/lgu-sagnay.jpg" alt="LGU Sagnay"
+                                style="max-height: 70px; max-width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -466,15 +507,20 @@
                 <div class="col-md-3 mb-4">
                     <h6 class="text-uppercase fw-bold mb-3"><i class="bi bi-phone me-2"></i>S2EH App Download</h6>
                     <div class="d-flex mb-3">
-                        <div class="qr-code me-3 bg-light p-2 rounded d-flex align-items-center justify-content-center" style="height: 100px; width: 100px;">
+                        <div class="qr-code me-3 bg-light p-2 rounded d-flex align-items-center justify-content-center"
+                            style="height: 100px; width: 100px;">
                             <img src="images/qr-code-ex.svg" alt="QR Code" style="max-height: 110px; max-width: 100%;">
                         </div>
                         <div class="app-buttons">
-                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center" style="height: 40px; width: 120px;">
-                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" style="max-height: 80x; max-width: 100%;">
+                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center"
+                                style="height: 40px; width: 120px;">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    alt="App Store" style="max-height: 80x; max-width: 100%;">
                             </div>
-                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center" style="height: 40px; width: 120px;">
-                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" style="max-height: 80px; max-width: 110%;">
+                            <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center"
+                                style="height: 40px; width: 120px;">
+                                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                                    alt="Google Play" style="max-height: 80px; max-width: 110%;">
                             </div>
                         </div>
                     </div>
@@ -486,7 +532,7 @@
             <!-- Logistics Partners -->
             <div class="row">
                 <div class="col-md-3 mb-4">
-                    
+
                 </div>
             </div>
 
@@ -521,19 +567,28 @@
             </div>
 
             <div class="text-center mt-4">
-                <p class="text-muted mb-0"><i class="bi bi-c-circle me-1"></i>2023 From Sagnay to Every Home. All rights reserved.</p>
-                <p class="text-muted small"><i class="bi bi-shop me-1"></i>An e-commerce platform connecting local producers in Sagnay, Camarines Sur with customers nationwide.</p>
+                <p class="text-muted mb-0"><i class="bi bi-c-circle me-1"></i>2025 From Sagnay to Every Home. All rights
+                    reserved.</p>
+                <p class="text-muted small"><i class="bi bi-shop me-1"></i>An e-commerce platform connecting local
+                    producers in Sagnay, Camarines Sur with customers nationwide.</p>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="scripts.js"></script>
+
+    <!-- JavaScript Files for Products Page -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/featured-products.js"></script>
+    <script src="scripts/basket.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script src="scripts/lgu-validate.js"></script>
+    <script src="scripts/performance.js"></script>
 </body>
-</html> 
+
+</html>

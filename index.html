@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <!-- Header - Shopee Style -->
     <header class="header-wrapper">
         <div class="header-with-search-wrapper">
             <div class="logo-wrapper">
@@ -36,7 +35,7 @@
                 <!-- Basket -->
                 <a href="cart.html" class="basket-wrapper" aria-label="Basket">
                     <i class="bi bi-basket cart-icon"></i>
-                    <!-- <span class="basket-badge">3</span> -->
+                    <span class="basket-badge"></span>
                 </a>
 
                 <!-- Account -->
@@ -166,7 +165,8 @@
                             <p class="price fw-bold text-success">₱150.00</p>
                             <div class="d-flex justify-content-between">
                                 <a href="product-details.html?id=1" class="btn btn-outline-success">View Details</a>
-                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to Basket</button>
+                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to
+                                    Basket</button>
                             </div>
                         </div>
                     </div>
@@ -182,7 +182,8 @@
                             <p class="price fw-bold text-success">₱350.00</p>
                             <div class="d-flex justify-content-between">
                                 <a href="product-details.html?id=2" class="btn btn-outline-success">View Details</a>
-                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to Basket</button>
+                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to
+                                    Basket</button>
                             </div>
                         </div>
                     </div>
@@ -198,7 +199,8 @@
                             <p class="price fw-bold text-success">₱120.00</p>
                             <div class="d-flex justify-content-between">
                                 <a href="product-details.html?id=3" class="btn btn-outline-success">View Details</a>
-                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to Basket</button>
+                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to
+                                    Basket</button>
                             </div>
                         </div>
                     </div>
@@ -214,7 +216,8 @@
                             <p class="price fw-bold text-success">₱450.00</p>
                             <div class="d-flex justify-content-between">
                                 <a href="product-details.html?id=4" class="btn btn-outline-success">View Details</a>
-                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to Basket</button>
+                                <button class="btn btn-success add-to-basket" data-product-id=${product.id}>Add to
+                                    Basket</button>
                             </div>
                         </div>
                     </div>
@@ -492,7 +495,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <p class="text-muted mb-0"><i class="bi bi-c-circle me-1"></i>2023 From Sagnay to Every Home. All rights
+                <p class="text-muted mb-0"><i class="bi bi-c-circle me-1"></i>2025 From Sagnay to Every Home. All rights
                     reserved.</p>
                 <p class="text-muted small"><i class="bi bi-shop me-1"></i>An e-commerce platform connecting local
                     producers in Sagnay, Camarines Sur with customers nationwide.</p>
@@ -502,8 +505,19 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="scripts.js"></script>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/basket.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/quantity.js"></script>
+    <script src="scripts/featured-products.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script src="scripts/account.js"></script>
+    <script src="scripts/lgu-validate.js"></script>
+    <script src="scripts/producer-verification.js"></script>
+    <script src="scripts/performance.js"></script>
 </body>
 
 </html>
