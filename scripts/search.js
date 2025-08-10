@@ -3,16 +3,16 @@
 export function initializeSearch() {
     const searchButton = document.querySelector('.search-button');
     const searchInput = document.querySelector('.search-input');
-
+    
     if (searchButton && searchInput) {
-        searchButton.addEventListener('click', () => {
+        searchButton.addEventListener('click', function() {
             const query = searchInput.value.trim();
             if (query) {
                 window.location.href = `products.html?search=${encodeURIComponent(query)}`;
             }
         });
-
-        searchInput.addEventListener('keypress', (e) => {
+        
+        searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const query = searchInput.value.trim();
                 if (query) {
@@ -26,11 +26,12 @@ export function initializeSearch() {
 export function initializeProductSearch() {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
-
+    
     if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', (e) => {
+        searchForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const searchQuery = searchInput.value.trim();
+            
             if (searchQuery) {
                 window.location.href = `products.html?search=${encodeURIComponent(searchQuery)}`;
             }

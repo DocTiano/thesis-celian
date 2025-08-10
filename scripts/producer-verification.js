@@ -4,15 +4,16 @@ import { showNotification } from './notifications.js';
 
 export function initializeProducerVerification() {
     const verificationForms = document.querySelectorAll('.producer-verification-form');
-
+    
     verificationForms.forEach(form => {
-        form.addEventListener('submit', async function (e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
+            
             const formData = new FormData(this);
             try {
+                // In production, this would submit to Laravel backend
                 const response = await submitProducerVerification(formData);
-
+                
                 if (response.success) {
                     showNotification('Verification submitted successfully', 'success');
                     updateProducerStatus(response.status);
@@ -28,7 +29,8 @@ export function initializeProducerVerification() {
 }
 
 async function submitProducerVerification(formData) {
-    // Mocked API call; replace with real request in production
+    // This would be an API call to the Laravel backend in production
+    // For now, return mock response
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve({

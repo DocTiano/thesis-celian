@@ -4,15 +4,16 @@ import { showNotification } from './notifications.js';
 
 export function initializeLGUValidation() {
     const priceInputs = document.querySelectorAll('.price-input');
-
+    
     priceInputs.forEach(input => {
-        input.addEventListener('change', async function () {
+        input.addEventListener('change', async function() {
             const productId = this.getAttribute('data-product-id');
             const price = this.value;
-
+            
             try {
+                // In production, this would call the Laravel backend
                 const response = await validatePriceWithLGU(productId, price);
-
+                
                 if (response.validated) {
                     this.classList.add('is-lgu-validated');
                     showNotification('Price validated by LGU', 'success');
@@ -29,11 +30,12 @@ export function initializeLGUValidation() {
 }
 
 async function validatePriceWithLGU(productId, price) {
-    // Mocked API call; in production, this would call your Laravel backend
+    // This would be an API call to the Laravel backend in production
+    // For now, return mock response
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve({
-                validated: price <= 1000, // Example logic
+                validated: price <= 1000, // Mock validation logic
                 message: 'Price within acceptable range'
             });
         }, 1000);

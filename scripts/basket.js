@@ -5,16 +5,43 @@ import { updateCartTotal } from './quantity.js';
 
 export function initializeAddToBasket() {
     const addToBasketButtons = document.querySelectorAll('.add-to-cart, .add-to-basket');
-
+    
     addToBasketButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.getAttribute('data-product-id');
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
             addToBasket(productId, 1);
+            
+            // Show confirmation message
             showNotification('Product added to basket successfully!', 'success');
         });
     });
 }
 
+
+export function addToBasket(productId, quantity) {
+    // Get current basket from localStorage
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    
+    // Check if product already exists in basket
+    const existingProductIndex = basket.findIndex(item => item.id === productId);
+    
+    if (existingProductIndex > -1) {
+        // Update quantity if product already in basket
+        basket[existingProductIndex].quantity += quantity;
+    } else {
+        // Add new product to basket
+        basket.push({
+            id: productId,
+            quantity: quantity
+        });
+    }
+    
+    // Save updated basket to localStorage
+    localStorage.setItem('basket', JSON.stringify(basket));
+    
+    // Update basket counter
+    updateBasketCounter();
+}
 
 export function updateBasketCounter() {
     const basket = JSON.parse(localStorage.getItem('basket')) || [];

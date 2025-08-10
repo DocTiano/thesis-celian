@@ -1,6 +1,5 @@
 // quantity.js – Manages product quantity changes and cart updates
 
-import { updateCartTotal } from './cart.js';
 import { updateBasketCounter } from './basket.js';
 
 export function initializeQuantitySelectors() {
@@ -89,5 +88,25 @@ export function updateCartItemQuantity(selector) {
         // Update cart total and badge
         updateCartTotal();
         updateBasketCounter(); // ✅ So badge is updated too
+    }
+}
+export function updateCartTotal() {
+    const cart = JSON.parse(localStorage.getItem('basket')) || [];
+    const cartTotalElement = document.getElementById('cart-total');
+    
+    if (cartTotalElement) {
+        // In a real application, you would fetch prices from the server
+        // This is just a simplified example
+        let total = 0;
+        
+        cart.forEach(item => {
+            const priceElement = document.querySelector(`.quantity-selector[data-product-id="${item.id}"]`);
+            if (priceElement) {
+                const price = parseFloat(priceElement.getAttribute('data-price'));
+                total += price * item.quantity;
+            }
+        });
+        
+        cartTotalElement.textContent = '₱' + total.toFixed(2);
     }
 }

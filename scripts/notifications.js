@@ -1,7 +1,7 @@
 // notifications.js – Handles showing temporary notifications
 
 export function showNotification(message, type = 'info') {
-    // Create notification container
+    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -9,20 +9,20 @@ export function showNotification(message, type = 'info') {
             <p>${message}</p>
         </div>
     `;
-
-    // Append to the body
+    
+    // Add to document
     document.body.appendChild(notification);
-
-    // Trigger show animation
+    
+    // Show notification
     setTimeout(() => {
         notification.classList.add('show');
     }, 10);
-
-    // Hide after 3 seconds
+    
+    // Hide and remove notification after 3 seconds
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => {
-            notification.remove();
+            document.body.removeChild(notification);
         }, 300);
     }, 3000);
 }
