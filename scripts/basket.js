@@ -1,8 +1,15 @@
 // basket.js – Handles basket/cart functionality
 
-import { showNotification } from './notification.js';
-import { updateCartTotal } from './quantity.js';
+import { showNotification } from './notifications.js'; // ensure filename matches exactly
+import { updateCartTotal } from './quantity.js'; // ensure filename matches exactly
 
+// Initialize basket when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    updateBasketCounter();
+    initializeAddToBasket();
+});
+
+// Attach event listeners to "Add to Basket" buttons
 export function initializeAddToBasket() {
     const addToBasketButtons = document.querySelectorAll('.add-to-cart, .add-to-basket');
     
@@ -10,39 +17,32 @@ export function initializeAddToBasket() {
         button.addEventListener('click', function() {
             const productId = this.getAttribute('data-product-id');
             addToBasket(productId, 1);
-            
+
             // Show confirmation message
             showNotification('Product added to basket successfully!', 'success');
         });
     });
 }
 
-
+// Add product to basket in localStorage
 export function addToBasket(productId, quantity) {
-    // Get current basket from localStorage
     let basket = JSON.parse(localStorage.getItem('basket')) || [];
     
-    // Check if product already exists in basket
     const existingProductIndex = basket.findIndex(item => item.id === productId);
     
     if (existingProductIndex > -1) {
-        // Update quantity if product already in basket
         basket[existingProductIndex].quantity += quantity;
     } else {
-        // Add new product to basket
-        basket.push({
-            id: productId,
-            quantity: quantity
-        });
+        basket.push({ id: productId, quantity });
     }
     
-    // Save updated basket to localStorage
     localStorage.setItem('basket', JSON.stringify(basket));
-    
-    // Update basket counter
-    updateBasketCounter();
+
+    updateBasketCounter();  // Refresh badge
+    updateCartTotal?.();    // Optional: update cart total if on cart page
 }
 
+// Update basket badge count
 export function updateBasketCounter() {
     const basket = JSON.parse(localStorage.getItem('basket')) || [];
     const totalItems = basket.reduce((total, item) => total + item.quantity, 0);
@@ -50,34 +50,29 @@ export function updateBasketCounter() {
   
     if (!basketWrapper) return;
 
-    //if badge exists
     let badge = basketWrapper.querySelector('.basket-badge');
-
-    // if missing, create and appends
     if (!badge) {
         badge = document.createElement('span');
         badge.classList.add('basket-badge');
         basketWrapper.appendChild(badge);
     }
 
-    //update the badge
     badge.textContent = totalItems;
 
-    // Apply consistent style
-    badge.style.backgroundColor = '#e44c31';
-    badge.style.color = 'white';
-    badge.style.position = 'absolute';
-    badge.style.top = '-10px';
-    badge.style.right = '-10px';
-    badge.style.borderRadius = '50%';
-    badge.style.minWidth = '20px';
-    badge.style.height = '20px';
-    badge.style.fontSize = '12px';
-    badge.style.display = totalItems > 0 ? 'flex' : 'none';
-    badge.style.alignItems = 'center';
-    badge.style.justifyContent = 'center';
-    badge.style.padding = '2px';
+    // Style badge
+    Object.assign(badge.style, {
+        backgroundColor: '#e44c31',
+        color: 'white',
+        position: 'absolute',
+        top: '-10px',
+        right: '-10px',
+        borderRadius: '50%',
+        minWidth: '20px',
+        height: '20px',
+        fontSize: '12px',
+        display: totalItems > 0 ? 'flex' : 'none',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2px'
+    });
 }
-
-
-
