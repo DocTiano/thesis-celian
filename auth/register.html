@@ -1,17 +1,95 @@
-<form id="registerForm">
-  <div class="mb-3">
-    <label for="registerName" class="form-label">Full Name</label>
-    <input type="text" class="form-control" id="registerName" required>
-  </div>
-  <div class="mb-3">
-    <label for="registerEmail" class="form-label">Email</label>
-    <input type="email" class="form-control" id="registerEmail" required>
-  </div>
-  <div class="mb-3">
-    <label for="registerPassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="registerPassword" required>
-  </div>
-  <button type="submit" class="btn btn-primary w-100" style="background-color: var(--highlight-color); border-color: var(--highlight-color);">
-    Sign Up
-  </button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet"> <!-- Your CSS -->
+</head>
+
+<body>
+
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="card shadow-lg border-0" style="max-width: 500px; width: 100%;">
+            <div class="card-body p-4">
+                <a href="/home.html" class="btn btn-outline-primary btn-sm signup-btn">
+                    Magbalik
+                </a>
+
+                <h3 class="text-center mb-4" style="color: var(--primary-color); font-weight: 700;">
+                    Create an Account
+                </h3>
+                <form>
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label fw-semibold">First Name</label>
+                        <input type="text" class="form-control" id="firstname"
+                            placeholder="Ita an saimong enot na pangaran">
+                    </div>
+
+                    <!-- Middle Name -->
+                    <div class="mb-3">
+                        <label for="middlename" class="form-label fw-semibold">Middle Name</label>
+                        <input type="text" class="form-control" id="middlename"
+                            placeholder="Ita an saimong tahaw na pangaran">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label fw-semibold">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Ita an saimong apelyido">
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="mb-3">
+                        <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Ita an saimong numero sa selpon">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label fw-semibold">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Magbuo nin password">
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label fw-semibold">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm-password"
+                            placeholder="Itao liwat an password">
+                    </div>
+
+                    <!-- Terms & Conditions -->
+                    <div class="form-check mb-4">
+                        <input type="checkbox" class="form-check-input" id="terms">
+                        <label class="form-check-label" for="terms">
+                            Sang-ayon ako sa <a href="#" style="color: var(--primary-color);">Mga Kasugtan asin
+                                Kondisyon</a>
+                        </label>
+                    </div>
+
+                    <!-- Sign Up Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Magparehistro</button>
+                    </div>
+                </form>
+
+                <!-- Divider -->
+                <!-- <div class="text-center my-3 text-muted">or</div> -->
+                <hr>
+                <!-- Login Link -->
+                <div class="text-center">
+                    <p class="mb-0">May account ka na?
+                        <a href="login.html" style="color: var(--highlight-color); font-weight: 500;">Mag-login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -335,6 +335,18 @@ a {
     border-color: var(--highlight-color);
 }
 
+.signup-btn {
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+    background-color: transparent;
+}
+
+.signup-btn:hover {
+    background-color: var(--highlight-color);
+    color: white;
+}
+
+
 /* Category Cards */
 .category-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
