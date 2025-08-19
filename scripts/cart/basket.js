@@ -1,6 +1,6 @@
 // basket.js – Handles basket/cart functionality
 
-import { showNotification } from './notifications.js'; // ensure filename matches exactly
+import { showNotification } from '../ui/notifications.js'; // ensure filename matches exactly
 import { updateCartTotal } from './quantity.js'; // ensure filename matches exactly
 
 // Initialize basket when DOM is ready

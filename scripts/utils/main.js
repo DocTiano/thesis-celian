@@ -1,13 +1,13 @@
 // main.js - Entry point for "From Sagnay to Every Home" e-commerce platform
 
-import { initializeSearch, initializeProductSearch } from './search.js';
-import { initializeAddToBasket, updateBasketCounter } from './basket.js';
-import { initializeQuantitySelectors } from './quantity.js';
-import { loadFeaturedProducts } from './featured-products.js';
-import { initializeLocationMap } from './map.js';
-import { initializeLGUValidation } from './lgu-validation.js';
-import { initializeProducerVerification } from './producer-verification.js';
-import { initializeAccountForms } from './account.js';
+import { initializeSearch, initializeProductSearch } from '../ui/search.js';
+import { initializeAddToBasket, updateBasketCounter } from '../cart/basket.js';
+import { initializeQuantitySelectors } from '../cart/quantity.js';
+import { loadFeaturedProducts } from '../products/featured-products.js';
+import { initializeLocationMap } from '../ui/map.js';
+import { initializeLGUValidation } from '../validation/lgu-validate.js';
+import { initializeProducerVerification } from '../validation/producer-verification.js';
+import { initializeAccountForms } from '../auth/account.js';
 import { trackPerformance } from './performance.js';
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,6 +1,6 @@
 // account.js – Handles login and registration logic
 
-import { showNotification } from './notifications.js';
+import { showNotification } from '../ui/notifications.js';
 
 export function initializeAccountForms() {
     const loginForm = document.getElementById('login-form');

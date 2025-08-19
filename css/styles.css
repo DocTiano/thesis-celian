@@ -924,6 +924,347 @@ footer a:hover {
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 } 
 
+/* Auth Pages Styles - Login and Register */
+/* Override body padding for auth pages */
+body.auth-page {
+    padding-top: 0; /* Remove space for fixed navbar on auth pages */
+}
+
+/* Shopee-style top navbar */
+.shopee-navbar {
+    background-color: var(--primary-color);
+    padding: 8px 0;
+    color: white;
+}
+
+.shopee-navbar-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.shopee-navbar-left, .shopee-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shopee-navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.shopee-navbar a:hover {
+    color: var(--accent-color);
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main header with logo and search */
+.login-header {
+    width: 100%;
+    background: white;
+    padding: 1.5rem 0;
+}
+
+.login-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.login-header-logo {
+    height: 50px;
+    width: auto;
+}
+
+.login-header-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-left: 0.5rem;
+}
+
+/* Main Content Styles - Shopee-like */
+.login-main-bg {
+    background-color: var(--light-color);
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 150px);
+}
+
+.login-card-wrapper {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Banner Section */
+.login-left {
+    flex: 1 1 55%;
+    position: relative;
+    min-height: 500px;
+}
+
+.login-left .carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.login-left .carousel-inner {
+    height: 100%;
+}
+
+.login-left .carousel-item {
+    height: 500px;
+    position: relative;
+}
+
+.login-left .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Login/Register Form Section */
+.login-right {
+    flex: 1 1 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #fff;
+    position: relative;
+}
+
+.login-right::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50px;
+    bottom: 50px;
+    width: 1px;
+    background-color: #efefef;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-form h3 {
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+/* Form Styles for Auth Pages */
+.auth-form .form-label {
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-form .form-control {
+    border: 1px solid #e8e8e8;
+    border-radius: 2px;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease;
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.1rem rgba(44, 133, 63, 0.15);
+}
+
+/* Button Styles - Shopee-like */
+.btn-login {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.75rem;
+    font-weight: 500;
+    border-radius: 2px;
+    width: 100%;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.btn-login:hover {
+    background-color: #236e33;
+    border-color: #236e33;
+    color: white;
+}
+
+.btn-outline-login {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.btn-outline-login:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Link Styles */
+.highlight-link {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.highlight-link:hover {
+    color: #c73e2a;
+}
+
+/* Form validation styles */
+.form-control.is-invalid {
+    border-color: var(--highlight-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23e44c31' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23e44c31' stroke='none'/%3e%3c/svg%3e");
+}
+
+.form-control.is-valid {
+    border-color: var(--primary-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%232c853f' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: var(--highlight-color);
+}
+
+/* Reset Password Styles */
+.reset-steps {
+    position: relative;
+}
+
+.reset-step {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.reset-step:not(.active) {
+    display: none;
+}
+
+.reset-step.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reset-step.fade-out {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.reset-step.fade-in {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* Verification Code Input */
+#verification-code {
+    letter-spacing: 0.5em;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Resend Code Link */
+#resendCodeBtn {
+    font-size: 0.85rem;
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+
+/* Timer for resend code */
+.resend-timer {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-left: 0.5rem;
+}
+
+/* Progress indicator */
+.reset-progress {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.reset-progress-step {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    margin: 0 0.5rem;
+}
+
+.reset-progress-step.active {
+    background-color: var(--primary-color);
+}
+
+/* Responsive Design for Auth Pages */
+@media (max-width: 768px) {
+    .login-card-wrapper {
+        flex-direction: column;
+        max-width: 95vw;
+    }
+
+    .login-left {
+        min-height: 200px;
+    }
+
+    .login-left .carousel-item {
+        height: 200px;
+    }
+
+    .login-right {
+        padding: 1.5rem;
+    }
+
+    .login-right::before {
+        display: none;
+    }
+
+    .shopee-navbar-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-main-bg {
+        padding: 1rem 0.5rem;
+    }
+
+    .login-header-title {
+        display: none;
+    }
+}
+
 /* Quantity Selector Styles - Add this to your existing CSS file */
 
 /* Hide spinners in Chrome, Safari, Edge, and other Webkit browsers */
