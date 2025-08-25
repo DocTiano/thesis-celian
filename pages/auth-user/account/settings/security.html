@@ -88,11 +88,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../payment/methods/methods.html">
-                                    <i class="bi bi-credit-card me-2"></i>Payment Methods
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="notifications.html">
                                     <i class="bi bi-bell me-2"></i>Notifications
                                 </a>
@@ -100,11 +95,6 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="security.html">
                                     <i class="bi bi-shield-lock me-2"></i>Security
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="privacy.html">
-                                    <i class="bi bi-eye-slash me-2"></i>Privacy
                                 </a>
                             </li>
                             <li class="nav-item mt-3 pt-3 border-top">
@@ -151,105 +141,6 @@
                     </form>
                 </div>
 
-                <!-- Two-Factor Authentication -->
-                <div class="security-section bg-white border rounded p-4 mb-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <h5 class="mb-1">Two-Factor Authentication</h5>
-                            <p class="text-muted mb-0">Add an extra layer of security to your account</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="twoFactorAuth">
-                            <label class="form-check-label" for="twoFactorAuth">Enable 2FA</label>
-                        </div>
-                    </div>
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle me-2"></i>
-                        Two-factor authentication adds extra security by requiring a code from your phone in addition to
-                        your password.
-                    </div>
-                </div>
-
-                <!-- Login Activity -->
-                <div class="security-section bg-white border rounded p-4 mb-4">
-                    <h5 class="mb-4">Recent Login Activity</h5>
-
-                    <div class="login-activity">
-                        <div class="activity-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-phone text-success me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h6 class="mb-1">Mobile Device</h6>
-                                    <p class="text-muted mb-0 small">Chrome on Android • Sagnay, Camarines Sur</p>
-                                </div>
-                            </div>
-                            <div class="text-end">
-                                <small class="text-success fw-bold">Current Session</small>
-                                <br>
-                                <small class="text-muted">2 hours ago</small>
-                            </div>
-                        </div>
-
-                        <div class="activity-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-laptop text-muted me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h6 class="mb-1">Desktop Computer</h6>
-                                    <p class="text-muted mb-0 small">Firefox on Windows • Naga City, Camarines Sur</p>
-                                </div>
-                            </div>
-                            <div class="text-end">
-                                <small class="text-muted">Yesterday</small>
-                            </div>
-                        </div>
-
-                        <div class="activity-item d-flex justify-content-between align-items-center py-3">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-phone text-muted me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h6 class="mb-1">Mobile Device</h6>
-                                    <p class="text-muted mb-0 small">Safari on iPhone • Manila, Metro Manila</p>
-                                </div>
-                            </div>
-                            <div class="text-end">
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Account Security -->
-                <div class="security-section bg-white border rounded p-4">
-                    <h5 class="mb-4">Account Security</h5>
-
-                    <div class="security-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">Email Verification</h6>
-                            <p class="text-muted mb-0 small">Your email address is verified</p>
-                        </div>
-                        <span class="badge bg-success">
-                            <i class="bi bi-check-circle me-1"></i>Verified
-                        </span>
-                    </div>
-
-                    <div class="security-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">Phone Verification</h6>
-                            <p class="text-muted mb-0 small">Your phone number is verified</p>
-                        </div>
-                        <span class="badge bg-success">
-                            <i class="bi bi-check-circle me-1"></i>Verified
-                        </span>
-                    </div>
-
-                    <div class="security-item d-flex justify-content-between align-items-center py-3">
-                        <div>
-                            <h6 class="mb-1">Account Status</h6>
-                            <p class="text-muted mb-0 small">Your account is active and secure</p>
-                        </div>
-                        <span class="badge bg-success">Active</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -264,8 +155,8 @@
     <script>
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
-                // Redirect to login page
-                window.location.href = '../../../auth/login.html';
+                // Redirect to home page
+                window.location.href = '../../../unauth/home.html';
             }
         }
     </script>

@@ -8,6 +8,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../../../css/styles.css">
+    <style>
+        /* Underline Tabs Styling */
+        .nav-underline {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-underline .nav-link {
+            border: none;
+            border-bottom: 2px solid transparent;
+            border-radius: 0;
+            padding: 1rem 1.5rem;
+            color: #6c757d;
+            background: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-underline .nav-link:hover {
+            border-bottom-color: #0d6efd;
+            color: #0d6efd;
+            background: none;
+        }
+        
+        .nav-underline .nav-link.active {
+            border-bottom-color: #0d6efd;
+            color: #0d6efd;
+            background: none;
+            font-weight: 600;
+        }
+        
+        .nav-underline .nav-link .badge {
+            font-size: 0.75em;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,11 +121,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../payment/methods/methods.html">
-                                    <i class="bi bi-credit-card me-2"></i>Payment Methods
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="../settings/notifications.html">
                                     <i class="bi bi-bell me-2"></i>Notifications
                                 </a>
@@ -100,11 +128,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="../settings/security.html">
                                     <i class="bi bi-shield-lock me-2"></i>Security
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../settings/privacy.html">
-                                    <i class="bi bi-eye-slash me-2"></i>Privacy
                                 </a>
                             </li>
                             <li class="nav-item mt-3 pt-3 border-top">
@@ -139,40 +162,9 @@
                     </div>
                 </div>
 
-                <!-- Orders Filter -->
-                <div class="orders-filter bg-white border rounded p-3 mb-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-search"></i></span>
-                                <input type="text" class="form-control" placeholder="Search orders..." id="orderSearch">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select" id="statusFilter">
-                                <option value="">All Status</option>
-                                <option value="pending">Pending</option>
-                                <option value="confirmed">Confirmed</option>
-                                <option value="shipped">Shipped</option>
-                                <option value="delivered">Delivered</option>
-                                <option value="cancelled">Cancelled</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select" id="dateFilter">
-                                <option value="">All Time</option>
-                                <option value="7">Last 7 days</option>
-                                <option value="30">Last 30 days</option>
-                                <option value="90">Last 3 months</option>
-                                <option value="365">Last year</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Orders Tabs -->
                 <div class="orders-tabs bg-white border rounded mb-4">
-                    <ul class="nav nav-tabs border-0" id="ordersTabs" role="tablist">
+                    <ul class="nav nav-underline" id="ordersTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                 data-bs-target="#all-orders" type="button" role="tab">

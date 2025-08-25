@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (confirm('Are you sure you want to logout?')) {
             localStorage.removeItem('userToken');
             sessionStorage.clear();
-            window.location.href = '../../../home.html';
+            window.location.href = '../../../unauth/home.html';
             showNotification('Logged out successfully', 'success');
         }
     };

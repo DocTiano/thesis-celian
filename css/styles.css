@@ -1508,7 +1508,7 @@ body.auth-page {
 }
 
 .account-sidebar .nav-link.active {
-    background-color: var(--primary-color);
+    background-color: #0d6efd;
     color: white;
 }
 
@@ -1776,19 +1776,19 @@ body.auth-page {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #e9ecef;
+    background-color: #dee2e6;
+    color: #6c757d;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    color: #6c757d;
-    transition: all 0.3s ease;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
 }
 
 .progress-step.active .step-icon {
     background-color: var(--primary-color);
-    color: white;
+    color: #fff;
 }
 
 .step-label {
@@ -1804,10 +1804,9 @@ body.auth-page {
 
 .progress-line {
     height: 2px;
-    background-color: #e9ecef;
+    background-color: #dee2e6;
     flex: 1;
     margin: 0 1rem;
-    margin-top: 25px;
     transition: background-color 0.3s ease;
 }
 
@@ -1816,12 +1815,18 @@ body.auth-page {
 }
 
 .checkout-section {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .checkout-section:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .address-option,
@@ -2016,51 +2021,19 @@ body.auth-page {
 
 /* Responsive Checkout & Payment */
 @media (max-width: 768px) {
-    .progress-step {
-        flex-direction: row;
-        align-items: center;
+    .progress-line {
+        display: none;
     }
-    
+
+    .checkout-progress .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
     .step-icon {
         width: 40px;
         height: 40px;
-        margin-bottom: 0;
-        margin-right: 0.5rem;
         font-size: 1rem;
-    }
-    
-    .step-label {
-        font-size: 0.8rem;
-    }
-    
-    .progress-line {
-        margin-top: 0;
-        height: 1px;
-        margin: 0 0.5rem;
-    }
-    
-    .order-summary {
-        position: static;
-        margin-top: 2rem;
-    }
-    
-    .payment-methods-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .category-header {
-        padding: 2rem 0 1rem;
-    }
-    
-    .category-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-    
-    .category-filter {
-        position: static;
-        margin-bottom: 2rem;
     }
 }
 
@@ -2185,4 +2158,291 @@ input[type=number] {
 
 .quantity-selector .quantity-increase {
     border-left: 1px solid #ddd !important;
+}
+
+/* ===== CHECKOUT PAGE STYLES ===== */
+
+/* Checkout Progress Styling */
+.checkout-progress {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.progress-step {
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #dee2e6;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .step-icon {
+    background: #0d6efd;
+    color: white;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.step-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.progress-step.active .step-label {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.progress-line {
+    height: 2px;
+    background: #dee2e6;
+    flex: 1;
+    margin: 25px 20px 0;
+    transition: background 0.3s ease;
+}
+
+.progress-line.active {
+    background: #0d6efd;
+}
+
+/* Checkout Sections */
+.checkout-section {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef !important;
+    transition: all 0.3s ease;
+}
+
+.checkout-section:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Address and Option Cards */
+.address-option,
+.payment-option {
+    border: 2px solid #e9ecef !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.address-option:hover,
+.payment-option:hover {
+    border-color: #0d6efd !important;
+    background-color: rgba(13, 110, 253, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.15);
+}
+
+/* Selected state styling */
+.address-option.selected,
+.payment-option.selected {
+    border-color: #0d6efd !important;
+    background-color: transparent;
+    box-shadow: 0 6px 25px rgba(13, 110, 253, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Add a subtle glow effect for selected options */
+.address-option.selected::after,
+.payment-option.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+
+/* Checkmark for selected options */
+.address-option.selected .form-check-input,
+.payment-option.selected .form-check-input {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Keep label styling transparent for selected options */
+.address-option.selected .form-check-label,
+.payment-option.selected .form-check-label {
+    background-color: transparent !important;
+}
+
+/* Badge styling for selected address */
+.address-option.selected .badge {
+    background-color: #0d6efd !important;
+    color: white;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* Payment Logo Styling */
+.payment-logo {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 5px;
+}
+
+/* Order Summary Styling */
+.order-summary {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef !important;
+}
+
+.item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.price-breakdown hr {
+    border-color: #e9ecef;
+    margin: 15px 0;
+}
+
+/* Checkout Button Improvements */
+.checkout-section .btn-success {
+    background: linear-gradient(135deg, #198754 0%, #20c997 100%);
+    border: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+}
+
+.checkout-section .btn-success:hover {
+    background: linear-gradient(135deg, #157347 0%, #1aaa80 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.3);
+}
+
+.checkout-section .btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.checkout-section .btn-outline-primary:hover {
+    background: #0d6efd;
+    border-color: #0d6efd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Checkout Form Controls */
+.checkout-section .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Security Notice */
+.security-notice {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%) !important;
+    border: 1px solid #b6d4db;
+}
+
+/* Voucher Section */
+.voucher-section .input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Checkout Modal Improvements */
+.checkout-section .modal-content {
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.checkout-section .modal-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Checkout Alert Improvements */
+.checkout-section .alert-info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+    border: 1px solid #b6d4db;
+    border-radius: 8px;
+}
+
+/* Checkout Badge Improvements */
+.checkout-section .badge {
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+/* Checkout Responsive Improvements */
+@media (max-width: 768px) {
+    .progress-line {
+        display: none;
+    }
+
+    .checkout-progress .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .step-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* ===== ACCOUNT NAVIGATION STYLES ===== */
+
+/* Account sidebar logout button styling */
+.account-nav .nav-link.text-danger {
+    color: #dc3545 !important;
+    transition: all 0.3s ease;
+}
+
+.account-nav .nav-link.text-danger:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-radius: 8px;
+    transform: translateX(2px);
+}
+
+.account-nav .nav-link.text-danger:focus {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-radius: 8px;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* General account nav link improvements */
+.account-nav .nav-link {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 2px;
+}
+
+.account-nav .nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    transform: translateX(2px);
+}
+
+.account-nav .nav-link.active {
+    background-color: #0d6efd;
+    transform: translateX(2px);
 }

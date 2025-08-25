@@ -88,11 +88,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../payment/methods/methods.html">
-                                    <i class="bi bi-credit-card me-2"></i>Payment Methods
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link active" href="notifications.html">
                                     <i class="bi bi-bell me-2"></i>Notifications
                                 </a>
@@ -100,11 +95,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="security.html">
                                     <i class="bi bi-shield-lock me-2"></i>Security
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="privacy.html">
-                                    <i class="bi bi-eye-slash me-2"></i>Privacy
                                 </a>
                             </li>
                             <li class="nav-item mt-3 pt-3 border-top">
@@ -125,62 +115,6 @@
                         <div>
                             <h2 class="mb-1">Notification Settings</h2>
                             <p class="text-muted mb-0">Manage how you receive notifications</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Notification Settings -->
-                <div class="notification-settings bg-white border rounded p-4 mb-4">
-                    <h5 class="mb-4">Email Notifications</h5>
-
-                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">Order Updates</h6>
-                            <p class="text-muted mb-0 small">Get notified about order status changes</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="orderUpdates" checked>
-                        </div>
-                    </div>
-
-                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">New Products</h6>
-                            <p class="text-muted mb-0 small">Be the first to know about new products from your favorite
-                                sellers</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                        </div>
-                    </div>
-
-                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">Promotions & Deals</h6>
-                            <p class="text-muted mb-0 small">Receive special offers and promotional deals</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="promotions">
-                        </div>
-                    </div>
-
-                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
-                        <div>
-                            <h6 class="mb-1">Messages</h6>
-                            <p class="text-muted mb-0 small">Get notified when sellers send you messages</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="messages" checked>
-                        </div>
-                    </div>
-
-                    <div class="notification-item d-flex justify-content-between align-items-center py-3">
-                        <div>
-                            <h6 class="mb-1">Account Security</h6>
-                            <p class="text-muted mb-0 small">Important security notifications about your account</p>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="security" checked disabled>
                         </div>
                     </div>
                 </div>
@@ -228,8 +162,8 @@
     <script>
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
-                // Redirect to login page
-                window.location.href = '../../../auth/login.html';
+                // Redirect to home page
+                window.location.href = '../../../unauth/home.html';
             }
         }
     </script>

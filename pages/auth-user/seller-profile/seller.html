@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan's Farm Store | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        .btn-outline-custom {
+            color: #e44c31;
+            border: 1px solid #e44c31;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: #e44c31;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header-wrapper">
+        <div class="header-with-search-wrapper">
+            <div class="logo-wrapper">
+                <a href="../index.html" aria-label="Home">
+                    <img src="../../../logos/s2eh.png" alt="Logo">
+                </a>
+            </div>
+
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <button class="search-button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <div class="cart-account-wrapper">
+                <!-- Chat Icon -->
+                <a href="../chat/chat.html" class="chat-wrapper" aria-label="Chat">
+                    <i class="bi bi-chat-dots cart-icon"></i>
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span>
+                </a>
+
+                <!-- Basket -->
+                <a href="../cart.html" class="basket-wrapper" aria-label="Basket">
+                    <i class="bi bi-basket cart-icon"></i>
+                    <span class="basket-badge"></span>
+                </a>
+
+                <!-- Account -->
+                <a href="../account/profile/profile.html" class="account-wrapper" aria-label="Account">
+                    <i class="bi bi-person-fill"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seller Profile Content -->
+    <div class="container-fluid" style="margin-top: 90px;">
+        <!-- Seller Header -->
+        <div class="seller-header bg-white border rounded p-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center">
+                    <img src="../../../images/unknown.jpg" alt="Seller Profile" 
+                         class="seller-avatar rounded-circle mb-3" width="120" height="120">
+                    <div class="seller-rating">
+                        <div class="stars mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                            <span class="ms-2">4.8 (127 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h1 class="mb-2">Juan's Farm Store</h1>
+                    <p class="text-muted mb-3">Premium agricultural products from Sagnay, Camarines Sur</p>
+                    
+                    <div class="seller-stats mb-3">
+                        <div class="row text-center">                    <div class="col-4">
+                        <h5 class="text-primary mb-0">18</h5>
+                        <small class="text-muted">Products</small>
+                    </div>
+                            <div class="col-4">
+                                <h5 class="text-success mb-0">1,234</h5>
+                                <small class="text-muted">Orders</small>
+                            </div>
+                            <div class="col-4">
+                                <h5 class="text-info mb-0">3</h5>
+                                <small class="text-muted">Years</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="seller-badges">
+                        <span class="badge bg-success me-2">
+                            <i class="bi bi-shield-check me-1"></i>Verified Seller
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 text-end">
+                    <button class="btn btn-primary mb-2 d-block w-100" onclick="openChatWithSeller()">
+                        <i class="bi bi-chat-dots me-2"></i>Message Seller
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Store Info & Products -->
+        <div class="row">
+            <!-- Store Information Sidebar -->
+            <div class="col-lg-3">
+                <div class="store-info bg-white border rounded p-4 mb-4 sticky-top" style="top: 100px;">
+                    <h5 class="mb-3">Store Information</h5>
+                    
+                    <div class="info-item mb-3">
+                        <h6 class="text-muted mb-1">Location</h6>
+                        <p class="mb-0">
+                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                            Sagnay, Camarines Sur
+                        </p>
+                    </div>
+
+                    <div class="info-item mb-3">
+                        <h6 class="text-muted mb-1">Joined</h6>
+                        <p class="mb-0">
+                            <i class="bi bi-calendar text-primary me-2"></i>
+                            January 2022
+                        </p>
+                    </div>
+
+                    <div class="info-item mb-3">
+                        <h6 class="text-muted mb-1">Response Time</h6>
+                        <p class="mb-0">
+                            <i class="bi bi-clock text-primary me-2"></i>
+                            Usually within 2 hours
+                        </p>
+                    </div>
+
+                    <div class="info-item mb-4">
+                        <h6 class="text-muted mb-1">Delivery Options</h6>
+                        <div class="delivery-options">
+                            <span class="badge bg-light text-dark me-1 mb-1">Local Pickup</span>
+                            <span class="badge bg-light text-dark me-1 mb-1">JRS Express</span>
+                            <span class="badge bg-light text-dark me-1 mb-1">LBC</span>
+                        </div>
+                    </div>
+
+                    <div class="store-policies">
+                        <h6 class="mb-2">Store Policies</h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Fresh products guaranteed
+                            </li>
+                            <li class="mb-1">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                7-day return policy
+                            </li>
+                            <li class="mb-1">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Secure packaging
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="col-lg-9">
+                <!-- Filter and Sort -->
+                <div class="products-controls bg-white border rounded p-3 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="filter-buttons">
+                                <button class="btn btn-outline-primary btn-sm active me-2" data-filter="all">
+                                    All Products (<span id="count-all">18</span>)
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm me-2" data-filter="vegetables">
+                                    Vegetables (<span id="count-vegetables">7</span>)
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm me-2" data-filter="fruits">
+                                    Fruits (<span id="count-fruits">6</span>)
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm" data-filter="herbs">
+                                    Herbs (<span id="count-herbs">5</span>)
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <select class="form-select form-select-sm d-inline-block w-auto">
+                                <option>Sort by: Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest First</option>
+                                <option>Best Selling</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Products pagination" class="mt-4">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- Pagination will be generated by JavaScript -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../../scripts/cart/basket.js"></script>
+    <script type="module" src="../../../scripts/ui/notifications.js"></script>
+
+    <script>
+        // Sample seller products data
+        const sellerProducts = [
+            {
+                id: 1,
+                name: "Fresh Tomatoes",
+                price: 120,
+                originalPrice: 150,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.8,
+                reviews: 23,
+                sold: 156,
+                discount: 20,
+                description: "Fresh, juicy tomatoes perfect for salads and cooking. Locally grown in Sagnay."
+            },
+            {
+                id: 2,
+                name: "Organic Lettuce",
+                price: 80,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.6,
+                reviews: 18,
+                sold: 89,
+                description: "Crisp organic lettuce, perfect for healthy salads and sandwiches."
+            },
+            {
+                id: 3,
+                name: "Fresh Mangoes",
+                price: 200,
+                originalPrice: 250,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.9,
+                reviews: 45,
+                sold: 234,
+                discount: 20,
+                description: "Sweet and juicy mangoes, handpicked at perfect ripeness."
+            },
+            {
+                id: 4,
+                name: "Basil Leaves",
+                price: 60,
+                image: "../../../images/unknown.jpg",
+                category: "herbs",
+                rating: 4.7,
+                reviews: 12,
+                sold: 67,
+                description: "Fresh basil leaves, perfect for cooking and seasoning."
+            },
+            {
+                id: 5,
+                name: "Sweet Potatoes",
+                price: 90,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.5,
+                reviews: 31,
+                sold: 145,
+                description: "Nutritious sweet potatoes, great for healthy meals."
+            },
+            {
+                id: 6,
+                name: "Ripe Bananas",
+                price: 70,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.8,
+                reviews: 28,
+                sold: 198,
+                description: "Sweet ripe bananas, perfect for snacks and smoothies."
+            },
+            {
+                id: 7,
+                name: "Fresh Cilantro",
+                price: 45,
+                image: "../../../images/unknown.jpg",
+                category: "herbs",
+                rating: 4.6,
+                reviews: 15,
+                sold: 78,
+                description: "Fresh cilantro leaves for adding flavor to your dishes."
+            },
+            {
+                id: 8,
+                name: "Bell Peppers",
+                price: 160,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.7,
+                reviews: 22,
+                sold: 112,
+                description: "Colorful bell peppers, perfect for stir-fries and salads."
+            },
+            {
+                id: 9,
+                name: "Fresh Pineapple",
+                price: 180,
+                originalPrice: 220,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.9,
+                reviews: 39,
+                sold: 87,
+                discount: 18,
+                description: "Sweet and tangy pineapple, freshly harvested."
+            },
+            {
+                id: 10,
+                name: "Oregano",
+                price: 55,
+                image: "../../../images/unknown.jpg",
+                category: "herbs",
+                rating: 4.5,
+                reviews: 9,
+                sold: 45,
+                description: "Aromatic oregano for seasoning your favorite dishes."
+            },
+            {
+                id: 11,
+                name: "Carrots",
+                price: 100,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.6,
+                reviews: 27,
+                sold: 156,
+                description: "Fresh carrots, perfect for cooking and healthy snacking."
+            },
+            {
+                id: 12,
+                name: "Dragon Fruit",
+                price: 300,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.8,
+                reviews: 16,
+                sold: 34,
+                description: "Exotic dragon fruit with unique taste and health benefits."
+            },
+            {
+                id: 13,
+                name: "Green Beans",
+                price: 85,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.4,
+                reviews: 19,
+                sold: 78,
+                description: "Fresh green beans, perfect for healthy side dishes."
+            },
+            {
+                id: 14,
+                name: "Papaya",
+                price: 150,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.7,
+                reviews: 25,
+                sold: 94,
+                description: "Sweet and nutritious papaya, perfect for breakfast."
+            },
+            {
+                id: 15,
+                name: "Parsley",
+                price: 40,
+                image: "../../../images/unknown.jpg",
+                category: "herbs",
+                rating: 4.5,
+                reviews: 8,
+                sold: 52,
+                description: "Fresh parsley for garnishing and flavoring dishes."
+            },
+            {
+                id: 16,
+                name: "Eggplant",
+                price: 110,
+                image: "../../../images/unknown.jpg",
+                category: "vegetables",
+                rating: 4.6,
+                reviews: 21,
+                sold: 89,
+                description: "Fresh eggplant, perfect for traditional Filipino dishes."
+            },
+            {
+                id: 17,
+                name: "Guava",
+                price: 95,
+                image: "../../../images/unknown.jpg",
+                category: "fruits",
+                rating: 4.8,
+                reviews: 18,
+                sold: 67,
+                description: "Sweet guava fruit, rich in vitamin C and flavor."
+            },
+            {
+                id: 18,
+                name: "Thyme",
+                price: 65,
+                image: "../../../images/unknown.jpg",
+                category: "herbs",
+                rating: 4.7,
+                reviews: 11,
+                sold: 38,
+                description: "Aromatic thyme leaves for seasoning and cooking."
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentPage = 1;
+        const productsPerPage = 8; // Reduced for better pagination demonstration
+
+        // Filter products based on category
+        function filterProducts(category) {
+            currentFilter = category;
+            currentPage = 1;
+            displayProducts();
+            updateFilterButtons();
+        }
+
+        // Get filtered products
+        function getFilteredProducts() {
+            if (currentFilter === 'all') {
+                return sellerProducts;
+            }
+            return sellerProducts.filter(product => product.category === currentFilter);
+        }
+
+        // Display products with pagination
+        function displayProducts() {
+            const filteredProducts = getFilteredProducts();
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+
+            const container = document.getElementById('productsContainer');
+            
+            if (productsToShow.length === 0) {
+                container.innerHTML = '<div class="text-center py-5"><h5>No products found</h5></div>';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+
+            const productsHTML = productsToShow.map(product => `
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="position-relative">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}" style="height: 200px; object-fit: cover;">
+                            ${product.discount ? `
+                                <span class="discount-badge position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-end">
+                                    -${product.discount}%
+                                </span>
+                            ` : ''}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="seller-name text-muted"><i class="bi bi-person-circle me-1"></i>Juan's Farm Store</p>
+                            <div class="product-rating mb-2">
+                                <div class="stars">
+                                    ${generateStars(product.rating)}
+                                    <span class="rating-text ms-1 small text-muted">${product.rating} (${product.reviews})</span>
+                                </div>
+                            </div>
+                            <div class="price-container mb-2">
+                                <span class="price fw-bold text-success">₱${product.price}</span>
+                                ${product.originalPrice ? `
+                                    <span class="original-price text-muted text-decoration-line-through ms-2 small">₱${product.originalPrice}</span>
+                                ` : ''}
+                            </div>
+                            <div class="product-meta mb-3">
+                                <small class="text-muted">${product.sold} sold</small>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-custom btn-sm" onclick="viewProductDetails(${product.id})">
+                                    View Details
+                                </button>
+                                <button class="btn btn-success btn-sm add-to-basket-btn" 
+                                        data-product-id="${product.id}" 
+                                        data-product-name="${product.name}" 
+                                        data-product-price="${product.price}">
+                                    Add to Basket
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `<div class="row g-3">${productsHTML}</div>`;
+
+            generatePagination(filteredProducts.length);
+        }
+
+        // Generate star rating HTML
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let starsHTML = '';
+
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="bi bi-star-fill text-warning"></i>';
+            }
+
+            if (hasHalfStar) {
+                starsHTML += '<i class="bi bi-star-half text-warning"></i>';
+            }
+
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '<i class="bi bi-star text-warning"></i>';
+            }
+
+            return starsHTML;
+        }
+
+        // Generate pagination
+        function generatePagination(totalProducts) {
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+            const paginationContainer = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '';
+
+            // Previous button
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+                </li>
+            `;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHTML += `
+                    <li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>
+                `;
+            }
+
+            // Next button
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+                </li>
+            `;
+
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        // Update filter button states and counts
+        function updateFilterButtons() {
+            // Update active state
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === currentFilter) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update counts
+            const counts = {
+                all: sellerProducts.length,
+                vegetables: sellerProducts.filter(p => p.category === 'vegetables').length,
+                fruits: sellerProducts.filter(p => p.category === 'fruits').length,
+                herbs: sellerProducts.filter(p => p.category === 'herbs').length
+            };
+
+            Object.keys(counts).forEach(category => {
+                const countElement = document.getElementById(`count-${category}`);
+                if (countElement) {
+                    countElement.textContent = counts[category];
+                }
+            });
+        }
+
+        // View product details
+        function viewProductDetails(productId) {
+            // Redirect to product details page with seller context
+            window.location.href = `../product-details/product.html?id=${productId}&seller=juan-farm-store`;
+        }
+
+        // Message seller functionality
+        function openChatWithSeller() {
+            // Show alert and redirect to chat
+            showAlert('Redirecting to chat with Juan\'s Farm Store...', 'info');
+            setTimeout(() => {
+                window.location.href = '../chat/chat.html?seller=juan-farm-store';
+            }, 1500);
+        }
+
+        // Follow store functionality
+        function followStore() {
+            showAlert('You are now following Juan\'s Farm Store! You\'ll receive updates about new products and offers.', 'success');
+        }
+
+        // Show alert message function (matching existing alert system)
+        function showAlert(message, type = 'success') {
+            // Create alert element
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+            
+            alertDiv.innerHTML = `
+                <i class="bi bi-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 4000);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial load
+            displayProducts();
+
+            // Filter buttons
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    filterProducts(this.dataset.filter);
+                });
+            });
+
+            // Pagination
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.page-link')) {
+                    e.preventDefault();
+                    const page = parseInt(e.target.dataset.page);
+                    if (page && page !== currentPage) {
+                        currentPage = page;
+                        displayProducts();
+                        window.scrollTo({ 
+                            top: document.querySelector('.products-controls').offsetTop - 100, 
+                            behavior: 'smooth' 
+                        });
+                    }
+                }
+            });
+
+            // Add to basket functionality integration
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.add-to-basket-btn') || e.target.closest('.add-to-basket-btn')) {
+                    const btn = e.target.matches('.add-to-basket-btn') ? e.target : e.target.closest('.add-to-basket-btn');
+                    const productId = btn.dataset.productId;
+                    const productName = btn.dataset.productName;
+                    const productPrice = btn.dataset.productPrice;
+                    
+                    // Show success message
+                    showAlert(`${productName} has been added to your basket!`, 'success');
+                    
+                    // Optional: Update basket count if you have that functionality
+                    // updateBasketCount();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

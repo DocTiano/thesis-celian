@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sessionStorage.clear();
             
             // Redirect to home page
-            window.location.href = '../../../home.html';
+            window.location.href = '../../../unauth/home.html';
             
             showNotification('Logged out successfully', 'success');
         }
