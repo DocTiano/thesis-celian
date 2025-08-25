@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header-wrapper">
+        <div class="header-with-search-wrapper">
+            <div class="logo-wrapper">
+                <a href="../../index.html" aria-label="Home">
+                    <img src="../../../../logos/s2eh.png" alt="Logo">
+                </a>
+            </div>
+
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <button class="search-button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <div class="cart-account-wrapper">
+                <!-- Chat Icon -->
+                <a href="../../chat/chat.html" class="chat-wrapper" aria-label="Chat">
+                    <i class="bi bi-chat-dots cart-icon"></i>
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span>
+
+                </a>
+
+                <!-- Basket -->
+                <a href="../../cart.html" class="basket-wrapper" aria-label="Basket">
+                    <i class="bi bi-basket cart-icon"></i>
+                    <span class="basket-badge"></span>
+                </a>
+
+                <!-- Account (Active) -->
+                <a href="../profile/profile.html" class="account-wrapper active" aria-label="Account">
+                    <i class="bi bi-person-fill text-primary"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Account Content -->
+    <div class="container-fluid" style="margin-top: 90px;">
+        <div class="row">
+            <!-- Account Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="account-sidebar bg-white border rounded p-4 sticky-top" style="top: 100px;">
+                    <!-- User Info -->
+                    <div class="user-info text-center mb-4 pb-4 border-bottom">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="../../../../images/unknown.jpg" alt="Profile"
+                                class="profile-avatar rounded-circle" width="80" height="80">
+                        </div>
+                        <h5 class="mb-1">Juan Dela Cruz</h5>
+                        <p class="text-muted mb-2">juan.delacruz@email.com</p>
+                        <span class="badge bg-success">
+                            <i class="bi bi-shield-check me-1"></i>Verified Account
+                        </span>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <nav class="account-nav">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../profile/profile.html">
+                                    <i class="bi bi-person me-2"></i>My Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../orders/orders.html">
+                                    <i class="bi bi-box-seam me-2"></i>My Orders
+                                    <span class="badge bg-primary ms-auto">3</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="addresses.html">
+                                    <i class="bi bi-geo-alt me-2"></i>Addresses
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../payment/methods/methods.html">
+                                    <i class="bi bi-credit-card me-2"></i>Payment Methods
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="notifications.html">
+                                    <i class="bi bi-bell me-2"></i>Notifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="security.html">
+                                    <i class="bi bi-shield-lock me-2"></i>Security
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="privacy.html">
+                                    <i class="bi bi-eye-slash me-2"></i>Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3 pt-3 border-top">
+                                <a class="nav-link text-danger" href="#" onclick="logout()">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Notifications Content -->
+            <div class="col-lg-9 col-md-8">
+                <!-- Notifications Header -->
+                <div class="notifications-header bg-white border rounded p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="mb-1">Notification Settings</h2>
+                            <p class="text-muted mb-0">Manage how you receive notifications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="notification-settings bg-white border rounded p-4 mb-4">
+                    <h5 class="mb-4">Email Notifications</h5>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Order Updates</h6>
+                            <p class="text-muted mb-0 small">Get notified about order status changes</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="orderUpdates" checked>
+                        </div>
+                    </div>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">New Products</h6>
+                            <p class="text-muted mb-0 small">Be the first to know about new products from your favorite
+                                sellers</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                        </div>
+                    </div>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Promotions & Deals</h6>
+                            <p class="text-muted mb-0 small">Receive special offers and promotional deals</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="promotions">
+                        </div>
+                    </div>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Messages</h6>
+                            <p class="text-muted mb-0 small">Get notified when sellers send you messages</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="messages" checked>
+                        </div>
+                    </div>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-1">Account Security</h6>
+                            <p class="text-muted mb-0 small">Important security notifications about your account</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="security" checked disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SMS Notifications -->
+                <div class="notification-settings bg-white border rounded p-4 mb-4">
+                    <h5 class="mb-4">SMS Notifications</h5>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Order Confirmations</h6>
+                            <p class="text-muted mb-0 small">SMS confirmation when orders are placed</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="smsOrders" checked>
+                        </div>
+                    </div>
+
+                    <div class="notification-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-1">Delivery Updates</h6>
+                            <p class="text-muted mb-0 small">SMS updates about delivery status</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="smsDelivery" checked>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary">Save Notification Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../../../scripts/cart/basket.js"></script>
+    <script type="module" src="../../../../scripts/ui/notifications.js"></script>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Redirect to login page
+                window.location.href = '../../../auth/login.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,27 +1,58 @@
 // basket.js – Handles basket/cart functionality
 
-import { showNotification } from '../ui/notifications.js'; // ensure filename matches exactly
-import { updateCartTotal } from './quantity.js'; // ensure filename matches exactly
+import { showNotification } from '../ui/notifications.js';
+import { updateCartTotal } from './quantity.js';
 
 // Initialize basket when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // For testing - add some items to basket if empty
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    if (basket.length === 0) {
+        // Add test items to make badge visible for testing
+        basket = [
+            { id: '1', quantity: 2 },
+            { id: '2', quantity: 1 }
+        ];
+        localStorage.setItem('basket', JSON.stringify(basket));
+    }
+    
     updateBasketCounter();
     initializeAddToBasket();
 });
 
 // Attach event listeners to "Add to Basket" buttons
 export function initializeAddToBasket() {
-    const addToBasketButtons = document.querySelectorAll('.add-to-cart, .add-to-basket');
-    
-    addToBasketButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
-            addToBasket(productId, 1);
+    // Remove existing listeners to avoid duplicates
+    const existingButtons = document.querySelectorAll('.add-to-cart, .add-to-basket');
+    existingButtons.forEach(button => {
+        button.removeEventListener('click', handleAddToBasket);
+    });
 
+    // Use event delegation for better performance and dynamic content support
+    document.removeEventListener('click', handleAddToBasketDelegated);
+    document.addEventListener('click', handleAddToBasketDelegated);
+}
+
+// Event handler for delegated clicks
+function handleAddToBasketDelegated(event) {
+    if (event.target.matches('.add-to-cart, .add-to-basket')) {
+        const productId = event.target.getAttribute('data-product-id');
+        if (productId) {
+            addToBasket(productId, 1);
             // Show confirmation message
             showNotification('Product added to basket successfully!', 'success');
-        });
-    });
+        }
+    }
+}
+
+// Individual button handler (kept for backwards compatibility)
+function handleAddToBasket() {
+    const productId = this.getAttribute('data-product-id');
+    if (productId) {
+        addToBasket(productId, 1);
+        // Show confirmation message
+        showNotification('Product added to basket successfully!', 'success');
+    }
 }
 
 // Add product to basket in localStorage
@@ -59,20 +90,11 @@ export function updateBasketCounter() {
 
     badge.textContent = totalItems;
 
-    // Style badge
-    Object.assign(badge.style, {
-        backgroundColor: '#e44c31',
-        color: 'white',
-        position: 'absolute',
-        top: '-10px',
-        right: '-10px',
-        borderRadius: '50%',
-        minWidth: '20px',
-        height: '20px',
-        fontSize: '12px',
-        display: totalItems > 0 ? 'flex' : 'none',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2px'
-    });
+    // Override display for visibility - use !important since CSS might conflict
+    if (totalItems > 0) {
+        badge.style.display = 'flex';
+        badge.style.visibility = 'visible';
+    } else {
+        badge.style.display = 'none';
+    }
 }

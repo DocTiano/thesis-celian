@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Basket Badge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Test Basket Badge</h1>
+        
+        <!-- Test Basket -->
+        <div class="cart-account-wrapper">
+            <a href="#" class="basket-wrapper" aria-label="Basket">
+                <i class="bi bi-basket cart-icon"></i>
+                <span class="basket-badge">3</span>
+            </a>
+        </div>
+        
+        <div class="mt-4">
+            <button class="btn btn-primary add-to-basket" data-product-id="test1">Add Test Product 1</button>
+            <button class="btn btn-secondary add-to-basket" data-product-id="test2">Add Test Product 2</button>
+            <button class="btn btn-danger" onclick="clearBasket()">Clear Basket</button>
+            <button class="btn btn-info" onclick="checkBasket()">Check Basket</button>
+        </div>
+        
+        <div class="mt-4" id="debug-info"></div>
+    </div>
+
+    <script type="module" src="scripts/cart/basket.js"></script>
+    <script type="module" src="scripts/ui/notifications.js"></script>
+    
+    <script>
+        function clearBasket() {
+            localStorage.removeItem('basket');
+            window.location.reload();
+        }
+        
+        function checkBasket() {
+            const basket = JSON.parse(localStorage.getItem('basket')) || [];
+            document.getElementById('debug-info').innerHTML = 
+                '<h3>Basket Contents:</h3><pre>' + JSON.stringify(basket, null, 2) + '</pre>';
+        }
+        
+        // Force badge to show on load
+        window.addEventListener('load', function() {
+            console.log('Page loaded, checking basket badge...');
+            const badge = document.querySelector('.basket-badge');
+            const wrapper = document.querySelector('.basket-wrapper');
+            console.log('Badge element:', badge);
+            console.log('Wrapper element:', wrapper);
+            
+            if (badge) {
+                badge.style.display = 'flex';
+                badge.style.visibility = 'visible';
+                console.log('Badge made visible');
+            }
+        });
+    </script>
+</body>
+</html>

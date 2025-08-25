@@ -1,6 +1,6 @@
 // lgu-validate.js – Validates product prices against LGU rules
 
-import { showNotification } from './notifications.js';
+import { showNotification } from '../ui/notifications.js';
 
 export function initializeLGUValidation() {
     const priceInputs = document.querySelectorAll('.price-input');

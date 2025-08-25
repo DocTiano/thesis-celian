@@ -7,7 +7,7 @@
     <title>Shopping Basket | From Sagnay to Every Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <div class="header-with-search-wrapper">
             <div class="logo-wrapper">
                 <a href="index.html" aria-label="Home">
-                    <img src="logos/s2eh.png" alt="Logo">
+                    <img src="../../logos/s2eh.png" alt="Logo">
                 </a>
             </div>
 
@@ -29,18 +29,20 @@
 
             <div class="cart-account-wrapper">
                 <!-- Chat Icon -->
-                <a href="chat.html" class="chat-wrapper" aria-label="Chat">
+                <a href="chat/chat.html" class="chat-wrapper" aria-label="Chat">
                     <i class="bi bi-chat-dots cart-icon"></i>
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span>
+
                 </a>
 
                 <!-- Basket -->
-                <a href="cart.html" class="basket-wrapper" aria-label="Basket">
-                    <i class="bi bi-basket cart-icon"></i>
+                <a href="cart.html" class="basket-wrapper active" aria-label="Basket">
+                    <i class="bi bi-basket cart-icon text-warning"></i>
                     <span class="basket-badge"></span>
                 </a>
 
                 <!-- Account -->
-                <a href="account.html" class="account-wrapper" aria-label="Account">
+                <a href="account/profile/profile.html" class="account-wrapper" aria-label="Account">
                     <i class="bi bi-person-fill"></i>
                 </a>
             </div>
@@ -82,7 +84,7 @@
                             <div class="cart-item mb-4 pb-3 border-bottom">
                                 <div class="row align-items-center">
                                     <div class="col-md-2 col-4">
-                                        <img src="images/unknown.jpg" alt="Pili Nuts" class="img-fluid rounded">
+                                        <img src="../../images/unknown.jpg" alt="Pili Nuts" class="img-fluid rounded">
                                     </div>
 
                                     <!-- product name -->
@@ -122,7 +124,8 @@
                             <div class="cart-item mb-4 pb-3 border-bottom">
                                 <div class="row align-items-center">
                                     <div class="col-md-2 col-4">
-                                        <img src="images/unknown.jpg" alt="Organic Rice" class="img-fluid rounded">
+                                        <img src="../../images/unknown.jpg" alt="Organic Rice"
+                                            class="img-fluid rounded">
                                     </div>
 
                                     <div class="col-md-4 col-8">
@@ -161,7 +164,8 @@
                             <div class="cart-item">
                                 <div class="row align-items-center">
                                     <div class="col-md-2 col-4">
-                                        <img src="images/unknown.jpg" alt="Coconut Vinegar" class="img-fluid rounded">
+                                        <img src="../../images/unknown.jpg" alt="Coconut Vinegar"
+                                            class="img-fluid rounded">
                                     </div>
 
 
@@ -244,7 +248,7 @@
                             </div> -->
 
                             <!-- Checkout Button -->
-                            <a href="checkout.html" class="btn btn-primary w-100">
+                            <a href="../payment/checkout/checkout.html" class="btn btn-primary w-100">
                                 Proceed to Checkout <i class="bi bi-arrow-right"></i>
                             </a>
 
@@ -299,7 +303,7 @@
                 <div class="row g-4 mt-2">
                     <div class="col-md-3">
                         <div class="card product-card h-100">
-                            <img src="images/unknown.jpg" class="card-img-top" alt="Abaca Bag">
+                            <img src="../../images/unknown.jpg" class="card-img-top" alt="Abaca Bag">
                             <div class="card-body">
                                 <h5 class="card-title">Abaca Bag</h5>
                                 <p class="seller-name">By: Bicol Crafts</p>
@@ -315,7 +319,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card product-card h-100">
-                            <img src="images/unknown.jpg" class="card-img-top" alt="Pili Oil">
+                            <img src="../../images/unknown.jpg" class="card-img-top" alt="Pili Oil">
                             <div class="card-body">
                                 <h5 class="card-title">Pili Oil (100ml)</h5>
                                 <p class="seller-name">By: Bicol Naturals</p>
@@ -331,7 +335,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card product-card h-100">
-                            <img src="images/unknown.jpg" class="card-img-top" alt="Fresh Mangoes">
+                            <img src="../../images/unknown.jpg" class="card-img-top" alt="Fresh Mangoes">
                             <div class="card-body">
                                 <h5 class="card-title">Fresh Mangoes (1kg)</h5>
                                 <p class="seller-name">By: Fruit Haven Farm</p>
@@ -347,7 +351,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card product-card h-100">
-                            <img src="images/unknown.jpg" class="card-img-top" alt="Sili Ice Cream">
+                            <img src="../../images/unknown.jpg" class="card-img-top" alt="Sili Ice Cream">
                             <div class="card-body">
                                 <h5 class="card-title">Sili Ice Cream (500ml)</h5>
                                 <p class="seller-name">By: Bicol Delights</p>
@@ -490,7 +494,7 @@
                         </h6>
                         <div class="lgu-logo bg-light p-2 rounded d-inline-block d-flex align-items-center justify-content-center"
                             style="height: 80px; width: 80px;">
-                            <img src="images/lgu-sagnay.jpg" alt="LGU Sagnay"
+                            <img src="../../images/lgu-sagnay.jpg" alt="LGU Sagnay"
                                 style="max-height: 70px; max-width: 100%;">
                         </div>
                     </div>
@@ -502,7 +506,8 @@
                     <div class="d-flex mb-3">
                         <div class="qr-code me-3 bg-light p-2 rounded d-flex align-items-center justify-content-center"
                             style="height: 100px; width: 100px;">
-                            <img src="images/qr-code-ex.svg" alt="QR Code" style="max-height: 110px; max-width: 100%;">
+                            <img src="../../images/qr-code-ex.svg" alt="QR Code"
+                                style="max-height: 110px; max-width: 100%;">
                         </div>
                         <div class="app-buttons">
                             <div class="app-button mb-2 bg-light p-1 rounded d-flex align-items-center justify-content-center"
@@ -573,11 +578,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JavaScript Files for Cart Page -->
-    <script type="module" src="scripts/cart/basket.js"></script>
-    <script src="scripts/utils/main.js"></script>
-    <script src="scripts/cart/quantity.js"></script>
-    <script src="scripts/utils/performance.js"></script>
-    <script src="scripts/ui/notifications.js"></script>
+    <script type="module" src="../../scripts/cart/basket.js"></script>
+    <script type="module" src="../../scripts/utils/main.js"></script>
+    <script type="module" src="../../scripts/cart/quantity.js"></script>
+    <script type="module" src="../../scripts/utils/performance.js"></script>
+    <script type="module" src="../../scripts/ui/notifications.js"></script>
 
 </body>
 

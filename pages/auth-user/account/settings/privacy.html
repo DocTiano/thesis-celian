@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Settings | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header-wrapper">
+        <div class="header-with-search-wrapper">
+            <div class="logo-wrapper">
+                <a href="../../index.html" aria-label="Home">
+                    <img src="../../../../logos/s2eh.png" alt="Logo">
+                </a>
+            </div>
+
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <button class="search-button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <div class="cart-account-wrapper">
+                <!-- Chat Icon -->
+                <a href="../../chat/chat.html" class="chat-wrapper" aria-label="Chat">
+                    <i class="bi bi-chat-dots cart-icon"></i>
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span>
+
+                </a>
+
+                <!-- Basket -->
+                <a href="../../cart.html" class="basket-wrapper" aria-label="Basket">
+                    <i class="bi bi-basket cart-icon"></i>
+                    <span class="basket-badge"></span>
+                </a>
+
+                <!-- Account (Active) -->
+                <a href="../profile/profile.html" class="account-wrapper active" aria-label="Account">
+                    <i class="bi bi-person-fill text-primary"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Account Content -->
+    <div class="container-fluid" style="margin-top: 90px;">
+        <div class="row">
+            <!-- Account Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="account-sidebar bg-white border rounded p-4 sticky-top" style="top: 100px;">
+                    <!-- User Info -->
+                    <div class="user-info text-center mb-4 pb-4 border-bottom">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="../../../../images/unknown.jpg" alt="Profile"
+                                class="profile-avatar rounded-circle" width="80" height="80">
+                        </div>
+                        <h5 class="mb-1">Juan Dela Cruz</h5>
+                        <p class="text-muted mb-2">juan.delacruz@email.com</p>
+                        <span class="badge bg-success">
+                            <i class="bi bi-shield-check me-1"></i>Verified Account
+                        </span>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <nav class="account-nav">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../profile/profile.html">
+                                    <i class="bi bi-person me-2"></i>My Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../orders/orders.html">
+                                    <i class="bi bi-box-seam me-2"></i>My Orders
+                                    <span class="badge bg-primary ms-auto">3</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="addresses.html">
+                                    <i class="bi bi-geo-alt me-2"></i>Addresses
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../payment/methods/methods.html">
+                                    <i class="bi bi-credit-card me-2"></i>Payment Methods
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="notifications.html">
+                                    <i class="bi bi-bell me-2"></i>Notifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="security.html">
+                                    <i class="bi bi-shield-lock me-2"></i>Security
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="privacy.html">
+                                    <i class="bi bi-eye-slash me-2"></i>Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3 pt-3 border-top">
+                                <a class="nav-link text-danger" href="#" onclick="logout()">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Privacy Content -->
+            <div class="col-lg-9 col-md-8">
+                <!-- Privacy Header -->
+                <div class="privacy-header bg-white border rounded p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="mb-1">Privacy Settings</h2>
+                            <p class="text-muted mb-0">Control how your information is shared and used</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Visibility -->
+                <div class="privacy-section bg-white border rounded p-4 mb-4">
+                    <h5 class="mb-4">Profile Visibility</h5>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Public Profile</h6>
+                            <p class="text-muted mb-0 small">Allow other users to see your basic profile information</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="publicProfile" checked>
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Show Online Status</h6>
+                            <p class="text-muted mb-0 small">Display when you're active on the platform</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="onlineStatus">
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-1">Purchase History</h6>
+                            <p class="text-muted mb-0 small">Allow sellers to see your previous purchases for
+                                recommendations</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="purchaseHistory" checked>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Usage -->
+                <div class="privacy-section bg-white border rounded p-4 mb-4">
+                    <h5 class="mb-4">Data Usage</h5>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Personalized Recommendations</h6>
+                            <p class="text-muted mb-0 small">Use your browsing and purchase history to suggest relevant
+                                products</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="recommendations" checked>
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Analytics</h6>
+                            <p class="text-muted mb-0 small">Help improve our platform by sharing anonymous usage data
+                            </p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="analytics" checked>
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-1">Third-party Services</h6>
+                            <p class="text-muted mb-0 small">Allow integration with external services for enhanced
+                                functionality</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="thirdParty">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Preferences -->
+                <div class="privacy-section bg-white border rounded p-4 mb-4">
+                    <h5 class="mb-4">Communication Preferences</h5>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Allow Messages from Sellers</h6>
+                            <p class="text-muted mb-0 small">Let sellers contact you about their products</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="sellerMessages" checked>
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                        <div>
+                            <h6 class="mb-1">Marketing Communications</h6>
+                            <p class="text-muted mb-0 small">Receive promotional emails and special offers</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="marketing">
+                        </div>
+                    </div>
+
+                    <div class="privacy-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-1">Survey Invitations</h6>
+                            <p class="text-muted mb-0 small">Participate in surveys to help improve our services</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="surveys" checked>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="privacy-section bg-white border rounded p-4">
+                    <h5 class="mb-4">Data Management</h5>
+
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        You have control over your personal data. Use the options below to manage your information.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="bi bi-download me-2"></i>Download My Data
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-outline-warning w-100">
+                                <i class="bi bi-trash me-2"></i>Delete My Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn btn-primary">Save Privacy Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../../../scripts/cart/basket.js"></script>
+    <script type="module" src="../../../../scripts/ui/notifications.js"></script>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Redirect to login page
+                window.location.href = '../../../../auth/login.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
