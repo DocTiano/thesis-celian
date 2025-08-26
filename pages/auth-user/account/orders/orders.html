@@ -131,7 +131,7 @@
                                 </a>
                             </li>
                             <li class="nav-item mt-3 pt-3 border-top">
-                                <a class="nav-link text-danger" href="#" onclick="logout()">
+                                <a class="nav-link text-danger" href="#" onclick="logout(event)">
                                     <i class="bi bi-box-arrow-right me-2"></i>Logout
                                 </a>
                             </li>
@@ -305,6 +305,20 @@
     <script type="module" src="../../../../scripts/cart/basket.js"></script>
     <script type="module" src="../../../../scripts/ui/notifications.js"></script>
     <script type="module" src="../../../../scripts/account/orders.js"></script>
+
+    <!-- Logout Script -->
+    <script>
+        function logout(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            
+            // Show confirmation alert
+            if (confirm("Are you sure you want to logout?")) {
+                // If user confirms, redirect to home page
+                window.location.href = "../../../unauth/home.html";
+            }
+            // If user cancels, do nothing (stay on current page)
+        }
+    </script>
 </body>
 
 </html>

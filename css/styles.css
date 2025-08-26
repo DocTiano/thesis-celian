@@ -2411,23 +2411,61 @@ input[type=number] {
 /* ===== ACCOUNT NAVIGATION STYLES ===== */
 
 /* Account sidebar logout button styling */
-.account-nav .nav-link.text-danger {
+.account-nav .nav-link.text-danger,
+.account-sidebar .nav-link.text-danger {
     color: #dc3545 !important;
     transition: all 0.3s ease;
+    background-color: transparent !important;
 }
 
-.account-nav .nav-link.text-danger:hover {
+.account-nav .nav-link.text-danger:hover,
+.account-sidebar .nav-link.text-danger:hover,
+.account-nav .nav-link.text-danger:focus,
+.account-sidebar .nav-link.text-danger:focus {
     background-color: #dc3545 !important;
     color: white !important;
     border-radius: 8px;
     transform: translateX(2px);
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
 }
 
-.account-nav .nav-link.text-danger:focus {
+.account-nav .nav-link.text-danger:active,
+.account-sidebar .nav-link.text-danger:active {
+    background-color: #b02a37 !important;
+    color: white !important;
+}
+
+/* Enhanced logout button styling with higher specificity */
+.nav-pills .nav-link.text-danger,
+.nav .nav-item .nav-link.text-danger,
+a.nav-link.text-danger {
+    color: #dc3545 !important;
+    background-color: transparent !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-pills .nav-link.text-danger:hover,
+.nav .nav-item .nav-link.text-danger:hover,
+a.nav-link.text-danger:hover,
+.nav-pills .nav-link.text-danger:focus,
+.nav .nav-item .nav-link.text-danger:focus,
+a.nav-link.text-danger:focus {
     background-color: #dc3545 !important;
     color: white !important;
-    border-radius: 8px;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    border-radius: 8px !important;
+    transform: translateX(2px) !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+    border: none !important;
+}
+
+.nav-pills .nav-link.text-danger:active,
+.nav .nav-item .nav-link.text-danger:active,
+a.nav-link.text-danger:active {
+    background-color: #b02a37 !important;
+    color: white !important;
+    transform: translateX(1px) !important;
 }
 
 /* General account nav link improvements */
