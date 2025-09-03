@@ -1,0 +1,128 @@
+<!-- View Order Modal -->
+<div class="modal fade" id="viewOrderModal" tabindex="-1" aria-labelledby="viewOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewOrderModalLabel">
+                    <i class="bi bi-eye"></i>
+                    Order Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-muted mb-3">Order Information</h6>
+                        <div class="mb-2">
+                            <strong>Order ID:</strong> <span id="viewOrderId">#ORD-001</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Status:</strong> <span id="viewOrderStatus" class="badge bg-success">Completed</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Payment:</strong> <span id="viewPaymentStatus" class="badge bg-success">Paid</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Delivery:</strong> <span id="viewDeliveryType">Express delivery</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Order Date:</strong> <span id="viewOrderDate">Aug 30, 2025</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Total Amount:</strong> <span id="viewOrderAmount">₱1,350</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted mb-3">Customer Information</h6>
+                        <div class="mb-2">
+                            <strong>Name:</strong> <span id="viewCustomerName">Juan Dela Cruz</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Phone:</strong> <span id="viewCustomerPhone">09123456789</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Email:</strong> <span id="viewCustomerEmail">juan@email.com</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Address:</strong> 
+                            <div id="viewCustomerAddress" class="text-muted">
+                                123 Main St, Barangay Centro,<br>
+                                Sagnay, Camarines Sur
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h6 class="text-muted mb-3">Order Items</h6>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="viewOrderItems">
+                            <tr>
+                                <td>Sagnay Rice (5kg)</td>
+                                <td>1</td>
+                                <td>₱850</td>
+                                <td>₱850</td>
+                            </tr>
+                            <tr>
+                                <td>Fish Sauce (500ml)</td>
+                                <td>2</td>
+                                <td>₱120</td>
+                                <td>₱240</td>
+                            </tr>
+                            <tr>
+                                <td>Woven Basket</td>
+                                <td>1</td>
+                                <td>₱200</td>
+                                <td>₱200</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="fw-bold">
+                                <td colspan="3">Subtotal:</td>
+                                <td>₱1,290</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Delivery Fee:</td>
+                                <td>₱60</td>
+                            </tr>
+                            <tr class="fw-bold border-top">
+                                <td colspan="3">Total:</td>
+                                <td>₱1,350</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="mt-3" id="viewOrderNotes">
+                    <h6 class="text-muted">Order Notes</h6>
+                    <p class="text-muted">Please handle with care. Express delivery requested.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="printOrder()">
+                    <i class="bi bi-printer"></i>
+                    Print Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function printOrder() {
+    // Handle print order logic here
+    console.log('Printing order...');
+    window.print();
+}
+</script>

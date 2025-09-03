@@ -1,0 +1,236 @@
+<!-- Generate Orders Report Modal -->
+<div class="modal fade" id="generateOrdersReportModal" tabindex="-1" aria-labelledby="generateOrdersReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateOrdersReportModalLabel">
+                    <i class="bi bi-receipt"></i>
+                    Generate Orders Report
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="generateOrdersReportForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersDateFrom" class="form-label">From Date *</label>
+                                <input type="date" class="form-control" id="ordersDateFrom" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersDateTo" class="form-label">To Date *</label>
+                                <input type="date" class="form-control" id="ordersDateTo" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordersReportType" class="form-label">Report Type *</label>
+                        <select class="form-select" id="ordersReportType" required>
+                            <option value="">Select report type...</option>
+                            <option value="all_orders">All Orders</option>
+                            <option value="by_status">Orders by Status</option>
+                            <option value="by_payment">Orders by Payment Method</option>
+                            <option value="by_location">Orders by Location</option>
+                            <option value="fulfillment">Order Fulfillment</option>
+                            <option value="pending_orders">Pending Orders</option>
+                            <option value="completed_orders">Completed Orders</option>
+                            <option value="cancelled_orders">Cancelled Orders</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="orderStatus" class="form-label">Filter by Status</label>
+                                <select class="form-select" id="orderStatus">
+                                    <option value="">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                    <option value="refunded">Refunded</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="paymentStatus" class="form-label">Filter by Payment Status</label>
+                                <select class="form-select" id="paymentStatus">
+                                    <option value="">All Payment Statuses</option>
+                                    <option value="pending">Pending Payment</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="partial">Partially Paid</option>
+                                    <option value="refunded">Refunded</option>
+                                    <option value="failed">Failed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersCategory" class="form-label">Filter by Category</label>
+                                <select class="form-select" id="ordersCategory">
+                                    <option value="">All Categories</option>
+                                    <option value="aquaculture">Aquaculture</option>
+                                    <option value="agriculture">Agriculture</option>
+                                    <option value="handicrafts">Handicrafts</option>
+                                    <option value="food_processing">Food Processing</option>
+                                    <option value="textiles">Textiles</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersProducer" class="form-label">Filter by Producer</label>
+                                <select class="form-select" id="ordersProducer">
+                                    <option value="">All Producers</option>
+                                    <!-- Producer options will be loaded dynamically -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersMinAmount" class="form-label">Minimum Order Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" class="form-control" id="ordersMinAmount" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ordersMaxAmount" class="form-label">Maximum Order Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" class="form-control" id="ordersMaxAmount" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordersLocation" class="form-label">Filter by Delivery Location</label>
+                        <input type="text" class="form-control" id="ordersLocation" placeholder="Enter city, province, or region">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Include in Report</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeCustomerInfo" checked>
+                                    <label class="form-check-label" for="includeCustomerInfo">
+                                        Customer information
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeProductDetails" checked>
+                                    <label class="form-check-label" for="includeProductDetails">
+                                        Product details
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeShippingInfo" checked>
+                                    <label class="form-check-label" for="includeShippingInfo">
+                                        Shipping information
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includePaymentDetails" checked>
+                                    <label class="form-check-label" for="includePaymentDetails">
+                                        Payment details
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeOrderTimeline">
+                                    <label class="form-check-label" for="includeOrderTimeline">
+                                        Order timeline
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeNotes">
+                                    <label class="form-check-label" for="includeNotes">
+                                        Order notes/comments
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordersGroupBy" class="form-label">Group By</label>
+                        <select class="form-select" id="ordersGroupBy">
+                            <option value="none">No Grouping</option>
+                            <option value="date">Date</option>
+                            <option value="status">Status</option>
+                            <option value="producer">Producer</option>
+                            <option value="category">Category</option>
+                            <option value="location">Location</option>
+                            <option value="payment_method">Payment Method</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordersFormat" class="form-label">Export Format *</label>
+                        <select class="form-select" id="ordersFormat" required>
+                            <option value="pdf">PDF Document</option>
+                            <option value="excel">Excel Spreadsheet</option>
+                            <option value="csv">CSV File</option>
+                            <option value="preview">Preview Only</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Report Options</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeOrderSummary" checked>
+                            <label class="form-check-label" for="includeOrderSummary">
+                                Include summary statistics
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeOrderCharts">
+                            <label class="form-check-label" for="includeOrderCharts">
+                                Include charts and graphs
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="separateByProducer">
+                            <label class="form-check-label" for="separateByProducer">
+                                Separate sections by producer
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ordersNotes" class="form-label">Report Notes</label>
+                        <textarea class="form-control" id="ordersNotes" rows="2" placeholder="Add any special notes or comments for this report..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="previewOrdersReport()">
+                    <i class="bi bi-eye"></i>
+                    Preview Report
+                </button>
+                <button type="submit" form="generateOrdersReportForm" class="btn btn-primary">
+                    <i class="bi bi-receipt"></i>
+                    Generate Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

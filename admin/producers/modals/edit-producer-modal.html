@@ -1,0 +1,133 @@
+<!-- Edit Producer Modal -->
+<div class="modal fade" id="editProducerModal" tabindex="-1" aria-labelledby="editProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProducerModalLabel">
+                    <i class="bi bi-person-gear"></i>
+                    Edit Producer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editProducerForm">
+                    <input type="hidden" id="editProducerId">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProducerName" class="form-label">Producer Name *</label>
+                                <input type="text" class="form-control" id="editProducerName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProducerEmail" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="editProducerEmail" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProducerPhone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="editProducerPhone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProducerCategory" class="form-label">Category *</label>
+                                <select class="form-select" id="editProducerCategory" required>
+                                    <option value="">Select category...</option>
+                                    <option value="aquaculture">Aquaculture</option>
+                                    <option value="agriculture">Agriculture</option>
+                                    <option value="handicrafts">Handicrafts</option>
+                                    <option value="food_processing">Food Processing</option>
+                                    <option value="textiles">Textiles</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editBusinessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="editBusinessName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editLocation" class="form-label">Location/Address *</label>
+                        <textarea class="form-control" id="editLocation" rows="2" required></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editJoinDate" class="form-label">Join Date *</label>
+                                <input type="date" class="form-control" id="editJoinDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editStatus" class="form-label">Status *</label>
+                                <select class="form-select" id="editStatus" required>
+                                    <option value="pending">Pending Verification</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="suspended">Suspended</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Business Description</label>
+                        <textarea class="form-control" id="editDescription" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editProducts" class="form-label">Main Products/Services</label>
+                        <textarea class="form-control" id="editProducts" rows="2" placeholder="List the main products or services offered..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editRevenue" class="form-label">Revenue (Optional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₱</span>
+                            <input type="number" class="form-control" id="editRevenue" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editProductCount" class="form-label">Number of Products</label>
+                        <input type="number" class="form-control" id="editProductCount" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editVerificationDocuments" class="form-label">Update Verification Documents</label>
+                        <input type="file" class="form-control" id="editVerificationDocuments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                        <div class="form-text">Upload new or updated business documents</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editNotes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="editNotes" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="editSendNotification">
+                        <label class="form-check-label" for="editSendNotification">
+                            Send update notification to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="editProducerForm" class="btn btn-primary">
+                    <i class="bi bi-check-lg"></i>
+                    Update Producer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

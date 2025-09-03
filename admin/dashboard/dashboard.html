@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | From Sagnay to Every Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="../assets/css/admin-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">S2EH</div>
+            <div class="title">ADMIN PANEL</div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <a href="dashboard.html" class="nav-link active">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../products/products.html" class="nav-link">
+                    <i class="bi bi-box"></i>
+                    <span>Products</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../orders/orders.html" class="nav-link">
+                    <i class="bi bi-cart3"></i>
+                    <span>Orders</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../users/users.html" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../producers/producers.html" class="nav-link">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Producers</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../verification/verification.html" class="nav-link">
+                    <i class="bi bi-shield-check"></i>
+                    <span>LGU Verification</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../categories/categories.html" class="nav-link">
+                    <i class="bi bi-tags"></i>
+                    <span>Categories</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../messages/messages.html" class="nav-link">
+                    <i class="bi bi-chat-dots"></i>
+                    <span>Messages</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../reports/reports.html" class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../settings/settings.html" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-profile">
+                    <div class="admin-avatar">A</div>
+                    <span>Admin User</span>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Products</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-box"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-change positive">+12% from last month</div>
+                </div>
+                
+                <div class="stat-card highlight">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Orders</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-cart3"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">3,421</div>
+                    <div class="stat-change positive">+18% from last month</div>
+                </div>
+                
+                <div class="stat-card accent">
+                    <div class="stat-header">
+                        <div class="stat-title">Active Users</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">892</div>
+                    <div class="stat-change positive">+8% from last month</div>
+                </div>
+                
+                <div class="stat-card secondary">
+                    <div class="stat-header">
+                        <div class="stat-title">Revenue</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-currency-peso"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">₱45,230</div>
+                    <div class="stat-change positive">+25% from last month</div>
+                </div>
+            </div>
+
+            <!-- Orders and Best Selling Products Section -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Orders Table Section -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
+                            <h3 class="card-title" style="margin: 0;">Orders Table</h3>
+                            <div>
+                                <select class="form-control" style="width: 120px; font-size: 12px;" id="orderStatusFilter">
+                                    <option value="all">All Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <table class="admin-table" id="ordersTable" style="margin: 0;">
+                                <thead style="position: sticky; top: 0; background: white; z-index: 10;">
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Product</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTableBody">
+                                    <tr data-status="completed">
+                                        <td>#ORD-001</td>
+                                        <td>Juan Dela Cruz</td>
+                                        <td>Sagnay Rice (5kg)</td>
+                                        <td>₱350</td>
+                                        <td><span class="status-badge status-active">Completed</span></td>
+                                        <td>Aug 30, 2025</td>
+                                    </tr>
+                                    <tr data-status="processing">
+                                        <td>#ORD-002</td>
+                                        <td>Maria Santos</td>
+                                        <td>Woven Basket</td>
+                                        <td>₱450</td>
+                                        <td><span class="status-badge status-pending">Processing</span></td>
+                                        <td>Aug 30, 2025</td>
+                                    </tr>
+                                    <tr data-status="shipped">
+                                        <td>#ORD-003</td>
+                                        <td>Pedro Garcia</td>
+                                        <td>Fish Sauce (500ml)</td>
+                                        <td>₱120</td>
+                                        <td><span class="status-badge status-active">Shipped</span></td>
+                                        <td>Aug 29, 2025</td>
+                                    </tr>
+                                    <tr data-status="pending">
+                                        <td>#ORD-004</td>
+                                        <td>Ana Rodriguez</td>
+                                        <td>Handmade Pottery</td>
+                                        <td>₱680</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>Aug 29, 2025</td>
+                                    </tr>
+                                    <tr data-status="cancelled">
+                                        <td>#ORD-005</td>
+                                        <td>Carlos Mendoza</td>
+                                        <td>Coconut Oil (1L)</td>
+                                        <td>₱280</td>
+                                        <td><span class="status-badge status-inactive">Cancelled</span></td>
+                                        <td>Aug 28, 2025</td>
+                                    </tr>
+                                    <tr data-status="completed">
+                                        <td>#ORD-006</td>
+                                        <td>Elena Vargas</td>
+                                        <td>Bamboo Furniture Set</td>
+                                        <td>₱2,500</td>
+                                        <td><span class="status-badge status-active">Completed</span></td>
+                                        <td>Aug 28, 2025</td>
+                                    </tr>
+                                    <tr data-status="processing">
+                                        <td>#ORD-007</td>
+                                        <td>Roberto Luna</td>
+                                        <td>Dried Fish (1kg)</td>
+                                        <td>₱180</td>
+                                        <td><span class="status-badge status-pending">Processing</span></td>
+                                        <td>Aug 27, 2025</td>
+                                    </tr>
+                                    <tr data-status="shipped">
+                                        <td>#ORD-008</td>
+                                        <td>Carmen Flores</td>
+                                        <td>Traditional Textile</td>
+                                        <td>₱750</td>
+                                        <td><span class="status-badge status-active">Shipped</span></td>
+                                        <td>Aug 27, 2025</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Best Selling Products -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
+                            <h3 class="card-title" style="margin: 0;">Best Selling Products</h3>
+                            <select class="form-control" style="width: 120px; font-size: 12px;" id="bestSellingMonthFilter">
+                                <option value="january">January</option>
+                                <option value="february">February</option>
+                                <option value="march">March</option>
+                                <option value="april">April</option>
+                                <option value="may">May</option>
+                                <option value="june">June</option>
+                                <option value="july">July</option>
+                                <option value="august" selected>August</option>
+                                <option value="september">September</option>
+                                <option value="october">October</option>
+                                <option value="november">November</option>
+                                <option value="december">December</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding: 15px;">
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <div id="bestSellingProductsContainer" style="display: flex; flex-direction: column; gap: 12px;">
+                                <!-- Products will be dynamically loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Verifications -->
+            <div class="admin-card">
+                <div class="card-header">
+                    <h3 class="card-title">Pending LGU Verifications</h3>
+                </div>
+                <div class="card-body">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Producer Name</th>
+                                <th>Business Type</th>
+                                <th>Location</th>
+                                <th>Submitted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jose Farming Co.</td>
+                                <td>Rice Production</td>
+                                <td>Barangay San Isidro</td>
+                                <td>Aug 28, 2025</td>
+                                <td>
+                                    <button class="btn-admin btn-admin-primary" title="Approve Producer" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600; margin-right: 8px;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                        <i class="bi bi-check-circle"></i>
+                                        <span style="margin-left: 6px;">Approve</span>
+                                    </button>
+                                    <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'">
+                                        <i class="bi bi-x-circle"></i>
+                                        <span style="margin-left: 6px;">Reject</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Craft Makers Guild</td>
+                                <td>Handicrafts</td>
+                                <td>Barangay Centro</td>
+                                <td>Aug 27, 2025</td>
+                                <td>
+                                    <button class="btn-admin btn-admin-primary" title="Approve Producer" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600; margin-right: 8px;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                        <i class="bi bi-check-circle"></i>
+                                        <span style="margin-left: 6px;">Approve</span>
+                                    </button>
+                                    <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'">
+                                        <i class="bi bi-x-circle"></i>
+                                        <span style="margin-left: 6px;">Reject</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sagnay Fishermen Assoc.</td>
+                                <td>Fish Processing</td>
+                                <td>Barangay Seaside</td>
+                                <td>Aug 26, 2025</td>
+                                <td>
+                                    <button class="btn-admin btn-admin-primary" title="Approve Producer" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600; margin-right: 8px;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                        <i class="bi bi-check-circle"></i>
+                                        <span style="margin-left: 6px;">Approve</span>
+                                    </button>
+                                    <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'">
+                                        <i class="bi bi-x-circle"></i>
+                                        <span style="margin-left: 6px;">Reject</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Sales Revenue Chart -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
+                            <h3 class="card-title" style="margin: 0;">Sales Revenue Trend</h3>
+                            <div>
+                                <select class="form-control" style="width: 120px; font-size: 12px;" id="monthSelector">
+                                    <option value="january">January</option>
+                                    <option value="february">February</option>
+                                    <option value="march">March</option>
+                                    <option value="april">April</option>
+                                    <option value="may">May</option>
+                                    <option value="june">June</option>
+                                    <option value="july">July</option>
+                                    <option value="august" selected>August</option>
+                                    <option value="september">September</option>
+                                    <option value="october">October</option>
+                                    <option value="november">November</option>
+                                    <option value="december">December</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="salesChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+
+                <!-- Products by Category Chart -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Products by Category</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="categoryChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Performance Chart -->
+            <div class="admin-card" style="margin-bottom: 20px;">
+                <div class="card-header">
+                    <h3 class="card-title">Monthly Performance</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="performanceChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../assets/js/admin-main.js"></script>
+    <script>
+        // Chart.js configuration and initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Monthly data for each month with date ranges
+            const monthlyData = {
+                january: { 
+                    labels: ['Week 1\n(Dec 30 - Jan 5)', 'Week 2\n(Jan 6 - Jan 12)', 'Week 3\n(Jan 13 - Jan 19)', 'Week 4\n(Jan 20 - Jan 26)', 'Week 5\n(Jan 27 - Feb 2)'], 
+                    data: [8000, 12000, 15000, 18000, 16000] 
+                },
+                february: { 
+                    labels: ['Week 1\n(Jan 27 - Feb 2)', 'Week 2\n(Feb 3 - Feb 9)', 'Week 3\n(Feb 10 - Feb 16)', 'Week 4\n(Feb 17 - Feb 23)', 'Week 5\n(Feb 24 - Mar 2)'], 
+                    data: [10000, 14000, 16000, 19000, 17000] 
+                },
+                march: { 
+                    labels: ['Week 1\n(Feb 24 - Mar 2)', 'Week 2\n(Mar 3 - Mar 9)', 'Week 3\n(Mar 10 - Mar 16)', 'Week 4\n(Mar 17 - Mar 23)', 'Week 5\n(Mar 24 - Mar 30)'], 
+                    data: [9000, 13000, 17000, 15000, 18000] 
+                },
+                april: { 
+                    labels: ['Week 1\n(Mar 31 - Apr 6)', 'Week 2\n(Apr 7 - Apr 13)', 'Week 3\n(Apr 14 - Apr 20)', 'Week 4\n(Apr 21 - Apr 27)', 'Week 5\n(Apr 28 - May 4)'], 
+                    data: [15000, 18000, 22000, 25000, 23000] 
+                },
+                may: { 
+                    labels: ['Week 1\n(Apr 28 - May 4)', 'Week 2\n(May 5 - May 11)', 'Week 3\n(May 12 - May 18)', 'Week 4\n(May 19 - May 25)', 'Week 5\n(May 26 - Jun 1)'], 
+                    data: [12000, 16000, 20000, 22000, 24000] 
+                },
+                june: { 
+                    labels: ['Week 1\n(May 26 - Jun 1)', 'Week 2\n(Jun 2 - Jun 8)', 'Week 3\n(Jun 9 - Jun 15)', 'Week 4\n(Jun 16 - Jun 22)', 'Week 5\n(Jun 23 - Jun 29)'], 
+                    data: [18000, 22000, 25000, 30000, 28000] 
+                },
+                july: { 
+                    labels: ['Week 1\n(Jun 30 - Jul 6)', 'Week 2\n(Jul 7 - Jul 13)', 'Week 3\n(Jul 14 - Jul 20)', 'Week 4\n(Jul 21 - Jul 27)', 'Week 5\n(Jul 28 - Aug 3)'], 
+                    data: [20000, 25000, 28000, 32000, 30000] 
+                },
+                august: { 
+                    labels: ['Week 1\n(Jul 28 - Aug 3)', 'Week 2\n(Aug 4 - Aug 10)', 'Week 3\n(Aug 11 - Aug 17)', 'Week 4\n(Aug 18 - Aug 24)', 'Week 5\n(Aug 25 - Aug 31)'], 
+                    data: [25000, 30000, 35000, 40000, 45230] 
+                },
+                september: { 
+                    labels: ['Week 1\n(Aug 25 - Aug 31)', 'Week 2\n(Sep 1 - Sep 7)', 'Week 3\n(Sep 8 - Sep 14)', 'Week 4\n(Sep 15 - Sep 21)', 'Week 5\n(Sep 22 - Sep 28)'], 
+                    data: [22000, 28000, 32000, 35000, 38000] 
+                },
+                october: { 
+                    labels: ['Week 1\n(Sep 29 - Oct 5)', 'Week 2\n(Oct 6 - Oct 12)', 'Week 3\n(Oct 13 - Oct 19)', 'Week 4\n(Oct 20 - Oct 26)', 'Week 5\n(Oct 27 - Nov 2)'], 
+                    data: [24000, 29000, 33000, 37000, 40000] 
+                },
+                november: { 
+                    labels: ['Week 1\n(Oct 27 - Nov 2)', 'Week 2\n(Nov 3 - Nov 9)', 'Week 3\n(Nov 10 - Nov 16)', 'Week 4\n(Nov 17 - Nov 23)', 'Week 5\n(Nov 24 - Nov 30)'], 
+                    data: [26000, 31000, 35000, 39000, 42000] 
+                },
+                december: { 
+                    labels: ['Week 1\n(Dec 1 - Dec 7)', 'Week 2\n(Dec 8 - Dec 14)', 'Week 3\n(Dec 15 - Dec 21)', 'Week 4\n(Dec 22 - Dec 28)', 'Week 5\n(Dec 29 - Jan 4)'], 
+                    data: [30000, 35000, 40000, 45000, 50000] 
+                }
+            };
+
+            // Best Selling Products data for each month
+            const bestSellingData = {
+                january: [
+                    { name: 'Coconut Oil (1L)', revenue: 18420, image: '../../images/unknown.jpg', percentage: 95 },
+                    { name: 'Woven Basket', revenue: 14850, image: '../../images/unknown.jpg', percentage: 80 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 12750, image: '../../images/unknown.jpg', percentage: 68 },
+                    { name: 'Dried Fish (1kg)', revenue: 10420, image: '../../images/fishes.jpg', percentage: 56 },
+                    { name: 'Fish Sauce (500ml)', revenue: 8840, image: '../../images/unknown.jpg', percentage: 48 },
+                    { name: 'Handmade Pottery', revenue: 6440, image: '../../images/unknown.jpg', percentage: 35 }
+                ],
+                february: [
+                    { name: 'Sagnay Rice (5kg)', revenue: 16850, image: '../../images/unknown.jpg', percentage: 90 },
+                    { name: 'Dried Fish (1kg)', revenue: 14420, image: '../../images/fishes.jpg', percentage: 78 },
+                    { name: 'Coconut Oil (1L)', revenue: 11120, image: '../../images/unknown.jpg', percentage: 60 },
+                    { name: 'Woven Basket', revenue: 9750, image: '../../images/unknown.jpg', percentage: 52 },
+                    { name: 'Fish Sauce (500ml)', revenue: 7840, image: '../../images/unknown.jpg', percentage: 42 },
+                    { name: 'Handmade Pottery', revenue: 5440, image: '../../images/unknown.jpg', percentage: 30 }
+                ],
+                march: [
+                    { name: 'Woven Basket', revenue: 19750, image: '../../images/unknown.jpg', percentage: 100 },
+                    { name: 'Dried Fish (1kg)', revenue: 15420, image: '../../images/fishes.jpg', percentage: 78 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 13850, image: '../../images/unknown.jpg', percentage: 70 },
+                    { name: 'Coconut Oil (1L)', revenue: 9120, image: '../../images/unknown.jpg', percentage: 46 },
+                    { name: 'Fish Sauce (500ml)', revenue: 7840, image: '../../images/unknown.jpg', percentage: 40 },
+                    { name: 'Handmade Pottery', revenue: 6440, image: '../../images/unknown.jpg', percentage: 33 }
+                ],
+                april: [
+                    { name: 'Sagnay Rice (5kg)', revenue: 22850, image: '../../images/unknown.jpg', percentage: 100 },
+                    { name: 'Dried Fish (1kg)', revenue: 18420, image: '../../images/fishes.jpg', percentage: 81 },
+                    { name: 'Coconut Oil (1L)', revenue: 14120, image: '../../images/unknown.jpg', percentage: 62 },
+                    { name: 'Woven Basket', revenue: 11750, image: '../../images/unknown.jpg', percentage: 51 },
+                    { name: 'Fish Sauce (500ml)', revenue: 9840, image: '../../images/unknown.jpg', percentage: 43 },
+                    { name: 'Handmade Pottery', revenue: 7440, image: '../../images/unknown.jpg', percentage: 33 }
+                ],
+                may: [
+                    { name: 'Coconut Oil (1L)', revenue: 20120, image: '../../images/unknown.jpg', percentage: 100 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 16850, image: '../../images/unknown.jpg', percentage: 84 },
+                    { name: 'Dried Fish (1kg)', revenue: 14420, image: '../../images/fishes.jpg', percentage: 72 },
+                    { name: 'Woven Basket', revenue: 10750, image: '../../images/unknown.jpg', percentage: 53 },
+                    { name: 'Fish Sauce (500ml)', revenue: 8840, image: '../../images/unknown.jpg', percentage: 44 },
+                    { name: 'Handmade Pottery', revenue: 6440, image: '../../images/unknown.jpg', percentage: 32 }
+                ],
+                june: [
+                    { name: 'Dried Fish (1kg)', revenue: 21420, image: '../../images/fishes.jpg', percentage: 100 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 17850, image: '../../images/unknown.jpg', percentage: 83 },
+                    { name: 'Woven Basket', revenue: 13750, image: '../../images/unknown.jpg', percentage: 64 },
+                    { name: 'Coconut Oil (1L)', revenue: 11120, image: '../../images/unknown.jpg', percentage: 52 },
+                    { name: 'Fish Sauce (500ml)', revenue: 9840, image: '../../images/unknown.jpg', percentage: 46 },
+                    { name: 'Handmade Pottery', revenue: 7440, image: '../../images/unknown.jpg', percentage: 35 }
+                ],
+                july: [
+                    { name: 'Sagnay Rice (5kg)', revenue: 19850, image: '../../images/unknown.jpg', percentage: 95 },
+                    { name: 'Dried Fish (1kg)', revenue: 17420, image: '../../images/fishes.jpg', percentage: 83 },
+                    { name: 'Woven Basket', revenue: 14750, image: '../../images/unknown.jpg', percentage: 70 },
+                    { name: 'Coconut Oil (1L)', revenue: 12120, image: '../../images/unknown.jpg', percentage: 58 },
+                    { name: 'Fish Sauce (500ml)', revenue: 10840, image: '../../images/unknown.jpg', percentage: 52 },
+                    { name: 'Handmade Pottery', revenue: 8440, image: '../../images/unknown.jpg', percentage: 40 }
+                ],
+                august: [
+                    { name: 'Dried Fish (1kg)', revenue: 15420, image: '../../images/fishes.jpg', percentage: 92 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 12850, image: '../../images/unknown.jpg', percentage: 77 },
+                    { name: 'Woven Basket', revenue: 9750, image: '../../images/unknown.jpg', percentage: 58 },
+                    { name: 'Coconut Oil (1L)', revenue: 8120, image: '../../images/unknown.jpg', percentage: 48 },
+                    { name: 'Fish Sauce (500ml)', revenue: 6840, image: '../../images/unknown.jpg', percentage: 41 },
+                    { name: 'Handmade Pottery', revenue: 5440, image: '../../images/unknown.jpg', percentage: 32 }
+                ],
+                september: [
+                    { name: 'Woven Basket', revenue: 17750, image: '../../images/unknown.jpg', percentage: 100 },
+                    { name: 'Dried Fish (1kg)', revenue: 14420, image: '../../images/fishes.jpg', percentage: 81 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 11850, image: '../../images/unknown.jpg', percentage: 67 },
+                    { name: 'Coconut Oil (1L)', revenue: 9120, image: '../../images/unknown.jpg', percentage: 51 },
+                    { name: 'Fish Sauce (500ml)', revenue: 7840, image: '../../images/unknown.jpg', percentage: 44 },
+                    { name: 'Handmade Pottery', revenue: 6440, image: '../../images/unknown.jpg', percentage: 36 }
+                ],
+                october: [
+                    { name: 'Coconut Oil (1L)', revenue: 18120, image: '../../images/unknown.jpg', percentage: 95 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 15850, image: '../../images/unknown.jpg', percentage: 83 },
+                    { name: 'Dried Fish (1kg)', revenue: 13420, image: '../../images/fishes.jpg', percentage: 70 },
+                    { name: 'Woven Basket', revenue: 10750, image: '../../images/unknown.jpg', percentage: 56 },
+                    { name: 'Fish Sauce (500ml)', revenue: 8840, image: '../../images/unknown.jpg', percentage: 46 },
+                    { name: 'Handmade Pottery', revenue: 7440, image: '../../images/unknown.jpg', percentage: 39 }
+                ],
+                november: [
+                    { name: 'Sagnay Rice (5kg)', revenue: 20850, image: '../../images/unknown.jpg', percentage: 100 },
+                    { name: 'Dried Fish (1kg)', revenue: 16420, image: '../../images/fishes.jpg', percentage: 79 },
+                    { name: 'Coconut Oil (1L)', revenue: 13120, image: '../../images/unknown.jpg', percentage: 63 },
+                    { name: 'Woven Basket', revenue: 11750, image: '../../images/unknown.jpg', percentage: 56 },
+                    { name: 'Fish Sauce (500ml)', revenue: 9840, image: '../../images/unknown.jpg', percentage: 47 },
+                    { name: 'Handmade Pottery', revenue: 8440, image: '../../images/unknown.jpg', percentage: 40 }
+                ],
+                december: [
+                    { name: 'Dried Fish (1kg)', revenue: 22420, image: '../../images/fishes.jpg', percentage: 100 },
+                    { name: 'Sagnay Rice (5kg)', revenue: 18850, image: '../../images/unknown.jpg', percentage: 84 },
+                    { name: 'Woven Basket', revenue: 15750, image: '../../images/unknown.jpg', percentage: 70 },
+                    { name: 'Coconut Oil (1L)', revenue: 12120, image: '../../images/unknown.jpg', percentage: 54 },
+                    { name: 'Fish Sauce (500ml)', revenue: 10840, image: '../../images/unknown.jpg', percentage: 48 },
+                    { name: 'Handmade Pottery', revenue: 9440, image: '../../images/unknown.jpg', percentage: 42 }
+                ]
+            };
+            
+            // Sales Revenue Chart (Line Chart)
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            const salesChart = new Chart(salesCtx, {
+                type: 'line',
+                data: {
+                    labels: monthlyData.august.labels,
+                    datasets: [{
+                        label: 'Revenue (₱)',
+                        data: monthlyData.august.data,
+                        borderColor: '#2c853f',
+                        backgroundColor: 'rgba(44, 133, 63, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#2c853f',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                maxRotation: 0,
+                                minRotation: 0,
+                                font: {
+                                    size: 10
+                                },
+                                callback: function(value, index) {
+                                    const label = this.getLabelForValue(value);
+                                    return label.split('\n');
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '₱' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Month selector change event
+            document.getElementById('monthSelector').addEventListener('change', function() {
+                const selectedMonth = this.value;
+                const selectedData = monthlyData[selectedMonth];
+                
+                salesChart.data.labels = selectedData.labels;
+                salesChart.data.datasets[0].data = selectedData.data;
+                salesChart.update();
+            });
+
+            // Products by Category Chart (Doughnut Chart)
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Agriculture', 'Handicrafts', 'Food Processing', 'Textiles', 'Fisheries'],
+                    datasets: [{
+                        data: [245, 189, 156, 98, 67],
+                        backgroundColor: [
+                            '#4caf50',
+                            '#ff9800', 
+                            '#9c27b0',
+                            '#3f51b5',
+                            '#607d8b'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Order Status Filter
+            document.getElementById('orderStatusFilter').addEventListener('change', function() {
+                const selectedStatus = this.value;
+                const rows = document.querySelectorAll('#ordersTableBody tr');
+                
+                rows.forEach(row => {
+                    if (selectedStatus === 'all' || row.getAttribute('data-status') === selectedStatus) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+
+            // Best Selling Products Month Filter
+            document.getElementById('bestSellingMonthFilter').addEventListener('change', function() {
+                const selectedMonth = this.value;
+                updateBestSellingProducts(selectedMonth);
+            });
+
+            // Function to update Best Selling Products display
+            function updateBestSellingProducts(month) {
+                const products = bestSellingData[month];
+                const container = document.querySelector('#bestSellingProductsContainer');
+                
+                container.innerHTML = '';
+                
+                products.forEach(product => {
+                    const productHTML = `
+                        <div style="display: flex; align-items: center; padding: 10px; border-radius: 8px; background: #f8f9fa; border: 1px solid #e9ecef;">
+                            <img src="${product.image}" alt="${product.name}" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; margin-right: 12px;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; font-size: 14px; color: #333; margin-bottom: 4px;">${product.name}</div>
+                                <div style="font-size: 12px; color: #666; margin-bottom: 6px;">₱${product.revenue.toLocaleString()}</div>
+                                <div style="background: #e9ecef; border-radius: 10px; height: 6px; overflow: hidden;">
+                                    <div style="background: linear-gradient(90deg, #2c853f, #4caf50); height: 100%; width: ${product.percentage}%; border-radius: 10px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += productHTML;
+                });
+            }
+
+            // Monthly Performance Chart (Area Chart)
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(performanceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    datasets: [{
+                        label: 'Orders',
+                        data: [1200, 1900, 1500, 2500, 2200, 3000, 3200, 3421],
+                        borderColor: '#e44c31',
+                        backgroundColor: 'rgba(228, 76, 49, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Revenue (K)',
+                        data: [25, 35, 28, 42, 38, 48, 52, 45],
+                        borderColor: '#2c853f',
+                        backgroundColor: 'rgba(44, 133, 63, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Best Selling Products with August data
+            updateBestSellingProducts('august');
+        });
+    </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Make all table rows clickable (except header rows)
+    const tableRows = document.querySelectorAll('tbody tr:not([onclick])');
+    tableRows.forEach((row, index) => {
+        row.style.cursor = 'pointer';
+        row.onclick = () => window.location.href = '=' + (index + 1);
+        row.onmouseover = () => row.style.backgroundColor = 'var(--light-color)';
+        row.onmouseout = () => row.style.backgroundColor = '';
+    });
+    
+    // Ensure action buttons don't trigger row click
+    const actionButtons = document.querySelectorAll('.action-buttons button, .btn-admin');
+    actionButtons.forEach(button => {
+        if (!button.onclick || button.onclick.toString().indexOf('stopPropagation') === -1) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+    });
+});
+</script>
+</body>
+</html>
+
+
+

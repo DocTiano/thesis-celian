@@ -1,0 +1,340 @@
+<!-- Edit Order Modal -->
+<div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editOrderModalLabel">
+                    <i class="bi bi-pencil text-warning me-2"></i>
+                    Edit Order
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editOrderForm">
+                    <input type="hidden" id="editOrderId">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editCustomerName" class="form-label">Customer Name *</label>
+                                <input type="text" class="form-control" id="editCustomerName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editCustomerPhone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="editCustomerPhone" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="editDeliveryAddress" class="form-label">Delivery Address *</label>
+                        <textarea class="form-control" id="editDeliveryAddress" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="editOrderStatus" class="form-label">Order Status *</label>
+                                <select class="form-control" id="editOrderStatus" required>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="editPaymentStatus" class="form-label">Payment Status *</label>
+                                <select class="form-control" id="editPaymentStatus" required>
+                                    <option value="pending">Pending</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="failed">Failed</option>
+                                    <option value="refunded">Refunded</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="editDeliveryStatus" class="form-label">Delivery Status</label>
+                                <select class="form-control" id="editDeliveryStatus">
+                                    <option value="preparing">Preparing</option>
+                                    <option value="ready">Ready for Pickup</option>
+                                    <option value="in-transit">In Transit</option>
+                                    <option value="delivered">Delivered</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editPaymentMethod" class="form-label">Payment Method</label>
+                                <input type="text" class="form-control" id="editPaymentMethod" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editTotalAmount" class="form-label">Total Amount</label>
+                                <input type="text" class="form-control" id="editTotalAmount" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="editTrackingNumber" class="form-label">Tracking Number</label>
+                        <input type="text" class="form-control" id="editTrackingNumber" placeholder="Enter tracking number">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="editOrderNotes" class="form-label">Order Notes</label>
+                        <textarea class="form-control" id="editOrderNotes" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Order Items</label>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="editOrderItems">
+                                    <!-- Items will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" onclick="submitEditOrder()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Update Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Order Status Modal -->
+<div class="modal fade" id="updateOrderStatusModal" tabindex="-1" aria-labelledby="updateOrderStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateOrderStatusModalLabel">
+                    <i class="bi bi-arrow-repeat text-primary me-2"></i>
+                    Update Order Status
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="order-info bg-light p-3 rounded mb-3" id="statusUpdateOrderInfo">
+                    <!-- Order info will be populated here -->
+                </div>
+                
+                <div class="mb-3">
+                    <label for="newOrderStatus" class="form-label">New Status *</label>
+                    <select class="form-control" id="newOrderStatus" required>
+                        <option value="">Select new status</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3" id="trackingNumberSection" style="display: none;">
+                    <label for="statusTrackingNumber" class="form-label">Tracking Number</label>
+                    <input type="text" class="form-control" id="statusTrackingNumber" placeholder="Enter tracking number">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="statusUpdateNotes" class="form-label">Update Notes</label>
+                    <textarea class="form-control" id="statusUpdateNotes" rows="3" placeholder="Add notes about this status update..."></textarea>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="notifyCustomer" checked>
+                    <label class="form-check-label" for="notifyCustomer">
+                        Notify customer via SMS/Email
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="confirmStatusUpdate()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Update Status
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentOrderId = null;
+
+function openEditOrderModal(orderId) {
+    currentOrderId = orderId;
+    
+    // Simulate loading order data
+    const orderData = {
+        id: orderId,
+        customer: {
+            name: 'Juan Dela Cruz',
+            phone: '09123456789'
+        },
+        deliveryAddress: 'Barangay Centro, Sagnay, Camarines Sur',
+        status: 'processing',
+        paymentStatus: 'paid',
+        deliveryStatus: 'preparing',
+        paymentMethod: 'GCash',
+        totalAmount: '₱1,350',
+        trackingNumber: 'TRK123456789',
+        notes: 'Express delivery requested',
+        items: [
+            { product: 'Sagnay Rice (5kg)', quantity: 2, price: 350, total: 700 },
+            { product: 'Woven Basket', quantity: 1, price: 450, total: 450 },
+            { product: 'Fresh Fish', quantity: 2, price: 120, total: 240 }
+        ]
+    };
+    
+    // Populate form
+    document.getElementById('editOrderId').value = orderData.id;
+    document.getElementById('editCustomerName').value = orderData.customer.name;
+    document.getElementById('editCustomerPhone').value = orderData.customer.phone;
+    document.getElementById('editDeliveryAddress').value = orderData.deliveryAddress;
+    document.getElementById('editOrderStatus').value = orderData.status;
+    document.getElementById('editPaymentStatus').value = orderData.paymentStatus;
+    document.getElementById('editDeliveryStatus').value = orderData.deliveryStatus;
+    document.getElementById('editPaymentMethod').value = orderData.paymentMethod;
+    document.getElementById('editTotalAmount').value = orderData.totalAmount;
+    document.getElementById('editTrackingNumber').value = orderData.trackingNumber;
+    document.getElementById('editOrderNotes').value = orderData.notes;
+    
+    // Populate items
+    const itemsContainer = document.getElementById('editOrderItems');
+    itemsContainer.innerHTML = '';
+    orderData.items.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.product}</td>
+            <td>${item.quantity}</td>
+            <td>₱${item.price}</td>
+            <td>₱${item.total}</td>
+        `;
+        itemsContainer.appendChild(row);
+    });
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('editOrderModal')).show();
+}
+
+function openUpdateOrderStatusModal(orderId) {
+    currentOrderId = orderId;
+    
+    // Simulate loading order data
+    const orderData = {
+        id: '#ORD-001',
+        customer: 'Juan Dela Cruz',
+        items: 'Sagnay Rice (5kg) +2 more items',
+        total: '₱1,350',
+        currentStatus: 'processing'
+    };
+    
+    // Populate order info
+    document.getElementById('statusUpdateOrderInfo').innerHTML = `
+        <div class="row">
+            <div class="col-6">
+                <strong>Order ID:</strong> ${orderData.id}<br>
+                <strong>Customer:</strong> ${orderData.customer}
+            </div>
+            <div class="col-6">
+                <strong>Items:</strong> ${orderData.items}<br>
+                <strong>Total:</strong> ${orderData.total}
+            </div>
+        </div>
+    `;
+    
+    // Reset form
+    document.getElementById('newOrderStatus').value = '';
+    document.getElementById('statusTrackingNumber').value = '';
+    document.getElementById('statusUpdateNotes').value = '';
+    document.getElementById('trackingNumberSection').style.display = 'none';
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('updateOrderStatusModal')).show();
+}
+
+function submitEditOrder() {
+    const form = document.getElementById('editOrderForm');
+    if (form.checkValidity()) {
+        // Simulate API call
+        console.log('Updating order:', currentOrderId);
+        
+        // Show success message
+        alert('Order updated successfully!');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editOrderModal'));
+        modal.hide();
+        
+        // Refresh table
+        location.reload();
+    } else {
+        form.reportValidity();
+    }
+}
+
+function confirmStatusUpdate() {
+    const newStatus = document.getElementById('newOrderStatus').value;
+    const trackingNumber = document.getElementById('statusTrackingNumber').value;
+    const notes = document.getElementById('statusUpdateNotes').value;
+    const notifyCustomer = document.getElementById('notifyCustomer').checked;
+    
+    if (!newStatus) {
+        alert('Please select a new status.');
+        return;
+    }
+    
+    // Simulate API call
+    console.log('Updating order status:', {
+        orderId: currentOrderId,
+        newStatus,
+        trackingNumber,
+        notes,
+        notifyCustomer
+    });
+    
+    // Show success message
+    alert('Order status updated successfully!');
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('updateOrderStatusModal'));
+    modal.hide();
+    
+    // Refresh table
+    location.reload();
+}
+
+// Show tracking number field when status is shipped
+document.getElementById('newOrderStatus').addEventListener('change', function() {
+    const trackingSection = document.getElementById('trackingNumberSection');
+    if (this.value === 'shipped') {
+        trackingSection.style.display = 'block';
+    } else {
+        trackingSection.style.display = 'none';
+    }
+});
+</script>

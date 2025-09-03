@@ -1,0 +1,108 @@
+<!-- View Certificate Modal -->
+<div class="modal fade" id="viewCertificateModal" tabindex="-1" aria-labelledby="viewCertificateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewCertificateModalLabel">
+                    <i class="bi bi-file-earmark-text"></i>
+                    View Certificate
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="certificate-preview">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Certificate Number:</strong>
+                                <span id="certNumber">CERT-2025-001</span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Issue Date:</strong>
+                                <span id="certIssueDate">Aug 25, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Applicant:</strong>
+                                <span id="certApplicant">Maria Santos</span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Expiry Date:</strong>
+                                <span id="certExpiryDate">Aug 25, 2027</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Business/Organization:</strong>
+                        <span id="certBusiness">Santos Fish Farm</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Verification Type:</strong>
+                        <span id="certType" class="badge bg-primary">LGU Verification</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Status:</strong>
+                        <span id="certStatus" class="badge bg-success">Active</span>
+                    </div>
+
+                    <!-- Certificate Document Preview -->
+                    <div class="certificate-document mb-3">
+                        <div class="border rounded p-4 bg-light">
+                            <div class="text-center">
+                                <h3 class="mb-3">CERTIFICATE OF VERIFICATION</h3>
+                                <p class="mb-3">This certifies that</p>
+                                <h4 class="text-primary mb-3" id="certDocumentName">Maria Santos</h4>
+                                <p>Operating <strong id="certDocumentBusiness">Santos Fish Farm</strong></p>
+                                <p>Has been verified and approved by the Local Government Unit</p>
+                                <p>for <strong>Aquaculture Operations</strong></p>
+                                <div class="mt-4">
+                                    <p class="mb-2">
+                                        <strong>Certificate Number:</strong> <span id="certDocumentNumber">CERT-2025-001</span>
+                                    </p>
+                                    <p class="mb-2">
+                                        <strong>Issue Date:</strong> <span id="certDocumentIssueDate">August 25, 2025</span>
+                                    </p>
+                                    <p class="mb-4">
+                                        <strong>Valid Until:</strong> <span id="certDocumentExpiryDate">August 25, 2027</span>
+                                    </p>
+                                </div>
+                                <div class="text-end">
+                                    <p class="mb-1"><strong>LGU Administrator</strong></p>
+                                    <p>Sagnay Local Government Unit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Approved By:</strong>
+                        <span id="certApprovedBy">Admin User</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Comments:</strong>
+                        <p id="certComments" class="text-muted">All requirements met. Certificate issued for 2 years.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="downloadCertificate()">
+                    <i class="bi bi-download"></i>
+                    Download Certificate
+                </button>
+                <button type="button" class="btn btn-outline-primary" onclick="printCertificate()">
+                    <i class="bi bi-printer"></i>
+                    Print Certificate
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

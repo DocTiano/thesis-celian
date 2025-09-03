@@ -1,0 +1,140 @@
+<!-- Update Status Modal -->
+<div class="modal fade" id="updateStatusModal" tabindex="-1" aria-labelledby="updateStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateStatusModalLabel">
+                    <i class="bi bi-arrow-up-circle"></i>
+                    Update Order Status
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateStatusForm">
+                    <div class="mb-3">
+                        <label for="statusOrderId" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="statusOrderId" value="#ORD-002" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="currentStatus" class="form-label">Current Status</label>
+                        <input type="text" class="form-control" id="currentStatus" value="Processing" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="newStatus" class="form-label">New Status *</label>
+                        <select class="form-select" id="newStatus" required>
+                            <option value="">Select new status...</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing" selected>Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3" id="trackingNumberDiv" style="display: none;">
+                        <label for="trackingNumber" class="form-label">Tracking Number</label>
+                        <input type="text" class="form-control" id="trackingNumber" placeholder="Enter tracking number">
+                        <small class="form-text text-muted">Required when status is set to "Shipped"</small>
+                    </div>
+                    
+                    <div class="mb-3" id="cancellationReasonDiv" style="display: none;">
+                        <label for="cancellationReason" class="form-label">Cancellation Reason</label>
+                        <select class="form-select" id="cancellationReason">
+                            <option value="">Select reason...</option>
+                            <option value="customer_request">Customer Request</option>
+                            <option value="out_of_stock">Out of Stock</option>
+                            <option value="payment_failed">Payment Failed</option>
+                            <option value="address_issue">Address Issue</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="statusNotes" class="form-label">Notes (Optional)</label>
+                        <textarea class="form-control" id="statusNotes" rows="3" placeholder="Add any additional notes about this status change..."></textarea>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomer" checked>
+                        <label class="form-check-label" for="notifyCustomer">
+                            Notify customer via SMS/Email
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="updateOrderStatus()">
+                    <i class="bi bi-check"></i>
+                    Update Status
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Show/hide fields based on selected status
+document.addEventListener('DOMContentLoaded', function() {
+    const statusSelect = document.getElementById('newStatus');
+    const trackingDiv = document.getElementById('trackingNumberDiv');
+    const cancellationDiv = document.getElementById('cancellationReasonDiv');
+    
+    if (statusSelect) {
+        statusSelect.addEventListener('change', function() {
+            const status = this.value;
+            
+            // Show tracking number field for shipped status
+            if (status === 'shipped') {
+                trackingDiv.style.display = 'block';
+                document.getElementById('trackingNumber').required = true;
+            } else {
+                trackingDiv.style.display = 'none';
+                document.getElementById('trackingNumber').required = false;
+            }
+            
+            // Show cancellation reason for cancelled status
+            if (status === 'cancelled') {
+                cancellationDiv.style.display = 'block';
+                document.getElementById('cancellationReason').required = true;
+            } else {
+                cancellationDiv.style.display = 'none';
+                document.getElementById('cancellationReason').required = false;
+            }
+        });
+    }
+});
+
+function updateOrderStatus() {
+    const form = document.getElementById('updateStatusForm');
+    const formData = new FormData(form);
+    
+    // Validate required fields
+    const newStatus = document.getElementById('newStatus').value;
+    if (!newStatus) {
+        alert('Please select a new status');
+        return;
+    }
+    
+    if (newStatus === 'shipped' && !document.getElementById('trackingNumber').value) {
+        alert('Tracking number is required for shipped orders');
+        return;
+    }
+    
+    if (newStatus === 'cancelled' && !document.getElementById('cancellationReason').value) {
+        alert('Cancellation reason is required for cancelled orders');
+        return;
+    }
+    
+    // Handle update status logic here
+    console.log('Updating order status...');
+    
+    // Show success message
+    alert('Order status updated successfully!');
+    
+    // Close modal
+    bootstrap.Modal.getInstance(document.getElementById('updateStatusModal')).hide();
+}
+</script>

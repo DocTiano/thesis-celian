@@ -1,0 +1,161 @@
+<!-- Reply Message Modal -->
+<div class="modal fade" id="replyMessageModal" tabindex="-1" aria-labelledby="replyMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="replyMessageModalLabel">
+                    <i class="bi bi-reply"></i>
+                    Reply to Message
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Original Message Preview -->
+                <div class="original-message mb-4 p-3 bg-light rounded">
+                    <h6 class="mb-2">Original Message:</h6>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <strong>From:</strong> <span id="originalSender">John Doe</span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Date:</strong> <span id="originalDate">Aug 30, 2025</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <strong>Subject:</strong> <span id="originalSubject">Order Inquiry</span>
+                    </div>
+                    <div class="border-start border-primary ps-3">
+                        <p id="originalContent" class="mb-0 text-muted">Hi, I need help with my recent order...</p>
+                    </div>
+                </div>
+
+                <form id="replyMessageForm">
+                    <input type="hidden" id="replyToMessageId">
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="replyTo" class="form-label">Reply To</label>
+                                <input type="text" class="form-control" id="replyTo" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="replyPriority" class="form-label">Priority</label>
+                                <select class="form-select" id="replyPriority">
+                                    <option value="normal" selected>Normal</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="replySubject" class="form-label">Subject *</label>
+                        <input type="text" class="form-control" id="replySubject" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="replyContent" class="form-label">Your Reply *</label>
+                        <textarea class="form-control" id="replyContent" rows="6" placeholder="Type your reply here..." required></textarea>
+                    </div>
+
+                    <!-- Quick Reply Templates -->
+                    <div class="mb-3">
+                        <label class="form-label">Quick Reply Templates</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="insertTemplate('thank_you')">
+                                Thank You
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="insertTemplate('order_update')">
+                                Order Update
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="insertTemplate('request_info')">
+                                Request Info
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="insertTemplate('issue_resolved')">
+                                Issue Resolved
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="replyAttachments" class="form-label">Attachments</label>
+                        <input type="file" class="form-control" id="replyAttachments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                        <div class="form-text">Upload supporting documents or images</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="replyCategory" class="form-label">Category</label>
+                        <select class="form-select" id="replyCategory">
+                            <option value="">Select category...</option>
+                            <option value="order_support">Order Support</option>
+                            <option value="product_inquiry">Product Inquiry</option>
+                            <option value="account_help">Account Help</option>
+                            <option value="technical_support">Technical Support</option>
+                            <option value="general_inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="markAsResolved">
+                        <label class="form-check-label" for="markAsResolved">
+                            Mark this conversation as resolved
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="sendReplyNotification" checked>
+                        <label class="form-check-label" for="sendReplyNotification">
+                            Send email notification to sender
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="addToFaq">
+                        <label class="form-check-label" for="addToFaq">
+                            Add this Q&A to FAQ database
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="saveReplyDraft()">
+                    <i class="bi bi-save"></i>
+                    Save Draft
+                </button>
+                <button type="submit" form="replyMessageForm" class="btn btn-primary">
+                    <i class="bi bi-reply"></i>
+                    Send Reply
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function insertTemplate(templateType) {
+    const replyContent = document.getElementById('replyContent');
+    let template = '';
+    
+    switch(templateType) {
+        case 'thank_you':
+            template = 'Thank you for contacting us. We appreciate your inquiry and ';
+            break;
+        case 'order_update':
+            template = 'Regarding your order, we have the following update: ';
+            break;
+        case 'request_info':
+            template = 'To better assist you, could you please provide additional information about ';
+            break;
+        case 'issue_resolved':
+            template = 'We are pleased to inform you that your issue has been resolved. ';
+            break;
+    }
+    
+    replyContent.value += template;
+    replyContent.focus();
+}
+</script>

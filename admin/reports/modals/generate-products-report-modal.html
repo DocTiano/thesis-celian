@@ -1,0 +1,263 @@
+<!-- Generate Products Report Modal -->
+<div class="modal fade" id="generateProductsReportModal" tabindex="-1" aria-labelledby="generateProductsReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateProductsReportModalLabel">
+                    <i class="bi bi-box"></i>
+                    Generate Products Report
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="generateProductsReportForm">
+                    <div class="mb-3">
+                        <label for="productsReportType" class="form-label">Report Type *</label>
+                        <select class="form-select" id="productsReportType" required>
+                            <option value="">Select report type...</option>
+                            <option value="inventory">Inventory Report</option>
+                            <option value="by_category">Products by Category</option>
+                            <option value="by_producer">Products by Producer</option>
+                            <option value="by_status">Products by Status</option>
+                            <option value="bestsellers">Best Selling Products</option>
+                            <option value="out_of_stock">Out of Stock Products</option>
+                            <option value="low_stock">Low Stock Products</option>
+                            <option value="new_products">New Products</option>
+                            <option value="performance">Product Performance</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsDateFrom" class="form-label">From Date</label>
+                                <input type="date" class="form-control" id="productsDateFrom">
+                                <div class="form-text">For performance analysis (optional)</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsDateTo" class="form-label">To Date</label>
+                                <input type="date" class="form-control" id="productsDateTo">
+                                <div class="form-text">For performance analysis (optional)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsCategory" class="form-label">Filter by Category</label>
+                                <select class="form-select" id="productsCategory">
+                                    <option value="">All Categories</option>
+                                    <option value="aquaculture">Aquaculture</option>
+                                    <option value="agriculture">Agriculture</option>
+                                    <option value="handicrafts">Handicrafts</option>
+                                    <option value="food_processing">Food Processing</option>
+                                    <option value="textiles">Textiles</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsProducer" class="form-label">Filter by Producer</label>
+                                <select class="form-select" id="productsProducer">
+                                    <option value="">All Producers</option>
+                                    <!-- Producer options will be loaded dynamically -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productStatus" class="form-label">Filter by Status</label>
+                                <select class="form-select" id="productStatus">
+                                    <option value="">All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending Approval</option>
+                                    <option value="out_of_stock">Out of Stock</option>
+                                    <option value="discontinued">Discontinued</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="stockLevel" class="form-label">Stock Level Filter</label>
+                                <select class="form-select" id="stockLevel">
+                                    <option value="">All Stock Levels</option>
+                                    <option value="low">Low Stock (≤ 10)</option>
+                                    <option value="medium">Medium Stock (11-50)</option>
+                                    <option value="high">High Stock (> 50)</option>
+                                    <option value="zero">Out of Stock (0)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsMinPrice" class="form-label">Minimum Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" class="form-control" id="productsMinPrice" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productsMaxPrice" class="form-label">Maximum Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" class="form-control" id="productsMaxPrice" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Include in Report</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeProductImages">
+                                    <label class="form-check-label" for="includeProductImages">
+                                        Product images
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeProductDescriptions" checked>
+                                    <label class="form-check-label" for="includeProductDescriptions">
+                                        Product descriptions
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeStockLevels" checked>
+                                    <label class="form-check-label" for="includeStockLevels">
+                                        Current stock levels
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includePricing" checked>
+                                    <label class="form-check-label" for="includePricing">
+                                        Pricing information
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeProducerInfo" checked>
+                                    <label class="form-check-label" for="includeProducerInfo">
+                                        Producer information
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeSalesData">
+                                    <label class="form-check-label" for="includeSalesData">
+                                        Sales performance data
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeReviews">
+                                    <label class="form-check-label" for="includeReviews">
+                                        Customer reviews/ratings
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeCreationDate" checked>
+                                    <label class="form-check-label" for="includeCreationDate">
+                                        Product creation date
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productsGroupBy" class="form-label">Group By</label>
+                        <select class="form-select" id="productsGroupBy">
+                            <option value="none">No Grouping</option>
+                            <option value="category">Category</option>
+                            <option value="producer">Producer</option>
+                            <option value="status">Status</option>
+                            <option value="price_range">Price Range</option>
+                            <option value="stock_level">Stock Level</option>
+                            <option value="creation_date">Creation Date</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productsSortBy" class="form-label">Sort By</label>
+                        <select class="form-select" id="productsSortBy">
+                            <option value="name">Product Name</option>
+                            <option value="price_asc">Price (Low to High)</option>
+                            <option value="price_desc">Price (High to Low)</option>
+                            <option value="stock_asc">Stock Level (Low to High)</option>
+                            <option value="stock_desc">Stock Level (High to Low)</option>
+                            <option value="sales_desc">Sales Performance (Best to Worst)</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productsFormat" class="form-label">Export Format *</label>
+                        <select class="form-select" id="productsFormat" required>
+                            <option value="pdf">PDF Document</option>
+                            <option value="excel">Excel Spreadsheet</option>
+                            <option value="csv">CSV File</option>
+                            <option value="preview">Preview Only</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Report Options</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeProductSummary" checked>
+                            <label class="form-check-label" for="includeProductSummary">
+                                Include summary statistics
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeProductCharts">
+                            <label class="form-check-label" for="includeProductCharts">
+                                Include charts and graphs
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeStockAlerts" checked>
+                            <label class="form-check-label" for="includeStockAlerts">
+                                Highlight low stock alerts
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeRecommendations">
+                            <label class="form-check-label" for="includeRecommendations">
+                                Include inventory recommendations
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productsNotes" class="form-label">Report Notes</label>
+                        <textarea class="form-control" id="productsNotes" rows="2" placeholder="Add any special notes or comments for this report..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="previewProductsReport()">
+                    <i class="bi bi-eye"></i>
+                    Preview Report
+                </button>
+                <button type="submit" form="generateProductsReportForm" class="btn btn-primary">
+                    <i class="bi bi-box"></i>
+                    Generate Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

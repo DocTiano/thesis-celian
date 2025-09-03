@@ -1,0 +1,83 @@
+<!-- Reject Application Modal -->
+<div class="modal fade" id="rejectApplicationModal" tabindex="-1" aria-labelledby="rejectApplicationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rejectApplicationModalLabel">
+                    <i class="bi bi-x-circle"></i>
+                    Reject Application
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <div>
+                        You are about to reject this verification application. Please provide a reason for rejection.
+                    </div>
+                </div>
+
+                <form id="rejectApplicationForm">
+                    <div class="mb-3">
+                        <label for="applicationId" class="form-label">Application ID</label>
+                        <input type="text" class="form-control" id="applicationId" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="applicantName" class="form-label">Applicant Name</label>
+                        <input type="text" class="form-control" id="applicantName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
+                        <select class="form-select" id="rejectionReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="incomplete_documents">Incomplete Documents</option>
+                            <option value="invalid_information">Invalid Information</option>
+                            <option value="does_not_meet_requirements">Does Not Meet Requirements</option>
+                            <option value="fraudulent_application">Fraudulent Application</option>
+                            <option value="expired_documents">Expired Documents</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="detailedComments" class="form-label">Detailed Comments *</label>
+                        <textarea class="form-control" id="detailedComments" rows="4" placeholder="Provide specific details about why the application is being rejected..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="suggestedActions" class="form-label">Suggested Actions for Reapplication</label>
+                        <textarea class="form-control" id="suggestedActions" rows="3" placeholder="What should the applicant do to reapply successfully?"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rejectedBy" class="form-label">Rejected By *</label>
+                        <input type="text" class="form-control" id="rejectedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="allowReapplication" checked>
+                        <label class="form-check-label" for="allowReapplication">
+                            Allow applicant to reapply
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendRejectionNotification" checked>
+                        <label class="form-check-label" for="sendRejectionNotification">
+                            Send rejection notification to applicant
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="rejectApplicationForm" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i>
+                    Reject Application
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

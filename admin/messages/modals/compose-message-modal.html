@@ -1,0 +1,141 @@
+<!-- Compose Message Modal -->
+<div class="modal fade" id="composeMessageModal" tabindex="-1" aria-labelledby="composeMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="composeMessageModalLabel">
+                    <i class="bi bi-envelope-plus"></i>
+                    Compose New Message
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="composeMessageForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="messageType" class="form-label">Message Type *</label>
+                                <select class="form-select" id="messageType" required>
+                                    <option value="">Select type...</option>
+                                    <option value="announcement">Announcement</option>
+                                    <option value="notification">Notification</option>
+                                    <option value="update">System Update</option>
+                                    <option value="promotion">Promotion</option>
+                                    <option value="warning">Warning</option>
+                                    <option value="individual">Individual Message</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="messagePriority" class="form-label">Priority</label>
+                                <select class="form-select" id="messagePriority">
+                                    <option value="low">Low</option>
+                                    <option value="normal" selected>Normal</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipients" class="form-label">Recipients *</label>
+                        <select class="form-select" id="recipients" required>
+                            <option value="">Select recipients...</option>
+                            <option value="all_users">All Users</option>
+                            <option value="all_producers">All Producers</option>
+                            <option value="verified_producers">Verified Producers Only</option>
+                            <option value="pending_producers">Pending Producers</option>
+                            <option value="admins">Administrators</option>
+                            <option value="specific_user">Specific User</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3" id="specificUserDiv" style="display: none;">
+                        <label for="specificUser" class="form-label">Select User</label>
+                        <input type="text" class="form-control" id="specificUser" placeholder="Search for user...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="messageSubject" class="form-label">Subject *</label>
+                        <input type="text" class="form-control" id="messageSubject" placeholder="Enter message subject" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="messageContent" class="form-label">Message Content *</label>
+                        <textarea class="form-control" id="messageContent" rows="6" placeholder="Type your message here..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="messageAttachments" class="form-label">Attachments</label>
+                        <input type="file" class="form-control" id="messageAttachments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                        <div class="form-text">Upload images, documents, or other files (Max 10MB per file)</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="scheduleMessage">
+                                <label class="form-check-label" for="scheduleMessage">
+                                    Schedule message for later
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3" id="scheduleDiv" style="display: none;">
+                                <label for="scheduleDateTime" class="form-label">Schedule Date & Time</label>
+                                <input type="datetime-local" class="form-control" id="scheduleDateTime">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="requireReadReceipt">
+                        <label class="form-check-label" for="requireReadReceipt">
+                            Request read receipt
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendEmailNotification" checked>
+                        <label class="form-check-label" for="sendEmailNotification">
+                            Send email notification
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="saveDraft()">
+                    <i class="bi bi-save"></i>
+                    Save Draft
+                </button>
+                <button type="submit" form="composeMessageForm" class="btn btn-primary">
+                    <i class="bi bi-send"></i>
+                    Send Message
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('recipients').addEventListener('change', function() {
+    const specificUserDiv = document.getElementById('specificUserDiv');
+    if (this.value === 'specific_user') {
+        specificUserDiv.style.display = 'block';
+    } else {
+        specificUserDiv.style.display = 'none';
+    }
+});
+
+document.getElementById('scheduleMessage').addEventListener('change', function() {
+    const scheduleDiv = document.getElementById('scheduleDiv');
+    if (this.checked) {
+        scheduleDiv.style.display = 'block';
+    } else {
+        scheduleDiv.style.display = 'none';
+    }
+});
+</script>

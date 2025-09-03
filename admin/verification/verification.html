@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LGU Verification | Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <link href="../assets/css/admin-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">S2EH</div>
+            <div class="title">ADMIN PANEL</div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <a href="../dashboard/dashboard.html" class="nav-link">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../products/products.html" class="nav-link">
+                    <i class="bi bi-box"></i>
+                    <span>Products</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../orders/orders.html" class="nav-link">
+                    <i class="bi bi-cart3"></i>
+                    <span>Orders</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../users/users.html" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../producers/producers.html" class="nav-link">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Producers</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="verification.html" class="nav-link active">
+                    <i class="bi bi-shield-check"></i>
+                    <span>LGU Verification</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../categories/categories.html" class="nav-link">
+                    <i class="bi bi-tags"></i>
+                    <span>Categories</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../messages/messages.html" class="nav-link">
+                    <i class="bi bi-chat-dots"></i>
+                    <span>Messages</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../reports/reports.html" class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../settings/settings.html" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title">LGU Verification</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-profile">
+                    <div class="admin-avatar">A</div>
+                    <span>Admin User</span>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Verification Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Applications</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">247</div>
+                    <div class="stat-change positive">+8 this week</div>
+                </div>
+                
+                <div class="stat-card accent">
+                    <div class="stat-header">
+                        <div class="stat-title">Pending Review</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">23</div>
+                    <div class="stat-change positive">+5 today</div>
+                </div>
+                
+                <div class="stat-card highlight">
+                    <div class="stat-header">
+                        <div class="stat-title">Approved</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">198</div>
+                    <div class="stat-change positive">+12 this week</div>
+                </div>
+                
+                <div class="stat-card secondary">
+                    <div class="stat-header">
+                        <div class="stat-title">Rejected</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">26</div>
+                    <div class="stat-change negative">+3 this week</div>
+                </div>
+            </div>
+
+            <!-- Pending Verifications -->
+            <div class="admin-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div></div> <!-- Placeholder for DataTables buttons -->
+                        <div class="d-flex gap-2 align-items-center">
+                            <input type="search" class="form-control" placeholder="Search applications..." style="width: 250px;">
+                            <button class="btn-admin btn-admin-primary" data-bs-toggle="modal" data-bs-target="#addVerificationModal"
+                                style="padding: 12px 24px; font-weight: 600; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                <i class="bi bi-plus-circle"></i>
+                                New Verification
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification Status Tabs -->
+                <div class="verification-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Verification status filters">
+                    <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                        <button class="tab-btn active" data-status="all"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-file-earmark-text" style="margin-right: 8px; font-size: 16px;"></i>
+                            All Applications (<span id="count-all">4</span>)
+                        </button>
+                        <button class="tab-btn" data-status="pending"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-clock" style="margin-right: 8px; font-size: 16px;"></i>
+                            Pending Review (<span id="count-pending">3</span>)
+                        </button>
+                        <button class="tab-btn" data-status="approved"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-check-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                            Approved (<span id="count-approved">1</span>)
+                        </button>
+                        <button class="tab-btn" data-status="rejected"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-x-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                            Rejected (<span id="count-rejected">0</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body" style="padding: 0;">
+                    <table id="verificationTable" class="admin-table table table-striped table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Applicant</th>
+                                <th>Type</th>
+                                <th>Business Details</th>
+                                <th>Documents</th>
+                                <th>Submitted</th>
+                                <th>Priority</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="pending">
+                                <td>
+                                    <div style="font-weight: 500;">#LGU-001</div>
+                                    <div style="font-size: 12px; color: var(--secondary-color);">New Application</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Jose Farming Co.</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">09123456789</div>
+                                    </div>
+                                </td>
+                                <td>Producer Verification</td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Rice Production</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">Barangay San Isidro</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                        <span class="status-badge status-active">Business Permit</span>
+                                        <span class="status-badge status-active">DTI Registration</span>
+                                        <span class="status-badge status-pending">Health Certificate</span>
+                                    </div>
+                                </td>
+                                <td>Aug 28, 2025</td>
+                                <td><span class="status-badge" style="background-color: #ff9800; color: white;">High</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-primary" title="Approve Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveVerificationModal">
+                                            <i class="bi bi-check-circle"></i>
+                                            <span>Approve</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#rejectVerificationModal">
+                                            <i class="bi bi-x-circle"></i>
+                                            <span>Reject</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="approved">
+                                <td>
+                                    <div style="font-weight: 500;">#LGU-002</div>
+                                    <div style="font-size: 12px; color: var(--secondary-color);">Renewal</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Craft Makers Guild</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">09987654321</div>
+                                    </div>
+                                </td>
+                                <td>Business Renewal</td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Handicrafts & Textiles</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">Barangay Centro</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                        <span class="status-badge status-active">Business Permit</span>
+                                        <span class="status-badge status-active">Tax Clearance</span>
+                                        <span class="status-badge status-active">Fire Safety</span>
+                                    </div>
+                                </td>
+                                <td>Aug 27, 2025</td>
+                                <td><span class="status-badge" style="background-color: #4caf50; color: white;">Medium</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-secondary" title="View Certificate" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#545b62'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.transform='scale(1)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#viewCertificateModal">
+                                            <i class="bi bi-file-earmark-text"></i>
+                                            <span>View Certificate</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="pending">
+                                <td>
+                                    <div style="font-weight: 500;">#LGU-003</div>
+                                    <div style="font-size: 12px; color: var(--secondary-color);">New Application</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Sagnay Fishermen Assoc.</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">09555777888</div>
+                                    </div>
+                                </td>
+                                <td>Producer Verification</td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Fish Processing</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">Barangay Seaside</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                        <span class="status-badge status-active">Business Permit</span>
+                                        <span class="status-badge status-active">BFAR License</span>
+                                        <span class="status-badge status-active">Health Certificate</span>
+                                        <span class="status-badge status-active">Environmental Clearance</span>
+                                    </div>
+                                </td>
+                                <td>Aug 26, 2025</td>
+                                <td><span class="status-badge" style="background-color: #ff9800; color: white;">High</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-primary" title="Approve Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveVerificationModal">
+                                            <i class="bi bi-check-circle"></i>
+                                            <span>Approve</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#rejectVerificationModal">
+                                            <i class="bi bi-x-circle"></i>
+                                            <span>Reject</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="pending">
+                                <td>
+                                    <div style="font-weight: 500;">#LGU-004</div>
+                                    <div style="font-size: 12px; color: var(--secondary-color);">Amendment</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Artisan Collective</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">09444888999</div>
+                                    </div>
+                                </td>
+                                <td>Business Amendment</td>
+                                <td>
+                                    <div>
+                                        <div style="font-weight: 500;">Pottery & Ceramics</div>
+                                        <div style="font-size: 12px; color: var(--secondary-color);">Barangay Riverside</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                        <span class="status-badge status-active">Amendment Form</span>
+                                        <span class="status-badge status-pending">Updated Permit</span>
+                                        <span class="status-badge status-pending">New Layout Plan</span>
+                                    </div>
+                                </td>
+                                <td>Aug 25, 2025</td>
+                                <td><span class="status-badge" style="background-color: #2196f3; color: white;">Low</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-secondary" title="Request More Information" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(108, 117, 125, 0.2);" onmouseover="this.style.backgroundColor='#545b62'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 10px rgba(108, 117, 125, 0.3)'" onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(108, 117, 125, 0.2)'" onclick="event.stopPropagation();">
+                                            <i class="bi bi-info-circle"></i>
+                                            <span>Request Info</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Verification pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Verification Guidelines -->
+            <div class="admin-card">
+                <div class="card-header">
+                    <h3 class="card-title">Verification Guidelines</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div style="padding: 20px; border: 1px solid var(--admin-border); border-radius: 8px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 10px;">
+                                <i class="bi bi-person-badge"></i> Producer Verification
+                            </h4>
+                            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                                <li>Valid Business Permit</li>
+                                <li>DTI/SEC Registration</li>
+                                <li>Health Certificate (for food products)</li>
+                                <li>Proof of Address</li>
+                                <li>Valid Government ID</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 20px; border: 1px solid var(--admin-border); border-radius: 8px;">
+                            <h4 style="color: var(--highlight-color); margin-bottom: 10px;">
+                                <i class="bi bi-box"></i> Product Verification
+                            </h4>
+                            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                                <li>Product Quality Assessment</li>
+                                <li>Compliance with Local Standards</li>
+                                <li>Proper Labeling & Packaging</li>
+                                <li>Price Verification</li>
+                                <li>Origin Certification</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 20px; border: 1px solid var(--admin-border); border-radius: 8px;">
+                            <h4 style="color: var(--accent-color); margin-bottom: 10px;">
+                                <i class="bi bi-building"></i> Business Verification
+                            </h4>
+                            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                                <li>Mayor's Permit</li>
+                                <li>Fire Safety Permit</li>
+                                <li>Environmental Compliance</li>
+                                <li>Tax Clearance</li>
+                                <li>Barangay Clearance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Verification Modals -->
+    <div id="verificationModals"></div>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            const verificationTable = $('#verificationTable').DataTable({
+                "responsive": true,                "lengthChange": false,
+                "searching": false,
+                "info": false,
+                "paging": true,
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "columnDefs": [
+                    { 
+                        "targets": [-1],
+                        "orderable": false,
+                        "searchable": false
+                    }
+                ],
+                "order": [[4, 'desc']],
+                "drawCallback": function() {
+                    // Ensure table uses full width
+                    $('.dataTables_wrapper').css('width', '100%');
+                    $('#verificationTable').css('width', '100%');
+                }
+            });
+
+            // Position DataTables buttons at the start of the card header
+            const buttonContainer = verificationTable.buttons().container()
+                .removeClass('dt-buttons')
+                .addClass('btn-group')
+                .css({
+                    'flex-wrap': 'wrap'
+                });
+            
+            // Replace the placeholder div with the button container
+            $('.card-header .d-flex div:first-child').replaceWith(buttonContainer);
+
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tableRows = document.querySelectorAll('#verificationTable tbody tr');
+
+            // Tab styling
+            const updateTabStyles = (activeBtn) => {
+                tabBtns.forEach(btn => {
+                    btn.style.color = 'var(--secondary-color)';
+                    btn.style.borderBottomColor = 'transparent';
+                    btn.style.backgroundColor = 'transparent';
+                });
+                
+                activeBtn.style.color = 'var(--primary-color)';
+                activeBtn.style.borderBottomColor = 'var(--primary-color)';
+                activeBtn.style.backgroundColor = 'rgba(44, 133, 63, 0.05)';
+            };
+
+            // Filter verifications by status
+            const filterVerifications = (status) => {
+                tableRows.forEach(row => {
+                    const rowStatus = row.getAttribute('data-status');
+                    
+                    let shouldShow = false;
+                    
+                    if (status === 'all') {
+                        shouldShow = true;
+                    } else if (status === 'pending') {
+                        shouldShow = rowStatus === 'pending';
+                    } else if (status === 'approved') {
+                        shouldShow = rowStatus === 'approved';
+                    } else if (status === 'rejected') {
+                        shouldShow = rowStatus === 'rejected';
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                });
+                
+                // Redraw DataTable to maintain styling
+                verificationTable.draw();
+            };
+
+            // Add click handlers to tabs
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const status = btn.dataset.status;
+                    updateTabStyles(btn);
+                    filterVerifications(status);
+                    
+                    // Update active class
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Set initial active tab styling
+            updateTabStyles(document.querySelector('.tab-btn.active'));
+        });
+    </script>
+    <script src="../assets/js/admin-main.js"></script>
+
+<script>
+// Load all verification modals
+function loadVerificationModals() {
+    const modalsContainer = document.getElementById('verificationModals');
+    const modalFiles = [
+        'modals/add-verification-modal.html',
+        'modals/approve-application-modal.html',
+        'modals/reject-application-modal.html',
+        'modals/view-certificate-modal.html',
+        'modals/request-info-modal.html'
+    ];
+    
+    modalFiles.forEach(file => {
+        fetch(file)
+            .then(response => response.text())
+            .then(html => {
+                modalsContainer.innerHTML += html;
+            })
+            .catch(error => console.error('Error loading modal:', file, error));
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load verification modals
+    loadVerificationModals();
+    
+    // Make all table rows clickable (except header rows)
+    const tableRows = document.querySelectorAll('tbody tr:not([onclick])');
+    tableRows.forEach((row, index) => {
+        row.style.cursor = 'pointer';
+        row.onclick = () => window.location.href = 'verification-details.html?id=' + (index + 1);
+        row.onmouseover = () => row.style.backgroundColor = 'var(--light-color)';
+        row.onmouseout = () => row.style.backgroundColor = '';
+    });
+    
+    // Ensure action buttons don't trigger row click
+    const actionButtons = document.querySelectorAll('.action-buttons button, .btn-admin');
+    actionButtons.forEach(button => {
+        if (!button.onclick || button.onclick.toString().indexOf('stopPropagation') === -1) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+    });
+});
+</script>
+</body>
+</html>
+
+
+

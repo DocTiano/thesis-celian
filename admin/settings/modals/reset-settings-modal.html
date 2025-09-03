@@ -1,0 +1,171 @@
+<!-- Reset Settings Modal -->
+<div class="modal fade" id="resetSettingsModal" tabindex="-1" aria-labelledby="resetSettingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resetSettingsModalLabel">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Reset Settings
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <div>
+                        <strong>Warning:</strong> This action will reset settings to their default values. All custom configurations will be lost.
+                    </div>
+                </div>
+
+                <form id="resetSettingsForm">
+                    <div class="mb-3">
+                        <label for="resetScope" class="form-label">What to Reset *</label>
+                        <select class="form-select" id="resetScope" required>
+                            <option value="">Select what to reset...</option>
+                            <option value="all">All Settings (Complete Reset)</option>
+                            <option value="general">General Settings Only</option>
+                            <option value="security">Security Settings Only</option>
+                            <option value="notifications">Notification Settings Only</option>
+                            <option value="appearance">Appearance Settings Only</option>
+                            <option value="email">Email Settings Only</option>
+                            <option value="backup">Backup Settings Only</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3" id="resetPreview">
+                        <label class="form-label">Settings that will be reset:</label>
+                        <div class="border rounded p-3 bg-light">
+                            <div id="resetList">
+                                <p class="text-muted">Select a reset scope above to see what will be reset.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="resetReason" class="form-label">Reason for Reset *</label>
+                        <select class="form-select" id="resetReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="configuration_error">Configuration Error</option>
+                            <option value="security_issue">Security Issue</option>
+                            <option value="system_malfunction">System Malfunction</option>
+                            <option value="user_request">User Request</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="testing">Testing Purposes</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="resetComments" class="form-label">Additional Comments</label>
+                        <textarea class="form-control" id="resetComments" rows="3" placeholder="Provide additional details about why settings are being reset..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="resetBy" class="form-label">Reset By *</label>
+                        <input type="text" class="form-control" id="resetBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="createResetBackup" checked>
+                        <label class="form-check-label" for="createResetBackup">
+                            Create backup of current settings before reset
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="notifyResetAdmins" checked>
+                        <label class="form-check-label" for="notifyResetAdmins">
+                            Notify administrators of settings reset
+                        </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmationText" class="form-label">Type "RESET" to confirm *</label>
+                        <input type="text" class="form-control" id="confirmationText" placeholder="Type RESET to confirm" required>
+                    </div>
+                </form>
+
+                <div class="mt-3 p-3 bg-danger bg-opacity-10 border border-danger rounded">
+                    <h6 class="text-danger"><i class="bi bi-exclamation-triangle"></i> Important Consequences:</h6>
+                    <ul class="mb-0 small">
+                        <li>All custom settings will be permanently lost</li>
+                        <li>Users may need to reconfigure their preferences</li>
+                        <li>Email templates and notifications will revert to defaults</li>
+                        <li>Security policies will reset to standard settings</li>
+                        <li>This action cannot be undone without a backup</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="resetSettingsForm" class="btn btn-danger" disabled id="confirmResetBtn">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Reset Settings
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('confirmationText').addEventListener('input', function() {
+    const confirmBtn = document.getElementById('confirmResetBtn');
+    if (this.value === 'RESET') {
+        confirmBtn.disabled = false;
+    } else {
+        confirmBtn.disabled = true;
+    }
+});
+
+document.getElementById('resetScope').addEventListener('change', function() {
+    const resetList = document.getElementById('resetList');
+    const scope = this.value;
+    
+    let content = '';
+    switch(scope) {
+        case 'all':
+            content = `<ul>
+                <li>Site name, logo, and branding</li>
+                <li>User registration settings</li>
+                <li>Email configuration</li>
+                <li>Security policies</li>
+                <li>Notification preferences</li>
+                <li>Backup schedules</li>
+                <li>Theme and appearance</li>
+                <li>Payment gateway settings</li>
+                <li>All other custom configurations</li>
+            </ul>`;
+            break;
+        case 'general':
+            content = `<ul>
+                <li>Site name and description</li>
+                <li>Contact information</li>
+                <li>Timezone and locale</li>
+                <li>Default language</li>
+                <li>User registration settings</li>
+            </ul>`;
+            break;
+        case 'security':
+            content = `<ul>
+                <li>Password policies</li>
+                <li>Session timeouts</li>
+                <li>Two-factor authentication</li>
+                <li>Login attempt limits</li>
+                <li>IP restrictions</li>
+            </ul>`;
+            break;
+        case 'notifications':
+            content = `<ul>
+                <li>Email notification settings</li>
+                <li>SMS notification settings</li>
+                <li>Admin alert preferences</li>
+                <li>User notification preferences</li>
+            </ul>`;
+            break;
+        default:
+            content = '<p class="text-muted">Select a reset scope above to see what will be reset.</p>';
+    }
+    
+    resetList.innerHTML = content;
+});
+</script>

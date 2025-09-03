@@ -1,0 +1,156 @@
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">
+                    <i class="bi bi-pencil text-warning me-2"></i>
+                    Edit Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm">
+                    <input type="hidden" id="editProductId">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProductName" class="form-label">Product Name *</label>
+                                <input type="text" class="form-control" id="editProductName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProductCategory" class="form-label">Category *</label>
+                                <select class="form-control" id="editProductCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="agricultural">Agricultural</option>
+                                    <option value="handicrafts">Handicrafts</option>
+                                    <option value="food-products">Food Products</option>
+                                    <option value="textiles">Textiles</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProductPrice" class="form-label">Price (₱) *</label>
+                                <input type="number" class="form-control" id="editProductPrice" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProductStock" class="form-label">Stock Quantity *</label>
+                                <input type="number" class="form-control" id="editProductStock" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductProducer" class="form-label">Producer *</label>
+                        <select class="form-control" id="editProductProducer" required>
+                            <option value="">Select Producer</option>
+                            <option value="jose-farming">Jose Farming Co.</option>
+                            <option value="craft-makers">Craft Makers Guild</option>
+                            <option value="sagnay-fishermen">Sagnay Fishermen Assoc.</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editProductDescription" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductImage" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="editProductImage" accept="image/*">
+                        <div class="mt-2" id="currentImagePreview"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editProductStatus" class="form-label">Status</label>
+                                <select class="form-control" id="editProductStatus">
+                                    <option value="active">Active</option>
+                                    <option value="out-of-stock">Out of Stock</option>
+                                    <option value="pending">Pending Approval</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check mt-4">
+                                    <input class="form-check-input" type="checkbox" id="editProductLguVerified">
+                                    <label class="form-check-label" for="editProductLguVerified">
+                                        LGU Verified
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" onclick="submitEditProduct()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Update Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openEditProductModal(productId) {
+    // Simulate loading product data
+    const productData = {
+        id: productId,
+        name: 'Sagnay Rice (5kg)',
+        category: 'agricultural',
+        price: 350,
+        stock: 45,
+        producer: 'jose-farming',
+        description: 'Premium quality rice from Sagnay farmers',
+        status: 'active',
+        lguVerified: true,
+        image: '../../images/fishes.jpg'
+    };
+    
+    // Populate form
+    document.getElementById('editProductId').value = productData.id;
+    document.getElementById('editProductName').value = productData.name;
+    document.getElementById('editProductCategory').value = productData.category;
+    document.getElementById('editProductPrice').value = productData.price;
+    document.getElementById('editProductStock').value = productData.stock;
+    document.getElementById('editProductProducer').value = productData.producer;
+    document.getElementById('editProductDescription').value = productData.description;
+    document.getElementById('editProductStatus').value = productData.status;
+    document.getElementById('editProductLguVerified').checked = productData.lguVerified;
+    
+    // Show current image
+    document.getElementById('currentImagePreview').innerHTML = 
+        `<img src="${productData.image}" alt="Current Image" style="max-width: 100px; max-height: 100px; object-fit: cover; border-radius: 4px;">`;
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('editProductModal')).show();
+}
+
+function submitEditProduct() {
+    const form = document.getElementById('editProductForm');
+    if (form.checkValidity()) {
+        // Simulate API call
+        console.log('Updating product...');
+        
+        // Show success message
+        alert('Product updated successfully!');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
+        modal.hide();
+        
+        // Refresh table (in real app, this would refresh data)
+        location.reload();
+    } else {
+        form.reportValidity();
+    }
+}
+</script>

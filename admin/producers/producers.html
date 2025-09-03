@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producers Management | Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <link href="../assets/css/admin-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">S2EH</div>
+            <div class="title">ADMIN PANEL</div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <a href="../dashboard/dashboard.html" class="nav-link">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../products/products.html" class="nav-link">
+                    <i class="bi bi-box"></i>
+                    <span>Products</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../orders/orders.html" class="nav-link">
+                    <i class="bi bi-cart3"></i>
+                    <span>Orders</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../users/users.html" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="producers.html" class="nav-link active">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Producers</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../verification/verification.html" class="nav-link">
+                    <i class="bi bi-shield-check"></i>
+                    <span>LGU Verification</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../categories/categories.html" class="nav-link">
+                    <i class="bi bi-tags"></i>
+                    <span>Categories</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../messages/messages.html" class="nav-link">
+                    <i class="bi bi-chat-dots"></i>
+                    <span>Messages</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../reports/reports.html" class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../settings/settings.html" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title">Producers Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-profile">
+                    <div class="admin-avatar">A</div>
+                    <span>Admin User</span>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Producer Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Producers</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">156</div>
+                    <div class="stat-change positive">+8% from last month</div>
+                </div>
+                
+                <div class="stat-card highlight">
+                    <div class="stat-header">
+                        <div class="stat-title">Verified Producers</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">142</div>
+                    <div class="stat-change positive">+12% from last month</div>
+                </div>
+                
+                <div class="stat-card accent">
+                    <div class="stat-header">
+                        <div class="stat-title">New Applications</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">14</div>
+                    <div class="stat-change positive">+3 this week</div>
+                </div>
+                
+                <div class="stat-card secondary">
+                    <div class="stat-header">
+                        <div class="stat-title">Top Category</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">Agriculture</div>
+                    <div class="stat-change">67 producers</div>
+                </div>
+            </div>
+
+            <!-- Producers Management -->
+            <div class="admin-card">
+                <div class="card-header">                            <div class="d-flex justify-content-between align-items-center w-100">
+                        <div id="datatableButtons" class="d-flex gap-2"></div> <!-- DataTables buttons container -->
+                        <div class="d-flex gap-2 align-items-center">
+                            <input type="search" class="form-control" placeholder="Search producers..." style="width: 250px;">
+                            <button class="btn-admin btn-admin-primary" style="padding: 12px 20px; font-weight: 600; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'" data-bs-toggle="modal" data-bs-target="#addProducerModal">
+                                <i class="bi bi-person-plus"></i>
+                                Add Producer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producer Status Tabs -->
+                <div class="producer-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Producer status filters">
+                    <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                        <button class="tab-btn active" data-status="all"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-person-badge" style="margin-right: 8px; font-size: 16px;"></i>
+                            All Producers (<span id="count-all">5</span>)
+                        </button>
+                        <button class="tab-btn" data-status="verified"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-shield-check" style="margin-right: 8px; font-size: 16px;"></i>
+                            Verified (<span id="count-verified">3</span>)
+                        </button>
+                        <button class="tab-btn" data-status="pending"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-clock-history" style="margin-right: 8px; font-size: 16px;"></i>
+                            Pending (<span id="count-pending">1</span>)
+                        </button>
+                        <button class="tab-btn" data-status="suspended"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-person-x" style="margin-right: 8px; font-size: 16px;"></i>
+                            Suspended (<span id="count-suspended">1</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body" style="padding: 0;">
+                    <table id="producersTable" class="admin-table table table-striped table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Producer</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Products</th>
+                                <th>Revenue</th>
+                                <th>Joined</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="verified">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div style="width: 40px; height: 40px; background-color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">J</div>
+                                        <div>
+                                            <div style="font-weight: 500;">Jose Santos</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">09123456789</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Agriculture</td>
+                                <td>Barangay San Isidro</td>
+                                <td>12</td>
+                                <td>₱45,670</td>
+                                <td>Jan 2025</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Producer" style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProducerModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="verified">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div style="width: 40px; height: 40px; background-color: var(--highlight-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">M</div>
+                                        <div>
+                                            <div style="font-weight: 500;">Maria Cruz</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">09987654321</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Handicrafts</td>
+                                <td>Barangay Centro</td>
+                                <td>8</td>
+                                <td>₱28,450</td>
+                                <td>Feb 2025</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Producer" style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProducerModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="pending">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div style="width: 40px; height: 40px; background-color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark-color); font-weight: 600;">A</div>
+                                        <div>
+                                            <div style="font-weight: 500;">Ana Reyes</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">09555777888</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Food Processing</td>
+                                <td>Barangay Poblacion</td>
+                                <td>15</td>
+                                <td>₱52,340</td>
+                                <td>Mar 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-primary" title="Approve Producer" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveProducerModal">
+                                            <i class="bi bi-check-circle"></i>
+                                            <span>Approve</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Reject Application" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#rejectProducerModal">
+                                            <i class="bi bi-x-circle"></i>
+                                            <span>Reject</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="verified">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div style="width: 40px; height: 40px; background-color: var(--secondary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">P</div>
+                                        <div>
+                                            <div style="font-weight: 500;">Pedro Garcia</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">09444888999</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Textiles</td>
+                                <td>Barangay Riverside</td>
+                                <td>6</td>
+                                <td>₱18,750</td>
+                                <td>Apr 2025</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Producer" style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProducerModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="suspended">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div style="width: 40px; height: 40px; background-color: #795548; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">L</div>
+                                        <div>
+                                            <div style="font-weight: 500;">Luis Fernandez</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">09333555777</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Fisheries</td>
+                                <td>Barangay Seaside</td>
+                                <td>4</td>
+                                <td>₱12,890</td>
+                                <td>May 2025</td>
+                                <td><span class="status-badge status-inactive">Suspended</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-admin btn-admin-primary" title="Reactivate Producer" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#reactivateProducerModal">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Reactivate</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Permanently Remove" style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;" onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'" onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'" onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#removeProducerModal">
+                                            <i class="bi bi-person-x"></i>
+                                            <span>Remove</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Producers pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Producer Analytics -->
+            <div class="admin-card">
+                <div class="card-header">
+                    <h3 class="card-title">Producer Performance</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--admin-border); border-radius: 6px;">
+                            <div style="width: 40px; height: 40px; background-color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="bi bi-award"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Top Performer This Month</div>
+                                <div style="font-size: 12px; color: var(--secondary-color);">Jose Santos - ₱15,420 in sales</div>
+                            </div>
+                            <div style="font-size: 12px; color: var(--secondary-color);">Agriculture Category</div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--admin-border); border-radius: 6px;">
+                            <div style="width: 40px; height: 40px; background-color: var(--highlight-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Most Active Category</div>
+                                <div style="font-size: 12px; color: var(--secondary-color);">Agriculture leads with 67 active producers</div>
+                            </div>
+                            <div style="font-size: 12px; color: var(--secondary-color);">+5 new this month</div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--admin-border); border-radius: 6px;">
+                            <div style="width: 40px; height: 40px; background-color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark-color);">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Recent Registration</div>
+                                <div style="font-size: 12px; color: var(--secondary-color);">Luis Fernandez registered 2 hours ago</div>
+                            </div>
+                            <div style="font-size: 12px; color: var(--secondary-color);">Fisheries Category</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Producer Modals -->
+    <div id="producerModals"></div>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            const producersTable = $('#producersTable').DataTable({
+                "responsive": true,                "lengthChange": false,
+                "searching": false,
+                "info": false,
+                "paging": true,
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "language": {
+                    "infoEmpty": "No producers found",
+                    "infoFiltered": "(filtered from _MAX_ total producers)"
+                },
+                "columnDefs": [
+                    { 
+                        "targets": [-1],
+                        "orderable": false,
+                        "searchable": false
+                    }
+                ],
+                "drawCallback": function() {
+                    // Ensure table uses full width
+                    $('.dataTables_wrapper').css('width', '100%');
+                    $('#producersTable').css('width', '100%');
+                }
+            });
+
+            // Position DataTables buttons at the start of the card header
+            setTimeout(function() {
+                // Remove any existing button containers first
+                $('#datatableButtons').empty();
+                
+                // Get the button container and style it
+                const buttonContainer = producersTable.buttons().container();
+                buttonContainer
+                    .removeClass('dt-buttons')
+                    .addClass('btn-group')
+                    .css({
+                        'flex-wrap': 'wrap',
+                        'gap': '8px'
+                    });
+                
+                // Insert buttons in the designated container
+                $('#datatableButtons').append(buttonContainer);
+            }, 100);
+
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tableRows = document.querySelectorAll('#producersTable tbody tr');
+
+            // Tab styling
+            const updateTabStyles = (activeBtn) => {
+                tabBtns.forEach(btn => {
+                    btn.style.color = 'var(--secondary-color)';
+                    btn.style.borderBottomColor = 'transparent';
+                    btn.style.backgroundColor = 'transparent';
+                });
+                
+                activeBtn.style.color = 'var(--primary-color)';
+                activeBtn.style.borderBottomColor = 'var(--primary-color)';
+                activeBtn.style.backgroundColor = 'rgba(44, 133, 63, 0.05)';
+            };
+
+            // Filter producers by status
+            const filterProducers = (status) => {
+                tableRows.forEach(row => {
+                    const rowStatus = row.getAttribute('data-status');
+                    
+                    let shouldShow = false;
+                    
+                    if (status === 'all') {
+                        shouldShow = true;
+                    } else if (status === 'verified') {
+                        shouldShow = rowStatus === 'verified';
+                    } else if (status === 'pending') {
+                        shouldShow = rowStatus === 'pending';
+                    } else if (status === 'suspended') {
+                        shouldShow = rowStatus === 'suspended';
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                });
+                
+                // Redraw DataTable to maintain styling
+                producersTable.draw();
+            };
+
+            // Add click handlers to tabs
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const status = btn.dataset.status;
+                    updateTabStyles(btn);
+                    filterProducers(status);
+                    
+                    // Update active class
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Set initial active tab styling
+            updateTabStyles(document.querySelector('.tab-btn.active'));
+        });
+    </script>
+    <script src="../assets/js/admin-main.js"></script>
+
+<script>
+// Load all producer modals
+async function loadProducerModals() {
+    const modalFiles = [
+        'modals/add-producer-modal.html',
+        'modals/edit-producer-modal.html',
+        'modals/approve-producer-modal.html',
+        'modals/reject-producer-modal.html',
+        'modals/reactivate-producer-modal.html',
+        'modals/remove-producer-modal.html'
+    ];
+    
+    for (const file of modalFiles) {
+        try {
+            const response = await fetch(file);
+            if (response.ok) {
+                const html = await response.text();
+                document.getElementById('producerModals').innerHTML += html;
+            }
+        } catch (error) {
+            console.log(`Could not load ${file}:`, error);
+        }
+    }
+}
+
+// Load modals when page loads
+document.addEventListener('DOMContentLoaded', loadProducerModals);
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Make all table rows clickable (except header rows)
+    const tableRows = document.querySelectorAll('tbody tr:not([onclick])');
+    tableRows.forEach((row, index) => {
+        row.style.cursor = 'pointer';
+        row.onclick = () => window.location.href = 'producer-profile.html?id=' + (index + 1);
+        row.onmouseover = () => row.style.backgroundColor = 'var(--light-color)';
+        row.onmouseout = () => row.style.backgroundColor = '';
+    });
+    
+    // Ensure action buttons don't trigger row click
+    const actionButtons = document.querySelectorAll('.action-buttons button, .btn-admin');
+    actionButtons.forEach(button => {
+        if (!button.onclick || button.onclick.toString().indexOf('stopPropagation') === -1) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

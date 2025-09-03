@@ -1,0 +1,107 @@
+<!-- Cancel Order Modal -->
+<div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="cancelOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="cancelOrderModalLabel">
+                    <i class="bi bi-x-circle"></i>
+                    Cancel Order
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Warning:</strong> This action cannot be undone. The order will be permanently cancelled.
+                </div>
+                
+                <form id="cancelOrderForm">
+                    <div class="mb-3">
+                        <label for="cancelOrderId" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="cancelOrderId" value="#ORD-001" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cancelCustomer" class="form-label">Customer</label>
+                        <input type="text" class="form-control" id="cancelCustomer" value="Juan Dela Cruz" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cancelAmount" class="form-label">Order Amount</label>
+                        <input type="text" class="form-control" id="cancelAmount" value="₱1,350" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cancelReason" class="form-label">Cancellation Reason *</label>
+                        <select class="form-select" id="cancelReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="customer_request">Customer Request</option>
+                            <option value="out_of_stock">Product Out of Stock</option>
+                            <option value="payment_failed">Payment Failed</option>
+                            <option value="address_issue">Address/Delivery Issue</option>
+                            <option value="duplicate_order">Duplicate Order</option>
+                            <option value="fraud_suspected">Fraud Suspected</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cancelNotes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="cancelNotes" rows="3" placeholder="Provide additional details about the cancellation..."></textarea>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="processRefund" checked>
+                                <label class="form-check-label" for="processRefund">
+                                    Process refund automatically
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notifyCustomerCancel" checked>
+                                <label class="form-check-label" for="notifyCustomerCancel">
+                                    Notify customer
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Order</button>
+                <button type="button" class="btn btn-danger" onclick="confirmCancelOrder()">
+                    <i class="bi bi-x-circle"></i>
+                    Cancel Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmCancelOrder() {
+    const reason = document.getElementById('cancelReason').value;
+    
+    if (!reason) {
+        alert('Please select a cancellation reason');
+        return;
+    }
+    
+    if (confirm('Are you sure you want to cancel this order? This action cannot be undone.')) {
+        // Handle cancel order logic here
+        console.log('Cancelling order...');
+        
+        // Show success message
+        alert('Order has been cancelled successfully!');
+        
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('cancelOrderModal')).hide();
+        
+        // Optionally refresh the page or update the table
+        // location.reload();
+    }
+}
+</script>

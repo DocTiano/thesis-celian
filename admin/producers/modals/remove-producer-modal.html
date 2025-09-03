@@ -1,0 +1,124 @@
+<!-- Remove Producer Modal -->
+<div class="modal fade" id="removeProducerModal" tabindex="-1" aria-labelledby="removeProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="removeProducerModalLabel">
+                    <i class="bi bi-trash"></i>
+                    Permanently Remove Producer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <div>
+                        <strong>Warning:</strong> This action cannot be undone. The producer and all associated data will be permanently deleted.
+                    </div>
+                </div>
+
+                <form id="removeProducerForm">
+                    <input type="hidden" id="removeProducerId">
+                    
+                    <div class="mb-3">
+                        <label for="removeProducerName" class="form-label">Producer Name</label>
+                        <input type="text" class="form-control" id="removeProducerName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="removeBusinessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="removeBusinessName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="removalReason" class="form-label">Reason for Removal *</label>
+                        <select class="form-select" id="removalReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="serious_violation">Serious Policy Violation</option>
+                            <option value="fraudulent_activity">Fraudulent Activity</option>
+                            <option value="legal_issues">Legal Issues</option>
+                            <option value="repeated_violations">Repeated Violations</option>
+                            <option value="business_closure">Business Closure</option>
+                            <option value="producer_request">Producer Request</option>
+                            <option value="non_compliance">Non-Compliance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="detailedJustification" class="form-label">Detailed Justification *</label>
+                        <textarea class="form-control" id="detailedJustification" rows="4" placeholder="Provide detailed justification for permanent removal..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="removedBy" class="form-label">Removed By *</label>
+                        <input type="text" class="form-control" id="removedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">What will be removed:</label>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-person text-danger me-2"></i>
+                                Producer account and profile
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-box text-danger me-2"></i>
+                                All products and listings
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-receipt text-danger me-2"></i>
+                                Order history (archived)
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-chat text-danger me-2"></i>
+                                Messages and communications
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-star text-danger me-2"></i>
+                                Reviews and ratings
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmationText" class="form-label">Type "REMOVE" to confirm *</label>
+                        <input type="text" class="form-control" id="confirmationText" placeholder="Type REMOVE to confirm" required>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="backupData">
+                        <label class="form-check-label" for="backupData">
+                            Backup producer data before removal
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendRemovalNotification">
+                        <label class="form-check-label" for="sendRemovalNotification">
+                            Send removal notification to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="removeProducerForm" class="btn btn-danger" disabled id="confirmRemoveBtn">
+                    <i class="bi bi-trash"></i>
+                    Permanently Remove
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('confirmationText').addEventListener('input', function() {
+    const confirmBtn = document.getElementById('confirmRemoveBtn');
+    if (this.value === 'REMOVE') {
+        confirmBtn.disabled = false;
+    } else {
+        confirmBtn.disabled = true;
+    }
+});
+</script>

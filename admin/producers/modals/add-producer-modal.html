@@ -1,0 +1,117 @@
+<!-- Add Producer Modal -->
+<div class="modal fade" id="addProducerModal" tabindex="-1" aria-labelledby="addProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProducerModalLabel">
+                    <i class="bi bi-person-plus"></i>
+                    Add New Producer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProducerForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="producerName" class="form-label">Producer Name *</label>
+                                <input type="text" class="form-control" id="producerName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="producerEmail" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="producerEmail" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="producerPhone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="producerPhone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="producerCategory" class="form-label">Category *</label>
+                                <select class="form-select" id="producerCategory" required>
+                                    <option value="">Select category...</option>
+                                    <option value="aquaculture">Aquaculture</option>
+                                    <option value="agriculture">Agriculture</option>
+                                    <option value="handicrafts">Handicrafts</option>
+                                    <option value="food_processing">Food Processing</option>
+                                    <option value="textiles">Textiles</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="businessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="businessName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location/Address *</label>
+                        <textarea class="form-control" id="location" rows="2" required></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="joinDate" class="form-label">Join Date *</label>
+                                <input type="date" class="form-control" id="joinDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="initialStatus" class="form-label">Initial Status *</label>
+                                <select class="form-select" id="initialStatus" required>
+                                    <option value="pending">Pending Verification</option>
+                                    <option value="verified">Verified</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Business Description</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="products" class="form-label">Main Products/Services</label>
+                        <textarea class="form-control" id="products" rows="2" placeholder="List the main products or services offered..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="verificationDocuments" class="form-label">Verification Documents</label>
+                        <input type="file" class="form-control" id="verificationDocuments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                        <div class="form-text">Upload business license, certifications, and other supporting documents</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="notes" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendWelcomeEmail" checked>
+                        <label class="form-check-label" for="sendWelcomeEmail">
+                            Send welcome email to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="addProducerForm" class="btn btn-primary">
+                    <i class="bi bi-person-plus"></i>
+                    Add Producer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

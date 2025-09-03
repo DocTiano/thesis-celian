@@ -1,0 +1,107 @@
+<!-- Approve Producer Modal -->
+<div class="modal fade" id="approveProducerModal" tabindex="-1" aria-labelledby="approveProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveProducerModalLabel">
+                    <i class="bi bi-check-circle"></i>
+                    Approve Producer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <div>
+                        You are about to approve this producer. This will grant them verified status and allow them to list products.
+                    </div>
+                </div>
+
+                <form id="approveProducerForm">
+                    <input type="hidden" id="approveProducerId">
+                    
+                    <div class="mb-3">
+                        <label for="approveProducerName" class="form-label">Producer Name</label>
+                        <input type="text" class="form-control" id="approveProducerName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="approveBusinessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="approveBusinessName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="verificationLevel" class="form-label">Verification Level *</label>
+                        <select class="form-select" id="verificationLevel" required>
+                            <option value="">Select level...</option>
+                            <option value="basic">Basic Verification</option>
+                            <option value="standard">Standard Verification</option>
+                            <option value="premium">Premium Verification</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="approvalDate" class="form-label">Approval Date *</label>
+                                <input type="date" class="form-control" id="approvalDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="verificationExpiry" class="form-label">Verification Expiry</label>
+                                <input type="date" class="form-control" id="verificationExpiry">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="approvedBy" class="form-label">Approved By *</label>
+                        <input type="text" class="form-control" id="approvedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="approvalComments" class="form-label">Approval Comments</label>
+                        <textarea class="form-control" id="approvalComments" rows="3" placeholder="Add any comments or conditions for approval..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Grant Permissions</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allowProductListing" checked>
+                            <label class="form-check-label" for="allowProductListing">
+                                Allow product listing
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allowOrderProcessing" checked>
+                            <label class="form-check-label" for="allowOrderProcessing">
+                                Allow order processing
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allowDirectMessaging" checked>
+                            <label class="form-check-label" for="allowDirectMessaging">
+                                Allow direct messaging
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendApprovalNotification" checked>
+                        <label class="form-check-label" for="sendApprovalNotification">
+                            Send approval notification to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="approveProducerForm" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i>
+                    Approve Producer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

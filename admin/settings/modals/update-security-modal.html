@@ -1,0 +1,258 @@
+<!-- Update Security Modal -->
+<div class="modal fade" id="updateSecurityModal" tabindex="-1" aria-labelledby="updateSecurityModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateSecurityModalLabel">
+                    <i class="bi bi-shield-check"></i>
+                    Update Security Settings
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <div>
+                        Security settings changes will affect all users. Users may need to re-authenticate after changes.
+                    </div>
+                </div>
+
+                <form id="updateSecurityForm">
+                    <!-- Password Policy Settings -->
+                    <div class="mb-4">
+                        <h6 class="mb-3"><i class="bi bi-key"></i> Password Policy</h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="minPasswordLength" class="form-label">Minimum Password Length</label>
+                                    <select class="form-select" id="minPasswordLength">
+                                        <option value="6">6 characters</option>
+                                        <option value="8" selected>8 characters</option>
+                                        <option value="10">10 characters</option>
+                                        <option value="12">12 characters</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="passwordExpiry" class="form-label">Password Expiry</label>
+                                    <select class="form-select" id="passwordExpiry">
+                                        <option value="never">Never</option>
+                                        <option value="30">30 days</option>
+                                        <option value="60">60 days</option>
+                                        <option value="90" selected>90 days</option>
+                                        <option value="180">180 days</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password Requirements</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="requireUppercase" checked>
+                                <label class="form-check-label" for="requireUppercase">
+                                    Require uppercase letters
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="requireLowercase" checked>
+                                <label class="form-check-label" for="requireLowercase">
+                                    Require lowercase letters
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="requireNumbers" checked>
+                                <label class="form-check-label" for="requireNumbers">
+                                    Require numbers
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="requireSpecialChars">
+                                <label class="form-check-label" for="requireSpecialChars">
+                                    Require special characters
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session Management -->
+                    <div class="mb-4">
+                        <h6 class="mb-3"><i class="bi bi-clock-history"></i> Session Management</h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="sessionTimeout" class="form-label">Session Timeout</label>
+                                    <select class="form-select" id="sessionTimeout">
+                                        <option value="15">15 minutes</option>
+                                        <option value="30" selected>30 minutes</option>
+                                        <option value="60">1 hour</option>
+                                        <option value="120">2 hours</option>
+                                        <option value="480">8 hours</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="maxConcurrentSessions" class="form-label">Max Concurrent Sessions</label>
+                                    <select class="form-select" id="maxConcurrentSessions">
+                                        <option value="1">1 session</option>
+                                        <option value="3" selected>3 sessions</option>
+                                        <option value="5">5 sessions</option>
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMeEnabled" checked>
+                            <label class="form-check-label" for="rememberMeEnabled">
+                                Allow "Remember Me" option
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Login Security -->
+                    <div class="mb-4">
+                        <h6 class="mb-3"><i class="bi bi-person-lock"></i> Login Security</h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="maxLoginAttempts" class="form-label">Max Failed Login Attempts</label>
+                                    <select class="form-select" id="maxLoginAttempts">
+                                        <option value="3">3 attempts</option>
+                                        <option value="5" selected>5 attempts</option>
+                                        <option value="10">10 attempts</option>
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="lockoutDuration" class="form-label">Account Lockout Duration</label>
+                                    <select class="form-select" id="lockoutDuration">
+                                        <option value="5">5 minutes</option>
+                                        <option value="15" selected>15 minutes</option>
+                                        <option value="30">30 minutes</option>
+                                        <option value="60">1 hour</option>
+                                        <option value="1440">24 hours</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="enableCaptcha">
+                            <label class="form-check-label" for="enableCaptcha">
+                                Enable CAPTCHA after failed attempts
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Two-Factor Authentication -->
+                    <div class="mb-4">
+                        <h6 class="mb-3"><i class="bi bi-shield-lock"></i> Two-Factor Authentication</h6>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="enable2FA">
+                            <label class="form-check-label" for="enable2FA">
+                                Enable Two-Factor Authentication
+                            </label>
+                        </div>
+
+                        <div id="twoFASettings" style="display: none;">
+                            <div class="mb-3">
+                                <label for="twoFAMethod" class="form-label">2FA Method</label>
+                                <select class="form-select" id="twoFAMethod">
+                                    <option value="sms">SMS</option>
+                                    <option value="email" selected>Email</option>
+                                    <option value="app">Authenticator App</option>
+                                </select>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="require2FAForAdmins" checked>
+                                <label class="form-check-label" for="require2FAForAdmins">
+                                    Require 2FA for administrators
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IP Restrictions -->
+                    <div class="mb-4">
+                        <h6 class="mb-3"><i class="bi bi-geo"></i> IP Restrictions</h6>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="enableIPRestrictions">
+                            <label class="form-check-label" for="enableIPRestrictions">
+                                Enable IP-based access restrictions
+                            </label>
+                        </div>
+
+                        <div id="ipRestrictionsSettings" style="display: none;">
+                            <div class="mb-3">
+                                <label for="allowedIPs" class="form-label">Allowed IP Addresses</label>
+                                <textarea class="form-control" id="allowedIPs" rows="3" placeholder="Enter IP addresses or ranges, one per line&#10;Example: 192.168.1.0/24&#10;127.0.0.1"></textarea>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="logBlockedIPs" checked>
+                                <label class="form-check-label" for="logBlockedIPs">
+                                    Log blocked IP attempts
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="securityNotes" class="form-label">Security Update Notes</label>
+                        <textarea class="form-control" id="securityNotes" rows="3" placeholder="Document the reason for these security changes..."></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="forceLogoutAll">
+                        <label class="form-check-label" for="forceLogoutAll">
+                            Force all users to log out and re-authenticate
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="testSecuritySettings()">
+                    <i class="bi bi-gear"></i>
+                    Test Settings
+                </button>
+                <button type="submit" form="updateSecurityForm" class="btn btn-primary">
+                    <i class="bi bi-shield-check"></i>
+                    Update Security
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('enable2FA').addEventListener('change', function() {
+    const twoFASettings = document.getElementById('twoFASettings');
+    if (this.checked) {
+        twoFASettings.style.display = 'block';
+    } else {
+        twoFASettings.style.display = 'none';
+    }
+});
+
+document.getElementById('enableIPRestrictions').addEventListener('change', function() {
+    const ipRestrictionsSettings = document.getElementById('ipRestrictionsSettings');
+    if (this.checked) {
+        ipRestrictionsSettings.style.display = 'block';
+    } else {
+        ipRestrictionsSettings.style.display = 'none';
+    }
+});
+</script>

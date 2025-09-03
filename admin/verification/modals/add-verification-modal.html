@@ -1,0 +1,95 @@
+<!-- Add New Verification Modal -->
+<div class="modal fade" id="addVerificationModal" tabindex="-1" aria-labelledby="addVerificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addVerificationModalLabel">
+                    <i class="bi bi-shield-plus"></i>
+                    Add New Verification
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addVerificationForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="applicantName" class="form-label">Applicant Name *</label>
+                                <input type="text" class="form-control" id="applicantName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="applicantEmail" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="applicantEmail" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="verificationType" class="form-label">Verification Type *</label>
+                                <select class="form-select" id="verificationType" required>
+                                    <option value="">Select type...</option>
+                                    <option value="lgu">LGU Verification</option>
+                                    <option value="producer">Producer Verification</option>
+                                    <option value="business">Business License</option>
+                                    <option value="quality">Quality Certification</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="applicationDate" class="form-label">Application Date *</label>
+                                <input type="date" class="form-control" id="applicationDate" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="businessName" class="form-label">Business/Organization Name</label>
+                        <input type="text" class="form-control" id="businessName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location/Address *</label>
+                        <textarea class="form-control" id="location" rows="2" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description/Purpose</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="documents" class="form-label">Required Documents</label>
+                        <input type="file" class="form-control" id="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                        <div class="form-text">Upload supporting documents (PDF, Images, Word files)</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="priority" class="form-label">Priority Level</label>
+                        <select class="form-select" id="priority">
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="notes" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="addVerificationForm" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Create Verification
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

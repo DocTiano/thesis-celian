@@ -1,0 +1,106 @@
+<!-- Reactivate Producer Modal -->
+<div class="modal fade" id="reactivateProducerModal" tabindex="-1" aria-labelledby="reactivateProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reactivateProducerModalLabel">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Reactivate Producer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <div>
+                        You are about to reactivate this suspended producer. This will restore their account and permissions.
+                    </div>
+                </div>
+
+                <form id="reactivateProducerForm">
+                    <input type="hidden" id="reactivateProducerId">
+                    
+                    <div class="mb-3">
+                        <label for="reactivateProducerName" class="form-label">Producer Name</label>
+                        <input type="text" class="form-control" id="reactivateProducerName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="reactivateBusinessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="reactivateBusinessName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="suspensionReason" class="form-label">Previous Suspension Reason</label>
+                        <textarea class="form-control" id="suspensionReason" rows="2" readonly></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="reactivationReason" class="form-label">Reason for Reactivation *</label>
+                        <select class="form-select" id="reactivationReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="issues_resolved">Issues Resolved</option>
+                            <option value="compliance_restored">Compliance Restored</option>
+                            <option value="documentation_updated">Documentation Updated</option>
+                            <option value="dispute_resolved">Dispute Resolved</option>
+                            <option value="administrative_error">Administrative Error</option>
+                            <option value="probation_completed">Probation Period Completed</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="reactivationComments" class="form-label">Reactivation Comments *</label>
+                        <textarea class="form-control" id="reactivationComments" rows="3" placeholder="Explain why the producer is being reactivated..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="reactivatedBy" class="form-label">Reactivated By *</label>
+                        <input type="text" class="form-control" id="reactivatedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="conditions" class="form-label">Conditions/Restrictions</label>
+                        <textarea class="form-control" id="conditions" rows="2" placeholder="Any special conditions or restrictions for the reactivated account..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Restore Permissions</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="restoreProductListing" checked>
+                            <label class="form-check-label" for="restoreProductListing">
+                                Restore product listing privileges
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="restoreOrderProcessing" checked>
+                            <label class="form-check-label" for="restoreOrderProcessing">
+                                Restore order processing privileges
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="restoreMessaging" checked>
+                            <label class="form-check-label" for="restoreMessaging">
+                                Restore messaging privileges
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendReactivationNotification" checked>
+                        <label class="form-check-label" for="sendReactivationNotification">
+                            Send reactivation notification to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="reactivateProducerForm" class="btn btn-success">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Reactivate Producer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

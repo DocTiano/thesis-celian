@@ -1,0 +1,94 @@
+<!-- Reject Producer Modal -->
+<div class="modal fade" id="rejectProducerModal" tabindex="-1" aria-labelledby="rejectProducerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rejectProducerModalLabel">
+                    <i class="bi bi-x-circle"></i>
+                    Reject Producer Application
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <div>
+                        You are about to reject this producer application. Please provide a reason for rejection.
+                    </div>
+                </div>
+
+                <form id="rejectProducerForm">
+                    <input type="hidden" id="rejectProducerId">
+                    
+                    <div class="mb-3">
+                        <label for="rejectProducerName" class="form-label">Producer Name</label>
+                        <input type="text" class="form-control" id="rejectProducerName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rejectBusinessName" class="form-label">Business Name</label>
+                        <input type="text" class="form-control" id="rejectBusinessName" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
+                        <select class="form-select" id="rejectionReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="incomplete_documentation">Incomplete Documentation</option>
+                            <option value="invalid_business_license">Invalid Business License</option>
+                            <option value="does_not_meet_criteria">Does Not Meet Criteria</option>
+                            <option value="fraudulent_information">Fraudulent Information</option>
+                            <option value="location_restrictions">Location Restrictions</option>
+                            <option value="category_restrictions">Category Restrictions</option>
+                            <option value="quality_standards">Quality Standards Not Met</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="detailedComments" class="form-label">Detailed Comments *</label>
+                        <textarea class="form-control" id="detailedComments" rows="4" placeholder="Provide specific details about why the producer application is being rejected..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="improvementSuggestions" class="form-label">Suggestions for Improvement</label>
+                        <textarea class="form-control" id="improvementSuggestions" rows="3" placeholder="What should the producer do to reapply successfully?"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rejectedBy" class="form-label">Rejected By *</label>
+                        <input type="text" class="form-control" id="rejectedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="allowReapplication" checked>
+                        <label class="form-check-label" for="allowReapplication">
+                            Allow producer to reapply in the future
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="suspendAccount">
+                        <label class="form-check-label" for="suspendAccount">
+                            Suspend producer account temporarily
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sendRejectionNotification" checked>
+                        <label class="form-check-label" for="sendRejectionNotification">
+                            Send rejection notification to producer
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="rejectProducerForm" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i>
+                    Reject Application
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

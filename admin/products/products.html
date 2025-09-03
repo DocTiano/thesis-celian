@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Management | Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <link href="../assets/css/admin-styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <nav class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">S2EH</div>
+            <div class="title">ADMIN PANEL</div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <a href="../dashboard/dashboard.html" class="nav-link">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="products.html" class="nav-link active">
+                    <i class="bi bi-box"></i>
+                    <span>Products</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../orders/orders.html" class="nav-link">
+                    <i class="bi bi-cart3"></i>
+                    <span>Orders</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../users/users.html" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../producers/producers.html" class="nav-link">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Producers</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../verification/verification.html" class="nav-link">
+                    <i class="bi bi-shield-check"></i>
+                    <span>LGU Verification</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../categories/categories.html" class="nav-link">
+                    <i class="bi bi-tags"></i>
+                    <span>Categories</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../messages/messages.html" class="nav-link">
+                    <i class="bi bi-chat-dots"></i>
+                    <span>Messages</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../reports/reports.html" class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../settings/settings.html" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title">Products Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-profile">
+                    <div class="admin-avatar">A</div>
+                    <span>Admin User</span>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Product Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Products</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-box"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-change positive">+12% from last month</div>
+                </div>
+
+                <div class="stat-card highlight">
+                    <div class="stat-header">
+                        <div class="stat-title">Active Products</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">1,156</div>
+                    <div class="stat-change positive">+8% from last month</div>
+                </div>
+
+                <div class="stat-card accent">
+                    <div class="stat-header">
+                        <div class="stat-title">Pending Approval</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-change negative">+5 from yesterday</div>
+                </div>
+
+                <div class="stat-card secondary">
+                    <div class="stat-header">
+                        <div class="stat-title">Out of Stock</div>
+                        <div class="stat-icon">
+                            <i class="bi bi-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">44</div>
+                    <div class="stat-change negative">-3 from yesterday</div>
+                </div>
+            </div>
+
+            <!-- Products Management -->
+            <div class="admin-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div id="datatableButtons" class="d-flex gap-2"></div> <!-- DataTables buttons container -->
+                        <div class="d-flex gap-2 align-items-center">
+                            <input type="search" class="form-control" placeholder="Search products..."
+                                style="width: 250px;">
+                            <button class="btn-admin btn-admin-primary" data-bs-toggle="modal" data-bs-target="#addProductModal"
+                                style="padding: 12px 24px; font-weight: 600; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); transition: all 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                <i class="bi bi-plus-circle"></i>
+                                Add New Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Status Tabs -->
+                <div class="product-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Product status filters">
+                    <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                        <button class="tab-btn active" data-status="all"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-grid" style="margin-right: 8px; font-size: 16px;"></i>
+                            All Products (<span id="count-all">5</span>)
+                        </button>
+                        <button class="tab-btn" data-status="active"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-check-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                            Active (<span id="count-active">3</span>)
+                        </button>
+                        <button class="tab-btn" data-status="out-of-stock"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-x-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                            Out of Stock (<span id="count-out-of-stock">1</span>)
+                        </button>
+                        <button class="tab-btn" data-status="pending"
+                            style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                            <i class="bi bi-clock" style="margin-right: 8px; font-size: 16px;"></i>
+                            Pending Approval (<span id="count-pending">1</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <table id="productsTable" class="admin-table table table-striped table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Producer</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>LGU Verified</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="active" onclick="window.location.href='product-details.html?id=1'" style="cursor: pointer;" onmouseover="this.style.backgroundColor='var(--light-color)'" onmouseout="this.style.backgroundColor=''">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="../../images/fishes.jpg" alt="Product"
+                                            style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                        <div>
+                                            <div style="font-weight: 500;">Sagnay Rice (5kg)</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">Premium quality
+                                                rice</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Jose Farming Co.</td>
+                                <td>Agricultural</td>
+                                <td>₱350</td>
+                                <td>45 pcs</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Edit</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-secondary" title="Categorize Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='#545b62'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#categorizeProductModal">
+                                            <i class="bi bi-tags"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Category</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-warning" title="Archive Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; background-color: #ffc107; border-color: #ffc107; color: #000;"
+                                            onmouseover="this.style.backgroundColor='#e0a800'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='#ffc107'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#archiveDeleteProductModal">
+                                            <i class="bi bi-archive"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Archive</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="active" onclick="window.location.href='product-details.html?id=2'" style="cursor: pointer;" onmouseover="this.style.backgroundColor='var(--light-color)'" onmouseout="this.style.backgroundColor=''">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="../../images/fishes.jpg" alt="Product"
+                                            style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                        <div>
+                                            <div style="font-weight: 500;">Woven Basket</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">Handmade
+                                                traditional basket</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Craft Makers Guild</td>
+                                <td>Handicrafts</td>
+                                <td>₱450</td>
+                                <td>12 pcs</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Edit</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-secondary" title="Categorize Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='#545b62'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#categorizeProductModal">
+                                            <i class="bi bi-tags"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Category</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-warning" title="Archive Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; background-color: #ffc107; border-color: #ffc107; color: #000;"
+                                            onmouseover="this.style.backgroundColor='#e0a800'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='#ffc107'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#archiveDeleteProductModal">
+                                            <i class="bi bi-archive"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Archive</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="out-of-stock" onclick="window.location.href='product-details.html?id=3'" style="cursor: pointer;" onmouseover="this.style.backgroundColor='var(--light-color)'" onmouseout="this.style.backgroundColor=''">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="../../images/fishes.jpg" alt="Product"
+                                            style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                        <div>
+                                            <div style="font-weight: 500;">Fish Sauce (500ml)</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">Traditional
+                                                fish sauce</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Sagnay Fishermen Assoc.</td>
+                                <td>Food Products</td>
+                                <td>₱120</td>
+                                <td>0 pcs</td>
+                                <td><span class="status-badge status-inactive">Out of Stock</span></td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Edit</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-primary" title="Restock Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(44, 133, 63, 0.2);"
+                                            onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 10px rgba(44, 133, 63, 0.3)'"
+                                            onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(44, 133, 63, 0.2)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveRejectRestockModal">
+                                            <i class="bi bi-plus-square"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Restock</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Delete Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(228, 76, 49, 0.2);"
+                                            onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 10px rgba(228, 76, 49, 0.3)'"
+                                            onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(228, 76, 49, 0.2)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#archiveDeleteProductModal">
+                                            <i class="bi bi-trash"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="pending" onclick="window.location.href='product-details.html?id=4'" style="cursor: pointer;" onmouseover="this.style.backgroundColor='var(--light-color)'" onmouseout="this.style.backgroundColor=''">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="../../images/fishes.jpg" alt="Product"
+                                            style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                        <div>
+                                            <div style="font-weight: 500;">Handmade Pottery</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">Decorative clay
+                                                pottery</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Artisan Collective</td>
+                                <td>Handicrafts</td>
+                                <td>₱680</td>
+                                <td>8 pcs</td>
+                                <td><span class="status-badge status-pending">Pending Approval</span></td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn-admin btn-admin-primary" title="Approve Product"
+                                            style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); font-weight: 600;"
+                                            onmouseover="this.style.backgroundColor='#236e33'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'"
+                                            onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveRejectRestockModal">
+                                            <i class="bi bi-check-circle"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Approve</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-danger" title="Reject Product"
+                                            style="padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(228, 76, 49, 0.3); font-weight: 600;"
+                                            onmouseover="this.style.backgroundColor='#c13d26'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(228, 76, 49, 0.4)'"
+                                            onmouseout="this.style.backgroundColor='var(--highlight-color)'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(228, 76, 49, 0.3)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#approveRejectRestockModal">
+                                            <i class="bi bi-x-circle"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Reject</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-status="active" onclick="window.location.href='product-details.html?id=5'" style="cursor: pointer;" onmouseover="this.style.backgroundColor='var(--light-color)'" onmouseout="this.style.backgroundColor=''">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="../../images/fishes.jpg" alt="Product"
+                                            style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                        <div>
+                                            <div style="font-weight: 500;">Coconut Oil (1L)</div>
+                                            <div style="font-size: 12px; color: var(--secondary-color);">Pure virgin
+                                                coconut oil</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Coconut Farmers Coop</td>
+                                <td>Food Products</td>
+                                <td>₱280</td>
+                                <td>23 pcs</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn-admin btn-admin-outline" title="Edit Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='var(--light-color)'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='transparent'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                            <i class="bi bi-pencil"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Edit</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-secondary" title="Categorize Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='#545b62'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#categorizeProductModal">
+                                            <i class="bi bi-tags"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Category</span>
+                                        </button>
+                                        <button class="btn-admin btn-admin-warning" title="Archive Product"
+                                            style="padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; background-color: #ffc107; border-color: #ffc107; color: #000;"
+                                            onmouseover="this.style.backgroundColor='#e0a800'; this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.backgroundColor='#ffc107'; this.style.transform='scale(1)'"
+                                            onclick="event.stopPropagation();" data-bs-toggle="modal" data-bs-target="#archiveDeleteProductModal">
+                                            <i class="bi bi-archive"></i>
+                                            <span style="margin-left: 4px; font-size: 12px;">Archive</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Product pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const table = $('#productsTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "searching": false,
+                "info": false,
+                "paging": true,
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [-1],
+                        "orderable": false,
+                        "searchable": false
+                    }
+                ]
+            });
+
+            // Position DataTables buttons at the start of the card header
+            setTimeout(function() {
+                // Remove any existing button containers first
+                $('#datatableButtons').empty();
+                
+                // Get the button container and style it
+                const buttonContainer = table.buttons().container();
+                buttonContainer
+                    .removeClass('dt-buttons')
+                    .addClass('btn-group')
+                    .css({
+                        'flex-wrap': 'wrap',
+                        'gap': '8px'
+                    });
+                
+                // Insert buttons in the designated container
+                $('#datatableButtons').append(buttonContainer);
+            }, 100);
+        });
+    </script>
+    <script src="../assets/js/admin-main.js"></script>
+
+    <!-- Product Tabs Functionality -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tableRows = document.querySelectorAll('#productsTable tbody tr[data-status]');
+        
+        // Tab CSS styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .tab-btn.active {
+                color: var(--primary-color) !important;
+                border-bottom-color: var(--primary-color) !important;
+                background-color: rgba(44, 133, 63, 0.08) !important;
+                font-weight: 700 !important;
+            }
+            .tab-btn:hover {
+                color: var(--primary-color);
+                background-color: rgba(44, 133, 63, 0.05);
+                transform: translateY(-1px);
+            }
+            .product-row-hidden {
+                display: none !important;
+            }
+            
+            /* Enhanced tab styling */
+            .product-tabs {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                border-radius: 0;
+                overflow: hidden;
+                background: #f8f9fa;
+                border-bottom: 2px solid var(--admin-border);
+            }
+            
+            .tab-btn {
+                border-right: 1px solid rgba(0,0,0,0.08) !important;
+                position: relative;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                gap: 8px;
+                background: #f8f9fa !important;
+            }
+            
+            .tab-btn:last-child {
+                border-right: none !important;
+            }
+            
+            .tab-btn.active {
+                background: white !important;
+                border-bottom: 4px solid var(--primary-color) !important;
+                margin-bottom: -2px;
+                z-index: 1;
+                position: relative;
+            }
+            
+            .tab-btn:hover:not(.active) {
+                background: #e9ecef !important;
+            }
+            
+            /* Responsive tabs */
+            @media (max-width: 768px) {
+                .tab-navigation {
+                    flex-wrap: wrap;
+                    gap: 0 !important;
+                }
+                .tab-btn {
+                    flex: 1 1 50% !important;
+                    min-width: 50% !important;
+                    padding: 14px 16px !important;
+                    font-size: 13px !important;
+                    min-height: 50px !important;
+                }
+                .tab-btn i {
+                    font-size: 14px !important;
+                    margin-right: 6px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .tab-btn {
+                    flex: 1 1 100% !important;
+                    min-width: 100% !important;
+                    padding: 12px 16px !important;
+                    font-size: 12px !important;
+                    min-height: 45px !important;
+                    border-right: none !important;
+                    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+                }
+                .tab-btn:last-child {
+                    border-bottom: none !important;
+                }
+                .tab-btn i {
+                    font-size: 12px !important;
+                    margin-right: 4px !important;
+                }
+            }
+            
+            /* Table adjustments */
+            .card-body {
+                padding-top: 0 !important;
+                border-radius: 0 0 8px 8px;
+            }
+            
+            #productsTable {
+                border-radius: 0;
+                overflow: hidden;
+                margin-bottom: 0;
+            }
+            
+            #productsTable thead th {
+                background-color: #f8f9fa;
+                border-top: none;
+                font-weight: 600;
+                color: var(--dark-color);
+                padding: 16px 12px;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Count products by status
+        function updateCounts() {
+            const counts = {
+                all: tableRows.length,
+                active: 0,
+                'out-of-stock': 0,
+                pending: 0
+            };
+            
+            tableRows.forEach(row => {
+                const status = row.getAttribute('data-status');
+                if (counts.hasOwnProperty(status)) {
+                    counts[status]++;
+                }
+            });
+            
+            // Update count displays
+            document.getElementById('count-all').textContent = counts.all;
+            document.getElementById('count-active').textContent = counts.active;
+            document.getElementById('count-out-of-stock').textContent = counts['out-of-stock'];
+            document.getElementById('count-pending').textContent = counts.pending;
+        }
+        
+        // Filter products by status
+        function filterProducts(status) {
+            let visibleCount = 0;
+            
+            tableRows.forEach(row => {
+                if (status === 'all' || row.getAttribute('data-status') === status) {
+                    row.classList.remove('product-row-hidden');
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.classList.add('product-row-hidden');
+                    row.style.display = 'none';
+                }
+            });
+            
+            // Show/hide "no products found" message
+            let noProductsMsg = document.getElementById('no-products-message');
+            if (visibleCount === 0) {
+                if (!noProductsMsg) {
+                    noProductsMsg = document.createElement('tr');
+                    noProductsMsg.id = 'no-products-message';
+                    noProductsMsg.innerHTML = `
+                        <td colspan="8" style="text-align: center; padding: 40px; color: var(--secondary-color);">
+                            <i class="bi bi-inbox" style="font-size: 48px; margin-bottom: 16px; display: block;"></i>
+                            <div style="font-size: 16px; margin-bottom: 8px;">No products found</div>
+                            <div style="font-size: 14px;">Try selecting a different status tab</div>
+                        </td>
+                    `;
+                    document.querySelector('#productsTable tbody').appendChild(noProductsMsg);
+                }
+                noProductsMsg.style.display = '';
+            } else {
+                if (noProductsMsg) {
+                    noProductsMsg.style.display = 'none';
+                }
+            }
+        }
+        
+        // Handle tab clicks
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Filter products
+                const status = this.getAttribute('data-status');
+                filterProducts(status);
+            });
+            
+            // Add keyboard navigation
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+                
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    const currentIndex = Array.from(tabBtns).indexOf(this);
+                    let nextIndex;
+                    
+                    if (e.key === 'ArrowRight') {
+                        nextIndex = (currentIndex + 1) % tabBtns.length;
+                    } else {
+                        nextIndex = currentIndex === 0 ? tabBtns.length - 1 : currentIndex - 1;
+                    }
+                    
+                    tabBtns[nextIndex].focus();
+                    tabBtns[nextIndex].click();
+                }
+            });
+            
+            // Make tabs focusable
+            btn.setAttribute('tabindex', '0');
+            btn.setAttribute('role', 'tab');
+        });
+        
+        // Initialize counts
+        updateCounts();
+        
+        // Set default filter to 'all'
+        filterProducts('all');
+    });
+    </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Make all table rows clickable (except header rows)
+    const tableRows = document.querySelectorAll('tbody tr:not([onclick])');
+    tableRows.forEach((row, index) => {
+        row.style.cursor = 'pointer';
+        row.onclick = () => window.location.href = 'product-details.html?id=' + (index + 1);
+        row.onmouseover = () => row.style.backgroundColor = 'var(--light-color)';
+        row.onmouseout = () => row.style.backgroundColor = '';
+    });
+    
+    // Ensure action buttons don't trigger row click
+    const actionButtons = document.querySelectorAll('.action-buttons button, .btn-admin');
+    actionButtons.forEach(button => {
+        if (!button.onclick || button.onclick.toString().indexOf('stopPropagation') === -1) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+    });
+});
+</script>
+
+    <!-- Product Modals -->
+    <div id="productModals"></div>
+    
+    <script>
+    // Load all product modals
+    async function loadProductModals() {
+        const modalFiles = [
+            'modals/add-product-modal.html',
+            'modals/edit-product-modal.html', 
+            'modals/archive-delete-product-modal.html',
+            'modals/approve-reject-restock-modal.html',
+            'modals/categorize-product-modal.html'
+        ];
+        
+        for (const file of modalFiles) {
+            try {
+                const response = await fetch(file);
+                if (response.ok) {
+                    const html = await response.text();
+                    document.getElementById('productModals').innerHTML += html;
+                }
+            } catch (error) {
+                console.log(`Could not load ${file}:`, error);
+            }
+        }
+    }
+    
+    // Load modals when page loads
+    document.addEventListener('DOMContentLoaded', loadProductModals);
+    </script>
+</body>
+</html>
+
+

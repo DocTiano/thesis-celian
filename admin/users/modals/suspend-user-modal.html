@@ -1,0 +1,63 @@
+<!-- Suspend User Modal -->
+<div class="modal fade" id="suspendUserModal" tabindex="-1" aria-labelledby="suspendUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-warning" id="suspendUserModalLabel">
+                    <i class="bi bi-exclamation-triangle me-2"></i>Suspend User Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Warning:</strong> This action will suspend the user's account and prevent them from accessing the platform.
+                </div>
+                
+                <form id="suspendUserForm">
+                    <div class="mb-3">
+                        <label for="suspendReason" class="form-label">Reason for Suspension</label>
+                        <select class="form-select" id="suspendReason" required>
+                            <option value="">Select a reason</option>
+                            <option value="policy_violation">Policy Violation</option>
+                            <option value="suspicious_activity">Suspicious Activity</option>
+                            <option value="fraud_detected">Fraud Detected</option>
+                            <option value="user_request">User Request</option>
+                            <option value="payment_issues">Payment Issues</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="suspendNotes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="suspendNotes" rows="3" 
+                                  placeholder="Provide additional details about the suspension..."></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="suspendDuration" class="form-label">Suspension Duration</label>
+                        <select class="form-select" id="suspendDuration">
+                            <option value="temporary">Temporary (Review Required)</option>
+                            <option value="7_days">7 Days</option>
+                            <option value="30_days">30 Days</option>
+                            <option value="permanent">Permanent</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyUser" checked>
+                        <label class="form-check-label" for="notifyUser">
+                            Send notification email to user
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-warning" form="suspendUserForm">
+                    <i class="bi bi-pause-circle me-1"></i>Suspend Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

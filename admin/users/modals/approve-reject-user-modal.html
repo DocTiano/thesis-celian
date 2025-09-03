@@ -1,0 +1,125 @@
+<!-- Approve/Reject User Modal -->
+<div class="modal fade" id="approveRejectUserModal" tabindex="-1" aria-labelledby="approveRejectUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveRejectUserModalLabel">
+                    <i class="bi bi-person-check me-2"></i>Review User Application
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- User Information Display -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <div class="user-avatar mx-auto mb-3" style="width: 80px; height: 80px; background-color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">
+                                    A
+                                </div>
+                                <h6 class="card-title">Ana Rodriguez</h6>
+                                <p class="card-text small text-muted">Producer Application</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Phone:</strong><br>
+                                <span class="text-muted">09111222333</span>
+                            </div>
+                            <div class="col-6">
+                                <strong>Location:</strong><br>
+                                <span class="text-muted">Barangay Riverside</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Application Date:</strong><br>
+                                <span class="text-muted">Sept 1, 2025</span>
+                            </div>
+                            <div class="col-6">
+                                <strong>Status:</strong><br>
+                                <span class="badge bg-warning">Pending Verification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Selection -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-success">
+                            <div class="card-header bg-success text-white">
+                                <h6 class="mb-0"><i class="bi bi-check-circle me-2"></i>Approve Application</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="approveUserForm">
+                                    <div class="mb-3">
+                                        <label for="approveRole" class="form-label">Assign Role</label>
+                                        <select class="form-select" id="approveRole" required>
+                                            <option value="producer">Producer</option>
+                                            <option value="customer">Customer</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="approveNotes" class="form-label">Approval Notes</label>
+                                        <textarea class="form-control" id="approveNotes" rows="3" placeholder="Optional notes for approval..."></textarea>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="sendWelcome" checked>
+                                        <label class="form-check-label" for="sendWelcome">
+                                            Send welcome email
+                                        </label>
+                                    </div>
+                                </form>
+                                <button type="submit" class="btn btn-success w-100 mt-3" form="approveUserForm">
+                                    <i class="bi bi-check-circle me-1"></i>Approve User
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-danger">
+                            <div class="card-header bg-danger text-white">
+                                <h6 class="mb-0"><i class="bi bi-x-circle me-2"></i>Reject Application</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="rejectUserForm">
+                                    <div class="mb-3">
+                                        <label for="rejectReason" class="form-label">Rejection Reason</label>
+                                        <select class="form-select" id="rejectReason" required>
+                                            <option value="">Select reason</option>
+                                            <option value="incomplete_info">Incomplete Information</option>
+                                            <option value="invalid_documents">Invalid Documents</option>
+                                            <option value="duplicate_account">Duplicate Account</option>
+                                            <option value="policy_violation">Policy Violation</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="rejectNotes" class="form-label">Rejection Notes</label>
+                                        <textarea class="form-control" id="rejectNotes" rows="3" placeholder="Provide detailed reason for rejection..." required></textarea>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="allowReapply" checked>
+                                        <label class="form-check-label" for="allowReapply">
+                                            Allow re-application
+                                        </label>
+                                    </div>
+                                </form>
+                                <button type="submit" class="btn btn-danger w-100 mt-3" form="rejectUserForm">
+                                    <i class="bi bi-x-circle me-1"></i>Reject Application
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

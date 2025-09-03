@@ -1,0 +1,298 @@
+<!-- Approve Product Modal -->
+<div class="modal fade" id="approveProductModal" tabindex="-1" aria-labelledby="approveProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveProductModalLabel">
+                    <i class="bi bi-check-circle text-success me-2"></i>
+                    Approve Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+                </div>
+                <h6 class="text-center mb-3">Approve this product for listing?</h6>
+                <div class="product-info bg-light p-3 rounded mb-3" id="approveProductInfo">
+                    <!-- Product info will be populated here -->
+                </div>
+                <div class="mb-3">
+                    <label for="approvalNotes" class="form-label">Approval Notes (optional)</label>
+                    <textarea class="form-control" id="approvalNotes" rows="3" placeholder="Add any notes about the approval..."></textarea>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="setLguVerified">
+                    <label class="form-check-label" for="setLguVerified">
+                        Mark as LGU Verified
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="confirmApproveProduct()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Approve Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject Product Modal -->
+<div class="modal fade" id="rejectProductModal" tabindex="-1" aria-labelledby="rejectProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rejectProductModalLabel">
+                    <i class="bi bi-x-circle text-danger me-2"></i>
+                    Reject Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <i class="bi bi-x-circle text-danger" style="font-size: 3rem;"></i>
+                </div>
+                <h6 class="text-center mb-3">Reject this product submission?</h6>
+                <div class="product-info bg-light p-3 rounded mb-3" id="rejectProductInfo">
+                    <!-- Product info will be populated here -->
+                </div>
+                <div class="mb-3">
+                    <label for="rejectionReason" class="form-label">Reason for Rejection *</label>
+                    <select class="form-control mb-2" id="rejectionReasonSelect">
+                        <option value="">Select a reason</option>
+                        <option value="incomplete-info">Incomplete Information</option>
+                        <option value="poor-quality">Poor Image Quality</option>
+                        <option value="inappropriate-content">Inappropriate Content</option>
+                        <option value="duplicate-product">Duplicate Product</option>
+                        <option value="pricing-issues">Pricing Issues</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea class="form-control" id="rejectionReason" rows="3" placeholder="Provide detailed reason for rejection..." required></textarea>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="allowResubmission" checked>
+                    <label class="form-check-label" for="allowResubmission">
+                        Allow producer to resubmit after corrections
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="confirmRejectProduct()">
+                    <i class="bi bi-x-circle me-1"></i>
+                    Reject Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Restock Product Modal -->
+<div class="modal fade" id="restockProductModal" tabindex="-1" aria-labelledby="restockProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="restockProductModalLabel">
+                    <i class="bi bi-box-seam text-primary me-2"></i>
+                    Restock Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-info bg-light p-3 rounded mb-3" id="restockProductInfo">
+                    <!-- Product info will be populated here -->
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="currentStock" class="form-label">Current Stock</label>
+                            <input type="number" class="form-control" id="currentStock" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="addStock" class="form-label">Add Stock *</label>
+                            <input type="number" class="form-control" id="addStock" min="1" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="newStock" class="form-label">New Total Stock</label>
+                    <input type="number" class="form-control" id="newStock" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="restockNotes" class="form-label">Restock Notes (optional)</label>
+                    <textarea class="form-control" id="restockNotes" rows="2" placeholder="Add notes about this restock..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="confirmRestockProduct()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Update Stock
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentProductId = null;
+
+function openApproveProductModal(productId) {
+    currentProductId = productId;
+    
+    // Simulate loading product data
+    const productData = {
+        name: 'Woven Basket',
+        category: 'Handicrafts',
+        price: '₱450',
+        producer: 'Craft Makers Guild'
+    };
+    
+    // Populate product info
+    document.getElementById('approveProductInfo').innerHTML = `
+        <div class="d-flex align-items-center">
+            <img src="../../images/fishes.jpg" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" class="me-3">
+            <div>
+                <div class="fw-bold">${productData.name}</div>
+                <small class="text-muted">${productData.category} • ${productData.price} • ${productData.producer}</small>
+            </div>
+        </div>
+    `;
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('approveProductModal')).show();
+}
+
+function openRejectProductModal(productId) {
+    currentProductId = productId;
+    
+    // Simulate loading product data
+    const productData = {
+        name: 'Woven Basket',
+        category: 'Handicrafts',
+        price: '₱450',
+        producer: 'Craft Makers Guild'
+    };
+    
+    // Populate product info
+    document.getElementById('rejectProductInfo').innerHTML = `
+        <div class="d-flex align-items-center">
+            <img src="../../images/fishes.jpg" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" class="me-3">
+            <div>
+                <div class="fw-bold">${productData.name}</div>
+                <small class="text-muted">${productData.category} • ${productData.price} • ${productData.producer}</small>
+            </div>
+        </div>
+    `;
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('rejectProductModal')).show();
+}
+
+function openRestockProductModal(productId) {
+    currentProductId = productId;
+    
+    // Simulate loading product data
+    const productData = {
+        name: 'Fresh Fish',
+        category: 'Food Products',
+        price: '₱120',
+        producer: 'Sagnay Fishermen Assoc.',
+        currentStock: 0
+    };
+    
+    // Populate product info
+    document.getElementById('restockProductInfo').innerHTML = `
+        <div class="d-flex align-items-center">
+            <img src="../../images/fishes.jpg" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" class="me-3">
+            <div>
+                <div class="fw-bold">${productData.name}</div>
+                <small class="text-muted">${productData.category} • ${productData.price} • ${productData.producer}</small>
+            </div>
+        </div>
+    `;
+    
+    // Set current stock
+    document.getElementById('currentStock').value = productData.currentStock;
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('restockProductModal')).show();
+}
+
+function confirmApproveProduct() {
+    const notes = document.getElementById('approvalNotes').value;
+    const lguVerified = document.getElementById('setLguVerified').checked;
+    
+    // Simulate API call
+    console.log('Approving product:', currentProductId, 'Notes:', notes, 'LGU Verified:', lguVerified);
+    
+    // Show success message
+    alert('Product approved successfully!');
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('approveProductModal'));
+    modal.hide();
+    
+    // Refresh table
+    location.reload();
+}
+
+function confirmRejectProduct() {
+    const reasonSelect = document.getElementById('rejectionReasonSelect').value;
+    const reasonText = document.getElementById('rejectionReason').value;
+    const allowResubmission = document.getElementById('allowResubmission').checked;
+    
+    if (!reasonText.trim()) {
+        alert('Please provide a reason for rejection.');
+        return;
+    }
+    
+    // Simulate API call
+    console.log('Rejecting product:', currentProductId, 'Reason:', reasonSelect, reasonText, 'Allow resubmission:', allowResubmission);
+    
+    // Show success message
+    alert('Product rejected successfully!');
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('rejectProductModal'));
+    modal.hide();
+    
+    // Refresh table
+    location.reload();
+}
+
+function confirmRestockProduct() {
+    const currentStock = parseInt(document.getElementById('currentStock').value) || 0;
+    const addStock = parseInt(document.getElementById('addStock').value) || 0;
+    const notes = document.getElementById('restockNotes').value;
+    
+    if (addStock <= 0) {
+        alert('Please enter a valid stock quantity to add.');
+        return;
+    }
+    
+    // Simulate API call
+    console.log('Restocking product:', currentProductId, 'Adding:', addStock, 'Notes:', notes);
+    
+    // Show success message
+    alert(`Stock updated successfully! New total: ${currentStock + addStock} items`);
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('restockProductModal'));
+    modal.hide();
+    
+    // Refresh table
+    location.reload();
+}
+
+// Auto-calculate new stock total
+document.getElementById('addStock').addEventListener('input', function() {
+    const currentStock = parseInt(document.getElementById('currentStock').value) || 0;
+    const addStock = parseInt(this.value) || 0;
+    document.getElementById('newStock').value = currentStock + addStock;
+});
+</script>

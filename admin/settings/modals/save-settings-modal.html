@@ -1,0 +1,95 @@
+<!-- Save Settings Modal -->
+<div class="modal fade" id="saveSettingsModal" tabindex="-1" aria-labelledby="saveSettingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saveSettingsModalLabel">
+                    <i class="bi bi-check-circle"></i>
+                    Save Settings Changes
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <div>
+                        You are about to save changes to the system settings. Please review the changes before confirming.
+                    </div>
+                </div>
+
+                <form id="saveSettingsForm">
+                    <div class="mb-3">
+                        <label class="form-label">Changes to be saved:</label>
+                        <div id="settingsChangesList" class="border rounded p-3 bg-light">
+                            <!-- Changes will be populated here -->
+                            <div class="change-item">
+                                <strong>General Settings:</strong>
+                                <ul id="generalChanges" class="mb-2"></ul>
+                            </div>
+                            <div class="change-item">
+                                <strong>Security Settings:</strong>
+                                <ul id="securityChanges" class="mb-2"></ul>
+                            </div>
+                            <div class="change-item">
+                                <strong>Notification Settings:</strong>
+                                <ul id="notificationChanges" class="mb-0"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="saveReason" class="form-label">Reason for Changes</label>
+                        <textarea class="form-control" id="saveReason" rows="3" placeholder="Describe why these settings are being changed..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="changedBy" class="form-label">Changed By *</label>
+                        <input type="text" class="form-control" id="changedBy" placeholder="Your name/position" required>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="createBackup" checked>
+                        <label class="form-check-label" for="createBackup">
+                            Create backup of current settings before saving
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="notifyAdmins">
+                        <label class="form-check-label" for="notifyAdmins">
+                            Notify other administrators of these changes
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="restartRequired">
+                        <label class="form-check-label" for="restartRequired">
+                            Some changes may require system restart to take effect
+                        </label>
+                    </div>
+                </form>
+
+                <div class="mt-3 p-3 bg-warning bg-opacity-10 border border-warning rounded">
+                    <h6 class="text-warning"><i class="bi bi-exclamation-triangle"></i> Important Notes:</h6>
+                    <ul class="mb-0 small">
+                        <li>Settings changes will affect all users immediately</li>
+                        <li>Security changes may require users to re-authenticate</li>
+                        <li>Email notification changes will affect system communications</li>
+                        <li>Make sure to test changes in a safe environment first</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary" onclick="previewSettings()">
+                    <i class="bi bi-eye"></i>
+                    Preview Changes
+                </button>
+                <button type="submit" form="saveSettingsForm" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i>
+                    Save Settings
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

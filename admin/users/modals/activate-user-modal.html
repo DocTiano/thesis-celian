@@ -1,0 +1,76 @@
+<!-- Activate User Modal -->
+<div class="modal fade" id="activateUserModal" tabindex="-1" aria-labelledby="activateUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-success" id="activateUserModalLabel">
+                    <i class="bi bi-check-circle me-2"></i>Reactivate User Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Confirmation:</strong> This action will reactivate the user's account and restore their access to the platform.
+                </div>
+                
+                <form id="activateUserForm">
+                    <div class="mb-3">
+                        <label for="activateReason" class="form-label">Reason for Reactivation</label>
+                        <select class="form-select" id="activateReason" required>
+                            <option value="">Select a reason</option>
+                            <option value="issue_resolved">Issue Resolved</option>
+                            <option value="appeal_approved">Appeal Approved</option>
+                            <option value="admin_decision">Administrative Decision</option>
+                            <option value="user_request">User Request</option>
+                            <option value="system_error">System Error</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="activateNotes" class="form-label">Reactivation Notes</label>
+                        <textarea class="form-control" id="activateNotes" rows="3" 
+                                  placeholder="Provide details about the reactivation..."></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="clearWarnings">
+                            <label class="form-check-label" for="clearWarnings">
+                                Clear all previous warnings
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="notifyActivation" checked>
+                            <label class="form-check-label" for="notifyActivation">
+                                Send welcome back email to user
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6 class="card-title">Account Restoration</h6>
+                            <p class="card-text small mb-0">
+                                The user will regain full access to their account including:
+                            </p>
+                            <ul class="small mb-0 mt-2">
+                                <li>Platform login access</li>
+                                <li>Order placement capabilities</li>
+                                <li>Producer tools (if applicable)</li>
+                                <li>Community features</li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success" form="activateUserForm">
+                    <i class="bi bi-play-circle me-1"></i>Reactivate Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

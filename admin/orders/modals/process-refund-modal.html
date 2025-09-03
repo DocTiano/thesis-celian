@@ -1,0 +1,198 @@
+<!-- Process Refund Modal -->
+<div class="modal fade" id="processRefundModal" tabindex="-1" aria-labelledby="processRefundModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="processRefundModalLabel">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Process Refund
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="processRefundForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-muted mb-3">Order Information</h6>
+                            <div class="mb-3">
+                                <label for="refundOrderId" class="form-label">Order ID</label>
+                                <input type="text" class="form-control" id="refundOrderId" value="#ORD-004" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="refundCustomer" class="form-label">Customer</label>
+                                <input type="text" class="form-control" id="refundCustomer" value="Ana Rodriguez" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="refundOriginalAmount" class="form-label">Original Amount</label>
+                                <input type="text" class="form-control" id="refundOriginalAmount" value="₱680" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted mb-3">Refund Details</h6>
+                            <div class="mb-3">
+                                <label for="refundType" class="form-label">Refund Type *</label>
+                                <select class="form-select" id="refundType" required>
+                                    <option value="">Select refund type...</option>
+                                    <option value="full">Full Refund</option>
+                                    <option value="partial">Partial Refund</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="refundAmount" class="form-label">Refund Amount (₱) *</label>
+                                <input type="number" class="form-control" id="refundAmount" step="0.01" value="680" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="refundMethod" class="form-label">Refund Method *</label>
+                                <select class="form-select" id="refundMethod" required>
+                                    <option value="">Select method...</option>
+                                    <option value="gcash">GCash</option>
+                                    <option value="bank_transfer">Bank Transfer</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="store_credit">Store Credit</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3" id="bankDetailsDiv" style="display: none;">
+                        <h6 class="text-muted">Bank Details</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="bankName" class="form-label">Bank Name</label>
+                                <input type="text" class="form-control" id="bankName" placeholder="Enter bank name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="accountNumber" class="form-label">Account Number</label>
+                                <input type="text" class="form-control" id="accountNumber" placeholder="Enter account number">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3" id="gcashDetailsDiv" style="display: none;">
+                        <h6 class="text-muted">GCash Details</h6>
+                        <label for="gcashNumber" class="form-label">GCash Number</label>
+                        <input type="tel" class="form-control" id="gcashNumber" placeholder="Enter GCash number">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="refundReason" class="form-label">Refund Reason *</label>
+                        <select class="form-select" id="refundReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="order_cancelled">Order Cancelled</option>
+                            <option value="product_defective">Product Defective</option>
+                            <option value="wrong_product">Wrong Product Sent</option>
+                            <option value="customer_request">Customer Request</option>
+                            <option value="delivery_failed">Delivery Failed</option>
+                            <option value="duplicate_payment">Duplicate Payment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="refundNotes" class="form-label">Additional Notes</label>
+                        <textarea class="form-control" id="refundNotes" rows="3" placeholder="Add any additional notes about this refund..."></textarea>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        <strong>Note:</strong> Refunds typically take 3-5 business days to process depending on the method chosen.
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomerRefund" checked>
+                        <label class="form-check-label" for="notifyCustomerRefund">
+                            Notify customer about refund processing
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" onclick="processRefund()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Process Refund
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Show/hide fields based on refund method
+document.addEventListener('DOMContentLoaded', function() {
+    const refundMethodSelect = document.getElementById('refundMethod');
+    const bankDetailsDiv = document.getElementById('bankDetailsDiv');
+    const gcashDetailsDiv = document.getElementById('gcashDetailsDiv');
+    const refundTypeSelect = document.getElementById('refundType');
+    const refundAmountInput = document.getElementById('refundAmount');
+    const originalAmount = 680; // Get this from the order data
+    
+    if (refundMethodSelect) {
+        refundMethodSelect.addEventListener('change', function() {
+            const method = this.value;
+            
+            // Hide all detail divs first
+            bankDetailsDiv.style.display = 'none';
+            gcashDetailsDiv.style.display = 'none';
+            
+            // Show relevant div based on method
+            if (method === 'bank_transfer') {
+                bankDetailsDiv.style.display = 'block';
+            } else if (method === 'gcash') {
+                gcashDetailsDiv.style.display = 'block';
+            }
+        });
+    }
+    
+    if (refundTypeSelect) {
+        refundTypeSelect.addEventListener('change', function() {
+            const type = this.value;
+            
+            if (type === 'full') {
+                refundAmountInput.value = originalAmount;
+                refundAmountInput.readOnly = true;
+            } else if (type === 'partial') {
+                refundAmountInput.value = '';
+                refundAmountInput.readOnly = false;
+                refundAmountInput.max = originalAmount;
+            }
+        });
+    }
+});
+
+function processRefund() {
+    const form = document.getElementById('processRefundForm');
+    
+    // Validate required fields
+    const refundType = document.getElementById('refundType').value;
+    const refundAmount = document.getElementById('refundAmount').value;
+    const refundMethod = document.getElementById('refundMethod').value;
+    const refundReason = document.getElementById('refundReason').value;
+    
+    if (!refundType || !refundAmount || !refundMethod || !refundReason) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    if (parseFloat(refundAmount) <= 0) {
+        alert('Refund amount must be greater than 0');
+        return;
+    }
+    
+    if (parseFloat(refundAmount) > 680) { // Original amount
+        alert('Refund amount cannot exceed the original order amount');
+        return;
+    }
+    
+    if (confirm('Are you sure you want to process this refund?')) {
+        // Handle process refund logic here
+        console.log('Processing refund...');
+        
+        // Show success message
+        alert('Refund has been processed successfully!');
+        
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('processRefundModal')).hide();
+    }
+}
+</script>

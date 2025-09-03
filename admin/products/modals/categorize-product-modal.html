@@ -1,0 +1,275 @@
+<!-- Categorize Product Modal -->
+<div class="modal fade" id="categorizeProductModal" tabindex="-1" aria-labelledby="categorizeProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="categorizeProductModalLabel">
+                    <i class="bi bi-tags text-info me-2"></i>
+                    Categorize Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-info bg-light p-3 rounded mb-3" id="categorizeProductInfo">
+                    <!-- Product info will be populated here -->
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="primaryCategory" class="form-label">Primary Category *</label>
+                            <select class="form-control" id="primaryCategory" required>
+                                <option value="">Select Primary Category</option>
+                                <option value="agricultural">Agricultural Products</option>
+                                <option value="handicrafts">Handicrafts & Crafts</option>
+                                <option value="food-products">Food Products</option>
+                                <option value="textiles">Textiles & Clothing</option>
+                                <option value="furniture">Furniture & Home Decor</option>
+                                <option value="accessories">Accessories & Jewelry</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="subCategory" class="form-label">Sub Category</label>
+                            <select class="form-control" id="subCategory">
+                                <option value="">Select Sub Category</option>
+                                <!-- Options will be populated based on primary category -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Additional Tags</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagOrganic">
+                                <label class="form-check-label" for="tagOrganic">Organic</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagHandmade">
+                                <label class="form-check-label" for="tagHandmade">Handmade</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagEcoFriendly">
+                                <label class="form-check-label" for="tagEcoFriendly">Eco-Friendly</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagTraditional">
+                                <label class="form-check-label" for="tagTraditional">Traditional</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagPremium">
+                                <label class="form-check-label" for="tagPremium">Premium Quality</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagSeasonal">
+                                <label class="form-check-label" for="tagSeasonal">Seasonal</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagLimited">
+                                <label class="form-check-label" for="tagLimited">Limited Edition</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagGiftSet">
+                                <label class="form-check-label" for="tagGiftSet">Gift Set</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tagBulkOrder">
+                                <label class="form-check-label" for="tagBulkOrder">Bulk Order Available</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="customTags" class="form-label">Custom Tags</label>
+                    <input type="text" class="form-control" id="customTags" placeholder="Enter custom tags separated by commas">
+                    <small class="text-muted">Example: fresh, local, sustainable</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="featuredCategory" class="form-label">Featured Category</label>
+                    <select class="form-control" id="featuredCategory">
+                        <option value="">None</option>
+                        <option value="bestseller">Best Seller</option>
+                        <option value="new-arrival">New Arrival</option>
+                        <option value="featured">Featured Product</option>
+                        <option value="trending">Trending</option>
+                        <option value="editors-choice">Editor's Choice</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="searchKeywords" class="form-label">Search Keywords</label>
+                    <textarea class="form-control" id="searchKeywords" rows="2" placeholder="Enter keywords that customers might use to search for this product"></textarea>
+                    <small class="text-muted">This helps customers find your product more easily</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info" onclick="submitCategorization()">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Update Categories
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentProductId = null;
+
+const subCategoryOptions = {
+    'agricultural': [
+        { value: 'rice', text: 'Rice & Grains' },
+        { value: 'vegetables', text: 'Vegetables' },
+        { value: 'fruits', text: 'Fruits' },
+        { value: 'herbs', text: 'Herbs & Spices' },
+        { value: 'seeds', text: 'Seeds & Seedlings' }
+    ],
+    'handicrafts': [
+        { value: 'baskets', text: 'Baskets & Containers' },
+        { value: 'pottery', text: 'Pottery & Ceramics' },
+        { value: 'woodwork', text: 'Woodwork' },
+        { value: 'metalwork', text: 'Metalwork' },
+        { value: 'artwork', text: 'Artwork & Paintings' }
+    ],
+    'food-products': [
+        { value: 'seafood', text: 'Seafood' },
+        { value: 'processed', text: 'Processed Foods' },
+        { value: 'beverages', text: 'Beverages' },
+        { value: 'snacks', text: 'Snacks & Treats' },
+        { value: 'condiments', text: 'Condiments & Sauces' }
+    ],
+    'textiles': [
+        { value: 'clothing', text: 'Clothing' },
+        { value: 'fabrics', text: 'Fabrics & Materials' },
+        { value: 'accessories', text: 'Accessories' },
+        { value: 'bags', text: 'Bags & Purses' },
+        { value: 'home-textiles', text: 'Home Textiles' }
+    ],
+    'furniture': [
+        { value: 'chairs', text: 'Chairs & Seating' },
+        { value: 'tables', text: 'Tables' },
+        { value: 'storage', text: 'Storage Solutions' },
+        { value: 'decorative', text: 'Decorative Items' },
+        { value: 'lighting', text: 'Lighting' }
+    ],
+    'accessories': [
+        { value: 'jewelry', text: 'Jewelry' },
+        { value: 'watches', text: 'Watches' },
+        { value: 'eyewear', text: 'Eyewear' },
+        { value: 'hair-accessories', text: 'Hair Accessories' },
+        { value: 'tech-accessories', text: 'Tech Accessories' }
+    ]
+};
+
+function openCategorizeProductModal(productId) {
+    currentProductId = productId;
+    
+    // Simulate loading product data
+    const productData = {
+        name: 'Sagnay Rice (5kg)',
+        category: 'Agricultural',
+        price: '₱350',
+        producer: 'Jose Farming Co.',
+        currentPrimaryCategory: 'agricultural',
+        currentSubCategory: 'rice',
+        currentTags: ['organic', 'premium'],
+        currentFeatured: 'bestseller'
+    };
+    
+    // Populate product info
+    document.getElementById('categorizeProductInfo').innerHTML = `
+        <div class="d-flex align-items-center">
+            <img src="../../images/fishes.jpg" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" class="me-3">
+            <div>
+                <div class="fw-bold">${productData.name}</div>
+                <small class="text-muted">${productData.category} • ${productData.price} • ${productData.producer}</small>
+            </div>
+        </div>
+    `;
+    
+    // Set current values
+    document.getElementById('primaryCategory').value = productData.currentPrimaryCategory;
+    populateSubCategories(productData.currentPrimaryCategory);
+    document.getElementById('subCategory').value = productData.currentSubCategory;
+    document.getElementById('featuredCategory').value = productData.currentFeatured;
+    
+    // Set current tags
+    productData.currentTags.forEach(tag => {
+        const checkbox = document.getElementById(`tag${tag.charAt(0).toUpperCase() + tag.slice(1)}`);
+        if (checkbox) checkbox.checked = true;
+    });
+    
+    // Show modal
+    new bootstrap.Modal(document.getElementById('categorizeProductModal')).show();
+}
+
+function populateSubCategories(primaryCategory) {
+    const subCategorySelect = document.getElementById('subCategory');
+    subCategorySelect.innerHTML = '<option value="">Select Sub Category</option>';
+    
+    if (subCategoryOptions[primaryCategory]) {
+        subCategoryOptions[primaryCategory].forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.text;
+            subCategorySelect.appendChild(optionElement);
+        });
+    }
+}
+
+function submitCategorization() {
+    const primaryCategory = document.getElementById('primaryCategory').value;
+    const subCategory = document.getElementById('subCategory').value;
+    const featuredCategory = document.getElementById('featuredCategory').value;
+    const customTags = document.getElementById('customTags').value;
+    const searchKeywords = document.getElementById('searchKeywords').value;
+    
+    // Collect selected tags
+    const selectedTags = [];
+    document.querySelectorAll('input[id^="tag"]:checked').forEach(checkbox => {
+        selectedTags.push(checkbox.nextElementSibling.textContent);
+    });
+    
+    if (!primaryCategory) {
+        alert('Please select a primary category.');
+        return;
+    }
+    
+    // Simulate API call
+    console.log('Updating categorization:', {
+        productId: currentProductId,
+        primaryCategory,
+        subCategory,
+        featuredCategory,
+        tags: selectedTags,
+        customTags,
+        searchKeywords
+    });
+    
+    // Show success message
+    alert('Product categorization updated successfully!');
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('categorizeProductModal'));
+    modal.hide();
+    
+    // Refresh table
+    location.reload();
+}
+
+// Event listener for primary category change
+document.getElementById('primaryCategory').addEventListener('change', function() {
+    populateSubCategories(this.value);
+    document.getElementById('subCategory').value = '';
+});
+</script>
