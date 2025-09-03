@@ -1,0 +1,160 @@
+<!-- Message Customer Modal -->
+<div class="modal fade" id="messageCustomerModal" tabindex="-1" aria-labelledby="messageCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageCustomerModalLabel">
+                    <i class="bi bi-chat-fill text-primary me-2"></i>
+                    Send Message to Customer
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Customer</label>
+                    <div class="d-flex align-items-center p-2 border rounded">
+                        <div class="avatar-sm bg-primary rounded-circle d-flex align-items-center justify-content-center text-white me-3">
+                            JD
+                        </div>
+                        <div>
+                            <div class="fw-semibold">Juan Dela Cruz</div>
+                            <small class="text-muted">juan@email.com • VIP Customer</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Message Type</label>
+                    <select class="form-select" id="messageTypeCustomer">
+                        <option value="general">General Message</option>
+                        <option value="order-update">Order Update</option>
+                        <option value="promotional">Promotional Offer</option>
+                        <option value="support">Customer Support</option>
+                        <option value="feedback">Request Feedback</option>
+                        <option value="thank-you">Thank You</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="messageSubjectCustomer" placeholder="Enter message subject">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" id="messageContentCustomer" rows="6" placeholder="Type your message here..."></textarea>
+                    <div class="form-text">
+                        Available variables: {customer_name}, {last_order}, {order_status}
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Delivery Method</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sendEmailCustomer" checked>
+                            <label class="form-check-label" for="sendEmailCustomer">Email</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sendSMSCustomer">
+                            <label class="form-check-label" for="sendSMSCustomer">SMS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sendNotificationCustomer" checked>
+                            <label class="form-check-label" for="sendNotificationCustomer">In-App Notification</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Priority</label>
+                        <select class="form-select">
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="requestReadReceipt">
+                        <label class="form-check-label" for="requestReadReceipt">
+                            Request read receipt
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="saveAsTemplate">
+                        <label class="form-check-label" for="saveAsTemplate">
+                            Save as template for future use
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="card-title">Customer History</h6>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="fw-bold text-primary">12</div>
+                                <small class="text-muted">Total Orders</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="fw-bold text-success">₱18,500</div>
+                                <small class="text-muted">Total Spent</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="fw-bold text-info">Dec 10</div>
+                                <small class="text-muted">Last Order</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary">Save as Draft</button>
+                <button type="button" class="btn btn-primary">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const messageTypeCustomer = document.getElementById('messageTypeCustomer');
+    const messageSubjectCustomer = document.getElementById('messageSubjectCustomer');
+    const messageContentCustomer = document.getElementById('messageContentCustomer');
+    
+    const templates = {
+        'order-update': {
+            subject: 'Update on Your Order',
+            content: 'Dear {customer_name},\n\nWe have an update regarding your recent order #{last_order}.\n\nThank you for choosing S2EH!'
+        },
+        'promotional': {
+            subject: 'Special Offer Just for You!',
+            content: 'Dear {customer_name},\n\nWe have a special offer just for our valued customers like you!\n\nBest regards,\nS2EH Team'
+        },
+        'support': {
+            subject: 'Customer Support Response',
+            content: 'Dear {customer_name},\n\nThank you for contacting us. We are here to help you with any questions or concerns.\n\nBest regards,\nS2EH Support Team'
+        },
+        'feedback': {
+            subject: 'We Value Your Feedback',
+            content: 'Dear {customer_name},\n\nWe hope you enjoyed your recent purchase. We would love to hear your feedback about your experience with us.\n\nThank you,\nS2EH Team'
+        },
+        'thank-you': {
+            subject: 'Thank You for Your Purchase!',
+            content: 'Dear {customer_name},\n\nThank you for your recent order with S2EH. We appreciate your business and hope you enjoy your purchase!\n\nBest regards,\nS2EH Team'
+        }
+    };
+    
+    if (messageTypeCustomer) {
+        messageTypeCustomer.addEventListener('change', function() {
+            const template = templates[this.value];
+            if (template) {
+                messageSubjectCustomer.value = template.subject;
+                messageContentCustomer.value = template.content;
+            }
+        });
+    }
+});
+</script>

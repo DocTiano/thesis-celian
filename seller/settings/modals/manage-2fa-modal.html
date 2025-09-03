@@ -1,0 +1,267 @@
+<!-- Manage 2FA Modal -->
+<div class="modal fade" id="manage2FAModal" tabindex="-1" aria-labelledby="manage2FAModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="manage2FAModalLabel">
+                    <i class="bi bi-shield-check me-2"></i>Two-Factor Authentication
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="two-factor-status mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="status-icon me-3">
+                            <i class="bi bi-shield-x text-danger fs-3"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Two-Factor Authentication: <span class="text-danger">Disabled</span></h6>
+                            <p class="text-muted mb-0">Add an extra layer of security to your account</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setup-2fa" id="setup2FA">
+                    <h6 class="mb-3">Setup Two-Factor Authentication</h6>
+                    
+                    <div class="setup-steps">
+                        <div class="step mb-3">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h6>Download an authenticator app</h6>
+                                <p class="text-muted">Install Google Authenticator, Microsoft Authenticator, or any compatible TOTP app on your mobile device.</p>
+                                <div class="app-links">
+                                    <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="bi bi-google-play me-1"></i>Google Play
+                                    </a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-apple me-1"></i>App Store
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step mb-3">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h6>Scan the QR code</h6>
+                                <p class="text-muted">Open your authenticator app and scan this QR code:</p>
+                                <div class="qr-code text-center mb-3">
+                                    <img src="../../images/qr-code-ex.svg" alt="2FA QR Code" style="width: 200px; height: 200px;">
+                                </div>
+                                <div class="manual-entry">
+                                    <p class="small text-muted">Can't scan? Enter this code manually:</p>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="ABCD1234EFGH5678IJKL9012" readonly id="manualKey">
+                                        <button class="btn btn-outline-secondary" type="button" id="copyKey">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step mb-3">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h6>Enter verification code</h6>
+                                <p class="text-muted">Enter the 6-digit code from your authenticator app:</p>
+                                <div class="verification-input">
+                                    <input type="text" class="form-control text-center" id="verificationCode" maxlength="6" placeholder="000000" style="font-size: 1.5rem; letter-spacing: 0.5rem;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="backup-codes mt-4" style="display: none;" id="backupCodes">
+                        <div class="alert alert-warning">
+                            <h6><i class="bi bi-exclamation-triangle me-2"></i>Save Your Backup Codes</h6>
+                            <p class="mb-2">Keep these backup codes in a safe place. You can use them to access your account if you lose your phone:</p>
+                            <div class="backup-codes-list">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <code>ABC123-DEF456</code><br>
+                                        <code>GHI789-JKL012</code><br>
+                                        <code>MNO345-PQR678</code>
+                                    </div>
+                                    <div class="col-6">
+                                        <code>STU901-VWX234</code><br>
+                                        <code>YZA567-BCD890</code><br>
+                                        <code>EFG123-HIJ456</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-secondary btn-sm mt-2" id="downloadCodes">
+                                <i class="bi bi-download me-1"></i>Download Codes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="manage-2fa d-none" id="manage2FA">
+                    <div class="alert alert-success">
+                        <i class="bi bi-shield-check me-2"></i>
+                        Two-Factor Authentication is <strong>enabled</strong> and protecting your account.
+                    </div>
+                    
+                    <div class="management-options">
+                        <div class="option-item border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">View Backup Codes</h6>
+                                    <small class="text-muted">View or regenerate your backup codes</small>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm">View Codes</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Change Authenticator Device</h6>
+                                    <small class="text-muted">Setup 2FA on a new device</small>
+                                </div>
+                                <button class="btn btn-outline-secondary btn-sm">Change Device</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Disable Two-Factor Authentication</h6>
+                                    <small class="text-muted text-danger">This will make your account less secure</small>
+                                </div>
+                                <button class="btn btn-outline-danger btn-sm" id="disable2FA">Disable 2FA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="verify2FA">
+                    <i class="bi bi-shield-check me-1"></i>Verify & Enable
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const verifyBtn = document.getElementById('verify2FA');
+    const verificationInput = document.getElementById('verificationCode');
+    const copyKeyBtn = document.getElementById('copyKey');
+    const backupCodesSection = document.getElementById('backupCodes');
+    
+    // Copy manual key
+    copyKeyBtn.addEventListener('click', function() {
+        const manualKey = document.getElementById('manualKey');
+        manualKey.select();
+        document.execCommand('copy');
+        
+        // Show feedback
+        this.innerHTML = '<i class="bi bi-check"></i>';
+        setTimeout(() => {
+            this.innerHTML = '<i class="bi bi-clipboard"></i>';
+        }, 2000);
+    });
+    
+    // Verify 2FA
+    verifyBtn.addEventListener('click', function() {
+        const code = verificationInput.value;
+        
+        if (code.length !== 6) {
+            alert('Please enter a 6-digit verification code.');
+            return;
+        }
+        
+        // Show loading state
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Verifying...';
+        this.disabled = true;
+        
+        // Simulate verification
+        setTimeout(() => {
+            // Show backup codes
+            backupCodesSection.style.display = 'block';
+            
+            // Update button
+            this.innerHTML = '<i class="bi bi-check-lg me-1"></i>2FA Enabled';
+            this.classList.remove('btn-primary');
+            this.classList.add('btn-success');
+            
+            // Show success message
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.innerHTML = '<i class="bi bi-check-circle me-2"></i>Two-Factor Authentication has been successfully enabled!';
+            document.querySelector('.modal-body').prepend(alert);
+            
+            // Close modal after delay
+            setTimeout(() => {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('manage2FAModal'));
+                modal.hide();
+            }, 3000);
+        }, 2000);
+    });
+    
+    // Download backup codes
+    document.getElementById('downloadCodes').addEventListener('click', function() {
+        const codes = [
+            'ABC123-DEF456',
+            'GHI789-JKL012', 
+            'MNO345-PQR678',
+            'STU901-VWX234',
+            'YZA567-BCD890',
+            'EFG123-HIJ456'
+        ];
+        
+        const content = 'S2EH Two-Factor Authentication Backup Codes\n' +
+                       'Generated: ' + new Date().toLocaleString() + '\n\n' +
+                       'Keep these codes safe and secure:\n\n' +
+                       codes.join('\n') + '\n\n' +
+                       'Each code can only be used once.';
+        
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'S2EH-2FA-Backup-Codes.txt';
+        a.click();
+        window.URL.revokeObjectURL(url);
+    });
+});
+</script>
+
+<style>
+.step {
+    display: flex;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #0d6efd;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.backup-codes-list code {
+    display: block;
+    margin-bottom: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+</style>

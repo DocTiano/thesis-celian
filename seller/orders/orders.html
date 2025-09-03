@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | Seller Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <!-- Seller Styles -->
+    <link href="../assets/css/seller-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="seller-layout">
+        <!-- Sidebar -->
+        <nav class="seller-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S2EH</div>
+                <div class="title">SELLER PORTAL</div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="../dashboard/dashboard.html" class="nav-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../products/products.html" class="nav-link">
+                        <i class="bi bi-box"></i>
+                        <span>My Products</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="orders.html" class="nav-link active">
+                        <i class="bi bi-cart3"></i>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../inventory/inventory.html" class="nav-link">
+                        <i class="bi bi-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../customers/customers.html" class="nav-link">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../messages/messages.html" class="nav-link">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../analytics/analytics.html" class="nav-link">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../profile/profile.html" class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../settings/settings.html" class="nav-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="seller-main">
+            <!-- Top Bar -->
+            <header class="seller-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Orders</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="notification-icon" title="Notifications">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="seller-profile">
+                        <div class="seller-avatar">JD</div>
+                        <span>Juan Santos</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="seller-content">
+                <!-- Order Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Total Orders</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-cart-check"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">287</div>
+                        <div class="stat-change positive">+12 today</div>
+                    </div>
+                    
+                    <div class="stat-card highlight">
+                        <div class="stat-header">
+                            <div class="stat-title">Pending Orders</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-change warning">Needs attention</div>
+                    </div>
+                    
+                    <div class="stat-card accent">
+                        <div class="stat-header">
+                            <div class="stat-title">Processing</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-change neutral">In progress</div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-header">
+                            <div class="stat-title">Delivered</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">274</div>
+                        <div class="stat-change positive">95.5% completion</div>
+                    </div>
+                </div>
+
+                <!-- Order Management -->
+                <div class="seller-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <div id="datatableButtons" class="d-flex gap-2"></div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <input type="search" class="form-control" placeholder="Search orders..." id="orderSearch"
+                                    style="width: 250px;">
+                                <button class="btn-admin btn-admin-primary" data-bs-toggle="modal" data-bs-target="#bulkActionModal"
+                                    style="padding: 12px 24px; font-weight: 600; box-shadow: 0 2px 8px rgba(44, 133, 63, 0.3); transition: all 0.3s ease;"
+                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(44, 133, 63, 0.4)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(44, 133, 63, 0.3)'">
+                                    <i class="bi bi-list-check"></i>
+                                    Bulk Actions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Status Tabs -->
+                    <div class="user-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Order status filters">
+                        <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                            <button class="tab-btn active" data-filter="all"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-cart3" style="margin-right: 8px; font-size: 16px;"></i>
+                                All Orders (<span id="count-all">287</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="pending"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-clock-history" style="margin-right: 8px; font-size: 16px;"></i>
+                                Pending (<span id="count-pending">8</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="processing"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-gear" style="margin-right: 8px; font-size: 16px;"></i>
+                                Processing (<span id="count-processing">5</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="shipped"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-truck" style="margin-right: 8px; font-size: 16px;"></i>
+                                Shipped (<span id="count-shipped">12</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="delivered"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-check-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                                Delivered (<span id="count-delivered">262</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-responsive">
+                            <table id="ordersTable" class="admin-table table table-striped table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Products</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="pending">
+                                        <td><strong>#ORD-2025-001</strong></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">MR</div>
+                                                <div>
+                                                    <h6 class="mb-0">Maria Rodriguez</h6>
+                                                    <small class="text-muted">maria.rodriguez@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>Organic Rice 5kg (2x)</small><br>
+                                                <small class="text-muted">Fresh Vegetables Mix (1x)</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>₱880.00</strong></td>
+                                        <td><span class="status-badge pending">Pending</span></td>
+                                        <td>Sept 3, 2025</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#viewOrderModal" title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#processOrderModal" title="Process">
+                                                    <i class="bi bi-check-circle"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelOrderModal" title="Cancel">
+                                                    <i class="bi bi-x-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="processing">
+                                        <td><strong>#ORD-2025-002</strong></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">JS</div>
+                                                <div>
+                                                    <h6 class="mb-0">Jose Silva</h6>
+                                                    <small class="text-muted">jose.silva@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>Coconut Oil 500ml (3x)</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>₱360.00</strong></td>
+                                        <td><span class="status-badge processing">Processing</span></td>
+                                        <td>Sept 2, 2025</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#viewOrderModal" title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#shipOrderModal" title="Ship">
+                                                    <i class="bi bi-truck"></i>
+                                                </button>
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#trackingModal" title="Tracking">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="shipped">
+                                        <td><strong>#ORD-2025-003</strong></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">AL</div>
+                                                <div>
+                                                    <h6 class="mb-0">Ana Lopez</h6>
+                                                    <small class="text-muted">ana.lopez@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>Fresh Vegetables Mix (2x)</small><br>
+                                                <small class="text-muted">Dried Fish 250g (1x)</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>₱445.00</strong></td>
+                                        <td><span class="status-badge shipped">Shipped</span></td>
+                                        <td>Sept 1, 2025</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#viewOrderModal" title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#trackingModal" title="Tracking">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success" title="Mark Delivered">
+                                                    <i class="bi bi-check2-all"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="delivered">
+                                        <td><strong>#ORD-2025-004</strong></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">CG</div>
+                                                <div>
+                                                    <h6 class="mb-0">Carlos Garcia</h6>
+                                                    <small class="text-muted">carlos.garcia@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>Organic Rice 5kg (1x)</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>₱350.00</strong></td>
+                                        <td><span class="status-badge delivered">Delivered</span></td>
+                                        <td>Aug 30, 2025</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#viewOrderModal" title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-admin btn-admin-outline" data-bs-toggle="modal" data-bs-target="#invoiceModal" title="Invoice">
+                                                    <i class="bi bi-receipt"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning" title="Request Review">
+                                                    <i class="bi bi-star"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Custom Pagination -->
+                       <div class="pagination-container" style="display: flex; justify-content: center; align-items: center; padding: 20px 0; border-top: 1px solid #e0e0e0;">
+                            <nav aria-label="Table pagination">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">Previous</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Order Modals Container -->
+    <div id="orderModals"></div>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable with admin configuration
+            const table = $('#ordersTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "searching": true,
+                "info": false,
+                "paging": false,  // Disable DataTables pagination
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',  // Remove 'p' for pagination
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": ""
+                },
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel', 
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "columnDefs": [
+                    { 
+                        "targets": [6], // Actions column
+                        "orderable": false 
+                    }
+                ],
+                "drawCallback": function() {
+                    // Ensure table uses full width
+                    $('.dataTables_wrapper').css('width', '100%');
+                    $('#ordersTable').css('width', '100%');
+                }
+            });
+
+            // Position DataTables buttons at the start of the card header
+            setTimeout(function() {
+                // Remove any existing button containers first
+                $('#datatableButtons').empty();
+                
+                // Get the button container and style it
+                const buttonContainer = table.buttons().container();
+                buttonContainer
+                    .removeClass('dt-buttons')
+                    .addClass('btn-group')
+                    .css({
+                        'flex-wrap': 'wrap',
+                        'gap': '8px'
+                    });
+                
+                // Insert buttons in the designated container
+                $('#datatableButtons').append(buttonContainer);
+            }, 100);
+
+            // Connect custom search input to DataTables search
+            $('#orderSearch').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
+            // Custom pagination logic
+            let currentPage = 1;
+            const rowsPerPage = 10;
+            const rows = $('#ordersTable tbody tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+            
+            // Initialize pagination
+            updatePaginationInfo();
+            showPage(currentPage);
+            
+            function showPage(page) {
+                const startIndex = (page - 1) * rowsPerPage;
+                const endIndex = startIndex + rowsPerPage;
+                
+                rows.each(function(index) {
+                    if (index >= startIndex && index < endIndex) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                
+                updatePaginationButtons(page);
+                updatePaginationInfo();
+            }
+            
+            function updatePaginationButtons(page) {
+                $('.pagination .page-item').removeClass('active');
+                $('.pagination .page-item[data-page="' + page + '"]').addClass('active');
+                
+                // Update prev/next button states
+                $('#pagination-prev').toggleClass('disabled', page === 1);
+                $('#pagination-next').toggleClass('disabled', page === totalPages);
+                
+                // Show/hide page numbers based on current page
+                const pageItems = $('.pagination .page-item[data-page]');
+                pageItems.hide();
+                
+                let startPage = Math.max(1, page - 2);
+                let endPage = Math.min(totalPages, page + 2);
+                
+                if (endPage - startPage < 4) {
+                    if (startPage === 1) {
+                        endPage = Math.min(totalPages, startPage + 4);
+                    } else {
+                        startPage = Math.max(1, endPage - 4);
+                    }
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    let pageItem = $('.pagination .page-item[data-page="' + i + '"]');
+                    if (pageItem.length === 0) {
+                        // Create new page item if it doesn't exist
+                        pageItem = $('<li class="page-item" data-page="' + i + '"><a class="page-link" href="#">' + i + '</a></li>');
+                        $('#pagination-next').before(pageItem);
+                    }
+                    pageItem.show();
+                }
+            }
+            
+            function updatePaginationInfo() {
+                const startItem = (currentPage - 1) * rowsPerPage + 1;
+                const endItem = Math.min(currentPage * rowsPerPage, totalRows);
+                
+                $('#pagination-start').text(startItem);
+                $('#pagination-end').text(endItem);
+                $('#pagination-total').text(totalRows);
+            }
+            
+            // Pagination click handlers
+            $(document).on('click', '.pagination .page-item:not(.disabled) .page-link', function(e) {
+                e.preventDefault();
+                const clickedItem = $(this).parent();
+                
+                if (clickedItem.attr('id') === 'pagination-prev') {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage);
+                    }
+                } else if (clickedItem.attr('id') === 'pagination-next') {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        showPage(currentPage);
+                    }
+                } else {
+                    const page = parseInt(clickedItem.attr('data-page'));
+                    if (page) {
+                        currentPage = page;
+                        showPage(currentPage);
+                    }
+                }
+            });
+
+            // Tab functionality with admin-style filtering
+            const tabBtns = document.querySelectorAll('.tab-btn');
+
+            function filterOrders(status) {
+                const tableRows = document.querySelectorAll('#ordersTable tbody tr[data-status]');
+                
+                tableRows.forEach(row => {
+                    const rowStatus = row.getAttribute('data-status');
+                    
+                    let shouldShow = false;
+                    
+                    if (status === 'all') {
+                        shouldShow = true;
+                    } else {
+                        shouldShow = rowStatus === status;
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                });
+                
+                // Redraw DataTable to maintain styling
+                table.draw();
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active tab
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter orders
+                    const filter = this.getAttribute('data-filter');
+                    filterOrders(filter);
+                });
+            });
+
+            // Load order modals
+            loadOrderModals();
+        });
+
+        // Load order modals
+        async function loadOrderModals() {
+            const modalFiles = [
+                'modals/view-order-modal.html',
+                'modals/process-order-modal.html',
+                'modals/ship-order-modal.html',
+                'modals/cancel-order-modal.html',
+                'modals/tracking-modal.html',
+                'modals/invoice-modal.html',
+                'modals/bulk-action-modal.html'
+            ];
+            
+            for (const file of modalFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.getElementById('orderModals').innerHTML += html;
+                    }
+                } catch (error) {
+                    console.log(`Could not load ${file}:`, error);
+                }
+            }
+        }
+    </script>
+    
+    <!-- Seller Main JS -->
+    <script src="../assets/js/seller-main.js"></script>
+</body>
+</html>

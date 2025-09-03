@@ -1,0 +1,120 @@
+<!-- Edit Bank Info Modal -->
+<div class="modal fade" id="editBankInfoModal" tabindex="-1" aria-labelledby="editBankInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBankInfoModalLabel">
+                    <i class="bi bi-bank me-2"></i>Edit Bank Information
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="bi bi-shield-check me-2"></i>
+                    Your banking information is encrypted and secure. This is used for payment processing only.
+                </div>
+                
+                <form id="editBankInfoForm">
+                    <div class="mb-3">
+                        <label for="bankName" class="form-label">Bank Name *</label>
+                        <select class="form-select" id="bankName" required>
+                            <option value="">Select your bank</option>
+                            <option value="bdo" selected>BDO Unibank</option>
+                            <option value="bpi">Bank of the Philippine Islands (BPI)</option>
+                            <option value="metrobank">Metrobank</option>
+                            <option value="pnb">Philippine National Bank (PNB)</option>
+                            <option value="landbank">Land Bank of the Philippines</option>
+                            <option value="unionbank">UnionBank</option>
+                            <option value="rcbc">RCBC</option>
+                            <option value="gcash">GCash</option>
+                            <option value="paymaya">PayMaya</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3" id="otherBankField" style="display: none;">
+                        <label for="otherBankName" class="form-label">Other Bank Name</label>
+                        <input type="text" class="form-control" id="otherBankName" placeholder="Enter bank name">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountNumber" class="form-label">Account Number *</label>
+                        <input type="text" class="form-control" id="accountNumber" value="****-****-1234" required placeholder="Enter your account number">
+                        <div class="form-text">Your account number will be encrypted for security</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountName" class="form-label">Account Holder Name *</label>
+                        <input type="text" class="form-control" id="accountName" value="Juan Santos" required>
+                        <div class="form-text">Must match the name on your bank account</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountType" class="form-label">Account Type *</label>
+                        <select class="form-select" id="accountType" required>
+                            <option value="">Select account type</option>
+                            <option value="savings" selected>Savings Account</option>
+                            <option value="checking">Checking Account</option>
+                            <option value="current">Current Account</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="branchCode" class="form-label">Branch Code</label>
+                        <input type="text" class="form-control" id="branchCode" placeholder="e.g., 123">
+                        <div class="form-text">Required for some banks</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="branchName" class="form-label">Branch Name/Location</label>
+                        <input type="text" class="form-control" id="branchName" value="BDO Sagnay Branch" placeholder="e.g., BDO Naga Branch">
+                    </div>
+                    
+                    <!-- Alternative Payment Methods -->
+                    <hr>
+                    <h6 class="mb-3">Alternative Payment Methods</h6>
+                    
+                    <div class="mb-3">
+                        <label for="gcashNumber" class="form-label">GCash Number</label>
+                        <input type="tel" class="form-control" id="gcashNumber" value="+63 912 345 6789" placeholder="+63 912 345 6789">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="paymayaNumber" class="form-label">PayMaya Number</label>
+                        <input type="tel" class="form-control" id="paymayaNumber" placeholder="+63 912 345 6789">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="setPrimaryPayment" checked>
+                            <label class="form-check-label" for="setPrimaryPayment">
+                                Set as primary payment method
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveBankInfo">
+                    <i class="bi bi-shield-check me-1"></i>Save Securely
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bankSelect = document.getElementById('bankName');
+    const otherBankField = document.getElementById('otherBankField');
+    
+    bankSelect.addEventListener('change', function() {
+        if (this.value === 'other') {
+            otherBankField.style.display = 'block';
+        } else {
+            otherBankField.style.display = 'none';
+        }
+    });
+});
+</script>

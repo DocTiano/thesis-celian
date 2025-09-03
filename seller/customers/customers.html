@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers | Seller Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <!-- Seller Styles -->
+    <link href="../assets/css/seller-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="seller-layout">
+        <!-- Sidebar -->
+        <nav class="seller-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S2EH</div>
+                <div class="title">SELLER PORTAL</div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="../dashboard/dashboard.html" class="nav-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../products/products.html" class="nav-link">
+                        <i class="bi bi-box"></i>
+                        <span>My Products</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../orders/orders.html" class="nav-link">
+                        <i class="bi bi-cart3"></i>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../inventory/inventory.html" class="nav-link">
+                        <i class="bi bi-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="customers.html" class="nav-link active">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../messages/messages.html" class="nav-link">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../analytics/analytics.html" class="nav-link">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../profile/profile.html" class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../settings/settings.html" class="nav-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="seller-main">
+            <!-- Top Bar -->
+            <header class="seller-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Customers</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="notification-icon" title="Notifications">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="seller-profile">
+                        <div class="seller-avatar">JD</div>
+                        <span>Juan Santos</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="seller-content">
+                <!-- Customer Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Total Customers</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">156</div>
+                        <div class="stat-change positive">+8 this month</div>
+                    </div>
+                    
+                    <div class="stat-card accent">
+                        <div class="stat-header">
+                            <div class="stat-title">Active Customers</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-person-check"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">124</div>
+                        <div class="stat-change positive">79.5% active</div>
+                    </div>
+                    
+                    <div class="stat-card highlight">
+                        <div class="stat-header">
+                            <div class="stat-title">Repeat Customers</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">89</div>
+                        <div class="stat-change positive">57.1% retention</div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-header">
+                            <div class="stat-title">Avg. Order Value</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-cash-coin"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">₱425</div>
+                        <div class="stat-change positive">+₱35 vs last month</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="seller-card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Customer Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="btn-seller" data-bs-toggle="modal" data-bs-target="#sendMessageModal">
+                                <i class="bi bi-envelope"></i>
+                                Send Message
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#createPromotionModal">
+                                <i class="bi bi-tag"></i>
+                                Create Promotion
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#customerSegmentModal">
+                                <i class="bi bi-funnel"></i>
+                                Customer Segments
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#loyaltyProgramModal">
+                                <i class="bi bi-star"></i>
+                                Loyalty Program
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Management -->
+                <div class="seller-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <div id="datatableButtons" class="d-flex gap-2"></div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <input type="search" class="form-control" placeholder="Search customers..." id="customerSearch"
+                                    style="width: 250px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Status Tabs -->
+                    <div class="user-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Customer status filters">
+                        <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                            <button class="tab-btn active" data-filter="all"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-people" style="margin-right: 8px; font-size: 16px;"></i>
+                                All Customers (<span id="count-all">156</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="active"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-person-check" style="margin-right: 8px; font-size: 16px;"></i>
+                                Active (<span id="count-active">124</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="repeat"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-arrow-repeat" style="margin-right: 8px; font-size: 16px;"></i>
+                                Repeat (<span id="count-repeat">89</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="vip"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-star" style="margin-right: 8px; font-size: 16px;"></i>
+                                VIP (<span id="count-vip">15</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="inactive"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-person-x" style="margin-right: 8px; font-size: 16px;"></i>
+                                Inactive (<span id="count-inactive">32</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-responsive">
+                            <table id="customersTable" class="admin-table table table-striped table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>Contact</th>
+                                        <th>Total Orders</th>
+                                        <th>Total Spent</th>
+                                        <th>Last Order</th>
+                                        <th>Status</th>
+                                        <th>Rating</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="vip">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">MR</div>
+                                                <div>
+                                                    <h6 class="mb-0">Maria Rodriguez</h6>
+                                                    <small class="text-muted">Customer since 2024</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>maria.rodriguez@email.com</small><br>
+                                                <small class="text-muted">+63 912 345 6789</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>28</strong></td>
+                                        <td><strong>₱12,450.00</strong></td>
+                                        <td>Sept 3, 2025</td>
+                                        <td><span class="status-badge vip">VIP Customer</span></td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <small class="ms-1">5.0</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-sm" data-bs-toggle="modal" data-bs-target="#viewCustomerModal" title="View Details">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#messageCustomerModal" title="Send Message">
+                                                    <i class="bi bi-chat-dots"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#orderHistoryModal" title="Order History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="repeat">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">JS</div>
+                                                <div>
+                                                    <h6 class="mb-0">Jose Silva</h6>
+                                                    <small class="text-muted">Customer since 2024</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>jose.silva@email.com</small><br>
+                                                <small class="text-muted">+63 987 654 3210</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>15</strong></td>
+                                        <td><strong>₱6,780.00</strong></td>
+                                        <td>Sept 2, 2025</td>
+                                        <td><span class="status-badge repeat">Repeat Customer</span></td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star text-warning"></i>
+                                                <small class="ms-1">4.3</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-sm" data-bs-toggle="modal" data-bs-target="#viewCustomerModal" title="View Details">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#messageCustomerModal" title="Send Message">
+                                                    <i class="bi bi-chat-dots"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#orderHistoryModal" title="Order History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="active">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">AL</div>
+                                                <div>
+                                                    <h6 class="mb-0">Ana Lopez</h6>
+                                                    <small class="text-muted">Customer since 2025</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>ana.lopez@email.com</small><br>
+                                                <small class="text-muted">+63 456 789 0123</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>3</strong></td>
+                                        <td><strong>₱1,245.00</strong></td>
+                                        <td>Sept 1, 2025</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-half text-warning"></i>
+                                                <small class="ms-1">4.5</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-sm" data-bs-toggle="modal" data-bs-target="#viewCustomerModal" title="View Details">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#messageCustomerModal" title="Send Message">
+                                                    <i class="bi bi-chat-dots"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#promoteCustomerModal" title="Send Offer">
+                                                    <i class="bi bi-gift"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="inactive">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="customer-avatar me-2">CG</div>
+                                                <div>
+                                                    <h6 class="mb-0">Carlos Garcia</h6>
+                                                    <small class="text-muted">Customer since 2024</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <small>carlos.garcia@email.com</small><br>
+                                                <small class="text-muted">+63 234 567 8901</small>
+                                            </div>
+                                        </td>
+                                        <td><strong>5</strong></td>
+                                        <td><strong>₱2,150.00</strong></td>
+                                        <td>May 15, 2025</td>
+                                        <td><span class="status-badge inactive">Inactive</span></td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star text-warning"></i>
+                                                <i class="bi bi-star text-warning"></i>
+                                                <small class="ms-1">3.8</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-admin btn-sm" data-bs-toggle="modal" data-bs-target="#viewCustomerModal" title="View Details">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#winBackModal" title="Win Back">
+                                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#orderHistoryModal" title="Order History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Custom Pagination -->
+                        <div class="pagination-container" style="display: flex; justify-content: center; align-items: center; padding: 20px 0; border-top: 1px solid #e0e0e0;">
+                            <nav aria-label="Table pagination">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">Previous</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Customer Modals Container -->
+    <div id="customerModals"></div>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable with admin configuration
+            const table = $('#customersTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "searching": true,
+                "info": false,
+                "paging": false,  // Disable DataTables pagination
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',  // Remove 'p' for pagination
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": ""
+                },
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel', 
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "columnDefs": [
+                    { 
+                        "targets": [6], // Actions column
+                        "orderable": false 
+                    }
+                ],
+                "drawCallback": function() {
+                    // Ensure table uses full width
+                    $('.dataTables_wrapper').css('width', '100%');
+                    $('#customersTable').css('width', '100%');
+                }
+            });
+
+            // Position DataTables buttons at the start of the card header
+            setTimeout(function() {
+                // Remove any existing button containers first
+                $('#datatableButtons').empty();
+                
+                // Get the button container and style it
+                const buttonContainer = table.buttons().container();
+                buttonContainer
+                    .removeClass('dt-buttons')
+                    .addClass('btn-group')
+                    .css({
+                        'flex-wrap': 'wrap',
+                        'gap': '8px'
+                    });
+                
+                // Insert buttons in the designated container
+                $('#datatableButtons').append(buttonContainer);
+            }, 100);
+
+            // Connect custom search input to DataTables search
+            $('#customerSearch').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
+            // Custom pagination logic
+            let currentPage = 1;
+            const rowsPerPage = 10;
+            const rows = $('#customersTable tbody tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+            
+            // Initialize pagination
+            updatePaginationInfo();
+            showPage(currentPage);
+            
+            function showPage(page) {
+                const startIndex = (page - 1) * rowsPerPage;
+                const endIndex = startIndex + rowsPerPage;
+                
+                rows.each(function(index) {
+                    if (index >= startIndex && index < endIndex) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                
+                updatePaginationButtons(page);
+                updatePaginationInfo();
+            }
+            
+            function updatePaginationButtons(page) {
+                $('.pagination .page-item').removeClass('active');
+                $('.pagination .page-item[data-page="' + page + '"]').addClass('active');
+                
+                // Update prev/next button states
+                $('#pagination-prev').toggleClass('disabled', page === 1);
+                $('#pagination-next').toggleClass('disabled', page === totalPages);
+                
+                // Show/hide page numbers based on current page
+                const pageItems = $('.pagination .page-item[data-page]');
+                pageItems.hide();
+                
+                let startPage = Math.max(1, page - 2);
+                let endPage = Math.min(totalPages, page + 2);
+                
+                if (endPage - startPage < 4) {
+                    if (startPage === 1) {
+                        endPage = Math.min(totalPages, startPage + 4);
+                    } else {
+                        startPage = Math.max(1, endPage - 4);
+                    }
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    let pageItem = $('.pagination .page-item[data-page="' + i + '"]');
+                    if (pageItem.length === 0) {
+                        // Create new page item if it doesn't exist
+                        pageItem = $('<li class="page-item" data-page="' + i + '"><a class="page-link" href="#">' + i + '</a></li>');
+                        $('#pagination-next').before(pageItem);
+                    }
+                    pageItem.show();
+                }
+            }
+            
+            function updatePaginationInfo() {
+                const startItem = (currentPage - 1) * rowsPerPage + 1;
+                const endItem = Math.min(currentPage * rowsPerPage, totalRows);
+                
+                $('#pagination-start').text(startItem);
+                $('#pagination-end').text(endItem);
+                $('#pagination-total').text(totalRows);
+            }
+            
+            // Pagination click handlers
+            $(document).on('click', '.pagination .page-item:not(.disabled) .page-link', function(e) {
+                e.preventDefault();
+                const clickedItem = $(this).parent();
+                
+                if (clickedItem.attr('id') === 'pagination-prev') {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage);
+                    }
+                } else if (clickedItem.attr('id') === 'pagination-next') {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        showPage(currentPage);
+                    }
+                } else {
+                    const page = parseInt(clickedItem.attr('data-page'));
+                    if (page) {
+                        currentPage = page;
+                        showPage(currentPage);
+                    }
+                }
+            });
+
+            // Tab functionality with admin-style filtering
+            const tabBtns = document.querySelectorAll('.tab-btn');
+
+            function filterCustomers(status) {
+                const tableRows = document.querySelectorAll('#customersTable tbody tr[data-status]');
+                
+                tableRows.forEach(row => {
+                    const rowStatus = row.getAttribute('data-status');
+                    
+                    let shouldShow = false;
+                    
+                    if (status === 'all') {
+                        shouldShow = true;
+                    } else {
+                        shouldShow = rowStatus === status;
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                });
+                
+                // Redraw DataTable to maintain styling
+                table.draw();
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active tab
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter customers
+                    const filter = this.getAttribute('data-filter');
+                    filterCustomers(filter);
+                });
+            });
+
+            // Load customer modals
+            loadCustomerModals();
+        });
+
+        // Load customer modals
+        async function loadCustomerModals() {
+            const modalFiles = [
+                'modals/view-customer-modal.html',
+                'modals/message-customer-modal.html',
+                'modals/order-history-modal.html',
+                'modals/send-message-modal.html',
+                'modals/create-promotion-modal.html',
+                'modals/customer-segment-modal.html',
+                'modals/loyalty-program-modal.html'
+            ];
+            
+            for (const file of modalFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.getElementById('customerModals').innerHTML += html;
+                    }
+                } catch (error) {
+                    console.log(`Could not load ${file}:`, error);
+                }
+            }
+        }
+    </script>
+    
+    <!-- Seller Main JS -->
+    <script src="../assets/js/seller-main.js"></script>
+</body>
+</html>

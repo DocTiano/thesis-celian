@@ -1,0 +1,93 @@
+<!-- Deactivate Account Modal -->
+<div class="modal fade" id="deactivateAccountModal" tabindex="-1" aria-labelledby="deactivateAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deactivateAccountModalLabel">
+                    <i class="bi bi-exclamation-triangle text-warning me-2"></i>Deactivate Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Warning:</strong> Deactivating your account will temporarily disable your seller profile and hide all your products from customers.
+                </div>
+                
+                <h6 class="mb-3">What happens when you deactivate?</h6>
+                <ul class="mb-4">
+                    <li>Your products will be hidden from search results</li>
+                    <li>Customers won't be able to place new orders</li>
+                    <li>Your seller profile will be temporarily unavailable</li>
+                    <li>You can reactivate your account anytime</li>
+                    <li>Existing orders and data will be preserved</li>
+                </ul>
+                
+                <form id="deactivateAccountForm">
+                    <div class="mb-3">
+                        <label for="deactivateReason" class="form-label">Reason for deactivation</label>
+                        <select class="form-select" id="deactivateReason">
+                            <option value="">Select a reason (optional)</option>
+                            <option value="break">Taking a break from selling</option>
+                            <option value="seasonal">Seasonal closure</option>
+                            <option value="technical">Technical issues</option>
+                            <option value="personal">Personal reasons</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="deactivateNotes" class="form-label">Additional notes (optional)</label>
+                        <textarea class="form-control" id="deactivateNotes" rows="3" placeholder="Provide any additional information..."></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="reactivateDate" class="form-label">Expected reactivation date (optional)</label>
+                        <input type="date" class="form-control" id="reactivateDate">
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDeactivate" required>
+                        <label class="form-check-label" for="confirmDeactivate">
+                            I understand that my account will be temporarily deactivated
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" id="confirmDeactivateBtn" disabled>
+                    <i class="bi bi-pause-circle me-1"></i>Deactivate Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const confirmCheckbox = document.getElementById('confirmDeactivate');
+    const confirmBtn = document.getElementById('confirmDeactivateBtn');
+    
+    confirmCheckbox.addEventListener('change', function() {
+        confirmBtn.disabled = !this.checked;
+    });
+    
+    confirmBtn.addEventListener('click', function() {
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Deactivating...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-info';
+            alert.innerHTML = '<i class="bi bi-info-circle me-2"></i>Your account has been deactivated. You can reactivate it anytime from the login page.';
+            document.querySelector('.modal-body').prepend(alert);
+            
+            setTimeout(() => {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('deactivateAccountModal'));
+                modal.hide();
+            }, 2000);
+        }, 2000);
+    });
+});
+</script>

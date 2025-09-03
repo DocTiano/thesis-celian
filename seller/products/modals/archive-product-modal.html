@@ -1,0 +1,98 @@
+<!-- Archive Product Modal -->
+<div class="modal fade" id="archiveProductModal" tabindex="-1" aria-labelledby="archiveProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="archiveProductModalLabel">
+                    <i class="bi bi-archive"></i>
+                    Archive Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Are you sure?</strong>
+                    <p class="mb-0 mt-2">
+                        This action will archive the product and remove it from your active listings. 
+                        Customers will no longer be able to purchase this item.
+                    </p>
+                </div>
+                
+                <div class="product-summary p-3 border rounded bg-light">
+                    <div class="d-flex align-items-center">
+                        <img src="../../images/fishes.jpg" alt="Product" class="product-thumb me-3" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                        <div>
+                            <h6 class="mb-1">Organic Rice 5kg</h6>
+                            <p class="text-muted mb-1">₱350.00 • 45 in stock</p>
+                            <small class="text-muted">128 total sales</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="archiveProductForm" class="mt-3">
+                    <div class="form-group mb-3">
+                        <label for="archiveReason" class="form-label">Reason for archiving (optional)</label>
+                        <select class="form-control" id="archiveReason" name="archiveReason">
+                            <option value="">Select a reason</option>
+                            <option value="out_of_season">Out of season</option>
+                            <option value="discontinuing">Discontinuing product</option>
+                            <option value="quality_issues">Quality issues</option>
+                            <option value="supplier_issues">Supplier issues</option>
+                            <option value="low_demand">Low demand</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="archiveNotes" class="form-label">Additional notes</label>
+                        <textarea class="form-control" id="archiveNotes" name="archiveNotes" rows="3" placeholder="Any additional information about archiving this product..."></textarea>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomers" name="notifyCustomers" checked>
+                        <label class="form-check-label" for="notifyCustomers">
+                            Notify customers who have this item in their wishlist
+                        </label>
+                    </div>
+                </form>
+                
+                <div class="mt-3">
+                    <h6>What happens when you archive a product?</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li><i class="bi bi-check text-success me-2"></i>Product will be hidden from customer searches</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Existing orders will not be affected</li>
+                        <li><i class="bi bi-check text-success me-2"></i>You can restore the product anytime</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Product history and reviews are preserved</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-warning" form="archiveProductForm">
+                    <i class="bi bi-archive"></i>
+                    Archive Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('archiveProductForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show confirmation
+    if (confirm('Are you sure you want to archive this product? This action can be undone later.')) {
+        // Simulate archiving
+        window.sellerDashboard.showSuccessMessage('Product has been archived successfully!');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('archiveProductModal'));
+        modal.hide();
+        
+        // Reset form
+        this.reset();
+    }
+});
+</script>

@@ -1,0 +1,86 @@
+<!-- Process Order Modal -->
+<div class="modal fade" id="processOrderModal" tabindex="-1" aria-labelledby="processOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="processOrderModalLabel">Process Order #ORD-2025-001</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="processOrderForm">
+                    <div class="mb-3">
+                        <label class="form-label">Order Status</label>
+                        <select class="form-select" id="orderStatus" required>
+                            <option value="">Select status...</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="processing">Processing</option>
+                            <option value="packed">Packed & Ready</option>
+                            <option value="shipped">Shipped</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Estimated Delivery Date</label>
+                        <input type="date" class="form-control" id="estimatedDelivery" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tracking Number (Optional)</label>
+                        <input type="text" class="form-control" id="trackingNumber" placeholder="Enter tracking number if applicable">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Notes for Customer</label>
+                        <textarea class="form-control" id="customerNotes" rows="3" placeholder="Any additional information for the customer..."></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomer" checked>
+                        <label class="form-check-label" for="notifyCustomer">
+                            Send notification to customer via email and SMS
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="processOrderForm" class="btn-seller">
+                    <i class="bi bi-check-circle"></i> Update Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('processOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const status = document.getElementById('orderStatus').value;
+    const estimatedDelivery = document.getElementById('estimatedDelivery').value;
+    const trackingNumber = document.getElementById('trackingNumber').value;
+    const notes = document.getElementById('customerNotes').value;
+    const notifyCustomer = document.getElementById('notifyCustomer').checked;
+    
+    if (!status || !estimatedDelivery) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // Here you would send the data to your backend
+    console.log('Processing order with:', {
+        status,
+        estimatedDelivery,
+        trackingNumber,
+        notes,
+        notifyCustomer
+    });
+    
+    // Show success message
+    alert('Order status updated successfully!');
+    
+    // Close modal and refresh page/table
+    bootstrap.Modal.getInstance(document.getElementById('processOrderModal')).hide();
+    // window.location.reload(); // Or update the table dynamically
+});
+</script>

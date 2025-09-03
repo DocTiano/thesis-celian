@@ -1,0 +1,141 @@
+<!-- Customer Details Modal -->
+<div class="modal fade" id="customerDetailsModal" tabindex="-1" aria-labelledby="customerDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="customerDetailsModalLabel">
+                    <i class="bi bi-person-circle me-2"></i>Customer Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="customer-avatar mb-3">
+                            <img src="https://via.placeholder.com/120x120" alt="Customer Avatar" class="rounded-circle" style="width: 120px; height: 120px;">
+                        </div>
+                        <div class="customer-rating">
+                            <div class="stars mb-2">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star text-muted"></i>
+                                <span class="ms-2">4.2</span>
+                            </div>
+                            <small class="text-muted">Based on 15 orders</small>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="customer-info">
+                            <h6 class="mb-3">Personal Information</h6>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Name:</strong></div>
+                                <div class="col-sm-8">Maria Santos</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Email:</strong></div>
+                                <div class="col-sm-8">maria.santos@email.com</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Phone:</strong></div>
+                                <div class="col-sm-8">+63 912 345 6789</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Location:</strong></div>
+                                <div class="col-sm-8">Sagnay, Camarines Sur</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Customer Since:</strong></div>
+                                <div class="col-sm-8">March 2024</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-4"><strong>Total Orders:</strong></div>
+                                <div class="col-sm-8">15 orders</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="my-4">
+                
+                <div class="customer-stats">
+                    <h6 class="mb-3">Order Statistics</h6>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="stat-card text-center p-3 border rounded">
+                                <div class="stat-number h4 text-primary">₱12,450</div>
+                                <div class="stat-label small text-muted">Total Spent</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center p-3 border rounded">
+                                <div class="stat-number h4 text-success">₱829</div>
+                                <div class="stat-label small text-muted">Average Order</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center p-3 border rounded">
+                                <div class="stat-number h4 text-info">5</div>
+                                <div class="stat-label small text-muted">This Month</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card text-center p-3 border rounded">
+                                <div class="stat-number h4 text-warning">93%</div>
+                                <div class="stat-label small text-muted">Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="my-4">
+                
+                <div class="recent-orders">
+                    <h6 class="mb-3">Recent Orders</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#12345</td>
+                                    <td>Dec 15, 2024</td>
+                                    <td>₱1,250</td>
+                                    <td><span class="badge bg-success">Delivered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12344</td>
+                                    <td>Dec 10, 2024</td>
+                                    <td>₱850</td>
+                                    <td><span class="badge bg-success">Delivered</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12343</td>
+                                    <td>Dec 5, 2024</td>
+                                    <td>₱1,100</td>
+                                    <td><span class="badge bg-primary">Shipped</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-chat-dots me-1"></i>Send Message
+                </button>
+                <button type="button" class="btn btn-outline-warning">
+                    <i class="bi bi-flag me-1"></i>Flag Customer
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<!-- View Order Modal -->
+<div class="modal fade" id="viewOrderModal" tabindex="-1" aria-labelledby="viewOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewOrderModalLabel">Order Details - #ORD-2025-001</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Customer Information -->
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Customer Information</h6>
+                        <div class="customer-info">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="customer-avatar me-3">MR</div>
+                                <div>
+                                    <h6 class="mb-0">Maria Rodriguez</h6>
+                                    <small class="text-muted">maria.rodriguez@email.com</small>
+                                </div>
+                            </div>
+                            <p class="mb-1"><strong>Phone:</strong> +63 912 345 6789</p>
+                            <p class="mb-1"><strong>Address:</strong> 456 Barangay Central, Sagnay, Camarines Sur</p>
+                            <p class="mb-0"><strong>Customer Since:</strong> March 2024</p>
+                        </div>
+                    </div>
+
+                    <!-- Order Information -->
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Order Information</h6>
+                        <div class="order-info">
+                            <p class="mb-1"><strong>Order Date:</strong> September 3, 2025</p>
+                            <p class="mb-1"><strong>Status:</strong> <span class="status-badge pending">Pending</span></p>
+                            <p class="mb-1"><strong>Payment Method:</strong> Cash on Delivery</p>
+                            <p class="mb-0"><strong>Delivery Type:</strong> Local Delivery</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Order Items -->
+                <div class="order-items">
+                    <h6 class="mb-3">Order Items</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../../../assets/images/rice.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                            <span>Organic Rice 5kg</span>
+                                        </div>
+                                    </td>
+                                    <td>₱350.00</td>
+                                    <td>2</td>
+                                    <td>₱700.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../../../assets/images/vegetables.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                            <span>Fresh Vegetables Mix</span>
+                                        </div>
+                                    </td>
+                                    <td>₱85.00</td>
+                                    <td>1</td>
+                                    <td>₱85.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Delivery Instructions</h6>
+                            <p class="text-muted">Please deliver between 2PM-5PM. Call when you arrive.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Order Summary</h6>
+                            <div class="summary-details">
+                                <div class="d-flex justify-content-between">
+                                    <span>Subtotal:</span>
+                                    <span>₱785.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Delivery Fee:</span>
+                                    <span>₱50.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Service Fee:</span>
+                                    <span>₱45.00</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between fw-bold">
+                                    <span>Total:</span>
+                                    <span>₱880.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary" onclick="printOrder()">
+                    <i class="bi bi-printer"></i> Print
+                </button>
+                <button type="button" class="btn-seller" data-bs-toggle="modal" data-bs-target="#processOrderModal">
+                    <i class="bi bi-check-circle"></i> Process Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,198 @@
+<!-- View Product Modal -->
+<div class="modal fade" id="viewProductModal" tabindex="-1" aria-labelledby="viewProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewProductModalLabel">
+                    <i class="bi bi-eye"></i>
+                    Product Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Product Images -->
+                        <div class="product-images mb-3">
+                            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="../../images/fishes.jpg" class="d-block w-100" alt="Product Image" style="height: 300px; object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Badges -->
+                        <div class="product-badges mb-3">
+                            <span class="badge bg-success me-2">
+                                <i class="bi bi-check-circle"></i> Organic Certified
+                            </span>
+                            <span class="badge bg-primary">
+                                <i class="bi bi-geo-alt"></i> Locally Sourced
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <!-- Product Information -->
+                        <div class="product-info">
+                            <h4 class="product-title mb-2">Organic Rice 5kg</h4>
+                            <p class="product-category text-muted mb-2">
+                                <i class="bi bi-tag"></i> Grains & Rice
+                            </p>
+                            
+                            <div class="product-rating mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="stars me-2">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <span class="rating-value">4.9</span>
+                                    <span class="text-muted ms-2">(45 reviews)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-price mb-3">
+                                <h3 class="price text-success mb-0">₱350.00</h3>
+                                <small class="text-muted">per kilogram</small>
+                            </div>
+                            
+                            <div class="product-stock mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Stock Level:</span>
+                                    <span class="badge bg-success">45 pieces available</span>
+                                </div>
+                                <div class="progress mt-2" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%"></div>
+                                </div>
+                                <small class="text-muted">Alert when below 10 pieces</small>
+                            </div>
+                            
+                            <div class="product-status mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Status:</span>
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-sales mb-3">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h5 class="mb-1">128</h5>
+                                            <small class="text-muted">Total Sales</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h5 class="mb-1">₱44,800</h5>
+                                            <small class="text-muted">Revenue</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h5 class="mb-1">45</h5>
+                                            <small class="text-muted">Reviews</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Description -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Product Description</h5>
+                        <p class="product-description">
+                            Premium quality organic white rice, locally grown in Sagnay using traditional farming methods. 
+                            This rice is carefully cultivated without the use of harmful chemicals or pesticides, ensuring 
+                            a pure and nutritious product for your family. Rich in essential nutrients and featuring a 
+                            distinctive aroma and taste that reflects the fertile soils of Camarines Sur.
+                        </p>
+                        
+                        <h6 class="mt-3">Product Details:</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Origin:</strong> Sagnay, Camarines Sur</li>
+                            <li><strong>Farming Method:</strong> Organic, Chemical-free</li>
+                            <li><strong>Package Weight:</strong> 5 kilograms</li>
+                            <li><strong>Shelf Life:</strong> 12 months from harvest</li>
+                            <li><strong>Storage:</strong> Store in cool, dry place</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Recent Reviews -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Recent Customer Reviews</h5>
+                        <div class="reviews-container">
+                            <div class="review-item border-bottom py-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="reviewer-info mb-1">
+                                            <strong>Maria Santos</strong>
+                                            <small class="text-muted ms-2">2 days ago</small>
+                                        </div>
+                                        <div class="stars mb-1">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </div>
+                                        <p class="review-text mb-0">
+                                            "Excellent quality rice! Very aromatic and cooks perfectly every time. 
+                                            You can really taste the difference of organic farming."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item py-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="reviewer-info mb-1">
+                                            <strong>Carlos Reyes</strong>
+                                            <small class="text-muted ms-2">1 week ago</small>
+                                        </div>
+                                        <div class="stars mb-1">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star text-warning"></i>
+                                        </div>
+                                        <p class="review-text mb-0">
+                                            "Great product and fast delivery. The packaging was secure and the rice 
+                                            arrived in perfect condition. Will definitely order again!"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn-seller" onclick="$('#editProductModal').modal('show'); $('#viewProductModal').modal('hide');">
+                    <i class="bi bi-pencil"></i>
+                    Edit Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

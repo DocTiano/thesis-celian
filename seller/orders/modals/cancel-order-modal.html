@@ -1,0 +1,103 @@
+<!-- Cancel Order Modal -->
+<div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="cancelOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelOrderModalLabel">Cancel Order #ORD-2025-001</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Warning:</strong> This action cannot be undone. The order will be cancelled and the customer will be notified.
+                </div>
+
+                <form id="cancelOrderForm">
+                    <div class="mb-3">
+                        <label class="form-label">Reason for Cancellation <span class="text-danger">*</span></label>
+                        <select class="form-select" id="cancellationReason" required>
+                            <option value="">Select reason...</option>
+                            <option value="out-of-stock">Product out of stock</option>
+                            <option value="customer-request">Customer requested cancellation</option>
+                            <option value="payment-issue">Payment issue</option>
+                            <option value="shipping-issue">Shipping/delivery issue</option>
+                            <option value="quality-issue">Product quality issue</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Additional Details</label>
+                        <textarea class="form-control" id="cancellationDetails" rows="3" placeholder="Please provide more details about the cancellation..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Refund Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₱</span>
+                            <input type="number" class="form-control" id="refundAmount" value="880.00" step="0.01" readonly>
+                        </div>
+                        <div class="form-text">Full refund will be processed if payment was already made</div>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomerCancel" checked>
+                        <label class="form-check-label" for="notifyCustomerCancel">
+                            Send cancellation notification to customer
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="restockItems" checked>
+                        <label class="form-check-label" for="restockItems">
+                            Return items to inventory
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Keep Order</button>
+                <button type="submit" form="cancelOrderForm" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i> Cancel Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('cancelOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const reason = document.getElementById('cancellationReason').value;
+    const details = document.getElementById('cancellationDetails').value;
+    const refundAmount = document.getElementById('refundAmount').value;
+    const notifyCustomer = document.getElementById('notifyCustomerCancel').checked;
+    const restockItems = document.getElementById('restockItems').checked;
+    
+    if (!reason) {
+        alert('Please select a reason for cancellation.');
+        return;
+    }
+    
+    // Confirm the action
+    if (!confirm('Are you sure you want to cancel this order? This action cannot be undone.')) {
+        return;
+    }
+    
+    // Here you would send the data to your backend
+    console.log('Cancelling order with:', {
+        reason,
+        details,
+        refundAmount,
+        notifyCustomer,
+        restockItems
+    });
+    
+    // Show success message
+    alert('Order cancelled successfully. Customer has been notified and refund will be processed.');
+    
+    // Close modal and refresh page/table
+    bootstrap.Modal.getInstance(document.getElementById('cancelOrderModal')).hide();
+});
+</script>

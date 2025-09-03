@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | Seller Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Seller Styles -->
+    <link href="../assets/css/seller-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="seller-layout">
+        <!-- Sidebar -->
+        <nav class="seller-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S2EH</div>
+                <div class="title">SELLER PORTAL</div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="../dashboard/dashboard.html" class="nav-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../products/products.html" class="nav-link">
+                        <i class="bi bi-box"></i>
+                        <span>My Products</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../orders/orders.html" class="nav-link">
+                        <i class="bi bi-cart3"></i>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../inventory/inventory.html" class="nav-link">
+                        <i class="bi bi-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../customers/customers.html" class="nav-link">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../messages/messages.html" class="nav-link">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="analytics.html" class="nav-link active">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../profile/profile.html" class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../settings/settings.html" class="nav-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="seller-main">
+            <!-- Top Bar -->
+            <header class="seller-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Analytics</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="d-flex gap-2 me-3">
+                        <select class="form-select form-select-sm" id="dateRange">
+                            <option value="7">Last 7 days</option>
+                            <option value="30" selected>Last 30 days</option>
+                            <option value="90">Last 90 days</option>
+                            <option value="365">Last year</option>
+                        </select>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exportReportModal">
+                            <i class="bi bi-download"></i>
+                            Export
+                        </button>
+                    </div>
+                    <button class="notification-icon" title="Notifications">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="seller-profile">
+                        <div class="seller-avatar">JD</div>
+                        <span>Juan Santos</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="seller-content">
+                <!-- Overview Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Total Revenue</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-currency-exchange"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">₱128,450</div>
+                        <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            +12.5% vs last month
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card highlight">
+                        <div class="stat-header">
+                            <div class="stat-title">Orders</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-cart-check"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">287</div>
+                        <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            +8.3% vs last month
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card accent">
+                        <div class="stat-header">
+                            <div class="stat-title">Avg Order Value</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">₱447</div>
+                        <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            +3.8% vs last month
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-header">
+                            <div class="stat-title">Conversion Rate</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-percent"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">3.2%</div>
+                        <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            +0.4% vs last month
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 1 -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Revenue Overview</h5>
+                                <div class="card-actions">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-outline-secondary active" data-period="daily">Daily</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-period="weekly">Weekly</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-period="monthly">Monthly</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="revenueChart" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Product Categories</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 2 -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Order Status Distribution</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="orderStatusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Customer Growth</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="customerGrowthChart" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Tables -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Top Performing Products</h5>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productPerformanceModal">
+                                    View All
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="admin-table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Sales</th>
+                                                <th>Revenue</th>
+                                                <th>Growth</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="../../assets/images/rice.jpg" alt="Product" class="product-thumbnail me-2" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                                        <span>Organic Rice 5kg</span>
+                                                    </div>
+                                                </td>
+                                                <td><strong>142</strong></td>
+                                                <td><strong>₱49,700</strong></td>
+                                                <td><span class="text-success">+15%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="../../assets/images/coconut-oil.jpg" alt="Product" class="product-thumbnail me-2" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                                        <span>Coconut Oil 500ml</span>
+                                                    </div>
+                                                </td>
+                                                <td><strong>89</strong></td>
+                                                <td><strong>₱10,680</strong></td>
+                                                <td><span class="text-success">+8%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="../../assets/images/vegetables.jpg" alt="Product" class="product-thumbnail me-2" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                                        <span>Fresh Vegetables Mix</span>
+                                                    </div>
+                                                </td>
+                                                <td><strong>67</strong></td>
+                                                <td><strong>₱5,695</strong></td>
+                                                <td><span class="text-warning">-2%</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="seller-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Recent Activity</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-feed">
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-success">
+                                            <i class="bi bi-cart-check"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6 class="mb-1">New order received</h6>
+                                            <p class="mb-0 text-muted">Order #ORD-2025-001 from Maria Rodriguez</p>
+                                            <small class="text-muted">2 minutes ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-info">
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6 class="mb-1">Product review</h6>
+                                            <p class="mb-0 text-muted">5-star review for Organic Rice 5kg</p>
+                                            <small class="text-muted">1 hour ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-warning">
+                                            <i class="bi bi-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6 class="mb-1">Low stock alert</h6>
+                                            <p class="mb-0 text-muted">Coconut Oil 500ml - Only 8 units left</p>
+                                            <small class="text-muted">3 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-primary">
+                                            <i class="bi bi-person-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6 class="mb-1">New customer</h6>
+                                            <p class="mb-0 text-muted">Lisa Martinez joined your store</p>
+                                            <small class="text-muted">5 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights -->
+                <div class="seller-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Business Insights</h5>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#insightsModal">
+                            View Detailed Report
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="insight-card success">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-trophy"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h6>Best Performing Day</h6>
+                                        <p class="mb-0">Saturday generates 23% more revenue than average</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-card info">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h6>Peak Hours</h6>
+                                        <p class="mb-0">Most orders placed between 2PM - 5PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-card warning">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h6>Opportunity</h6>
+                                        <p class="mb-0">Consider promoting vegetables - demand increasing</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Analytics Modals Container -->
+    <div id="analyticsModals"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize charts
+            initializeCharts();
+            
+            // Date range selector
+            $('#dateRange').change(function() {
+                const days = $(this).val();
+                updateChartsForDateRange(days);
+            });
+
+            // Period buttons for revenue chart
+            $('.btn-group button[data-period]').click(function() {
+                $('.btn-group button[data-period]').removeClass('active');
+                $(this).addClass('active');
+                
+                const period = $(this).data('period');
+                updateRevenueChart(period);
+            });
+
+            // Load analytics modals
+            loadAnalyticsModals();
+        });
+
+        function initializeCharts() {
+            // Revenue Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            window.revenueChart = new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [28500, 32100, 29800, 38050],
+                        borderColor: '#1976d2',
+                        backgroundColor: 'rgba(25, 118, 210, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '₱' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Rice', 'Vegetables', 'Oils', 'Seafood', 'Others'],
+                    datasets: [{
+                        data: [35, 25, 15, 15, 10],
+                        backgroundColor: [
+                            '#1976d2',
+                            '#388e3c',
+                            '#f57c00',
+                            '#7b1fa2',
+                            '#5d4037'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Order Status Chart
+            const orderStatusCtx = document.getElementById('orderStatusChart').getContext('2d');
+            new Chart(orderStatusCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Delivered', 'Processing', 'Shipped', 'Pending'],
+                    datasets: [{
+                        data: [274, 5, 12, 8],
+                        backgroundColor: [
+                            '#4caf50',
+                            '#2196f3',
+                            '#ff9800',
+                            '#f44336'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Customer Growth Chart
+            const customerGrowthCtx = document.getElementById('customerGrowthChart').getContext('2d');
+            new Chart(customerGrowthCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'New Customers',
+                        data: [12, 19, 15, 25, 22, 18],
+                        backgroundColor: '#1976d2'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChartsForDateRange(days) {
+            // In a real app, this would fetch new data based on the date range
+            console.log('Updating charts for', days, 'days');
+        }
+
+        function updateRevenueChart(period) {
+            // In a real app, this would update the chart data based on the period
+            console.log('Updating revenue chart for', period, 'period');
+        }
+
+        // Load analytics modals
+        async function loadAnalyticsModals() {
+            const modalFiles = [
+                'modals/export-report-modal.html',
+                'modals/product-performance-modal.html',
+                'modals/insights-modal.html'
+            ];
+            
+            for (const file of modalFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.body.insertAdjacentHTML('beforeend', html);
+                    }
+                } catch (error) {
+                    console.log(`Could not load ${file}:`, error);
+                }
+            }
+        }
+
+        // Initialize DataTables for admin-style pagination and functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize DataTables for any admin-table
+            $('.admin-table').DataTable({
+                "pageLength": 10,
+                "info": false,
+                "searching": false,
+                "language": {
+                    "paginate": {
+                        "previous": '<i class="bi bi-chevron-left"></i>',
+                        "next": '<i class="bi bi-chevron-right"></i>'
+                    }
+                },
+                "dom": '<"d-flex justify-content-between align-items-center mb-3"<"d-flex gap-2"B>><"table-responsive"t><"d-flex justify-content-between align-items-center mt-3"<"me-auto"><"ms-auto"p>>',
+                "buttons": [
+                    {
+                        text: '<i class="bi bi-plus-circle"></i> Add Product',
+                        className: 'btn-admin btn-admin-primary',
+                        action: function() {
+                            window.location.href = '../products/products.html';
+                        }
+                    },
+                    {
+                        text: '<i class="bi bi-download"></i> Export',
+                        className: 'btn-admin btn-admin-outline',
+                        attr: {
+                            'data-bs-toggle': 'modal',
+                            'data-bs-target': '#exportReportModal'
+                        }
+                    }
+                ]
+            });
+
+            // Make table rows clickable
+            $('.admin-table tbody tr').on('click', function() {
+                // Add your row click logic here
+                console.log('Row clicked');
+            });
+        });
+    </script>
+    
+    <!-- Seller Main JS -->
+    <script src="../assets/js/seller-main.js"></script>
+    
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+</body>
+</html>

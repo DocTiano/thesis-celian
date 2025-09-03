@@ -1,0 +1,133 @@
+<!-- Delete Account Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">
+                    <i class="bi bi-exclamation-triangle text-danger me-2"></i>Delete Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Danger:</strong> This action is permanent and cannot be undone. All your data will be permanently deleted.
+                </div>
+                
+                <h6 class="mb-3">What will be deleted?</h6>
+                <ul class="mb-4 text-danger">
+                    <li>Your seller profile and account information</li>
+                    <li>All product listings and descriptions</li>
+                    <li>Order history and transaction records</li>
+                    <li>Customer messages and communications</li>
+                    <li>Analytics data and reports</li>
+                    <li>All uploaded images and documents</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Before you delete:</strong> Consider deactivating your account instead if you might want to return to selling in the future.
+                </div>
+                
+                <form id="deleteAccountForm">
+                    <div class="mb-3">
+                        <label for="deleteReason" class="form-label">Reason for deletion *</label>
+                        <select class="form-select" id="deleteReason" required>
+                            <option value="">Select a reason</option>
+                            <option value="no-longer-selling">No longer selling</option>
+                            <option value="found-alternative">Found alternative platform</option>
+                            <option value="privacy-concerns">Privacy concerns</option>
+                            <option value="technical-issues">Technical issues</option>
+                            <option value="poor-experience">Poor experience</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="deleteFeedback" class="form-label">Feedback (optional)</label>
+                        <textarea class="form-control" id="deleteFeedback" rows="3" placeholder="Help us improve by sharing your feedback..."></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm your password *</label>
+                        <input type="password" class="form-control" id="confirmPassword" required placeholder="Enter your password to confirm">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirmText" class="form-label">Type "DELETE MY ACCOUNT" to confirm *</label>
+                        <input type="text" class="form-control" id="confirmText" required placeholder="Type the confirmation text">
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete" required>
+                        <label class="form-check-label" for="confirmDelete">
+                            I understand that this action is permanent and irreversible
+                        </label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDataLoss" required>
+                        <label class="form-check-label" for="confirmDataLoss">
+                            I acknowledge that all my data will be permanently deleted
+                        </label>
+                    </div>
+                </form>
+                
+                <div class="deletion-timeline">
+                    <h6 class="mb-2">Deletion Process:</h6>
+                    <small class="text-muted">
+                        1. Account immediately deactivated<br>
+                        2. Data deletion begins within 24 hours<br>
+                        3. Complete deletion within 30 days<br>
+                        4. Some data may be retained for legal compliance
+                    </small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-pause-circle me-1"></i>Deactivate Instead
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn" disabled>
+                    <i class="bi bi-trash me-1"></i>Delete My Account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('deleteAccountForm');
+    const confirmBtn = document.getElementById('confirmDeleteBtn');
+    const confirmText = document.getElementById('confirmText');
+    const confirmDelete = document.getElementById('confirmDelete');
+    const confirmDataLoss = document.getElementById('confirmDataLoss');
+    
+    function validateForm() {
+        const isTextCorrect = confirmText.value === 'DELETE MY ACCOUNT';
+        const isChecked1 = confirmDelete.checked;
+        const isChecked2 = confirmDataLoss.checked;
+        const hasPassword = document.getElementById('confirmPassword').value.length > 0;
+        const hasReason = document.getElementById('deleteReason').value !== '';
+        
+        confirmBtn.disabled = !(isTextCorrect && isChecked1 && isChecked2 && hasPassword && hasReason);
+    }
+    
+    form.addEventListener('input', validateForm);
+    form.addEventListener('change', validateForm);
+    
+    confirmBtn.addEventListener('click', function() {
+        if (confirm('This is your final confirmation. Are you absolutely sure you want to delete your account permanently?')) {
+            this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Deleting Account...';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                alert('Your account has been scheduled for deletion. You will be logged out now.');
+                // In a real app, this would redirect to logout
+                window.location.href = '/logout';
+            }, 3000);
+        }
+    });
+});
+</script>

@@ -1,0 +1,164 @@
+<!-- Send Message Modal -->
+<div class="modal fade" id="sendMessageModal" tabindex="-1" aria-labelledby="sendMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sendMessageModalLabel">
+                    <i class="bi bi-envelope-fill text-primary me-2"></i>
+                    Send Message to Customers
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="mb-3">Recipients</h6>
+                        <div class="mb-3">
+                            <label class="form-label">Send to:</label>
+                            <select class="form-select" id="recipientType">
+                                <option value="all">All Customers</option>
+                                <option value="active">Active Customers</option>
+                                <option value="vip">VIP Customers</option>
+                                <option value="inactive">Inactive Customers</option>
+                                <option value="segment">Customer Segment</option>
+                                <option value="custom">Custom Selection</option>
+                            </select>
+                        </div>
+                        
+                        <div id="segmentSelector" style="display: none;">
+                            <label class="form-label">Select Segment:</label>
+                            <select class="form-select mb-2">
+                                <option value="frequent-buyers">Frequent Buyers</option>
+                                <option value="high-value">High Value Customers</option>
+                                <option value="recent-orders">Recent Orders</option>
+                                <option value="location-based">Location Based</option>
+                            </select>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Recipients Summary</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <span>Total Recipients:</span>
+                                    <strong id="totalRecipients">156</strong>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Email:</span>
+                                    <span id="emailRecipients">142</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>SMS:</span>
+                                    <span id="smsRecipients">98</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h6 class="mb-3">Message Content</h6>
+                        <div class="mb-3">
+                            <label class="form-label">Message Type</label>
+                            <select class="form-select" id="messageType">
+                                <option value="promotional">Promotional</option>
+                                <option value="announcement">Announcement</option>
+                                <option value="update">Product Update</option>
+                                <option value="reminder">Order Reminder</option>
+                                <option value="thank-you">Thank You</option>
+                                <option value="custom">Custom Message</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Subject/Title</label>
+                            <input type="text" class="form-control" id="messageSubject" placeholder="Enter message subject">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Message Content</label>
+                            <textarea class="form-control" id="messageContent" rows="8" placeholder="Type your message here..."></textarea>
+                            <div class="form-text">
+                                Available variables: {customer_name}, {last_order}, {total_orders}, {shop_name}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Delivery Method</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sendEmail" checked>
+                                    <label class="form-check-label" for="sendEmail">Email</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sendSMS">
+                                    <label class="form-check-label" for="sendSMS">SMS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sendNotification" checked>
+                                    <label class="form-check-label" for="sendNotification">In-App Notification</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Scheduling</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="scheduling" id="sendNow" checked>
+                                    <label class="form-check-label" for="sendNow">Send Now</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="scheduling" id="scheduleLater">
+                                    <label class="form-check-label" for="scheduleLater">Schedule for Later</label>
+                                </div>
+                                <div id="scheduleDateTime" style="display: none;" class="mt-2">
+                                    <input type="datetime-local" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Preview:</strong> Your message will be personalized for each customer
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-primary">Save as Draft</button>
+                <button type="button" class="btn btn-outline-warning">Preview Message</button>
+                <button type="button" class="btn btn-primary">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const recipientType = document.getElementById('recipientType');
+    const segmentSelector = document.getElementById('segmentSelector');
+    const scheduleLater = document.getElementById('scheduleLater');
+    const scheduleDateTime = document.getElementById('scheduleDateTime');
+    
+    if (recipientType) {
+        recipientType.addEventListener('change', function() {
+            if (this.value === 'segment') {
+                segmentSelector.style.display = 'block';
+            } else {
+                segmentSelector.style.display = 'none';
+            }
+        });
+    }
+    
+    if (scheduleLater) {
+        scheduleLater.addEventListener('change', function() {
+            scheduleDateTime.style.display = 'block';
+        });
+    }
+    
+    const sendNow = document.getElementById('sendNow');
+    if (sendNow) {
+        sendNow.addEventListener('change', function() {
+            scheduleDateTime.style.display = 'none';
+        });
+    }
+});
+</script>

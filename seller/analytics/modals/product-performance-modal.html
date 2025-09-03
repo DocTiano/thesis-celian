@@ -1,0 +1,251 @@
+<!-- Product Performance Modal -->
+<div class="modal fade" id="productPerformanceModal" tabindex="-1" aria-labelledby="productPerformanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productPerformanceModalLabel">
+                    <i class="bi bi-graph-up me-2"></i>Product Performance Analysis
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Filter Controls -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <select class="form-select" id="performancePeriod">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 3 Months</option>
+                            <option value="365">Last Year</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="performanceCategory">
+                            <option value="all">All Categories</option>
+                            <option value="grains">Grains & Rice</option>
+                            <option value="vegetables">Vegetables</option>
+                            <option value="seafood">Seafood</option>
+                            <option value="oils">Oils & Condiments</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="performanceSort">
+                            <option value="revenue">By Revenue</option>
+                            <option value="quantity">By Quantity Sold</option>
+                            <option value="views">By Views</option>
+                            <option value="rating">By Rating</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-outline-primary w-100" id="refreshPerformance">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Performance Summary -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card text-center p-3 border rounded bg-light">
+                            <div class="stat-number h4 text-primary">24</div>
+                            <div class="stat-label small text-muted">Total Products</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center p-3 border rounded bg-light">
+                            <div class="stat-number h4 text-success">₱45,230</div>
+                            <div class="stat-label small text-muted">Total Revenue</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center p-3 border rounded bg-light">
+                            <div class="stat-number h4 text-info">156</div>
+                            <div class="stat-label small text-muted">Units Sold</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center p-3 border rounded bg-light">
+                            <div class="stat-number h4 text-warning">4.7</div>
+                            <div class="stat-label small text-muted">Avg Rating</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Performance Table -->
+                <div class="table-responsive">
+                    <table class="table table-hover" id="productPerformanceTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Revenue</th>
+                                <th>Units Sold</th>
+                                <th>Views</th>
+                                <th>Conversion</th>
+                                <th>Rating</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-warning text-dark">1</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                        <div>
+                                            <div class="fw-medium">Organic Rice 5kg</div>
+                                            <small class="text-muted">#PR001</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Grains & Rice</td>
+                                <td class="fw-bold text-success">₱12,600</td>
+                                <td>36</td>
+                                <td>1,245</td>
+                                <td>2.9%</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-star-fill text-warning me-1"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="bi bi-trending-up"></i> +15%
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary">2</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                        <div>
+                                            <div class="fw-medium">Fresh Vegetables Mix</div>
+                                            <small class="text-muted">#PR002</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Vegetables</td>
+                                <td class="fw-bold text-success">₱8,640</td>
+                                <td>48</td>
+                                <td>892</td>
+                                <td>5.4%</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-star-fill text-warning me-1"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="bi bi-trending-up"></i> +8%
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary">3</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                        <div>
+                                            <div class="fw-medium">Coconut Oil 500ml</div>
+                                            <small class="text-muted">#PR003</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Oils & Condiments</td>
+                                <td class="fw-bold text-success">₱6,240</td>
+                                <td>52</td>
+                                <td>734</td>
+                                <td>7.1%</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-star-fill text-warning me-1"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="bi bi-trending-down"></i> -3%
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary">4</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                        <div>
+                                            <div class="fw-medium">Dried Fish 250g</div>
+                                            <small class="text-muted">#PR004</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Seafood</td>
+                                <td class="fw-bold text-success">₱5,100</td>
+                                <td>20</td>
+                                <td>456</td>
+                                <td>4.4%</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-star-fill text-warning me-1"></i>
+                                        <span>4.5</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-muted">
+                                        <i class="bi bi-dash"></i> 0%
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Performance Insights -->
+                <div class="mt-4">
+                    <h6 class="mb-3">Performance Insights</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="insight-card p-3 border rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-lightbulb text-warning me-2"></i>
+                                    <strong>Top Performer</strong>
+                                </div>
+                                <p class="mb-0">Organic Rice 5kg is your best seller with 36 units sold and ₱12,600 in revenue this month.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="insight-card p-3 border rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-exclamation-triangle text-warning me-2"></i>
+                                    <strong>Needs Attention</strong>
+                                </div>
+                                <p class="mb-0">Coconut Oil 500ml shows declining trend (-3%). Consider promotional activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-download me-1"></i>Export Data
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-graph-up me-1"></i>View Detailed Analytics
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

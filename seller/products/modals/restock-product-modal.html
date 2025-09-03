@@ -1,0 +1,142 @@
+<!-- Restock Product Modal -->
+<div class="modal fade" id="restockProductModal" tabindex="-1" aria-labelledby="restockProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="restockProductModalLabel">
+                    <i class="bi bi-plus-square"></i>
+                    Restock Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-summary p-3 border rounded bg-light mb-3">
+                    <div class="d-flex align-items-center">
+                        <img src="../../images/fishes.jpg" alt="Product" class="product-thumb me-3" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                        <div>
+                            <h6 class="mb-1">Organic Rice 5kg</h6>
+                            <p class="text-muted mb-1">₱350.00 per kilogram</p>
+                            <small class="text-success">Current stock: 45 pieces</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="restockProductForm">
+                    <div class="form-group mb-3">
+                        <label for="restockQuantity" class="form-label">Additional Quantity *</label>
+                        <input type="number" class="form-control" id="restockQuantity" name="restockQuantity" min="1" required>
+                        <div class="form-text">Enter the number of units you want to add to your current stock</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="restockCost" class="form-label">Cost per Unit (₱)</label>
+                        <input type="number" class="form-control" id="restockCost" name="restockCost" step="0.01" min="0" placeholder="Optional - for your records">
+                        <div class="form-text">Track your restocking costs (optional)</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="restockSource" class="form-label">Source/Supplier</label>
+                        <input type="text" class="form-control" id="restockSource" name="restockSource" placeholder="e.g., Farm A, Supplier Name">
+                        <div class="form-text">Track where this stock came from (optional)</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="restockDate" class="form-label">Restock Date</label>
+                        <input type="date" class="form-control" id="restockDate" name="restockDate">
+                        <div class="form-text">When was this stock acquired? (defaults to today)</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="restockNotes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="restockNotes" name="restockNotes" rows="3" placeholder="Any additional notes about this restock..."></textarea>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        <strong>Stock Calculation:</strong>
+                        <div class="mt-2">
+                            <div class="d-flex justify-content-between">
+                                <span>Current Stock:</span>
+                                <span>45 pieces</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Adding:</span>
+                                <span id="addingQuantity">0 pieces</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="d-flex justify-content-between">
+                                <strong>New Total:</strong>
+                                <strong id="newTotal">45 pieces</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="updateMinStock" name="updateMinStock">
+                        <label class="form-check-label" for="updateMinStock">
+                            Update minimum stock alert level
+                        </label>
+                    </div>
+                    
+                    <div id="minStockSection" style="display: none;" class="mt-2">
+                        <label for="newMinStock" class="form-label">New minimum stock level</label>
+                        <input type="number" class="form-control" id="newMinStock" name="newMinStock" min="0" value="10">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn-seller" form="restockProductForm">
+                    <i class="bi bi-plus-square"></i>
+                    Add to Stock
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Set default date to today
+document.getElementById('restockDate').valueAsDate = new Date();
+
+// Update stock calculation
+document.getElementById('restockQuantity').addEventListener('input', function() {
+    const currentStock = 45;
+    const addingQty = parseInt(this.value) || 0;
+    const newTotal = currentStock + addingQty;
+    
+    document.getElementById('addingQuantity').textContent = addingQty + ' pieces';
+    document.getElementById('newTotal').textContent = newTotal + ' pieces';
+});
+
+// Toggle minimum stock section
+document.getElementById('updateMinStock').addEventListener('change', function() {
+    const section = document.getElementById('minStockSection');
+    section.style.display = this.checked ? 'block' : 'none';
+});
+
+document.getElementById('restockProductForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const quantity = document.getElementById('restockQuantity').value;
+    
+    if (!quantity || quantity <= 0) {
+        alert('Please enter a valid quantity to add to stock.');
+        return;
+    }
+    
+    // Simulate restocking
+    window.sellerDashboard.showSuccessMessage(`Successfully added ${quantity} pieces to your stock!`);
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('restockProductModal'));
+    modal.hide();
+    
+    // Reset form
+    this.reset();
+    document.getElementById('restockDate').valueAsDate = new Date();
+    document.getElementById('addingQuantity').textContent = '0 pieces';
+    document.getElementById('newTotal').textContent = '45 pieces';
+    document.getElementById('minStockSection').style.display = 'none';
+});
+</script>

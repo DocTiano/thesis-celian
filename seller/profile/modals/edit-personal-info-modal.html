@@ -1,0 +1,72 @@
+<!-- Edit Personal Info Modal -->
+<div class="modal fade" id="editPersonalInfoModal" tabindex="-1" aria-labelledby="editPersonalInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPersonalInfoModalLabel">
+                    <i class="bi bi-person me-2"></i>Edit Personal Information
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editPersonalInfoForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="personalFirstName" class="form-label">First Name *</label>
+                                <input type="text" class="form-control" id="personalFirstName" value="Juan" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="personalLastName" class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" id="personalLastName" value="Santos" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="personalEmail" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="personalEmail" value="juan.santos@email.com" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="personalPhone" class="form-label">Phone Number *</label>
+                        <input type="tel" class="form-control" id="personalPhone" value="+63 912 345 6789" required>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="personalBirthdate" class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" id="personalBirthdate" value="1985-03-15">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="personalGender" class="form-label">Gender</label>
+                                <select class="form-select" id="personalGender">
+                                    <option value="">Prefer not to say</option>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="personalAddress" class="form-label">Address</label>
+                        <textarea class="form-control" id="personalAddress" rows="3" placeholder="Your complete address...">Barangay Centro, Sagnay, Camarines Sur, Philippines</textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="savePersonalInfo">
+                    <i class="bi bi-check-lg me-1"></i>Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

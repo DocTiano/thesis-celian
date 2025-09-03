@@ -1,0 +1,338 @@
+<!-- Loyalty Program Modal -->
+<div class="modal fade" id="loyaltyProgramModal" tabindex="-1" aria-labelledby="loyaltyProgramModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loyaltyProgramModalLabel">
+                    <i class="bi bi-star-fill text-warning me-2"></i>
+                    Loyalty Program Management
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="mb-3">Program Overview</h6>
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="bi bi-award display-4 text-warning"></i>
+                                <h6 class="mt-2">S2EH Rewards</h6>
+                                <p class="text-muted small">Current loyalty program</p>
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <div class="fw-bold text-primary">156</div>
+                                        <small class="text-muted">Members</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="fw-bold text-success">89%</div>
+                                        <small class="text-muted">Active</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6>Quick Stats</h6>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    Points Earned Today
+                                    <span class="badge bg-primary rounded-pill">2,450</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    Points Redeemed
+                                    <span class="badge bg-success rounded-pill">1,890</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    Active Members
+                                    <span class="badge bg-info rounded-pill">139</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav nav-tabs" id="loyaltyTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab">
+                                    <i class="bi bi-gear me-1"></i>Settings
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="rewards-tab" data-bs-toggle="tab" data-bs-target="#rewards" type="button" role="tab">
+                                    <i class="bi bi-gift me-1"></i>Rewards
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">
+                                    <i class="bi bi-people me-1"></i>Members
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="loyaltyTabContent">
+                            <!-- Settings Tab -->
+                            <div class="tab-pane fade show active" id="settings" role="tabpanel">
+                                <div class="p-3">
+                                    <h6 class="mb-3">Program Settings</h6>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Points per Peso Spent</label>
+                                            <input type="number" class="form-control" value="1" min="0" step="0.1">
+                                            <div class="form-text">How many points customers earn per peso spent</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Point Value (₱)</label>
+                                            <input type="number" class="form-control" value="0.05" min="0" step="0.01">
+                                            <div class="form-text">Peso value of each point when redeemed</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Minimum Redemption</label>
+                                            <input type="number" class="form-control" value="100" min="1">
+                                            <div class="form-text">Minimum points required for redemption</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Points Expiry (Days)</label>
+                                            <input type="number" class="form-control" value="365" min="1">
+                                            <div class="form-text">Days before points expire (0 = no expiry)</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Tier System</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="enableTiers" checked>
+                                            <label class="form-check-label" for="enableTiers">
+                                                Enable customer tiers
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="tierSettings">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>Customer Tiers</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Tier</th>
+                                                                <th>Min. Spend</th>
+                                                                <th>Point Multiplier</th>
+                                                                <th>Benefits</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><span class="badge bg-secondary">Bronze</span></td>
+                                                                <td>₱0</td>
+                                                                <td>1x</td>
+                                                                <td>Basic rewards</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span class="badge bg-primary">Silver</span></td>
+                                                                <td>₱5,000</td>
+                                                                <td>1.5x</td>
+                                                                <td>Free shipping</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span class="badge bg-warning">Gold</span></td>
+                                                                <td>₱10,000</td>
+                                                                <td>2x</td>
+                                                                <td>Priority support</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Rewards Tab -->
+                            <div class="tab-pane fade" id="rewards" role="tabpanel">
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6>Available Rewards</h6>
+                                        <button class="btn btn-primary btn-sm">Add New Reward</button>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-truck text-success display-6 me-3"></i>
+                                                        <div class="flex-grow-1">
+                                                            <h6>Free Shipping</h6>
+                                                            <p class="text-muted small mb-1">Free delivery on any order</p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <span class="fw-bold text-primary">500 points</span>
+                                                                <span class="badge bg-success">Active</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-percent text-warning display-6 me-3"></i>
+                                                        <div class="flex-grow-1">
+                                                            <h6>10% Discount</h6>
+                                                            <p class="text-muted small mb-1">10% off your next order</p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <span class="fw-bold text-primary">1,000 points</span>
+                                                                <span class="badge bg-success">Active</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-gift text-danger display-6 me-3"></i>
+                                                        <div class="flex-grow-1">
+                                                            <h6>Free Product</h6>
+                                                            <p class="text-muted small mb-1">Get a free dried fish pack</p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <span class="fw-bold text-primary">2,000 points</span>
+                                                                <span class="badge bg-warning">Limited</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-cash text-info display-6 me-3"></i>
+                                                        <div class="flex-grow-1">
+                                                            <h6>Cash Voucher</h6>
+                                                            <p class="text-muted small mb-1">₱50 cash voucher</p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <span class="fw-bold text-primary">1,500 points</span>
+                                                                <span class="badge bg-success">Active</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Members Tab -->
+                            <div class="tab-pane fade" id="members" role="tabpanel">
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6>Program Members</h6>
+                                        <div class="input-group" style="width: 250px;">
+                                            <input type="search" class="form-control form-control-sm" placeholder="Search members...">
+                                            <button class="btn btn-outline-secondary btn-sm">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Tier</th>
+                                                    <th>Points</th>
+                                                    <th>Total Earned</th>
+                                                    <th>Last Activity</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm bg-primary rounded-circle d-flex align-items-center justify-content-center text-white me-2">
+                                                                JD
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-semibold">Juan Dela Cruz</div>
+                                                                <small class="text-muted">juan@email.com</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-warning">Gold</span></td>
+                                                    <td>2,450</td>
+                                                    <td>15,680</td>
+                                                    <td>2 hours ago</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary" title="Adjust Points">
+                                                            <i class="bi bi-plus-circle"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm bg-success rounded-circle d-flex align-items-center justify-content-center text-white me-2">
+                                                                MS
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-semibold">Maria Santos</div>
+                                                                <small class="text-muted">maria@email.com</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-primary">Silver</span></td>
+                                                    <td>1,890</td>
+                                                    <td>8,420</td>
+                                                    <td>1 day ago</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary" title="Adjust Points">
+                                                            <i class="bi bi-plus-circle"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary">Export Members</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const enableTiers = document.getElementById('enableTiers');
+    const tierSettings = document.getElementById('tierSettings');
+    
+    if (enableTiers) {
+        enableTiers.addEventListener('change', function() {
+            if (this.checked) {
+                tierSettings.style.display = 'block';
+            } else {
+                tierSettings.style.display = 'none';
+            }
+        });
+    }
+});
+</script>

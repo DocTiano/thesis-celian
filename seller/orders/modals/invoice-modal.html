@@ -1,0 +1,201 @@
+<!-- Invoice Modal -->
+<div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="invoiceModalLabel">Invoice - #ORD-2025-004</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="invoiceContent">
+                    <!-- Invoice Header -->
+                    <div class="invoice-header mb-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="seller-info">
+                                    <h4 class="mb-2">Santos Agricultural Products</h4>
+                                    <p class="mb-1">123 Barangay San Roque</p>
+                                    <p class="mb-1">Sagnay, Camarines Sur 4419</p>
+                                    <p class="mb-1">Philippines</p>
+                                    <p class="mb-1">Phone: +63 912 345 6789</p>
+                                    <p class="mb-0">Email: juan.santos@email.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <h3 class="text-primary mb-3">INVOICE</h3>
+                                <p class="mb-1"><strong>Invoice #:</strong> INV-2025-004</p>
+                                <p class="mb-1"><strong>Order #:</strong> ORD-2025-004</p>
+                                <p class="mb-1"><strong>Date:</strong> August 30, 2025</p>
+                                <p class="mb-0"><strong>Due Date:</strong> Paid</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Information -->
+                    <div class="customer-section mb-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="mb-2">Bill To:</h6>
+                                <div class="customer-details">
+                                    <p class="mb-1"><strong>Carlos Garcia</strong></p>
+                                    <p class="mb-1">456 Barangay Central</p>
+                                    <p class="mb-1">Sagnay, Camarines Sur 4419</p>
+                                    <p class="mb-1">Philippines</p>
+                                    <p class="mb-0">carlos.garcia@email.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-2">Ship To:</h6>
+                                <div class="shipping-details">
+                                    <p class="mb-1"><strong>Carlos Garcia</strong></p>
+                                    <p class="mb-1">456 Barangay Central</p>
+                                    <p class="mb-1">Sagnay, Camarines Sur 4419</p>
+                                    <p class="mb-1">Philippines</p>
+                                    <p class="mb-0">Phone: +63 234 567 8901</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Items -->
+                    <div class="invoice-items mb-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Item Description</th>
+                                        <th>Qty</th>
+                                        <th>Unit Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Organic Rice 5kg</strong><br>
+                                            <small class="text-muted">Premium quality organic rice</small>
+                                        </td>
+                                        <td>1</td>
+                                        <td>₱350.00</td>
+                                        <td>₱350.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Summary -->
+                    <div class="invoice-summary">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="payment-info">
+                                    <h6 class="mb-2">Payment Information:</h6>
+                                    <p class="mb-1"><strong>Payment Method:</strong> Cash on Delivery</p>
+                                    <p class="mb-1"><strong>Payment Status:</strong> <span class="badge bg-success">Paid</span></p>
+                                    <p class="mb-0"><strong>Payment Date:</strong> August 30, 2025</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="summary-table">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td>Subtotal:</td>
+                                            <td class="text-end">₱350.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery Fee:</td>
+                                            <td class="text-end">₱0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax (0%):</td>
+                                            <td class="text-end">₱0.00</td>
+                                        </tr>
+                                        <tr class="border-top">
+                                            <td><strong>Total:</strong></td>
+                                            <td class="text-end"><strong>₱350.00</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="invoice-footer mt-4 pt-3 border-top">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="mb-2">Terms & Conditions:</h6>
+                                <p class="small text-muted mb-0">
+                                    Payment is due upon delivery for COD orders. Items must be in original condition for returns within 14 days. 
+                                    We appreciate your business and thank you for choosing Santos Agricultural Products.
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <p class="mb-1"><strong>Thank you for your business!</strong></p>
+                                <p class="small text-muted mb-0">For questions, contact us at juan.santos@email.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-info" onclick="downloadInvoice()">
+                    <i class="bi bi-download"></i> Download PDF
+                </button>
+                <button type="button" class="btn btn-outline-primary" onclick="printInvoice()">
+                    <i class="bi bi-printer"></i> Print
+                </button>
+                <button type="button" class="btn-seller" onclick="emailInvoice()">
+                    <i class="bi bi-envelope"></i> Email to Customer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@media print {
+    .modal-header, .modal-footer {
+        display: none !important;
+    }
+    
+    .modal-dialog {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .modal-content {
+        border: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.invoice-header h4 {
+    color: #1976d2;
+}
+
+.summary-table .table td {
+    padding: 0.25rem 0;
+}
+
+.invoice-footer {
+    margin-top: 2rem;
+}
+</style>
+
+<script>
+function printInvoice() {
+    window.print();
+}
+
+function downloadInvoice() {
+    // This would generate and download a PDF version of the invoice
+    alert('PDF download functionality would be implemented here.');
+}
+
+function emailInvoice() {
+    // This would email the invoice to the customer
+    alert('Invoice sent to customer email address.');
+}
+</script>

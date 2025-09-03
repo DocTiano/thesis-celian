@@ -1,0 +1,214 @@
+<!-- Bulk Action Modal -->
+<div class="modal fade" id="bulkActionModal" tabindex="-1" aria-labelledby="bulkActionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bulkActionModalLabel">Bulk Actions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Select orders from the table first, then choose an action to apply to all selected orders.
+                </div>
+
+                <form id="bulkActionForm">
+                    <div class="mb-3">
+                        <label class="form-label">Select Action</label>
+                        <select class="form-select" id="bulkAction" required>
+                            <option value="">Choose an action...</option>
+                            <option value="mark-processing">Mark as Processing</option>
+                            <option value="mark-shipped">Mark as Shipped</option>
+                            <option value="mark-delivered">Mark as Delivered</option>
+                            <option value="send-message">Send Message to Customers</option>
+                            <option value="export-selected">Export Selected Orders</option>
+                            <option value="print-labels">Print Shipping Labels</option>
+                        </select>
+                    </div>
+
+                    <!-- Action-specific fields -->
+                    <div id="processingFields" class="action-fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Estimated Processing Date</label>
+                            <input type="date" class="form-control" id="processingDate">
+                        </div>
+                    </div>
+
+                    <div id="shippedFields" class="action-fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Shipping Method</label>
+                            <select class="form-select" id="bulkShippingMethod">
+                                <option value="">Select shipping method...</option>
+                                <option value="local-delivery">Local Delivery</option>
+                                <option value="lbc">LBC Express</option>
+                                <option value="jt">J&T Express</option>
+                                <option value="jrs">JRS Express</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Shipping Date</label>
+                            <input type="date" class="form-control" id="bulkShippingDate">
+                        </div>
+                    </div>
+
+                    <div id="deliveredFields" class="action-fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Delivery Date</label>
+                            <input type="date" class="form-control" id="deliveryDate">
+                        </div>
+                    </div>
+
+                    <div id="messageFields" class="action-fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Message Subject</label>
+                            <input type="text" class="form-control" id="messageSubject" placeholder="Order Update">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message Content</label>
+                            <textarea class="form-control" id="messageContent" rows="4" placeholder="Enter your message to customers..."></textarea>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sendSMS">
+                            <label class="form-check-label" for="sendSMS">
+                                Also send via SMS
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="exportFields" class="action-fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Export Format</label>
+                            <select class="form-select" id="exportFormat">
+                                <option value="excel">Excel (.xlsx)</option>
+                                <option value="csv">CSV (.csv)</option>
+                                <option value="pdf">PDF Report</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="notifyCustomers" checked>
+                            <label class="form-check-label" for="notifyCustomers">
+                                Send notifications to affected customers
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Selected orders summary -->
+                    <div class="selected-orders-summary">
+                        <h6 class="mb-2">Selected Orders:</h6>
+                        <div class="alert alert-light">
+                            <p class="mb-0"><strong>0 orders selected</strong></p>
+                            <small class="text-muted">Go back to the orders table and select orders using the checkboxes.</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="bulkActionForm" class="btn-seller" id="executeBulkAction" disabled>
+                    <i class="bi bi-lightning"></i> Execute Action
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bulkActionSelect = document.getElementById('bulkAction');
+    const actionFields = document.querySelectorAll('.action-fields');
+    
+    bulkActionSelect.addEventListener('change', function() {
+        // Hide all action-specific fields
+        actionFields.forEach(field => {
+            field.style.display = 'none';
+        });
+        
+        // Show relevant fields based on selected action
+        const selectedAction = this.value;
+        switch(selectedAction) {
+            case 'mark-processing':
+                document.getElementById('processingFields').style.display = 'block';
+                break;
+            case 'mark-shipped':
+                document.getElementById('shippedFields').style.display = 'block';
+                break;
+            case 'mark-delivered':
+                document.getElementById('deliveredFields').style.display = 'block';
+                break;
+            case 'send-message':
+                document.getElementById('messageFields').style.display = 'block';
+                break;
+            case 'export-selected':
+                document.getElementById('exportFields').style.display = 'block';
+                break;
+        }
+        
+        // Enable/disable execute button
+        const executeBtn = document.getElementById('executeBulkAction');
+        executeBtn.disabled = !selectedAction;
+    });
+    
+    // Handle form submission
+    document.getElementById('bulkActionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const action = bulkActionSelect.value;
+        if (!action) {
+            alert('Please select an action.');
+            return;
+        }
+        
+        // Get selected orders (this would come from the main table)
+        const selectedOrders = getSelectedOrders();
+        if (selectedOrders.length === 0) {
+            alert('Please select orders from the table first.');
+            return;
+        }
+        
+        // Confirm action
+        if (!confirm(`Are you sure you want to apply this action to ${selectedOrders.length} selected orders?`)) {
+            return;
+        }
+        
+        // Execute the bulk action
+        executeBulkAction(action, selectedOrders);
+        
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('bulkActionModal')).hide();
+    });
+});
+
+function getSelectedOrders() {
+    // This would get the selected orders from the main table
+    // For demo purposes, returning empty array
+    return [];
+}
+
+function executeBulkAction(action, orders) {
+    console.log('Executing bulk action:', action, 'on orders:', orders);
+    
+    switch(action) {
+        case 'mark-processing':
+            alert(`${orders.length} orders marked as processing.`);
+            break;
+        case 'mark-shipped':
+            alert(`${orders.length} orders marked as shipped.`);
+            break;
+        case 'mark-delivered':
+            alert(`${orders.length} orders marked as delivered.`);
+            break;
+        case 'send-message':
+            alert(`Message sent to customers of ${orders.length} orders.`);
+            break;
+        case 'export-selected':
+            alert(`Exporting ${orders.length} selected orders.`);
+            break;
+        case 'print-labels':
+            alert(`Printing shipping labels for ${orders.length} orders.`);
+            break;
+    }
+}
+</script>

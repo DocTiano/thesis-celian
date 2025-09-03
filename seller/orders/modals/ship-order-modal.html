@@ -1,0 +1,103 @@
+<!-- Ship Order Modal -->
+<div class="modal fade" id="shipOrderModal" tabindex="-1" aria-labelledby="shipOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shipOrderModalLabel">Ship Order #ORD-2025-002</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="shipOrderForm">
+                    <div class="mb-3">
+                        <label class="form-label">Shipping Method</label>
+                        <select class="form-select" id="shippingMethod" required>
+                            <option value="">Select shipping method...</option>
+                            <option value="local-delivery">Local Delivery</option>
+                            <option value="lbc">LBC Express</option>
+                            <option value="jt">J&T Express</option>
+                            <option value="jrs">JRS Express</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tracking Number</label>
+                        <input type="text" class="form-control" id="shippingTrackingNumber" placeholder="Enter tracking number" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Shipping Date</label>
+                        <input type="date" class="form-control" id="shippingDate" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Expected Delivery Date</label>
+                        <input type="date" class="form-control" id="expectedDeliveryDate" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Shipping Cost</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₱</span>
+                            <input type="number" class="form-control" id="shippingCost" placeholder="0.00" step="0.01">
+                        </div>
+                        <div class="form-text">Leave blank if already included in order total</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Special Instructions</label>
+                        <textarea class="form-control" id="shippingInstructions" rows="3" placeholder="Any special handling or delivery instructions..."></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notifyCustomerShipping" checked>
+                        <label class="form-check-label" for="notifyCustomerShipping">
+                            Send shipping notification to customer with tracking details
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="shipOrderForm" class="btn-seller">
+                    <i class="bi bi-truck"></i> Ship Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('shipOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const shippingMethod = document.getElementById('shippingMethod').value;
+    const trackingNumber = document.getElementById('shippingTrackingNumber').value;
+    const shippingDate = document.getElementById('shippingDate').value;
+    const expectedDelivery = document.getElementById('expectedDeliveryDate').value;
+    const shippingCost = document.getElementById('shippingCost').value;
+    const instructions = document.getElementById('shippingInstructions').value;
+    const notifyCustomer = document.getElementById('notifyCustomerShipping').checked;
+    
+    if (!shippingMethod || !trackingNumber || !shippingDate || !expectedDelivery) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // Here you would send the data to your backend
+    console.log('Shipping order with:', {
+        shippingMethod,
+        trackingNumber,
+        shippingDate,
+        expectedDelivery,
+        shippingCost,
+        instructions,
+        notifyCustomer
+    });
+    
+    // Show success message
+    alert('Order shipped successfully! Customer has been notified.');
+    
+    // Close modal and refresh page/table
+    bootstrap.Modal.getInstance(document.getElementById('shipOrderModal')).hide();
+});
+</script>

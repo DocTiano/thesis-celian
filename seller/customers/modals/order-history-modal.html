@@ -1,0 +1,265 @@
+<!-- Order History Modal -->
+<div class="modal fade" id="orderHistoryModal" tabindex="-1" aria-labelledby="orderHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderHistoryModalLabel">
+                    <i class="bi bi-clock-history text-primary me-2"></i>
+                    Customer Order History
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="avatar-lg bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mx-auto mb-3">
+                                    <i class="bi bi-person-fill display-6"></i>
+                                </div>
+                                <h5>Juan Dela Cruz</h5>
+                                <p class="text-muted">juan@email.com</p>
+                                <span class="badge bg-warning">VIP Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="h4 text-primary">12</div>
+                                        <div class="text-muted small">Total Orders</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="h4 text-success">₱18,500</div>
+                                        <div class="text-muted small">Total Spent</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="h4 text-info">₱1,542</div>
+                                        <div class="text-muted small">Avg. Order Value</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="h4 text-warning">Dec 10</div>
+                                        <div class="text-muted small">Last Order</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Date Range</label>
+                        <select class="form-select" id="dateRangeFilter">
+                            <option value="all">All Time</option>
+                            <option value="last-30-days" selected>Last 30 Days</option>
+                            <option value="last-90-days">Last 3 Months</option>
+                            <option value="last-year">Last Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Order Status</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Products</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Payment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold">#ORD-1234</div>
+                                    <small class="text-muted">Recent order</small>
+                                </td>
+                                <td>
+                                    <div>Dec 10, 2024</div>
+                                    <small class="text-muted">2:30 PM</small>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../../images/fishes.jpg" alt="Product" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <div>
+                                            <div class="fw-semibold">Fresh Bangus</div>
+                                            <small class="text-muted">+2 more items</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>₱850.00</td>
+                                <td><span class="badge bg-success">Delivered</span></td>
+                                <td><span class="badge bg-primary">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="View Order">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" title="Reorder">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold">#ORD-1230</div>
+                                    <small class="text-muted">Previous order</small>
+                                </td>
+                                <td>
+                                    <div>Dec 5, 2024</div>
+                                    <small class="text-muted">11:15 AM</small>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../../images/fishes.jpg" alt="Product" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <div>
+                                            <div class="fw-semibold">Dried Pusit</div>
+                                            <small class="text-muted">+1 more item</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>₱450.00</td>
+                                <td><span class="badge bg-success">Delivered</span></td>
+                                <td><span class="badge bg-primary">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="View Order">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" title="Reorder">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold">#ORD-1225</div>
+                                    <small class="text-muted">Bulk order</small>
+                                </td>
+                                <td>
+                                    <div>Nov 28, 2024</div>
+                                    <small class="text-muted">3:45 PM</small>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../../images/fishes.jpg" alt="Product" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <div>
+                                            <div class="fw-semibold">Fresh Lapu-lapu</div>
+                                            <small class="text-muted">Bulk purchase</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>₱2,850.00</td>
+                                <td><span class="badge bg-success">Delivered</span></td>
+                                <td><span class="badge bg-primary">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="View Order">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" title="Reorder">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold">#ORD-1220</div>
+                                    <small class="text-muted">Cancelled order</small>
+                                </td>
+                                <td>
+                                    <div>Nov 20, 2024</div>
+                                    <small class="text-muted">1:20 PM</small>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../../images/fishes.jpg" alt="Product" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <div>
+                                            <div class="fw-semibold">Smoked Fish</div>
+                                            <small class="text-muted">Customer request</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>₱320.00</td>
+                                <td><span class="badge bg-danger">Cancelled</span></td>
+                                <td><span class="badge bg-warning">Refunded</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="View Order">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info" title="Contact Customer">
+                                        <i class="bi bi-chat"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4">
+                    <h6 class="mb-3">Order Trends</h6>
+                    <div class="card bg-light">
+                        <div class="card-body text-center py-4">
+                            <i class="bi bi-graph-up display-1 text-muted"></i>
+                            <p class="text-muted mt-2">Order trends chart would appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary">Export History</button>
+                <button type="button" class="btn btn-success">Send Special Offer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dateRangeFilter = document.getElementById('dateRangeFilter');
+    const statusFilter = document.getElementById('statusFilter');
+    
+    function filterOrders() {
+        const dateRange = dateRangeFilter.value;
+        const status = statusFilter.value;
+        
+        // Filter logic would go here
+        console.log('Filtering orders:', { dateRange, status });
+    }
+    
+    if (dateRangeFilter) {
+        dateRangeFilter.addEventListener('change', filterOrders);
+    }
+    
+    if (statusFilter) {
+        statusFilter.addEventListener('change', filterOrders);
+    }
+});
+</script>

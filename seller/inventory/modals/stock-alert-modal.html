@@ -1,0 +1,162 @@
+<!-- Stock Alert Modal -->
+<div class="modal fade" id="stockAlertModal" tabindex="-1" aria-labelledby="stockAlertModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="stockAlertModalLabel">
+                    <i class="bi bi-bell-fill text-warning me-2"></i>
+                    Stock Alerts
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h6 class="mb-3">Active Stock Alerts</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Current Stock</th>
+                                        <th>Alert Level</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../images/fishes.jpg" alt="Fresh Bangus" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                                <div>
+                                                    <div class="fw-semibold">Fresh Bangus</div>
+                                                    <small class="text-muted">SKU: FB001</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger">5 kg</span></td>
+                                        <td>10 kg</td>
+                                        <td><span class="badge bg-danger">Critical</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-success" title="Restock">
+                                                <i class="bi bi-plus-circle"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" title="Edit Alert">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../images/fishes.jpg" alt="Dried Pusit" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                                <div>
+                                                    <div class="fw-semibold">Dried Pusit</div>
+                                                    <small class="text-muted">SKU: DP002</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">8 kg</span></td>
+                                        <td>15 kg</td>
+                                        <td><span class="badge bg-warning">Low</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-success" title="Restock">
+                                                <i class="bi bi-plus-circle"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" title="Edit Alert">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../images/fishes.jpg" alt="Fresh Lapu-lapu" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                                <div>
+                                                    <div class="fw-semibold">Fresh Lapu-lapu</div>
+                                                    <small class="text-muted">SKU: FL003</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">12 kg</span></td>
+                                        <td>10 kg</td>
+                                        <td><span class="badge bg-success">Normal</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" title="Edit Alert">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="mb-3">Alert Settings</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Global Alert Settings</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enableEmailAlerts" checked>
+                                        <label class="form-check-label" for="enableEmailAlerts">
+                                            Email notifications
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enableSMSAlerts">
+                                        <label class="form-check-label" for="enableSMSAlerts">
+                                            SMS notifications
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enableDashboardAlerts" checked>
+                                        <label class="form-check-label" for="enableDashboardAlerts">
+                                            Dashboard alerts
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Alert Frequency</label>
+                                    <select class="form-select form-select-sm">
+                                        <option value="immediate">Immediate</option>
+                                        <option value="daily" selected>Daily Summary</option>
+                                        <option value="weekly">Weekly Summary</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Default Alert Level (%)</label>
+                                    <input type="number" class="form-control form-control-sm" value="20" min="1" max="100">
+                                    <div class="form-text">Percentage of total stock</div>
+                                </div>
+                                
+                                <button class="btn btn-primary btn-sm w-100">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning">Configure Alerts</button>
+                <button type="button" class="btn btn-success">Bulk Restock</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const stockAlertModal = document.getElementById('stockAlertModal');
+    
+    if (stockAlertModal) {
+        stockAlertModal.addEventListener('show.bs.modal', function() {
+            // Load current alert data
+            console.log('Loading stock alerts...');
+        });
+    }
+});
+</script>

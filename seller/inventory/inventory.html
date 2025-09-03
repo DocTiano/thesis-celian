@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory | Seller Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <!-- Seller Styles -->
+    <link href="../assets/css/seller-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="seller-layout">
+        <!-- Sidebar -->
+        <nav class="seller-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S2EH</div>
+                <div class="title">SELLER PORTAL</div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="../dashboard/dashboard.html" class="nav-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../products/products.html" class="nav-link">
+                        <i class="bi bi-box"></i>
+                        <span>My Products</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../orders/orders.html" class="nav-link">
+                        <i class="bi bi-cart3"></i>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="inventory.html" class="nav-link active">
+                        <i class="bi bi-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../customers/customers.html" class="nav-link">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../messages/messages.html" class="nav-link">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../analytics/analytics.html" class="nav-link">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../profile/profile.html" class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../settings/settings.html" class="nav-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="seller-main">
+            <!-- Top Bar -->
+            <header class="seller-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Inventory</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="notification-icon" title="Notifications">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="seller-profile">
+                        <div class="seller-avatar">JD</div>
+                        <span>Juan Santos</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="seller-content">
+                <!-- Inventory Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Total Products</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">45</div>
+                        <div class="stat-change positive">+3 this week</div>
+                    </div>
+                    
+                    <div class="stat-card highlight">
+                        <div class="stat-header">
+                            <div class="stat-title">Low Stock Items</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-change warning">Needs restock</div>
+                    </div>
+                    
+                    <div class="stat-card accent">
+                        <div class="stat-header">
+                            <div class="stat-title">Out of Stock</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-x-circle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-change negative">Critical</div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-header">
+                            <div class="stat-title">Total Stock Value</div>
+                            <div class="stat-icon">
+                                <i class="bi bi-currency-exchange"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">₱28.5K</div>
+                        <div class="stat-change positive">+₱1.2K this month</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="seller-card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="btn-seller" data-bs-toggle="modal" data-bs-target="#bulkUpdateModal">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Bulk Update Stock
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#stockAdjustmentModal">
+                                <i class="bi bi-plus-minus"></i>
+                                Stock Adjustment
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#stockAlertModal">
+                                <i class="bi bi-bell"></i>
+                                Set Stock Alerts
+                            </button>
+                            <button class="btn-seller-outline" data-bs-toggle="modal" data-bs-target="#inventoryReportModal">
+                                <i class="bi bi-file-text"></i>
+                                Generate Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Management -->
+                <div class="seller-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <div id="datatableButtons" class="d-flex gap-2"></div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <input type="search" class="form-control" placeholder="Search inventory..." id="inventorySearch"
+                                    style="width: 250px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inventory Status Tabs -->
+                    <div class="user-tabs" style="margin: 0; border-bottom: 1px solid var(--admin-border); background: white;" role="tablist" aria-label="Inventory status filters">
+                        <div class="tab-navigation" style="display: flex; gap: 0; width: 100%;">
+                            <button class="tab-btn active" data-filter="all"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-boxes" style="margin-right: 8px; font-size: 16px;"></i>
+                                All Items (<span id="count-all">45</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="in-stock"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-check-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                                In Stock (<span id="count-in-stock">37</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="low-stock"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-exclamation-triangle" style="margin-right: 8px; font-size: 16px;"></i>
+                                Low Stock (<span id="count-low-stock">6</span>)
+                            </button>
+                            <button class="tab-btn" data-filter="out-of-stock"
+                                style="flex: 1; padding: 18px 24px; border: none; background: transparent; color: var(--secondary-color); font-weight: 600; font-size: 14px; border-bottom: 4px solid transparent; cursor: pointer; transition: all 0.3s ease; text-align: center;">
+                                <i class="bi bi-x-circle" style="margin-right: 8px; font-size: 16px;"></i>
+                                Out of Stock (<span id="count-out-of-stock">2</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-responsive">
+                            <table id="inventoryTable" class="admin-table table table-striped table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>SKU</th>
+                                        <th>Category</th>
+                                        <th>Current Stock</th>
+                                        <th>Min. Stock</th>
+                                        <th>Unit Price</th>
+                                        <th>Stock Value</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="in-stock">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/rice.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                                <div>
+                                                    <h6 class="mb-0">Organic Rice 5kg</h6>
+                                                    <small class="text-muted">Premium quality rice</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><code>SKU-001</code></td>
+                                        <td><span class="badge bg-secondary">Rice</span></td>
+                                        <td><strong class="text-success">85</strong></td>
+                                        <td>20</td>
+                                        <td>₱350.00</td>
+                                        <td>₱29,750.00</td>
+                                        <td><span class="status-badge in-stock">In Stock</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#adjustStockModal" title="Adjust Stock">
+                                                    <i class="bi bi-plus-minus"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#stockHistoryModal" title="History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#setAlertModal" title="Set Alert">
+                                                    <i class="bi bi-bell"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="low-stock">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/coconut-oil.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                                <div>
+                                                    <h6 class="mb-0">Coconut Oil 500ml</h6>
+                                                    <small class="text-muted">Pure coconut oil</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><code>SKU-002</code></td>
+                                        <td><span class="badge bg-warning">Oil</span></td>
+                                        <td><strong class="text-warning">8</strong></td>
+                                        <td>15</td>
+                                        <td>₱120.00</td>
+                                        <td>₱960.00</td>
+                                        <td><span class="status-badge low-stock">Low Stock</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal" title="Restock">
+                                                    <i class="bi bi-arrow-up-circle"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#adjustStockModal" title="Adjust Stock">
+                                                    <i class="bi bi-plus-minus"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#stockHistoryModal" title="History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="out-of-stock">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/vegetables.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                                <div>
+                                                    <h6 class="mb-0">Fresh Vegetables Mix</h6>
+                                                    <small class="text-muted">Seasonal vegetables</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><code>SKU-003</code></td>
+                                        <td><span class="badge bg-success">Vegetables</span></td>
+                                        <td><strong class="text-danger">0</strong></td>
+                                        <td>10</td>
+                                        <td>₱85.00</td>
+                                        <td>₱0.00</td>
+                                        <td><span class="status-badge out-of-stock">Out of Stock</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal" title="Restock Now">
+                                                    <i class="bi bi-exclamation-triangle"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#stockHistoryModal" title="History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" title="Disable Product">
+                                                    <i class="bi bi-eye-slash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="in-stock">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/dried-fish.jpg" alt="Product" class="product-thumbnail me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                                <div>
+                                                    <h6 class="mb-0">Dried Fish 250g</h6>
+                                                    <small class="text-muted">Local specialty</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><code>SKU-004</code></td>
+                                        <td><span class="badge bg-info">Seafood</span></td>
+                                        <td><strong class="text-success">42</strong></td>
+                                        <td>25</td>
+                                        <td>₱95.00</td>
+                                        <td>₱3,990.00</td>
+                                        <td><span class="status-badge in-stock">In Stock</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#adjustStockModal" title="Adjust Stock">
+                                                    <i class="bi bi-plus-minus"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#stockHistoryModal" title="History">
+                                                    <i class="bi bi-clock-history"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#setAlertModal" title="Set Alert">
+                                                    <i class="bi bi-bell"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Custom Pagination -->
+                        <!-- Custom Pagination -->
+                       <div class="pagination-container" style="display: flex; justify-content: center; align-items: center; padding: 20px 0; border-top: 1px solid #e0e0e0;">
+                            <nav aria-label="Table pagination">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">Previous</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Inventory Modals Container -->
+    <div id="inventoryModals"></div>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable with admin configuration
+            const table = $('#inventoryTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "searching": true,
+                "info": false,
+                "paging": false,  // Disable DataTables pagination
+                "pageLength": 10,
+                "autoWidth": false,
+                "dom": 'Bfrt',  // Remove 'p' for pagination
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": ""
+                },
+                "buttons": [
+                    {
+                        extend: 'copy',
+                        text: '<i class="bi bi-clipboard"></i> Copy',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'excel', 
+                        text: '<i class="bi bi-file-earmark-excel"></i> Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="bi bi-file-earmark-text"></i> CSV',
+                        className: 'btn btn-warning'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="bi bi-file-earmark-pdf"></i> PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="bi bi-printer"></i> Print',
+                        className: 'btn btn-info'
+                    }
+                ],
+                "columnDefs": [
+                    { 
+                        "targets": [8], // Actions column
+                        "orderable": false 
+                    }
+                ],
+                "drawCallback": function() {
+                    // Ensure table uses full width
+                    $('.dataTables_wrapper').css('width', '100%');
+                    $('#inventoryTable').css('width', '100%');
+                    
+                    // Center pagination
+                    $('.dataTables_paginate').parent().addClass('text-center');
+                    $('.dataTables_wrapper .row:last-child').addClass('justify-content-center');
+                }
+            });
+
+            // Position DataTables buttons at the start of the card header
+            setTimeout(function() {
+                // Remove any existing button containers first
+                $('#datatableButtons').empty();
+                
+                // Get the button container and style it
+                const buttonContainer = table.buttons().container();
+                buttonContainer
+                    .removeClass('dt-buttons')
+                    .addClass('btn-group')
+                    .css({
+                        'flex-wrap': 'wrap',
+                        'gap': '8px'
+                    });
+                
+                // Insert buttons in the designated container
+                $('#datatableButtons').append(buttonContainer);
+            }, 100);
+
+            // Connect custom search input to DataTables search
+            $('#inventorySearch').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
+            // Custom pagination logic
+            let currentPage = 1;
+            const rowsPerPage = 10;
+            const rows = $('#inventoryTable tbody tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+            
+            // Initialize pagination
+            updatePaginationInfo();
+            showPage(currentPage);
+            
+            function showPage(page) {
+                const startIndex = (page - 1) * rowsPerPage;
+                const endIndex = startIndex + rowsPerPage;
+                
+                rows.each(function(index) {
+                    if (index >= startIndex && index < endIndex) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                
+                updatePaginationButtons(page);
+                updatePaginationInfo();
+            }
+            
+            function updatePaginationButtons(page) {
+                $('.pagination .page-item').removeClass('active');
+                $('.pagination .page-item[data-page="' + page + '"]').addClass('active');
+                
+                // Update prev/next button states
+                $('#pagination-prev').toggleClass('disabled', page === 1);
+                $('#pagination-next').toggleClass('disabled', page === totalPages);
+                
+                // Show/hide page numbers based on current page
+                const pageItems = $('.pagination .page-item[data-page]');
+                pageItems.hide();
+                
+                let startPage = Math.max(1, page - 2);
+                let endPage = Math.min(totalPages, page + 2);
+                
+                if (endPage - startPage < 4) {
+                    if (startPage === 1) {
+                        endPage = Math.min(totalPages, startPage + 4);
+                    } else {
+                        startPage = Math.max(1, endPage - 4);
+                    }
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    let pageItem = $('.pagination .page-item[data-page="' + i + '"]');
+                    if (pageItem.length === 0) {
+                        // Create new page item if it doesn't exist
+                        pageItem = $('<li class="page-item" data-page="' + i + '"><a class="page-link" href="#">' + i + '</a></li>');
+                        $('#pagination-next').before(pageItem);
+                    }
+                    pageItem.show();
+                }
+            }
+            
+            function updatePaginationInfo() {
+                const startItem = (currentPage - 1) * rowsPerPage + 1;
+                const endItem = Math.min(currentPage * rowsPerPage, totalRows);
+                
+                $('#pagination-start').text(startItem);
+                $('#pagination-end').text(endItem);
+                $('#pagination-total').text(totalRows);
+            }
+            
+            // Pagination click handlers
+            $(document).on('click', '.pagination .page-item:not(.disabled) .page-link', function(e) {
+                e.preventDefault();
+                const clickedItem = $(this).parent();
+                
+                if (clickedItem.attr('id') === 'pagination-prev') {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage);
+                    }
+                } else if (clickedItem.attr('id') === 'pagination-next') {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        showPage(currentPage);
+                    }
+                } else {
+                    const page = parseInt(clickedItem.attr('data-page'));
+                    if (page) {
+                        currentPage = page;
+                        showPage(currentPage);
+                    }
+                }
+            });
+
+            // Tab functionality with admin-style filtering
+            const tabBtns = document.querySelectorAll('.tab-btn');
+
+            function filterInventory(status) {
+                const tableRows = document.querySelectorAll('#inventoryTable tbody tr[data-status]');
+                
+                tableRows.forEach(row => {
+                    const rowStatus = row.getAttribute('data-status');
+                    
+                    let shouldShow = false;
+                    
+                    if (status === 'all') {
+                        shouldShow = true;
+                    } else {
+                        shouldShow = rowStatus === status;
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                });
+                
+                // Redraw DataTable to maintain styling
+                table.draw();
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active tab
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter inventory
+                    const filter = this.getAttribute('data-filter');
+                    filterInventory(filter);
+                });
+            });
+
+            // Load inventory modals
+            loadInventoryModals();
+        });
+
+        // Load inventory modals
+        async function loadInventoryModals() {
+            const modalFiles = [
+                'modals/adjust-stock-modal.html',
+                'modals/restock-modal.html',
+                'modals/stock-history-modal.html',
+                'modals/set-alert-modal.html',
+                'modals/bulk-update-modal.html',
+                'modals/stock-adjustment-modal.html',
+                'modals/stock-alert-modal.html',
+                'modals/inventory-report-modal.html'
+            ];
+            
+            for (const file of modalFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.getElementById('inventoryModals').innerHTML += html;
+                    }
+                } catch (error) {
+                    console.log(`Could not load ${file}:`, error);
+                }
+            }
+        }
+
+        // Make table rows clickable like admin style
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make all table rows clickable (except header rows)
+            const tableRows = document.querySelectorAll('#inventoryTable tbody tr:not([onclick])');
+            tableRows.forEach((row, index) => {
+                row.style.cursor = 'pointer';
+                row.onclick = () => window.location.href = 'inventory-details.html?id=' + (index + 1);
+                row.onmouseover = () => row.style.backgroundColor = 'rgba(46, 125, 50, 0.05)';
+                row.onmouseout = () => row.style.backgroundColor = '';
+            });
+            
+            // Ensure action buttons don't trigger row click
+            const actionButtons = document.querySelectorAll('.action-buttons button');
+            actionButtons.forEach(button => {
+                if (!button.onclick || button.onclick.toString().indexOf('stopPropagation') === -1) {
+                    button.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Seller Main JS -->
+    <script src="../assets/js/seller-main.js"></script>
+</body>
+</html>

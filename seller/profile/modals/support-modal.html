@@ -1,0 +1,254 @@
+<!-- Support Modal -->
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supportModalLabel">
+                    <i class="bi bi-headset me-2"></i>Contact Support
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Support Options -->
+                <div class="support-options mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="support-card text-center p-3 border rounded">
+                                <i class="bi bi-chat-dots text-primary fs-2 mb-2"></i>
+                                <h6>Live Chat</h6>
+                                <p class="text-muted small">Get instant help from our support team</p>
+                                <button class="btn btn-outline-primary btn-sm">Start Chat</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="support-card text-center p-3 border rounded">
+                                <i class="bi bi-envelope text-info fs-2 mb-2"></i>
+                                <h6>Email Support</h6>
+                                <p class="text-muted small">Send us a detailed message</p>
+                                <button class="btn btn-outline-info btn-sm" id="showEmailForm">Send Email</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="support-card text-center p-3 border rounded">
+                                <i class="bi bi-telephone text-success fs-2 mb-2"></i>
+                                <h6>Phone Support</h6>
+                                <p class="text-muted small">Call us during business hours</p>
+                                <div class="fw-bold">+63 (054) 123-4567</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Help -->
+                <div class="quick-help mb-4">
+                    <h6 class="mb-3">Quick Help</h6>
+                    <div class="accordion" id="supportAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    How do I add new products?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                <div class="accordion-body">
+                                    To add new products, go to the Products page and click "Add Product". Fill in all required information including product name, description, price, and upload quality photos. Make sure to select the correct category and add relevant tags.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    How do I process orders?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                <div class="accordion-body">
+                                    When you receive an order, go to the Orders page. Click on the order to view details, then use the "Process Order" button to confirm availability and prepare for shipping. Update the order status as you progress through fulfillment.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    How do I get paid?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                <div class="accordion-body">
+                                    Payments are processed automatically when orders are marked as delivered. Money is transferred to your registered bank account or e-wallet within 1-3 business days. You can track your earnings in the Analytics section.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    How do I handle customer complaints?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#supportAccordion">
+                                <div class="accordion-body">
+                                    Address customer concerns promptly through the Messages section. For serious issues, you can escalate to platform support. Always maintain professional communication and try to resolve issues amicably. Document all interactions for your records.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email Support Form -->
+                <div class="email-form d-none" id="emailSupportForm">
+                    <h6 class="mb-3">Send Support Email</h6>
+                    <form id="supportEmailForm">
+                        <div class="mb-3">
+                            <label for="supportCategory" class="form-label">Category *</label>
+                            <select class="form-select" id="supportCategory" required>
+                                <option value="">Select issue category</option>
+                                <option value="account">Account Issues</option>
+                                <option value="orders">Order Management</option>
+                                <option value="products">Product Listings</option>
+                                <option value="payments">Payments & Billing</option>
+                                <option value="technical">Technical Problems</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="supportPriority" class="form-label">Priority</label>
+                            <select class="form-select" id="supportPriority">
+                                <option value="low">Low - General inquiry</option>
+                                <option value="medium" selected>Medium - Standard support</option>
+                                <option value="high">High - Urgent issue</option>
+                                <option value="critical">Critical - Business impact</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="supportSubject" class="form-label">Subject *</label>
+                            <input type="text" class="form-control" id="supportSubject" required placeholder="Brief description of your issue">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="supportMessage" class="form-label">Message *</label>
+                            <textarea class="form-control" id="supportMessage" rows="5" required placeholder="Please provide detailed information about your issue, including steps to reproduce if it's a technical problem..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="supportAttachment" class="form-label">Attachment (optional)</label>
+                            <input type="file" class="form-control" id="supportAttachment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                            <div class="form-text">Upload screenshots or documents related to your issue</div>
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="supportUrgent">
+                            <label class="form-check-label" for="supportUrgent">
+                                This issue is preventing me from conducting business
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h6 class="mb-3">Other Ways to Reach Us</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contact-item mb-2">
+                                <i class="bi bi-clock me-2 text-muted"></i>
+                                <strong>Business Hours:</strong> Monday - Friday, 8:00 AM - 6:00 PM
+                            </div>
+                            <div class="contact-item mb-2">
+                                <i class="bi bi-envelope me-2 text-muted"></i>
+                                <strong>Email:</strong> support@s2eh.com
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-item mb-2">
+                                <i class="bi bi-geo-alt me-2 text-muted"></i>
+                                <strong>Address:</strong> Sagnay, Camarines Sur, Philippines
+                            </div>
+                            <div class="contact-item mb-2">
+                                <i class="bi bi-globe me-2 text-muted"></i>
+                                <strong>Help Center:</strong> <a href="#" class="text-decoration-none">help.s2eh.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" id="backToOptions" style="display: none;">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Options
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary d-none" id="sendSupportEmail">
+                    <i class="bi bi-send me-1"></i>Send Message
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const showEmailFormBtn = document.getElementById('showEmailForm');
+    const emailForm = document.getElementById('emailSupportForm');
+    const backBtn = document.getElementById('backToOptions');
+    const sendBtn = document.getElementById('sendSupportEmail');
+    const supportOptions = document.querySelector('.support-options');
+    const quickHelp = document.querySelector('.quick-help');
+    const contactInfo = document.querySelector('.contact-info');
+    
+    // Show email form
+    showEmailFormBtn.addEventListener('click', function() {
+        supportOptions.style.display = 'none';
+        quickHelp.style.display = 'none';
+        contactInfo.style.display = 'none';
+        emailForm.classList.remove('d-none');
+        backBtn.style.display = 'inline-block';
+        sendBtn.classList.remove('d-none');
+    });
+    
+    // Back to options
+    backBtn.addEventListener('click', function() {
+        supportOptions.style.display = 'block';
+        quickHelp.style.display = 'block';
+        contactInfo.style.display = 'block';
+        emailForm.classList.add('d-none');
+        this.style.display = 'none';
+        sendBtn.classList.add('d-none');
+    });
+    
+    // Send support email
+    sendBtn.addEventListener('click', function() {
+        const form = document.getElementById('supportEmailForm');
+        if (form.checkValidity()) {
+            // Show loading state
+            this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+            this.disabled = true;
+            
+            // Simulate sending
+            setTimeout(() => {
+                // Reset button
+                this.innerHTML = '<i class="bi bi-send me-1"></i>Send Message';
+                this.disabled = false;
+                
+                // Show success message
+                const alert = document.createElement('div');
+                alert.className = 'alert alert-success';
+                alert.innerHTML = '<i class="bi bi-check-circle me-2"></i>Support ticket created successfully! We\'ll respond within 24 hours.';
+                emailForm.prepend(alert);
+                
+                // Close modal after delay
+                setTimeout(() => {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('supportModal'));
+                    modal.hide();
+                }, 2000);
+            }, 2000);
+        } else {
+            form.reportValidity();
+        }
+    });
+});
+</script>

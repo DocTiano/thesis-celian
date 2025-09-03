@@ -1,0 +1,54 @@
+<!-- Edit Bank Account Modal -->
+<div class="modal fade" id="editBankAccountModal" tabindex="-1" aria-labelledby="editBankAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBankAccountModalLabel">
+                    <i class="bi bi-bank me-2"></i>Edit Bank Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editBankAccountForm">
+                    <div class="mb-3">
+                        <label for="bankName" class="form-label">Bank Name *</label>
+                        <select class="form-select" id="bankName" required>
+                            <option value="bdo" selected>BDO Unibank</option>
+                            <option value="bpi">Bank of the Philippine Islands (BPI)</option>
+                            <option value="metrobank">Metrobank</option>
+                            <option value="pnb">Philippine National Bank (PNB)</option>
+                            <option value="landbank">Land Bank of the Philippines</option>
+                            <option value="unionbank">UnionBank</option>
+                            <option value="rcbc">RCBC</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountNumber" class="form-label">Account Number *</label>
+                        <input type="text" class="form-control" id="accountNumber" value="****-****-1234" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountName" class="form-label">Account Holder Name *</label>
+                        <input type="text" class="form-control" id="accountName" value="Juan Santos" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="accountType" class="form-label">Account Type *</label>
+                        <select class="form-select" id="accountType" required>
+                            <option value="savings" selected>Savings Account</option>
+                            <option value="checking">Checking Account</option>
+                            <option value="current">Current Account</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveBankAccount">
+                    <i class="bi bi-check-lg me-1"></i>Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

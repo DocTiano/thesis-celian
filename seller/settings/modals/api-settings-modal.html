@@ -1,0 +1,209 @@
+<!-- API Settings Modal -->
+<div class="modal fade" id="apiSettingsModal" tabindex="-1" aria-labelledby="apiSettingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="apiSettingsModalLabel">
+                    <i class="bi bi-code-square me-2"></i>API Settings
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    API access allows you to integrate with third-party tools and build custom applications. Keep your API keys secure and never share them publicly.
+                </div>
+                
+                <!-- API Keys Section -->
+                <div class="api-keys-section mb-4">
+                    <h6 class="mb-3">API Keys</h6>
+                    
+                    <div class="api-key-item border rounded p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="key-info">
+                                <h6 class="mb-1">Production API Key</h6>
+                                <div class="key-value mb-2">
+                                    <code id="prodApiKey">sk_prod_1234567890abcdef...</code>
+                                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="toggleKeyVisibility('prodApiKey')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard('prodApiKey')">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                </div>
+                                <small class="text-muted">Created: Dec 1, 2024 | Last used: 2 hours ago</small>
+                            </div>
+                            <div class="key-actions">
+                                <button class="btn btn-sm btn-outline-warning">Regenerate</button>
+                                <button class="btn btn-sm btn-outline-danger">Revoke</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="api-key-item border rounded p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="key-info">
+                                <h6 class="mb-1">Test API Key</h6>
+                                <div class="key-value mb-2">
+                                    <code id="testApiKey">sk_test_abcdef1234567890...</code>
+                                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="toggleKeyVisibility('testApiKey')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard('testApiKey')">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                </div>
+                                <small class="text-muted">Created: Nov 15, 2024 | Last used: Never</small>
+                            </div>
+                            <div class="key-actions">
+                                <button class="btn btn-sm btn-outline-warning">Regenerate</button>
+                                <button class="btn btn-sm btn-outline-danger">Revoke</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline-primary">
+                        <i class="bi bi-plus-circle me-1"></i>Generate New API Key
+                    </button>
+                </div>
+                
+                <!-- Webhooks Section -->
+                <div class="webhooks-section mb-4">
+                    <h6 class="mb-3">Webhooks</h6>
+                    <p class="text-muted small">Webhooks allow you to receive real-time notifications when events occur.</p>
+                    
+                    <div class="webhook-item border rounded p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="webhook-info">
+                                <h6 class="mb-1">Order Updates</h6>
+                                <div class="webhook-url mb-2">
+                                    <small class="text-muted">Endpoint: </small>
+                                    <code>https://yourdomain.com/webhooks/orders</code>
+                                </div>
+                                <div class="webhook-events">
+                                    <small class="text-muted">Events: </small>
+                                    <span class="badge bg-primary me-1">order.created</span>
+                                    <span class="badge bg-primary me-1">order.updated</span>
+                                    <span class="badge bg-primary">order.completed</span>
+                                </div>
+                                <small class="text-success d-block mt-1">
+                                    <i class="bi bi-check-circle me-1"></i>Active
+                                </small>
+                            </div>
+                            <div class="webhook-actions">
+                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline-primary">
+                        <i class="bi bi-plus-circle me-1"></i>Add Webhook
+                    </button>
+                </div>
+                
+                <!-- API Usage Section -->
+                <div class="api-usage-section mb-4">
+                    <h6 class="mb-3">API Usage</h6>
+                    
+                    <div class="usage-stats">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="stat-card border rounded p-3 text-center">
+                                    <div class="stat-number h4 text-primary">1,247</div>
+                                    <div class="stat-label small text-muted">Requests Today</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card border rounded p-3 text-center">
+                                    <div class="stat-number h4 text-success">38,901</div>
+                                    <div class="stat-label small text-muted">Requests This Month</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card border rounded p-3 text-center">
+                                    <div class="stat-number h4 text-info">99.8%</div>
+                                    <div class="stat-label small text-muted">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-limit mt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Monthly Limit</span>
+                            <span>38,901 / 50,000</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 78%"></div>
+                        </div>
+                        <small class="text-muted">Resets in 12 days</small>
+                    </div>
+                </div>
+                
+                <!-- API Documentation -->
+                <div class="api-docs-section">
+                    <h6 class="mb-3">API Documentation</h6>
+                    <div class="doc-links">
+                        <a href="#" class="btn btn-outline-primary me-2">
+                            <i class="bi bi-book me-1"></i>API Documentation
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary me-2">
+                            <i class="bi bi-code-slash me-1"></i>Code Examples
+                        </a>
+                        <a href="#" class="btn btn-outline-info">
+                            <i class="bi bi-question-circle me-1"></i>API Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-download me-1"></i>Download API Logs
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleKeyVisibility(keyId) {
+    const keyElement = document.getElementById(keyId);
+    const isHidden = keyElement.textContent.includes('...');
+    
+    if (isHidden) {
+        // Show full key
+        if (keyId === 'prodApiKey') {
+            keyElement.textContent = 'sk_prod_1234567890abcdef1234567890abcdef12345678';
+        } else {
+            keyElement.textContent = 'sk_test_abcdef1234567890abcdef1234567890abcdef';
+        }
+        keyElement.nextElementSibling.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    } else {
+        // Hide key
+        if (keyId === 'prodApiKey') {
+            keyElement.textContent = 'sk_prod_1234567890abcdef...';
+        } else {
+            keyElement.textContent = 'sk_test_abcdef1234567890...';
+        }
+        keyElement.nextElementSibling.innerHTML = '<i class="bi bi-eye"></i>';
+    }
+}
+
+function copyToClipboard(keyId) {
+    const keyElement = document.getElementById(keyId);
+    const text = keyElement.textContent.includes('...') 
+        ? (keyId === 'prodApiKey' ? 'sk_prod_1234567890abcdef1234567890abcdef12345678' : 'sk_test_abcdef1234567890abcdef1234567890abcdef')
+        : keyElement.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = keyElement.nextElementSibling.nextElementSibling;
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check"></i>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 2000);
+    });
+}
+</script>

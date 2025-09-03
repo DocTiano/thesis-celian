@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Seller Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Seller Styles -->
+    <link href="../assets/css/seller-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="seller-layout">
+        <!-- Sidebar -->
+        <nav class="seller-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S2EH</div>
+                <div class="title">SELLER PORTAL</div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="../dashboard/dashboard.html" class="nav-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../products/products.html" class="nav-link">
+                        <i class="bi bi-box"></i>
+                        <span>My Products</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../orders/orders.html" class="nav-link">
+                        <i class="bi bi-cart3"></i>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../inventory/inventory.html" class="nav-link">
+                        <i class="bi bi-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../customers/customers.html" class="nav-link">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../messages/messages.html" class="nav-link">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../analytics/analytics.html" class="nav-link">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="../profile/profile.html" class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="settings.html" class="nav-link active">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="seller-main">
+            <!-- Top Bar -->
+            <header class="seller-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title">Settings</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="notification-icon" title="Notifications">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="seller-profile">
+                        <div class="seller-avatar">JD</div>
+                        <span>Juan Santos</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="seller-content">
+                <div class="row">
+                    <!-- Settings Navigation -->
+                    <div class="col-md-3">
+                        <div class="settings-nav">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab">
+                                    <i class="bi bi-gear"></i>
+                                    General
+                                </button>
+                                <button class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications" type="button" role="tab">
+                                    <i class="bi bi-bell"></i>
+                                    Notifications
+                                </button>
+                                <button class="nav-link" id="v-pills-security-tab" data-bs-toggle="pill" data-bs-target="#v-pills-security" type="button" role="tab">
+                                    <i class="bi bi-shield-lock"></i>
+                                    Security
+                                </button>
+                                <button class="nav-link" id="v-pills-payment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-payment" type="button" role="tab">
+                                    <i class="bi bi-credit-card"></i>
+                                    Payment
+                                </button>
+                                <button class="nav-link" id="v-pills-shipping-tab" data-bs-toggle="pill" data-bs-target="#v-pills-shipping" type="button" role="tab">
+                                    <i class="bi bi-truck"></i>
+                                    Shipping
+                                </button>
+                                <button class="nav-link" id="v-pills-policies-tab" data-bs-toggle="pill" data-bs-target="#v-pills-policies" type="button" role="tab">
+                                    <i class="bi bi-file-text"></i>
+                                    Policies
+                                </button>
+                                <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab">
+                                    <i class="bi bi-sliders"></i>
+                                    Advanced
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="col-md-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <!-- General Settings -->
+                            <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">General Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="generalSettingsForm">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Store Name</label>
+                                                        <input type="text" class="form-control" value="Santos Agricultural Products">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Contact Email</label>
+                                                        <input type="email" class="form-control" value="juan.santos@email.com">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Language</label>
+                                                        <select class="form-select">
+                                                            <option value="en" selected>English</option>
+                                                            <option value="fil">Filipino</option>
+                                                            <option value="bcl">Bikol</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Timezone</label>
+                                                        <select class="form-select">
+                                                            <option value="Asia/Manila" selected>Asia/Manila (GMT+8)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Store Description</label>
+                                                        <textarea class="form-control" rows="4">We specialize in providing high-quality organic agricultural products sourced directly from local farmers in Camarines Sur.</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-check mb-3">
+                                                        <input class="form-check-input" type="checkbox" id="autoResponseEnabled" checked>
+                                                        <label class="form-check-label" for="autoResponseEnabled">
+                                                            Enable automatic responses to customer messages
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-3">
+                                                        <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                                        <label class="form-check-label" for="maintenanceMode">
+                                                            Enable maintenance mode (customers cannot place orders)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button type="submit" class="btn-seller">Save Changes</button>
+                                                <button type="button" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notification Settings -->
+                            <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Notification Preferences</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="notificationSettingsForm">
+                                            <h6 class="mb-3">Email Notifications</h6>
+                                            <div class="notification-group mb-4">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="emailNewOrders" checked>
+                                                    <label class="form-check-label" for="emailNewOrders">
+                                                        New orders received
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="emailLowStock" checked>
+                                                    <label class="form-check-label" for="emailLowStock">
+                                                        Low stock alerts
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="emailNewMessages" checked>
+                                                    <label class="form-check-label" for="emailNewMessages">
+                                                        New customer messages
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="emailNewReviews">
+                                                    <label class="form-check-label" for="emailNewReviews">
+                                                        New product reviews
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="emailWeeklyReports" checked>
+                                                    <label class="form-check-label" for="emailWeeklyReports">
+                                                        Weekly sales reports
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <h6 class="mb-3">SMS Notifications</h6>
+                                            <div class="notification-group mb-4">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="smsNewOrders" checked>
+                                                    <label class="form-check-label" for="smsNewOrders">
+                                                        New orders received
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="smsUrgentAlerts" checked>
+                                                    <label class="form-check-label" for="smsUrgentAlerts">
+                                                        Urgent alerts only
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <h6 class="mb-3">Push Notifications</h6>
+                                            <div class="notification-group mb-4">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="pushNewOrders" checked>
+                                                    <label class="form-check-label" for="pushNewOrders">
+                                                        New orders
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="pushNewMessages" checked>
+                                                    <label class="form-check-label" for="pushNewMessages">
+                                                        New messages
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="pushPromoReminders">
+                                                    <label class="form-check-label" for="pushPromoReminders">
+                                                        Promotion reminders
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex gap-2">
+                                                <button type="submit" class="btn-seller">Save Preferences</button>
+                                                <button type="button" class="btn btn-outline-secondary">Reset to Default</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Security Settings -->
+                            <div class="tab-pane fade" id="v-pills-security" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Security Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Password Section -->
+                                        <div class="security-section mb-4">
+                                            <h6 class="mb-3">Password</h6>
+                                            <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                <div>
+                                                    <strong>Password</strong>
+                                                    <p class="mb-0 text-muted">Last changed 2 months ago</p>
+                                                </div>
+                                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                                                    Change Password
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Two-Factor Authentication -->
+                                        <div class="security-section mb-4">
+                                            <h6 class="mb-3">Two-Factor Authentication</h6>
+                                            <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                <div>
+                                                    <strong>2FA Status</strong>
+                                                    <p class="mb-0 text-success">
+                                                        <i class="bi bi-check-circle-fill me-1"></i>
+                                                        Enabled
+                                                    </p>
+                                                </div>
+                                                <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#manage2FAModal">
+                                                    Manage 2FA
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Login Sessions -->
+                                        <div class="security-section mb-4">
+                                            <h6 class="mb-3">Active Sessions</h6>
+                                            <div class="session-list">
+                                                <div class="session-item">
+                                                    <div class="d-flex justify-content-between align-items-start">
+                                                        <div>
+                                                            <strong>Current Session</strong>
+                                                            <p class="mb-0 text-muted small">Windows 11 • Chrome • Philippines</p>
+                                                            <p class="mb-0 text-muted small">Last active: Now</p>
+                                                        </div>
+                                                        <span class="badge bg-success">Current</span>
+                                                    </div>
+                                                </div>
+                                                <div class="session-item">
+                                                    <div class="d-flex justify-content-between align-items-start">
+                                                        <div>
+                                                            <strong>Mobile Session</strong>
+                                                            <p class="mb-0 text-muted small">Android • Chrome • Philippines</p>
+                                                            <p class="mb-0 text-muted small">Last active: 2 hours ago</p>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-outline-danger">End Session</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-outline-warning mt-3">End All Other Sessions</button>
+                                        </div>
+
+                                        <!-- Security Preferences -->
+                                        <div class="security-section">
+                                            <h6 class="mb-3">Security Preferences</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="loginNotifications" checked>
+                                                <label class="form-check-label" for="loginNotifications">
+                                                    Email me when someone logs into my account
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="unusualActivity" checked>
+                                                <label class="form-check-label" for="unusualActivity">
+                                                    Alert me of unusual account activity
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="autoLogout" checked>
+                                                <label class="form-check-label" for="autoLogout">
+                                                    Automatically log me out after 30 minutes of inactivity
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Settings -->
+                            <div class="tab-pane fade" id="v-pills-payment" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Payment Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Payment Methods -->
+                                        <div class="payment-section mb-4">
+                                            <h6 class="mb-3">Accepted Payment Methods</h6>
+                                            <div class="payment-methods">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="paymentCOD" checked>
+                                                    <label class="form-check-label" for="paymentCOD">
+                                                        Cash on Delivery (COD)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="paymentGCash" checked>
+                                                    <label class="form-check-label" for="paymentGCash">
+                                                        GCash
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="paymentPayMaya">
+                                                    <label class="form-check-label" for="paymentPayMaya">
+                                                        PayMaya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="paymentBankTransfer" checked>
+                                                    <label class="form-check-label" for="paymentBankTransfer">
+                                                        Bank Transfer
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bank Account -->
+                                        <div class="payment-section mb-4">
+                                            <h6 class="mb-3">Bank Account Information</h6>
+                                            <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                <div>
+                                                    <strong>Bank of the Philippine Islands (BPI)</strong>
+                                                    <p class="mb-0 text-muted">Account ending in ****7890</p>
+                                                    <span class="badge bg-success">Verified</span>
+                                                </div>
+                                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editBankAccountModal">
+                                                    Edit
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- E-Wallet Settings -->
+                                        <div class="payment-section mb-4">
+                                            <h6 class="mb-3">E-Wallet Information</h6>
+                                            <div class="e-wallet-list">
+                                                <div class="d-flex justify-content-between align-items-center p-3 border rounded mb-2">
+                                                    <div>
+                                                        <strong>GCash</strong>
+                                                        <p class="mb-0 text-muted">+63 912 345 6789</p>
+                                                        <span class="badge bg-success">Verified</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                    <div>
+                                                        <strong>PayMaya</strong>
+                                                        <p class="mb-0 text-muted">Not connected</p>
+                                                    </div>
+                                                    <button class="btn btn-outline-success btn-sm">Connect</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Payment Preferences -->
+                                        <div class="payment-section">
+                                            <h6 class="mb-3">Payment Preferences</h6>
+                                            <div class="mb-3">
+                                                <label class="form-label">Payout Schedule</label>
+                                                <select class="form-select">
+                                                    <option value="daily">Daily</option>
+                                                    <option value="weekly" selected>Weekly (Every Friday)</option>
+                                                    <option value="monthly">Monthly</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Minimum Payout Amount</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">₱</span>
+                                                    <input type="number" class="form-control" value="500" min="100">
+                                                </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="autoWithdraw" checked>
+                                                <label class="form-check-label" for="autoWithdraw">
+                                                    Automatically withdraw earnings when minimum amount is reached
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shipping Settings -->
+                            <div class="tab-pane fade" id="v-pills-shipping" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Shipping Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Default Shipping Address -->
+                                        <div class="shipping-section mb-4">
+                                            <h6 class="mb-3">Default Shipping Address</h6>
+                                            <div class="d-flex justify-content-between align-items-start p-3 border rounded">
+                                                <div>
+                                                    <strong>Santos Agricultural Products</strong>
+                                                    <p class="mb-0 text-muted">123 Barangay San Roque</p>
+                                                    <p class="mb-0 text-muted">Sagnay, Camarines Sur 4419</p>
+                                                    <p class="mb-0 text-muted">Philippines</p>
+                                                </div>
+                                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editShippingAddressModal">
+                                                    Edit
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Shipping Options -->
+                                        <div class="shipping-section mb-4">
+                                            <h6 class="mb-3">Available Shipping Options</h6>
+                                            <div class="shipping-options">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="localDelivery" checked>
+                                                    <label class="form-check-label" for="localDelivery">
+                                                        <strong>Local Delivery</strong>
+                                                        <p class="mb-0 text-muted">Within Sagnay, Camarines Sur</p>
+                                                    </label>
+                                                    <div class="ms-4 mt-2">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Delivery Fee</label>
+                                                                <div class="input-group input-group-sm">
+                                                                    <span class="input-group-text">₱</span>
+                                                                    <input type="number" class="form-control" value="50">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Free Delivery Above</label>
+                                                                <div class="input-group input-group-sm">
+                                                                    <span class="input-group-text">₱</span>
+                                                                    <input type="number" class="form-control" value="500">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Delivery Time</label>
+                                                                <select class="form-select form-select-sm">
+                                                                    <option value="same-day" selected>Same Day</option>
+                                                                    <option value="next-day">Next Day</option>
+                                                                    <option value="2-3-days">2-3 Days</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="provincialDelivery" checked>
+                                                    <label class="form-check-label" for="provincialDelivery">
+                                                        <strong>Provincial Delivery</strong>
+                                                        <p class="mb-0 text-muted">Within Camarines Sur</p>
+                                                    </label>
+                                                    <div class="ms-4 mt-2">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Delivery Fee</label>
+                                                                <div class="input-group input-group-sm">
+                                                                    <span class="input-group-text">₱</span>
+                                                                    <input type="number" class="form-control" value="150">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Free Delivery Above</label>
+                                                                <div class="input-group input-group-sm">
+                                                                    <span class="input-group-text">₱</span>
+                                                                    <input type="number" class="form-control" value="1000">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label small">Delivery Time</label>
+                                                                <select class="form-select form-select-sm">
+                                                                    <option value="1-2-days" selected>1-2 Days</option>
+                                                                    <option value="2-3-days">2-3 Days</option>
+                                                                    <option value="3-5-days">3-5 Days</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="courierDelivery" checked>
+                                                    <label class="form-check-label" for="courierDelivery">
+                                                        <strong>Courier Delivery</strong>
+                                                        <p class="mb-0 text-muted">Via LBC, J&T, JRS Express</p>
+                                                    </label>
+                                                    <div class="ms-4 mt-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="courierLBC" checked>
+                                                            <label class="form-check-label" for="courierLBC">LBC Express</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="courierJT" checked>
+                                                            <label class="form-check-label" for="courierJT">J&T Express</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="courierJRS" checked>
+                                                            <label class="form-check-label" for="courierJRS">JRS Express</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Processing Time -->
+                                        <div class="shipping-section mb-4">
+                                            <h6 class="mb-3">Order Processing</h6>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Processing Time</label>
+                                                    <select class="form-select">
+                                                        <option value="same-day">Same Day</option>
+                                                        <option value="1-business-day" selected>1 Business Day</option>
+                                                        <option value="2-business-days">2 Business Days</option>
+                                                        <option value="3-business-days">3 Business Days</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Cutoff Time for Same Day Processing</label>
+                                                    <input type="time" class="form-control" value="14:00">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex gap-2">
+                                            <button type="submit" class="btn-seller">Save Shipping Settings</button>
+                                            <button type="button" class="btn btn-outline-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Policies Settings -->
+                            <div class="tab-pane fade" id="v-pills-policies" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Store Policies</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="policiesForm">
+                                            <!-- Return Policy -->
+                                            <div class="policy-section mb-4">
+                                                <h6 class="mb-3">Return Policy</h6>
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="checkbox" id="allowReturns" checked>
+                                                    <label class="form-check-label" for="allowReturns">
+                                                        Allow returns
+                                                    </label>
+                                                </div>
+                                                <div class="return-policy-details ms-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Return Period</label>
+                                                        <select class="form-select">
+                                                            <option value="7">7 days</option>
+                                                            <option value="14" selected>14 days</option>
+                                                            <option value="30">30 days</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Return Conditions</label>
+                                                        <textarea class="form-control" rows="4">Items must be in original condition, unopened, and with original packaging. Perishable items are not eligible for return. Customer is responsible for return shipping costs unless the item was damaged or defective.</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Refund Policy -->
+                                            <div class="policy-section mb-4">
+                                                <h6 class="mb-3">Refund Policy</h6>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Refund Processing Time</label>
+                                                    <select class="form-select">
+                                                        <option value="3-5">3-5 business days</option>
+                                                        <option value="5-7" selected>5-7 business days</option>
+                                                        <option value="7-14">7-14 business days</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Refund Policy Details</label>
+                                                    <textarea class="form-control" rows="4">Refunds will be processed to the original payment method within 5-7 business days after we receive and inspect the returned item. Shipping costs are non-refundable unless the return is due to our error.</textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Privacy Policy -->
+                                            <div class="policy-section mb-4">
+                                                <h6 class="mb-3">Privacy Policy</h6>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Data Collection Statement</label>
+                                                    <textarea class="form-control" rows="4">We collect only necessary information to process orders and provide customer service. Personal information is never shared with third parties without consent. Customer data is secured and protected according to industry standards.</textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Terms of Service -->
+                                            <div class="policy-section mb-4">
+                                                <h6 class="mb-3">Terms of Service</h6>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Terms and Conditions</label>
+                                                    <textarea class="form-control" rows="6">By purchasing from our store, customers agree to these terms. All products are described accurately, but natural variations may occur in agricultural products. Orders are subject to availability. We reserve the right to cancel orders in case of pricing errors or stock issues.</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex gap-2">
+                                                <button type="submit" class="btn-seller">Save Policies</button>
+                                                <button type="button" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Advanced Settings -->
+                            <div class="tab-pane fade" id="v-pills-advanced" role="tabpanel">
+                                <div class="seller-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Advanced Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- API Settings -->
+                                        <div class="advanced-section mb-4">
+                                            <h6 class="mb-3">API Integration</h6>
+                                            <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                <div>
+                                                    <strong>API Access</strong>
+                                                    <p class="mb-0 text-muted">Manage API keys for third-party integrations</p>
+                                                </div>
+                                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#apiSettingsModal">
+                                                    Manage API Keys
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Data Export -->
+                                        <div class="advanced-section mb-4">
+                                            <h6 class="mb-3">Data Management</h6>
+                                            <div class="data-actions">
+                                                <div class="d-flex justify-content-between align-items-center p-3 border rounded mb-2">
+                                                    <div>
+                                                        <strong>Export Data</strong>
+                                                        <p class="mb-0 text-muted">Download all your store data</p>
+                                                    </div>
+                                                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exportDataModal">
+                                                        Export
+                                                    </button>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                                    <div>
+                                                        <strong>Import Data</strong>
+                                                        <p class="mb-0 text-muted">Import products, customers, or orders</p>
+                                                    </div>
+                                                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#importDataModal">
+                                                        Import
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Account Management -->
+                                        <div class="advanced-section mb-4">
+                                            <h6 class="mb-3 text-danger">Danger Zone</h6>
+                                            <div class="danger-actions">
+                                                <div class="d-flex justify-content-between align-items-center p-3 border border-warning rounded mb-2">
+                                                    <div>
+                                                        <strong class="text-warning">Deactivate Account</strong>
+                                                        <p class="mb-0 text-muted">Temporarily disable your seller account</p>
+                                                    </div>
+                                                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#deactivateAccountModal">
+                                                        Deactivate
+                                                    </button>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center p-3 border border-danger rounded">
+                                                    <div>
+                                                        <strong class="text-danger">Delete Account</strong>
+                                                        <p class="mb-0 text-muted">Permanently delete your account and all data</p>
+                                                    </div>
+                                                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                                                        Delete Account
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Debug Information -->
+                                        <div class="advanced-section">
+                                            <h6 class="mb-3">Debug Information</h6>
+                                            <div class="debug-info p-3 bg-light rounded">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <small><strong>Account ID:</strong> SELL-2024-001234</small><br>
+                                                        <small><strong>API Version:</strong> v2.1</small><br>
+                                                        <small><strong>Last Login:</strong> Sept 3, 2025 2:30 PM</small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <small><strong>Account Status:</strong> Active</small><br>
+                                                        <small><strong>Verification Level:</strong> Fully Verified</small><br>
+                                                        <small><strong>Data Center:</strong> Asia-Pacific</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modals Container -->
+    <div id="settingsModals"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Form submissions
+            $('#generalSettingsForm').submit(function(e) {
+                e.preventDefault();
+                // Handle general settings save
+                showSuccessMessage('General settings saved successfully!');
+            });
+
+            $('#notificationSettingsForm').submit(function(e) {
+                e.preventDefault();
+                // Handle notification settings save
+                showSuccessMessage('Notification preferences saved successfully!');
+            });
+
+            $('#policiesForm').submit(function(e) {
+                e.preventDefault();
+                // Handle policies save
+                showSuccessMessage('Store policies saved successfully!');
+            });
+
+            // Load settings modals
+            loadSettingsModals();
+        });
+
+        function showSuccessMessage(message) {
+            // Create a temporary success alert
+            const alert = $(`
+                <div class="alert alert-success alert-dismissible fade show position-fixed" style="top: 20px; right: 20px; z-index: 9999;">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `);
+            
+            $('body').append(alert);
+            
+            // Auto-dismiss after 3 seconds
+            setTimeout(() => {
+                alert.alert('close');
+            }, 3000);
+        }
+
+        // Load settings modals
+        async function loadSettingsModals() {
+            const modalFiles = [
+                'modals/manage-2fa-modal.html',
+                'modals/edit-bank-account-modal.html',
+                'modals/edit-shipping-address-modal.html',
+                'modals/api-settings-modal.html',
+                'modals/import-data-modal.html',
+                'modals/deactivate-account-modal.html',
+                'modals/delete-account-modal.html'
+            ];
+            
+            for (const file of modalFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.body.insertAdjacentHTML('beforeend', html);
+                    }
+                } catch (error) {
+                    console.log(`Could not load ${file}:`, error);
+                }
+            }
+        }
+    </script>
+    
+    <!-- Seller Main JS -->
+    <script src="../assets/js/seller-main.js"></script>
+</body>
+</html>

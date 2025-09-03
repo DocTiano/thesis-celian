@@ -1,0 +1,197 @@
+<!-- Quick Templates Modal -->
+<div class="modal fade" id="quickTemplatesModal" tabindex="-1" aria-labelledby="quickTemplatesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quickTemplatesModalLabel">
+                    <i class="bi bi-chat-square-text me-2"></i>Quick Message Templates
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="template-categories">
+                            <h6 class="mb-3">Categories</h6>
+                            <div class="list-group list-group-flush">
+                                <button type="button" class="list-group-item list-group-item-action active" data-category="greetings">
+                                    <i class="bi bi-hand-index me-2"></i>Greetings
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-category="order-status">
+                                    <i class="bi bi-box-seam me-2"></i>Order Status
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-category="shipping">
+                                    <i class="bi bi-truck me-2"></i>Shipping
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-category="support">
+                                    <i class="bi bi-headset me-2"></i>Support
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-category="appreciation">
+                                    <i class="bi bi-heart me-2"></i>Appreciation
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-category="custom">
+                                    <i class="bi bi-pencil-square me-2"></i>Custom
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="template-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0">Templates</h6>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-plus-circle me-1"></i>Add Template
+                                </button>
+                            </div>
+                            
+                            <!-- Greetings Templates -->
+                            <div class="template-list" data-category="greetings">
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Welcome Message</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">Hi! Thank you for your interest in our products. How can I help you today?</p>
+                                </div>
+                                
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Thank You</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">Thank you for choosing S2EH! We appreciate your business and look forward to serving you again.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Order Status Templates -->
+                            <div class="template-list d-none" data-category="order-status">
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Order Confirmed</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">Great news! Your order has been confirmed and we're preparing it for delivery. You'll receive updates as it progresses.</p>
+                                </div>
+                                
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Order Processing</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">Your order is currently being processed. We'll notify you once it's ready for pickup/delivery.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Shipping Templates -->
+                            <div class="template-list d-none" data-category="shipping">
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Order Shipped</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">Your order has been shipped! Track your package using the tracking number we sent to your email.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Support Templates -->
+                            <div class="template-list d-none" data-category="support">
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">How Can I Help?</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">I'm here to help! Please let me know what specific information you need about our products or services.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Appreciation Templates -->
+                            <div class="template-list d-none" data-category="appreciation">
+                                <div class="template-item border rounded p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-1">Customer Appreciation</h6>
+                                        <div class="template-actions">
+                                            <button class="btn btn-sm btn-outline-primary use-template-btn">Use</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                    <p class="template-text mb-0">We truly value you as a customer! Your support helps local farmers and our community grow stronger.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="selectedTemplate" value="">
+                <button type="button" class="btn btn-outline-primary" id="createNewTemplate">
+                    <i class="bi bi-plus-circle me-1"></i>Create New Template
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Template category switching
+    const categoryBtns = document.querySelectorAll('[data-category]');
+    const templateLists = document.querySelectorAll('.template-list');
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Update active category
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show corresponding templates
+            templateLists.forEach(list => {
+                if (list.getAttribute('data-category') === category) {
+                    list.classList.remove('d-none');
+                } else {
+                    list.classList.add('d-none');
+                }
+            });
+        });
+    });
+    
+    // Use template functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('use-template-btn')) {
+            const templateText = e.target.closest('.template-item').querySelector('.template-text').textContent;
+            document.getElementById('selectedTemplate').value = templateText;
+            
+            // You can customize this to integrate with your message input
+            const messageInput = document.querySelector('.message-input textarea');
+            if (messageInput) {
+                messageInput.value = templateText;
+                messageInput.focus();
+            }
+            
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('quickTemplatesModal'));
+            modal.hide();
+        }
+    });
+});
+</script>

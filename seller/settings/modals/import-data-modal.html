@@ -1,0 +1,72 @@
+<!-- Import Data Modal -->
+<div class="modal fade" id="importDataModal" tabindex="-1" aria-labelledby="importDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importDataModalLabel">
+                    <i class="bi bi-upload me-2"></i>Import Data
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="importDataForm">
+                    <div class="mb-3">
+                        <label for="importType" class="form-label">Import Type *</label>
+                        <select class="form-select" id="importType" required>
+                            <option value="">Select data type</option>
+                            <option value="products">Products</option>
+                            <option value="inventory">Inventory</option>
+                            <option value="customers">Customers</option>
+                            <option value="orders">Orders</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="importFile" class="form-label">Upload File *</label>
+                        <input type="file" class="form-control" id="importFile" accept=".csv,.xlsx,.json" required>
+                        <div class="form-text">Supported formats: CSV, Excel, JSON (Max: 10MB)</div>
+                    </div>
+                    
+                    <div class="import-options">
+                        <h6 class="mb-3">Import Options</h6>
+                        
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="skipDuplicates" checked>
+                            <label class="form-check-label" for="skipDuplicates">
+                                Skip duplicate entries
+                            </label>
+                        </div>
+                        
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="validateData" checked>
+                            <label class="form-check-label" for="validateData">
+                                Validate data before import
+                            </label>
+                        </div>
+                        
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="createBackup">
+                            <label class="form-check-label" for="createBackup">
+                                Create backup before import
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Important:</strong> Please review your data carefully before importing. Large imports may take several minutes to process.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-download me-1"></i>Download Template
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="startImport">
+                    <i class="bi bi-upload me-1"></i>Start Import
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

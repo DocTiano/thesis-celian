@@ -1,0 +1,137 @@
+<!-- Order Quick Look Modal -->
+<div class="modal fade" id="orderQuickLookModal" tabindex="-1" aria-labelledby="orderQuickLookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderQuickLookModalLabel">
+                    <i class="bi bi-receipt me-2"></i>Order Quick Look
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Header -->
+                <div class="order-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h6 class="mb-1">Order #12345</h6>
+                            <p class="text-muted mb-0">Placed on December 15, 2024</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <span class="badge bg-warning fs-6 px-3 py-2">Processing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Customer Info -->
+                <div class="customer-section mb-4">
+                    <h6 class="border-bottom pb-2 mb-3">Customer Information</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="customer-avatar me-3">
+                                    <img src="https://via.placeholder.com/50x50" alt="Customer" class="rounded-circle" style="width: 50px; height: 50px;">
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Maria Santos</h6>
+                                    <small class="text-muted">maria.santos@email.com</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1"><strong>Phone:</strong> +63 912 345 6789</p>
+                            <p class="mb-1"><strong>Address:</strong> 123 Main St, Sagnay, Camarines Sur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Items -->
+                <div class="order-items mb-4">
+                    <h6 class="border-bottom pb-2 mb-3">Order Items</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                            <div>
+                                                <div class="fw-medium">Organic Rice 5kg</div>
+                                                <small class="text-muted">Premium quality</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>₱350.00</td>
+                                    <td>2</td>
+                                    <td>₱700.00</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../../images/fishes.jpg" alt="Product" class="me-2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+                                            <div>
+                                                <div class="fw-medium">Fresh Vegetables Mix</div>
+                                                <small class="text-muted">Seasonal vegetables</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>₱180.00</td>
+                                    <td>3</td>
+                                    <td>₱540.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2 mb-3">Payment Information</h6>
+                            <p class="mb-1"><strong>Payment Method:</strong> GCash</p>
+                            <p class="mb-1"><strong>Payment Status:</strong> <span class="badge bg-success">Paid</span></p>
+                            <p class="mb-1"><strong>Transaction ID:</strong> GC12345678</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2 mb-3">Order Summary</h6>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Subtotal:</span>
+                                <span>₱1,240.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Delivery Fee:</span>
+                                <span>₱50.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Service Fee:</span>
+                                <span>₱10.00</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total:</span>
+                                <span>₱1,300.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-eye me-1"></i>View Full Order
+                </button>
+                <button type="button" class="btn btn-outline-success">
+                    <i class="bi bi-check-circle me-1"></i>Process Order
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+<!-- Stock History Modal -->
+<div class="modal fade" id="stockHistoryModal" tabindex="-1" aria-labelledby="stockHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="stockHistoryModalLabel">
+                    <i class="bi bi-clock-history text-primary me-2"></i>
+                    Stock History
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Product</label>
+                            <select class="form-select" id="historyProduct">
+                                <option value="1" selected>Fresh Bangus (1kg)</option>
+                                <option value="2">Dried Pusit (500g)</option>
+                                <option value="3">Fresh Lapu-lapu (1kg)</option>
+                                <option value="4">Smoked Fish (250g)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Date Range</label>
+                            <select class="form-select" id="historyDateRange">
+                                <option value="7">Last 7 Days</option>
+                                <option value="30" selected>Last 30 Days</option>
+                                <option value="90">Last 3 Months</option>
+                                <option value="365">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Date/Time</th>
+                                <th>Type</th>
+                                <th>Change</th>
+                                <th>Previous Stock</th>
+                                <th>New Stock</th>
+                                <th>Reason</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>Dec 15, 2024</div>
+                                    <small class="text-muted">2:30 PM</small>
+                                </td>
+                                <td><span class="badge bg-success">Sale</span></td>
+                                <td class="text-danger">-2 kg</td>
+                                <td>27 kg</td>
+                                <td>25 kg</td>
+                                <td>Customer purchase (Order #1234)</td>
+                                <td>System</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>Dec 14, 2024</div>
+                                    <small class="text-muted">9:15 AM</small>
+                                </td>
+                                <td><span class="badge bg-primary">Restock</span></td>
+                                <td class="text-success">+10 kg</td>
+                                <td>17 kg</td>
+                                <td>27 kg</td>
+                                <td>Supplier delivery</td>
+                                <td>Admin User</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>Dec 13, 2024</div>
+                                    <small class="text-muted">4:45 PM</small>
+                                </td>
+                                <td><span class="badge bg-success">Sale</span></td>
+                                <td class="text-danger">-3 kg</td>
+                                <td>20 kg</td>
+                                <td>17 kg</td>
+                                <td>Customer purchase (Order #1230)</td>
+                                <td>System</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>Dec 12, 2024</div>
+                                    <small class="text-muted">11:20 AM</small>
+                                </td>
+                                <td><span class="badge bg-warning">Adjustment</span></td>
+                                <td class="text-danger">-1 kg</td>
+                                <td>21 kg</td>
+                                <td>20 kg</td>
+                                <td>Damaged goods</td>
+                                <td>Seller User</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>Dec 11, 2024</div>
+                                    <small class="text-muted">8:30 AM</small>
+                                </td>
+                                <td><span class="badge bg-success">Sale</span></td>
+                                <td class="text-danger">-4 kg</td>
+                                <td>25 kg</td>
+                                <td>21 kg</td>
+                                <td>Customer purchase (Order #1225)</td>
+                                <td>System</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>Dec 10, 2024</div>
+                                    <small class="text-muted">2:15 PM</small>
+                                </td>
+                                <td><span class="badge bg-primary">Restock</span></td>
+                                <td class="text-success">+15 kg</td>
+                                <td>10 kg</td>
+                                <td>25 kg</td>
+                                <td>Supplier delivery</td>
+                                <td>Admin User</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4">
+                    <h6 class="mb-3">Stock Movement Chart</h6>
+                    <div class="card bg-light">
+                        <div class="card-body text-center py-4">
+                            <i class="bi bi-graph-up display-1 text-muted"></i>
+                            <p class="text-muted mt-2">Stock movement visualization would appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="text-success h4">+25 kg</div>
+                                <div class="text-muted small">Total Added</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="text-danger h4">-10 kg</div>
+                                <div class="text-muted small">Total Sold</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="text-warning h4">-1 kg</div>
+                                <div class="text-muted small">Adjustments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="text-primary h4">+14 kg</div>
+                                <div class="text-muted small">Net Change</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary">Export History</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const historyProduct = document.getElementById('historyProduct');
+    const historyDateRange = document.getElementById('historyDateRange');
+    
+    function loadStockHistory() {
+        // Simulate loading stock history data
+        console.log('Loading stock history for product:', historyProduct.value, 'Range:', historyDateRange.value);
+    }
+    
+    if (historyProduct) {
+        historyProduct.addEventListener('change', loadStockHistory);
+    }
+    
+    if (historyDateRange) {
+        historyDateRange.addEventListener('change', loadStockHistory);
+    }
+});
+</script>

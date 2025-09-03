@@ -1,0 +1,344 @@
+<!-- View Customer Modal -->
+<div class="modal fade" id="viewCustomerModal" tabindex="-1" aria-labelledby="viewCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewCustomerModalLabel">Customer Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Customer Header -->
+                <div class="customer-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-auto">
+                            <div class="customer-avatar-large">MR</div>
+                        </div>
+                        <div class="col-md">
+                            <h4 class="mb-1">Maria Rodriguez</h4>
+                            <p class="text-muted mb-2">Customer since March 2024</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="status-badge vip">VIP Customer</span>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span class="ms-1">5.0 rating</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <div class="customer-stats text-center">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="stat-value">28</div>
+                                        <div class="stat-label">Orders</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="stat-value">₱12.5K</div>
+                                        <div class="stat-label">Total Spent</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="stat-value">₱445</div>
+                                        <div class="stat-label">Avg Order</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Contact Information -->
+                    <div class="col-md-6">
+                        <div class="info-section mb-4">
+                            <h6 class="mb-3">Contact Information</h6>
+                            <div class="info-list">
+                                <div class="info-item">
+                                    <label>Email:</label>
+                                    <span>maria.rodriguez@email.com</span>
+                                    <span class="badge bg-success ms-2">Verified</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Phone:</label>
+                                    <span>+63 912 345 6789</span>
+                                    <span class="badge bg-success ms-2">Verified</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Address:</label>
+                                    <span>456 Barangay Central, Sagnay, Camarines Sur 4419</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preferences -->
+                        <div class="info-section mb-4">
+                            <h6 class="mb-3">Preferences</h6>
+                            <div class="info-list">
+                                <div class="info-item">
+                                    <label>Preferred Contact:</label>
+                                    <span>Email, SMS</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Delivery Time:</label>
+                                    <span>2PM - 5PM</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Payment Method:</label>
+                                    <span>COD, GCash</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purchase History -->
+                    <div class="col-md-6">
+                        <div class="info-section mb-4">
+                            <h6 class="mb-3">Recent Orders</h6>
+                            <div class="order-history">
+                                <div class="order-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <strong>#ORD-2025-001</strong>
+                                            <p class="mb-0 text-muted small">Organic Rice 5kg (2x), Vegetables Mix (1x)</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="fw-bold">₱880.00</div>
+                                            <small class="text-muted">Sept 3, 2025</small>
+                                        </div>
+                                    </div>
+                                    <span class="status-badge pending">Pending</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <strong>#ORD-2025-045</strong>
+                                            <p class="mb-0 text-muted small">Coconut Oil 500ml (3x)</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="fw-bold">₱360.00</div>
+                                            <small class="text-muted">Aug 28, 2025</small>
+                                        </div>
+                                    </div>
+                                    <span class="status-badge delivered">Delivered</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <strong>#ORD-2025-038</strong>
+                                            <p class="mb-0 text-muted small">Organic Rice 5kg (1x), Dried Fish 250g (2x)</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="fw-bold">₱540.00</div>
+                                            <small class="text-muted">Aug 20, 2025</small>
+                                        </div>
+                                    </div>
+                                    <span class="status-badge delivered">Delivered</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Favorite Products -->
+                        <div class="info-section">
+                            <h6 class="mb-3">Favorite Products</h6>
+                            <div class="favorite-products">
+                                <div class="product-item">
+                                    <img src="../../../assets/images/rice.jpg" alt="Product" class="product-thumbnail">
+                                    <div class="product-info">
+                                        <h6 class="mb-0">Organic Rice 5kg</h6>
+                                        <small class="text-muted">Ordered 12 times</small>
+                                    </div>
+                                </div>
+                                <div class="product-item">
+                                    <img src="../../../assets/images/coconut-oil.jpg" alt="Product" class="product-thumbnail">
+                                    <div class="product-info">
+                                        <h6 class="mb-0">Coconut Oil 500ml</h6>
+                                        <small class="text-muted">Ordered 8 times</small>
+                                    </div>
+                                </div>
+                                <div class="product-item">
+                                    <img src="../../../assets/images/vegetables.jpg" alt="Product" class="product-thumbnail">
+                                    <div class="product-info">
+                                        <h6 class="mb-0">Fresh Vegetables Mix</h6>
+                                        <small class="text-muted">Ordered 6 times</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes and Activities -->
+                <div class="notes-section mt-4">
+                    <h6 class="mb-3">Notes & Activities</h6>
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon bg-success">
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="mb-0">Left a 5-star review for Organic Rice 5kg</p>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon bg-primary">
+                                <i class="bi bi-cart"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="mb-0">Placed order #ORD-2025-001 for ₱880.00</p>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon bg-info">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="mb-0">Sent message about product availability</p>
+                                <small class="text-muted">1 week ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#messageCustomerModal">
+                    <i class="bi bi-chat-dots"></i> Send Message
+                </button>
+                <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#orderHistoryModal">
+                    <i class="bi bi-clock-history"></i> Full Order History
+                </button>
+                <button type="button" class="btn-seller" onclick="addCustomerNote()">
+                    <i class="bi bi-pencil"></i> Add Note
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.customer-avatar-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.customer-stats .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.customer-stats .stat-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.info-section h6 {
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+}
+
+.info-list .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-list .info-item:last-child {
+    border-bottom: none;
+}
+
+.info-list .info-item label {
+    font-weight: 500;
+    color: #666;
+    min-width: 100px;
+}
+
+.order-history .order-item {
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.favorite-products .product-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.favorite-products .product-item:last-child {
+    border-bottom: none;
+}
+
+.favorite-products .product-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.activity-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.activity-timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.activity-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.activity-icon {
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.activity-content p {
+    margin-bottom: 0.25rem;
+}
+</style>
+
+<script>
+function addCustomerNote() {
+    const note = prompt('Add a note about this customer:');
+    if (note && note.trim()) {
+        // Here you would save the note to your backend
+        console.log('Adding customer note:', note);
+        alert('Note added successfully!');
+    }
+}
+</script>

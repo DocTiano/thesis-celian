@@ -1,0 +1,200 @@
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">
+                    <i class="bi bi-pencil"></i>
+                    Edit Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group mb-3">
+                                <label for="editProductName" class="form-label">Product Name *</label>
+                                <input type="text" class="form-control" id="editProductName" name="productName" value="Organic Rice 5kg" required>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label for="editProductDescription" class="form-label">Description *</label>
+                                <textarea class="form-control" id="editProductDescription" name="productDescription" rows="4" required>Premium quality organic white rice, locally grown in Sagnay using traditional farming methods. Rich in nutrients and free from harmful chemicals.</textarea>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="editProductCategory" class="form-label">Category *</label>
+                                        <select class="form-control" id="editProductCategory" name="productCategory" required>
+                                            <option value="grains" selected>Grains & Rice</option>
+                                            <option value="vegetables">Vegetables</option>
+                                            <option value="fruits">Fruits</option>
+                                            <option value="seafood">Seafood</option>
+                                            <option value="livestock">Livestock & Poultry</option>
+                                            <option value="oils">Oils & Condiments</option>
+                                            <option value="processed">Processed Foods</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="editProductUnit" class="form-label">Unit of Measure *</label>
+                                        <select class="form-control" id="editProductUnit" name="productUnit" required>
+                                            <option value="kg" selected>Kilogram (kg)</option>
+                                            <option value="g">Gram (g)</option>
+                                            <option value="l">Liter (l)</option>
+                                            <option value="ml">Milliliter (ml)</option>
+                                            <option value="pcs">Pieces (pcs)</option>
+                                            <option value="pack">Pack</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="editProductPrice" class="form-label">Price (₱) *</label>
+                                        <input type="number" class="form-control" id="editProductPrice" name="productPrice" step="0.01" min="0" value="350.00" required>
+                                        <div class="form-text text-info">
+                                            <i class="bi bi-info-circle"></i>
+                                            Price changes require LGU validation
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="editCurrentStock" class="form-label">Current Stock</label>
+                                        <input type="number" class="form-control" id="editCurrentStock" name="currentStock" value="45" readonly>
+                                        <div class="form-text">
+                                            <a href="#" onclick="$('#restockModal').modal('show')">Add more stock</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="editProductMinStock" class="form-label">Minimum Stock Alert</label>
+                                        <input type="number" class="form-control" id="editProductMinStock" name="productMinStock" min="0" value="10">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label class="form-label">Product Status</label>
+                                <div class="d-flex gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="productStatus" id="statusActive" value="active" checked>
+                                        <label class="form-check-label" for="statusActive">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="productStatus" id="statusInactive" value="inactive">
+                                        <label class="form-check-label" for="statusInactive">
+                                            Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Current Images</label>
+                                <div class="current-images">
+                                    <div class="position-relative mb-2">
+                                        <img src="../../images/fishes.jpg" class="img-thumbnail" style="width: 100%; height: 80px; object-fit: cover;">
+                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0">
+                                            <i class="bi bi-x"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label for="editProductImages" class="form-label">Add New Images</label>
+                                <input type="file" class="form-control" id="editProductImages" name="productImages" multiple accept="image/*">
+                                <div class="form-text">Upload additional images (max 5 total)</div>
+                            </div>
+                            
+                            <div class="image-preview mt-3" id="editImagePreview">
+                                <!-- New image previews will appear here -->
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="editOrganicCertified" name="organicCertified" checked>
+                                    <label class="form-check-label" for="editOrganicCertified">
+                                        Organic Certified
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="editLocallySourced" name="locallySourced" checked>
+                                    <label class="form-check-label" for="editLocallySourced">
+                                        Locally Sourced
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <small class="text-muted">
+                                    <strong>Product Stats:</strong><br>
+                                    Total Sales: 128<br>
+                                    Average Rating: 4.9/5<br>
+                                    Total Reviews: 45
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn-seller" form="editProductForm">
+                    <i class="bi bi-check-circle"></i>
+                    Update Product
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('editProductImages').addEventListener('change', function(e) {
+    const preview = document.getElementById('editImagePreview');
+    preview.innerHTML = '';
+    
+    const files = Array.from(e.target.files);
+    
+    files.forEach((file, index) => {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'position-relative mb-2';
+                imgDiv.innerHTML = `
+                    <img src="${e.target.result}" class="img-thumbnail" style="width: 100%; height: 80px; object-fit: cover;">
+                    <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0" onclick="this.parentElement.remove()">
+                        <i class="bi bi-x"></i>
+                    </button>
+                `;
+                preview.appendChild(imgDiv);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+document.getElementById('editProductForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show success message
+    window.sellerDashboard.showSuccessMessage('Product updated successfully!');
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
+    modal.hide();
+});
+</script>

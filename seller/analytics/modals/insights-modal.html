@@ -1,0 +1,272 @@
+<!-- Insights Modal -->
+<div class="modal fade" id="insightsModal" tabindex="-1" aria-labelledby="insightsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="insightsModalLabel">
+                    <i class="bi bi-lightbulb me-2"></i>Business Insights & Recommendations
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Insights Navigation -->
+                <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-sales-tab" data-bs-toggle="pill" data-bs-target="#pills-sales" type="button" role="tab">
+                            <i class="bi bi-graph-up me-1"></i>Sales Insights
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-products-tab" data-bs-toggle="pill" data-bs-target="#pills-products" type="button" role="tab">
+                            <i class="bi bi-box me-1"></i>Product Insights
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-customers-tab" data-bs-toggle="pill" data-bs-target="#pills-customers" type="button" role="tab">
+                            <i class="bi bi-people me-1"></i>Customer Insights
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-market-tab" data-bs-toggle="pill" data-bs-target="#pills-market" type="button" role="tab">
+                            <i class="bi bi-globe me-1"></i>Market Trends
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="pills-tabContent">
+                    <!-- Sales Insights -->
+                    <div class="tab-pane fade show active" id="pills-sales" role="tabpanel">
+                        <div class="insights-section">
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-arrow-up-circle text-success fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Strong Monthly Growth</h6>
+                                        <p class="mb-2">Your sales have increased by 23% compared to last month. This upward trend indicates growing customer demand for your products.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-success">Positive Trend</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-calendar-week text-info fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Weekend Sales Peak</h6>
+                                        <p class="mb-2">60% of your sales occur on weekends. Consider running weekend promotions to maximize this opportunity.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-info">Opportunity</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Create Promotion</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-clock text-warning fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Peak Hours: 10 AM - 2 PM</h6>
+                                        <p class="mb-2">Most of your sales happen during late morning to early afternoon. Ensure you're responsive during these hours.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-warning">Action Required</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Set Notifications</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Insights -->
+                    <div class="tab-pane fade" id="pills-products" role="tabpanel">
+                        <div class="insights-section">
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-star text-warning fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Top Rated Category: Grains & Rice</h6>
+                                        <p class="mb-2">Your grain products have the highest average rating (4.9/5). Consider expanding this category with more varieties.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-warning">Expand Category</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Add Products</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Low Stock Alert</h6>
+                                        <p class="mb-2">3 products are running low on stock. Restock soon to avoid lost sales opportunities.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-danger">Urgent</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Manage Inventory</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-camera text-primary fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Image Quality Impact</h6>
+                                        <p class="mb-2">Products with high-quality images get 40% more views. Consider updating product photos for better engagement.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-primary">Improvement</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Photo Guidelines</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Customer Insights -->
+                    <div class="tab-pane fade" id="pills-customers" role="tabpanel">
+                        <div class="insights-section">
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-heart text-danger fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">High Customer Loyalty</h6>
+                                        <p class="mb-2">45% of your customers are repeat buyers. Your customer retention rate is excellent!</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-success">Excellent</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Loyalty Program</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-geo-alt text-info fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Top Customer Location: Sagnay</h6>
+                                        <p class="mb-2">70% of your customers are from Sagnay area. Local marketing efforts are paying off well.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-info">Local Success</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Expand Locally</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-chat-dots text-success fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Fast Response Time</h6>
+                                        <p class="mb-2">Your average response time is 15 minutes. Quick responses lead to higher customer satisfaction.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-success">Excellent Service</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Maintain Quality</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Market Trends -->
+                    <div class="tab-pane fade" id="pills-market" role="tabpanel">
+                        <div class="insights-section">
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-trending-up text-success fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Growing Demand for Organic</h6>
+                                        <p class="mb-2">Organic products show 35% increase in searches. Consider highlighting organic aspects of your products.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-success">Market Opportunity</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Update Listings</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-calendar-event text-warning fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Seasonal Opportunity: Holiday Season</h6>
+                                        <p class="mb-2">December shows 50% increase in food purchases. Plan special holiday packages and promotions.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-warning">Seasonal</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Plan Promotion</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-item border rounded p-3 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <div class="insight-icon me-3">
+                                        <i class="bi bi-phone text-primary fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-2">Mobile Shopping Growth</h6>
+                                        <p class="mb-2">85% of your customers shop via mobile devices. Ensure your product listings are mobile-optimized.</p>
+                                        <div class="insight-actions">
+                                            <span class="badge bg-primary">Mobile First</span>
+                                            <button class="btn btn-sm btn-outline-primary ms-2">Optimize Mobile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Summary -->
+                <div class="mt-4 p-3 bg-light rounded">
+                    <h6 class="mb-2">Recommended Actions</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1"><i class="bi bi-check-circle text-success me-2"></i>Plan weekend promotions to maximize sales</li>
+                        <li class="mb-1"><i class="bi bi-check-circle text-warning me-2"></i>Restock low inventory items immediately</li>
+                        <li class="mb-1"><i class="bi bi-check-circle text-info me-2"></i>Update product photos for better engagement</li>
+                        <li class="mb-1"><i class="bi bi-check-circle text-primary me-2"></i>Highlight organic product features</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-bookmark me-1"></i>Save Insights
+                </button>
+                <button type="button" class="btn btn-outline-info">
+                    <i class="bi bi-envelope me-1"></i>Email Report
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

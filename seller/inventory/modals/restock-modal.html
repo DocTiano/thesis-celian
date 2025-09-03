@@ -1,0 +1,316 @@
+<!-- Restock Modal -->
+<div class="modal fade" id="restockModal" tabindex="-1" aria-labelledby="restockModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="restockModalLabel">Restock Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="restockForm">
+                    <!-- Product Selection -->
+                    <div class="mb-4">
+                        <label class="form-label">Select Product to Restock</label>
+                        <select class="form-select" id="productSelect" required>
+                            <option value="">Choose a product...</option>
+                            <option value="sku-001" data-current="85" data-min="20">Organic Rice 5kg (Current: 85, Min: 20)</option>
+                            <option value="sku-002" data-current="8" data-min="15" selected>Coconut Oil 500ml (Current: 8, Min: 15) - LOW STOCK</option>
+                            <option value="sku-003" data-current="0" data-min="10">Fresh Vegetables Mix (Current: 0, Min: 10) - OUT OF STOCK</option>
+                            <option value="sku-004" data-current="42" data-min="25">Dried Fish 250g (Current: 42, Min: 25)</option>
+                        </select>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div id="productInfo" class="product-info mb-4 p-3 bg-light rounded" style="display: none;">
+                        <div class="d-flex align-items-center">
+                            <img id="productImage" src="" alt="Product" class="product-thumbnail me-3" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                            <div>
+                                <h6 id="productName" class="mb-1"></h6>
+                                <p id="productSku" class="mb-1 text-muted"></p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Current Stock:</small>
+                                        <p id="currentStock" class="mb-0 fw-bold"></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Minimum Stock:</small>
+                                        <p id="minStock" class="mb-0 fw-bold"></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Recommended Restock:</small>
+                                        <p id="recommendedRestock" class="mb-0 fw-bold text-primary"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Restock Details -->
+                            <div class="mb-3">
+                                <label class="form-label">Restock Quantity <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="restockQuantity" placeholder="Enter quantity" min="1" required>
+                                    <span class="input-group-text">units</span>
+                                </div>
+                                <div class="form-text" id="newStockPreview"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Unit Cost</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" class="form-control" id="unitCost" placeholder="0.00" step="0.01">
+                                </div>
+                                <div class="form-text">Cost per unit for this restock batch</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Supplier</label>
+                                <select class="form-select" id="supplier">
+                                    <option value="">Select supplier...</option>
+                                    <option value="local-farmers">Local Farmers Cooperative</option>
+                                    <option value="camarines-agri">Camarines Agricultural Supply</option>
+                                    <option value="bicol-organics">Bicol Organics</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Expected Delivery Date</label>
+                                <input type="date" class="form-control" id="expectedDelivery">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- Batch Information -->
+                            <div class="mb-3">
+                                <label class="form-label">Batch/Lot Number</label>
+                                <input type="text" class="form-control" id="batchNumber" placeholder="e.g., BATCH-2025-001">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Expiry Date (if applicable)</label>
+                                <input type="date" class="form-control" id="expiryDate">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Storage Location</label>
+                                <select class="form-select" id="storageLocation">
+                                    <option value="">Select location...</option>
+                                    <option value="warehouse-a">Warehouse A</option>
+                                    <option value="warehouse-b">Warehouse B</option>
+                                    <option value="cold-storage">Cold Storage</option>
+                                    <option value="dry-storage">Dry Storage</option>
+                                    <option value="main-store">Main Store</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Quality Grade</label>
+                                <select class="form-select" id="qualityGrade">
+                                    <option value="">Select grade...</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="grade-a">Grade A</option>
+                                    <option value="grade-b">Grade B</option>
+                                    <option value="standard">Standard</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" id="restockNotes" rows="3" placeholder="Additional notes about this restock..."></textarea>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions mb-3">
+                        <h6 class="mb-2">Quick Actions:</h6>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="fillRecommended()">
+                                Use Recommended Quantity
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fillMinimum()">
+                                Fill to Minimum Stock
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-info" onclick="fillOptimal()">
+                                Fill to Optimal Level
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cost Summary -->
+                    <div id="costSummary" class="cost-summary p-3 bg-light rounded" style="display: none;">
+                        <h6 class="mb-2">Cost Summary:</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="mb-1">Quantity: <span id="summaryQuantity">0</span> units</p>
+                                <p class="mb-1">Unit Cost: ₱<span id="summaryUnitCost">0.00</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-1">Total Cost: ₱<span id="totalCost">0.00</span></p>
+                                <p class="mb-0">New Stock Level: <span id="summaryNewStock">0</span> units</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="restockForm" class="btn-seller">
+                    <i class="bi bi-plus-circle"></i> Add to Inventory
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const productSelect = document.getElementById('productSelect');
+    const productInfo = document.getElementById('productInfo');
+    const restockQuantity = document.getElementById('restockQuantity');
+    const unitCost = document.getElementById('unitCost');
+    const costSummary = document.getElementById('costSummary');
+    
+    // Product data (would come from backend)
+    const products = {
+        'sku-001': { name: 'Organic Rice 5kg', image: '../../../assets/images/rice.jpg', currentStock: 85, minStock: 20 },
+        'sku-002': { name: 'Coconut Oil 500ml', image: '../../../assets/images/coconut-oil.jpg', currentStock: 8, minStock: 15 },
+        'sku-003': { name: 'Fresh Vegetables Mix', image: '../../../assets/images/vegetables.jpg', currentStock: 0, minStock: 10 },
+        'sku-004': { name: 'Dried Fish 250g', image: '../../../assets/images/dried-fish.jpg', currentStock: 42, minStock: 25 }
+    };
+    
+    let selectedProduct = null;
+    
+    // Handle product selection
+    productSelect.addEventListener('change', function() {
+        const selectedSku = this.value;
+        if (selectedSku && products[selectedSku]) {
+            selectedProduct = products[selectedSku];
+            displayProductInfo(selectedProduct, selectedSku);
+            productInfo.style.display = 'block';
+        } else {
+            productInfo.style.display = 'none';
+            selectedProduct = null;
+        }
+        updateCostSummary();
+    });
+    
+    // Update cost summary when quantity or unit cost changes
+    restockQuantity.addEventListener('input', updateCostSummary);
+    unitCost.addEventListener('input', updateCostSummary);
+    
+    function displayProductInfo(product, sku) {
+        document.getElementById('productImage').src = product.image;
+        document.getElementById('productName').textContent = product.name;
+        document.getElementById('productSku').textContent = `SKU: ${sku.toUpperCase()}`;
+        document.getElementById('currentStock').textContent = `${product.currentStock} units`;
+        document.getElementById('minStock').textContent = `${product.minStock} units`;
+        
+        // Calculate recommended restock (2x minimum stock - current stock)
+        const recommended = Math.max(0, (product.minStock * 2) - product.currentStock);
+        document.getElementById('recommendedRestock').textContent = `${recommended} units`;
+        
+        // Set color based on stock level
+        const currentStockEl = document.getElementById('currentStock');
+        if (product.currentStock === 0) {
+            currentStockEl.className = 'mb-0 fw-bold text-danger';
+        } else if (product.currentStock < product.minStock) {
+            currentStockEl.className = 'mb-0 fw-bold text-warning';
+        } else {
+            currentStockEl.className = 'mb-0 fw-bold text-success';
+        }
+    }
+    
+    function updateCostSummary() {
+        const quantity = parseInt(restockQuantity.value) || 0;
+        const cost = parseFloat(unitCost.value) || 0;
+        
+        if (quantity > 0 && selectedProduct) {
+            document.getElementById('summaryQuantity').textContent = quantity;
+            document.getElementById('summaryUnitCost').textContent = cost.toFixed(2);
+            document.getElementById('totalCost').textContent = (quantity * cost).toFixed(2);
+            document.getElementById('summaryNewStock').textContent = selectedProduct.currentStock + quantity;
+            
+            costSummary.style.display = 'block';
+            
+            // Update new stock preview
+            const newStockPreview = document.getElementById('newStockPreview');
+            const newStock = selectedProduct.currentStock + quantity;
+            newStockPreview.innerHTML = `New stock will be: <span class="text-success">${newStock} units</span>`;
+        } else {
+            costSummary.style.display = 'none';
+            document.getElementById('newStockPreview').innerHTML = '';
+        }
+    }
+    
+    // Quick action functions
+    window.fillRecommended = function() {
+        if (selectedProduct) {
+            const recommended = Math.max(0, (selectedProduct.minStock * 2) - selectedProduct.currentStock);
+            restockQuantity.value = recommended;
+            updateCostSummary();
+        }
+    };
+    
+    window.fillMinimum = function() {
+        if (selectedProduct) {
+            const needed = Math.max(0, selectedProduct.minStock - selectedProduct.currentStock);
+            restockQuantity.value = needed;
+            updateCostSummary();
+        }
+    };
+    
+    window.fillOptimal = function() {
+        if (selectedProduct) {
+            const optimal = Math.max(0, (selectedProduct.minStock * 3) - selectedProduct.currentStock);
+            restockQuantity.value = optimal;
+            updateCostSummary();
+        }
+    };
+    
+    // Handle form submission
+    document.getElementById('restockForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!selectedProduct) {
+            alert('Please select a product to restock.');
+            return;
+        }
+        
+        const quantity = parseInt(restockQuantity.value);
+        if (!quantity || quantity <= 0) {
+            alert('Please enter a valid quantity.');
+            return;
+        }
+        
+        // Get form data
+        const formData = {
+            product: productSelect.value,
+            quantity: quantity,
+            unitCost: parseFloat(unitCost.value) || 0,
+            supplier: document.getElementById('supplier').value,
+            expectedDelivery: document.getElementById('expectedDelivery').value,
+            batchNumber: document.getElementById('batchNumber').value,
+            expiryDate: document.getElementById('expiryDate').value,
+            storageLocation: document.getElementById('storageLocation').value,
+            qualityGrade: document.getElementById('qualityGrade').value,
+            notes: document.getElementById('restockNotes').value
+        };
+        
+        console.log('Restocking product:', formData);
+        alert('Product restocked successfully!');
+        
+        // Close modal and refresh
+        bootstrap.Modal.getInstance(document.getElementById('restockModal')).hide();
+    });
+    
+    // Initialize with pre-selected product if any
+    if (productSelect.value) {
+        productSelect.dispatchEvent(new Event('change'));
+    }
+});
+</script>

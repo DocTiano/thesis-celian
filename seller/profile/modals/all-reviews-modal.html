@@ -1,0 +1,239 @@
+<!-- All Reviews Modal -->
+<div class="modal fade" id="allReviewsModal" tabindex="-1" aria-labelledby="allReviewsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="allReviewsModalLabel">
+                    <i class="bi bi-star me-2"></i>All Customer Reviews
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Reviews Summary -->
+                <div class="reviews-summary mb-4">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <div class="summary-stat">
+                                <div class="stat-number h3 text-warning">4.8</div>
+                                <div class="stat-label">Overall Rating</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="summary-stat">
+                                <div class="stat-number h3 text-primary">127</div>
+                                <div class="stat-label">Total Reviews</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="summary-stat">
+                                <div class="stat-number h3 text-success">98%</div>
+                                <div class="stat-label">Positive</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="summary-stat">
+                                <div class="stat-number h3 text-info">4.2</div>
+                                <div class="stat-label">Avg Response Time (hrs)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rating Breakdown -->
+                <div class="rating-breakdown mb-4">
+                    <h6 class="mb-3">Rating Breakdown</h6>
+                    <div class="rating-bars">
+                        <div class="rating-row d-flex align-items-center mb-2">
+                            <span class="rating-label">5 stars</span>
+                            <div class="rating-bar flex-grow-1 mx-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <span class="rating-count">99</span>
+                        </div>
+                        <div class="rating-row d-flex align-items-center mb-2">
+                            <span class="rating-label">4 stars</span>
+                            <div class="rating-bar flex-grow-1 mx-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" style="width: 15%"></div>
+                                </div>
+                            </div>
+                            <span class="rating-count">19</span>
+                        </div>
+                        <div class="rating-row d-flex align-items-center mb-2">
+                            <span class="rating-label">3 stars</span>
+                            <div class="rating-bar flex-grow-1 mx-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" style="width: 5%"></div>
+                                </div>
+                            </div>
+                            <span class="rating-count">6</span>
+                        </div>
+                        <div class="rating-row d-flex align-items-center mb-2">
+                            <span class="rating-label">2 stars</span>
+                            <div class="rating-bar flex-grow-1 mx-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-orange" style="width: 2%"></div>
+                                </div>
+                            </div>
+                            <span class="rating-count">2</span>
+                        </div>
+                        <div class="rating-row d-flex align-items-center mb-2">
+                            <span class="rating-label">1 star</span>
+                            <div class="rating-bar flex-grow-1 mx-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" style="width: 1%"></div>
+                                </div>
+                            </div>
+                            <span class="rating-count">1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="review-filters mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-select" id="reviewFilter">
+                                <option value="all">All Reviews</option>
+                                <option value="5">5 Stars Only</option>
+                                <option value="4">4 Stars Only</option>
+                                <option value="3">3 Stars Only</option>
+                                <option value="2">2 Stars Only</option>
+                                <option value="1">1 Star Only</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" id="reviewSort">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="highest">Highest Rating</option>
+                                <option value="lowest">Lowest Rating</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="reviewSearch" placeholder="Search reviews...">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reviews List -->
+                <div class="reviews-list" style="max-height: 400px; overflow-y: auto;">
+                    <div class="review-item border rounded p-3 mb-3">
+                        <div class="review-header d-flex justify-content-between align-items-start mb-2">
+                            <div class="reviewer-info">
+                                <div class="reviewer-name fw-bold">Maria Santos</div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span class="ms-2">5.0</span>
+                                </div>
+                            </div>
+                            <div class="review-date text-muted">
+                                Dec 15, 2024
+                            </div>
+                        </div>
+                        <div class="review-product mb-2">
+                            <small class="text-muted">Product: Organic Rice 5kg</small>
+                        </div>
+                        <div class="review-text mb-2">
+                            Excellent quality rice! Very fresh and the grains are perfect. Fast delivery and great packaging. Will definitely order again. Highly recommended!
+                        </div>
+                        <div class="review-actions">
+                            <button class="btn btn-outline-primary btn-sm">Reply</button>
+                            <button class="btn btn-outline-secondary btn-sm">Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item border rounded p-3 mb-3">
+                        <div class="review-header d-flex justify-content-between align-items-start mb-2">
+                            <div class="reviewer-info">
+                                <div class="reviewer-name fw-bold">Roberto Cruz</div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star text-muted"></i>
+                                    <span class="ms-2">4.0</span>
+                                </div>
+                            </div>
+                            <div class="review-date text-muted">
+                                Dec 12, 2024
+                            </div>
+                        </div>
+                        <div class="review-product mb-2">
+                            <small class="text-muted">Product: Fresh Vegetables Mix</small>
+                        </div>
+                        <div class="review-text mb-2">
+                            Good quality vegetables, very fresh. Delivery was on time. Only minor issue was that some vegetables were a bit smaller than expected, but overall satisfied with the purchase.
+                        </div>
+                        <div class="seller-reply bg-light p-2 rounded mb-2">
+                            <strong>Your Reply:</strong> Thank you for your feedback! We'll make sure to include larger vegetables in your next order. We appreciate your business!
+                        </div>
+                        <div class="review-actions">
+                            <button class="btn btn-outline-secondary btn-sm">Edit Reply</button>
+                            <button class="btn btn-outline-secondary btn-sm">Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item border rounded p-3 mb-3">
+                        <div class="review-header d-flex justify-content-between align-items-start mb-2">
+                            <div class="reviewer-info">
+                                <div class="reviewer-name fw-bold">Ana Reyes</div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star text-muted"></i>
+                                    <i class="bi bi-star text-muted"></i>
+                                    <span class="ms-2">3.0</span>
+                                </div>
+                            </div>
+                            <div class="review-date text-muted">
+                                Dec 10, 2024
+                            </div>
+                        </div>
+                        <div class="review-product mb-2">
+                            <small class="text-muted">Product: Coconut Oil 500ml</small>
+                        </div>
+                        <div class="review-text mb-2">
+                            The coconut oil quality is okay, but the delivery took longer than expected. The packaging could be improved as the bottle was slightly dented upon arrival.
+                        </div>
+                        <div class="review-actions">
+                            <button class="btn btn-outline-primary btn-sm">Reply</button>
+                            <button class="btn btn-outline-secondary btn-sm">Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-download me-1"></i>Export Reviews
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.rating-label {
+    width: 60px;
+    font-size: 0.9rem;
+}
+
+.rating-count {
+    width: 30px;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.progress {
+    height: 8px;
+}
+</style>
